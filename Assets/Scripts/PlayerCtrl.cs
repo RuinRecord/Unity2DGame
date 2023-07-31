@@ -52,7 +52,7 @@ public class PlayerCtrl : MonoBehaviour
         if (isCanMove && Input.GetMouseButtonDown(0)) 
         {
             Vector2 move_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            agent.destination = move_pos;
+            agent.SetDestination(move_pos);
         }
 
         SetState();
@@ -76,6 +76,10 @@ public class PlayerCtrl : MonoBehaviour
                 break;
             case PLAYER_STATE.WALK:
                 animator.SetBool("isWalk", true);
+                if (agent.velocity.x >= 0f)
+                    this.transform.localScale = new Vector3(1f, 1f, 1f);
+                else
+                    this.transform.localScale = new Vector3(-1f, 1f, 1f);
                 break;
         }
     }
