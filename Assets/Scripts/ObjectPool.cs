@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ObjectType
+{
+    TempMonster,
+    MonsterAttack,
+};
+
 public class ObjectPool : MonoBehaviour
 {
     private static ObjectPool Instance;
@@ -15,16 +21,13 @@ public class ObjectPool : MonoBehaviour
         get { return Instance; }
     }
 
-    public enum ObjectType
-    {
-        TempMonster
-    };
-
     public Transform objectTr;
 
     public GameObject tempMonster_prefab;
+    public GameObject monsterAttack_prefab;
 
     Queue<TempMonster> tempMonster_queue = new Queue<TempMonster>();
+    Queue<MonsterAttack> monsterAttack_queue = new Queue<MonsterAttack>();
 
     private void Awake()
     {
@@ -44,6 +47,7 @@ public class ObjectPool : MonoBehaviour
         switch (type)
         {
             case ObjectType.TempMonster: newObj = Instantiate(tempMonster_prefab, pos, Quaternion.identity, tr).GetComponent<T>(); break;
+            case ObjectType.MonsterAttack: newObj = Instantiate(monsterAttack_prefab, pos, Quaternion.identity, tr).GetComponent<T>(); break;
         }
 
         newObj.gameObject.SetActive(false);
@@ -66,6 +70,7 @@ public class ObjectPool : MonoBehaviour
             switch (type)
             {
                 case ObjectType.TempMonster: obj = instance.tempMonster_queue.Dequeue().GetComponent<T>(); break;
+                case ObjectType.MonsterAttack: obj = instance.monsterAttack_queue.Dequeue().GetComponent<T>(); break;
             }
 
             obj.transform.SetParent(tr);
@@ -102,6 +107,7 @@ public class ObjectPool : MonoBehaviour
         switch (type)
         {
             case ObjectType.TempMonster: instance.tempMonster_queue.Enqueue(obj.GetComponent<TempMonster>()); break;
+            case ObjectType.MonsterAttack: instance.monsterAttack_queue.Enqueue(obj.GetComponent<MonsterAttack>()); break;
         }
     }
 
@@ -116,6 +122,7 @@ public class ObjectPool : MonoBehaviour
         switch (type)
         {
             case ObjectType.TempMonster: count = instance.tempMonster_queue.Count; break;
+            case ObjectType.MonsterAttack: count = instance.monsterAttack_queue.Count; break;
         }
 
         return count;

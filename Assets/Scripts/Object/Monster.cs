@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
@@ -24,8 +25,8 @@ public class Monster : MonoBehaviour
     [SerializeField]
     protected bool isRecognized;
 
-    Color _blue = new Color(0f, 0f, 1f, 0.2f);
-    Color _red = new Color(1f, 0f, 0f, 0.2f);
+    [SerializeField]
+    private Transform attackPoint;
 
     public virtual bool Recognize()
     {
@@ -74,7 +75,10 @@ public class Monster : MonoBehaviour
 
     protected virtual void CheckDamage()
     {
-        // 곧 구현 예정
+        // 몬스터 공격 판정 생성
+        MonsterAttack attack = ObjectPool.GetObject<MonsterAttack>(ObjectType.MonsterAttack, ObjectPool.instance.objectTr, attackPoint.position);
+        attack.destroyTime = 0.025f;
+        attack.damage = this.damage;
     }
 
     protected virtual void EndAttack()

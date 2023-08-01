@@ -21,23 +21,19 @@ public class TempMonster : Monster
     void Update()
     {
         if (state == MonsterState.Dead)
-            return; // 죽으면 아무것도 하지 못함
+            return; // 죽은 상태면 Return
 
+        // 플레이어 감지
         isRecognized = Recognize();
+
         if (isRecognized)
         {
+            // 감지 성공 => 추적
             Chase();
-            switch (state)
-            {
-                case MonsterState.Chase:
-                    float distance = Vector2.Distance(PlayerCtrl.instance.transform.position, transform.position);
-                    if (distance < 1f)
-                        Attack();
-                    break;
-            }
         }
         else
         {
+            // 감지 실패
             switch (state)
             {
                 case MonsterState.Walk:
@@ -45,6 +41,7 @@ public class TempMonster : Monster
                         state = MonsterState.Idle;
                     break;
                 case MonsterState.Chase:
+                    // 만약 추적 상태였다면 순찰 상태로 전환
                     if (agent.remainingDistance < 0.01f)
                         StartPatrol();
                     break;
@@ -52,5 +49,19 @@ public class TempMonster : Monster
         }
 
         SetAnimation();
+    }
+
+    private void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.transform.tag.Equals("Player"))
+        {
+            switch (state)
+            {
+                case MonsterState.Chase:
+                    // 플레이어 공격
+                    Attack();
+                    break;
+            }
+        }
     }
 }
