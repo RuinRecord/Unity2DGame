@@ -24,12 +24,6 @@ public class PlayerStateUI : MonoBehaviour
         instance = this;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        SetPlayerState();
-    }
-
     public void SetPlayerState()
     {
         HP_fillImage.fillAmount = PlayerCtrl.instance.cur_HP / PlayerCtrl.instance.max_HP;

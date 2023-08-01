@@ -24,9 +24,8 @@ public class MonsterAttack : MonoBehaviour
     {
         if (col.transform.tag.Equals("Player"))
         {
-            // 피격 판정 => 플레이어 HP 감소 및 UI 갱신
+            // 피격 판정 => 플레이어 HP 감소
             PlayerCtrl.instance.cur_HP -= damage;
-            PlayerStateUI.instance.SetPlayerState();
 
             StopCoroutine("DestroyAttack");
             ObjectPool.ReturnObject(ObjectType.MonsterAttack, this);
