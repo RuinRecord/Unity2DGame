@@ -54,7 +54,6 @@ public class Monster : MonoBehaviour
                 return true;
             else
                 return false;
-
         }
         return false;
     }

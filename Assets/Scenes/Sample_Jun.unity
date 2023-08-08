@@ -4441,11 +4441,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9776672d6c4d5a147a7cabacb189ec1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
   max_HP: 0
-  cur_HP: 0
   max_MP: 0
-  cur_MP: 0
 --- !u!195 &1479713882
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4524,8 +4521,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0.46875}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.6875, y: 0.9375}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 6, y: 4}
     newSize: {x: 0.96, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

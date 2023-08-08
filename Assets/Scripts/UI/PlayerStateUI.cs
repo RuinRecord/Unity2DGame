@@ -26,7 +26,17 @@ public class PlayerStateUI : MonoBehaviour
 
     public void SetPlayerState()
     {
+        SetPlayerHP();
+        SetPlayerMP();
+    }
+
+    public void SetPlayerHP()
+    {
         HP_fillImage.fillAmount = PlayerCtrl.instance.cur_HP / PlayerCtrl.instance.max_HP;
+    }
+
+    public void SetPlayerMP()
+    {
         MP_fillImage.fillAmount = PlayerCtrl.instance.cur_MP / PlayerCtrl.instance.max_MP;
     }
 }
