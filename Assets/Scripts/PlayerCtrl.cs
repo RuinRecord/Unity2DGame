@@ -301,6 +301,7 @@ public class PlayerCtrl : MonoBehaviour
             {
                 // 강한 공격
                 attack_type = 1;
+                cur_MP -= 3;
             }
             attack_count = 0;
         }
@@ -308,6 +309,7 @@ public class PlayerCtrl : MonoBehaviour
         {
             // 일반 공격
             attack_type = 0;
+            cur_MP -= 2;
             if (++attack_count > 2)
                 attack_count = 0;
         }
