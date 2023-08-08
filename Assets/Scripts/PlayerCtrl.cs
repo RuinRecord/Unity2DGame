@@ -195,9 +195,9 @@ public class PlayerCtrl : MonoBehaviour
         StateFunc();
 
         // 플레이어가 바라보는 방향으로 이미지 좌우 전환
-        if (moveVec.x > 0.01f)
+        if (agent.velocity.x > 0.01f)
             this.transform.localScale = Vector3.one;
-        else if (moveVec.x < -0.01f)
+        else if (agent.velocity.x < -0.01f)
             this.transform.localScale = new Vector3(-1f, 1f, 1f);
 
         // 마나 회복
@@ -271,7 +271,11 @@ public class PlayerCtrl : MonoBehaviour
     /// </summary>
     private void StartEvasion()
     {
-        Vector2 goalPos = (Vector2)transform.position - moveVec.normalized * EVASION_FORCE;
+        Vector2 goalPos;
+        if (playerState.Equals(PlayerState.Idle))
+            goalPos = (Vector2)transform.position - moveVec.normalized * EVASION_FORCE;
+        else
+            goalPos = (Vector2)transform.position - (Vector2)agent.velocity.normalized * EVASION_FORCE;
         SetMove(goalPos, 6f);
         state = PlayerState.Roll;
     }
