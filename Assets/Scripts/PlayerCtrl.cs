@@ -8,7 +8,7 @@ public enum PlayerState
 {
     Idle,
     Walk,
-    Roll,
+    Evasion,
     Attack,
     Dead
 }
@@ -43,14 +43,13 @@ public class PlayerCtrl : MonoBehaviour
     private NavMeshAgent agent;
     private Animator animator;
 
+    [SerializeField]
     private PlayerState playerState;
+    
     public PlayerState state
     {
         set 
         {
-            if (playerState == value)
-                return;
-
             playerState = value;
             SetAnimation();
         }
@@ -73,8 +72,12 @@ public class PlayerCtrl : MonoBehaviour
     public float max_MP;
 
 
-    /// <summary> 최근 플레이어가 이동한 위치 벡터 </summary>
+    /// <summary> 최근 플레이어의 방향 벡터 </summary>
     private Vector2 moveVec;
+
+
+    /// <summary> 최근 플레이어의 도착 벡터 </summary>
+    private Vector2 goalVec;
 
 
     /// <summary> 현재 공격 Count 상태 </summary>
@@ -146,12 +149,17 @@ public class PlayerCtrl : MonoBehaviour
         if (isCanMove && Input.GetMouseButtonDown(0)) 
         {
             // 이동
-            Vector2 move_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            moveVec = move_pos - (Vector2)transform.position;
-            if (isAttackCharge || attack_type != -1)
-                SetMove(move_pos, 1.5f); // 차징 중이거나 공격 중일 경우 느린 이동
-            else
-                SetMove(move_pos, 3f);
+            Vector3 mouseVec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mouseVec.Set(mouseVec.x, mouseVec.y, -5f);
+            if (!Physics2D.Raycast(mouseVec, Vector3.forward, 10f, 64))
+            {
+                // 갈 수 있는 지역을 누른 경우
+                goalVec = mouseVec;
+                if (isAttackCharge || attack_type != -1)
+                    SetMove(goalVec, 1.5f); // 차징 중이거나 공격 중일 경우 느린 이동
+                else
+                    SetMove(goalVec, 3f);
+            }
         }
 
         if (isCanAttack)
@@ -191,14 +199,10 @@ public class PlayerCtrl : MonoBehaviour
             }
         }
 
+        moveVec = goalVec - (Vector2)transform.position;
+
         // State에 따른 행동 수행
         StateFunc();
-
-        // 플레이어가 바라보는 방향으로 이미지 좌우 전환
-        if (agent.velocity.x > 0.01f)
-            this.transform.localScale = Vector3.one;
-        else if (agent.velocity.x < -0.01f)
-            this.transform.localScale = new Vector3(-1f, 1f, 1f);
 
         // 마나 회복
         cur_MP += Time.deltaTime * MP_CHARGE_SPEED;
@@ -208,6 +212,7 @@ public class PlayerCtrl : MonoBehaviour
 
     private void SetMove(Vector2 _destination, float _moveSpeed)
     {
+        state = PlayerState.Walk;
         agent.SetDestination(_destination);
         SetMoveSpeed(_moveSpeed);
     }
@@ -225,9 +230,16 @@ public class PlayerCtrl : MonoBehaviour
         switch(state)
         {
             case PlayerState.Idle:
+                break;
             case PlayerState.Walk:
-                // 마우스 클릭한 위치까지 남은 거리에 따라 State 변경
-                state = (agent.remainingDistance < 0.01f) ? PlayerState.Idle : PlayerState.Walk;
+                // 도착까지 남은 거리가 작으면 Idle로 변경
+                if (moveVec.magnitude < Time.deltaTime)
+                    state = PlayerState.Idle;
+                else
+                {
+                    animator.SetFloat("DirX", agent.velocity.normalized.x);
+                    animator.SetFloat("DirY", agent.velocity.normalized.y);
+                }
                 break;
         }
     }
@@ -241,15 +253,15 @@ public class PlayerCtrl : MonoBehaviour
         {
             case PlayerState.Idle:
                 animator.SetBool("isWalk", false);
-                animator.SetBool("isRoll", false);
+                animator.SetBool("isEvasion", false);
                 break;
             case PlayerState.Walk:
                 animator.SetBool("isWalk", true);
-                animator.SetBool("isRoll", false);
+                animator.SetBool("isEvasion", false);
                 break;
-            case PlayerState.Roll:
+            case PlayerState.Evasion:
                 animator.SetBool("isWalk", false);
-                animator.SetBool("isRoll", true);
+                animator.SetBool("isEvasion", true);
                 break;
             case PlayerState.Attack:
                 break;
@@ -271,13 +283,12 @@ public class PlayerCtrl : MonoBehaviour
     /// </summary>
     private void StartEvasion()
     {
-        Vector2 goalPos;
         if (playerState.Equals(PlayerState.Idle))
-            goalPos = (Vector2)transform.position - moveVec.normalized * EVASION_FORCE;
+            goalVec = (Vector2)transform.position - moveVec.normalized * EVASION_FORCE;
         else
-            goalPos = (Vector2)transform.position - (Vector2)agent.velocity.normalized * EVASION_FORCE;
-        SetMove(goalPos, 6f);
-        state = PlayerState.Roll;
+            goalVec = (Vector2)transform.position - (Vector2)agent.velocity.normalized * EVASION_FORCE;
+        SetMove(goalVec, 6f);
+        state = PlayerState.Evasion;
     }
 
     /// <summary>
