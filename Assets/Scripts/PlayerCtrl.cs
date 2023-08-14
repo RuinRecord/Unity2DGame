@@ -135,7 +135,7 @@ public class PlayerCtrl : MonoBehaviour
         isAttackCharge = false;
         max_HP = cur_HP = 100f;
         max_MP = cur_MP = 10f;
-        moveVec = Vector2.right;
+        moveVec = Vector2.up;
         attack_count = 0;
         attack_type = -1;
         attack_clickTime = 0f;
@@ -146,6 +146,14 @@ public class PlayerCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 마나 회복
+        cur_MP += Time.deltaTime * MP_CHARGE_SPEED;
+        if (cur_MP > max_MP)
+            cur_MP = max_MP;
+
+        // State에 따른 행동 수행
+        StateFunc();
+
         if (isCanMove && Input.GetMouseButtonDown(0)) 
         {
             // 이동
@@ -155,6 +163,7 @@ public class PlayerCtrl : MonoBehaviour
             {
                 // 갈 수 있는 지역을 누른 경우
                 goalVec = mouseVec;
+                moveVec = goalVec - (Vector2)transform.position;
                 if (isAttackCharge || attack_type != -1)
                     SetMove(goalVec, 1.5f); // 차징 중이거나 공격 중일 경우 느린 이동
                 else
@@ -198,16 +207,6 @@ public class PlayerCtrl : MonoBehaviour
                 StartEvasion();
             }
         }
-
-        moveVec = goalVec - (Vector2)transform.position;
-
-        // State에 따른 행동 수행
-        StateFunc();
-
-        // 마나 회복
-        cur_MP += Time.deltaTime * MP_CHARGE_SPEED;
-        if (cur_MP > max_MP)
-            cur_MP = max_MP;
     }
 
     private void SetMove(Vector2 _destination, float _moveSpeed)
@@ -233,7 +232,7 @@ public class PlayerCtrl : MonoBehaviour
                 break;
             case PlayerState.Walk:
                 // 도착까지 남은 거리가 작으면 Idle로 변경
-                if (moveVec.magnitude < Time.deltaTime)
+                if (agent.remainingDistance < Time.deltaTime)
                     state = PlayerState.Idle;
                 else
                 {
@@ -283,10 +282,16 @@ public class PlayerCtrl : MonoBehaviour
     /// </summary>
     private void StartEvasion()
     {
+        float distance = EVASION_FORCE;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -moveVec, EVASION_FORCE, 64);
+        if (hit) distance = hit.distance;
+        Debug.Log(distance);
+
         if (playerState.Equals(PlayerState.Idle))
-            goalVec = (Vector2)transform.position - moveVec.normalized * EVASION_FORCE;
+            goalVec = (Vector2)transform.position - moveVec.normalized * distance;
         else
-            goalVec = (Vector2)transform.position - (Vector2)agent.velocity.normalized * EVASION_FORCE;
+            goalVec = (Vector2)transform.position - (Vector2)agent.velocity.normalized * distance;
+
         SetMove(goalVec, 6f);
         state = PlayerState.Evasion;
     }
