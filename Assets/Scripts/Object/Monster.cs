@@ -4,6 +4,7 @@ using System.Threading;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Playables;
 using static UnityEngine.GraphicsBuffer;
 
 public class Monster : MonoBehaviour
@@ -15,7 +16,17 @@ public class Monster : MonoBehaviour
     [SerializeField] protected MonsterType type;
     [SerializeField] protected MonsterGrade grade;
     [SerializeField] protected AttackType attackType;
-    [SerializeField] protected MonsterState state;
+    [SerializeField] private MonsterState State;
+
+    protected MonsterState state
+    {
+        set
+        {
+            State = value;
+            SetAnimation();
+        }
+        get { return State; }
+    }
 
     [SerializeField] private float angleRange = 60f;
     [SerializeField] private float radius = 3f;
@@ -87,7 +98,6 @@ public class Monster : MonoBehaviour
 
     protected virtual void StartPatrol()
     {
-        state = MonsterState.Walk;
         StopCoroutine("Patrol");
         StartCoroutine("Patrol");
     }
@@ -102,12 +112,9 @@ public class Monster : MonoBehaviour
         float randX = Random.Range(0.75f, 1.5f);
         float randY = Random.Range(0.75f, 1.5f);
         Vector3 randVec = new Vector3(Mathf.Sign(Random.Range(-1f, 1f)) * randX, Mathf.Sign(Random.Range(-1f, 1f)) * randY);
-        if (randVec.x >= 0f)
-            this.transform.localScale = new Vector3(1f, 1f, 1f);
-        else
-            this.transform.localScale = new Vector3(-1f, 1f, 1f);
         agent.SetDestination(this.transform.position + randVec);
         agent.speed = 1f;
+        state = MonsterState.Walk;
 
         yield return new WaitForSeconds(Random.Range(4f, 6f));
 

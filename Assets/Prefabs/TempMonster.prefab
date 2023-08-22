@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: -653525413
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 253994559, guid: 2b92e5d1cc2456749914d854415e1d64, type: 3}
+  m_Sprite: {fileID: 1106967126, guid: e12744a6d707afa41ad33e14f0ff3b88, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   type: 0
   grade: 0
   attackType: 0
-  state: 0
+  State: 0
   angleRange: 60
   radius: 3
   damage: 10
@@ -141,7 +141,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6569218267864533389}
   m_Enabled: 1
-  m_AgentTypeID: 0
+  m_AgentTypeID: -1372625422
   m_Radius: 3
   m_Speed: 2
   m_Acceleration: 999
@@ -190,8 +190,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6, y: 4}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 6, y: 4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
