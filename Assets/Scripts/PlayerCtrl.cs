@@ -168,18 +168,19 @@ public class PlayerCtrl : MonoBehaviour
         if (isCanMove && Input.GetMouseButtonDown(0)) 
         {
             // 이동
-            Vector3 mouseVec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mouseVec.Set(mouseVec.x, mouseVec.y, -5f);
-            if (!Physics2D.Raycast(mouseVec, Vector3.forward, 10f, 64))
-            {
-                // 갈 수 있는 지역을 누른 경우
-                goalVec = mouseVec;
-                moveVec = goalVec - (Vector2)transform.position;
-                if (isAttackCharge || attack_type != -1)
-                    SetMove(goalVec, 1.5f); // 차징 중이거나 공격 중일 경우 느린 이동
-                else
-                    SetMove(goalVec, 3f);
-            }
+            RaycastHit2D hit;
+            goalVec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            moveVec = goalVec - (Vector2)this.transform.position;
+            moveVec.Set(moveVec.x, moveVec.y);
+
+            // 갈 수 없는 지역을 누른 경우, 갈 수 있는 가장 가까운 곳으로 목표 재설정
+            if (hit = Physics2D.Raycast(this.transform.position, moveVec, moveVec.magnitude, 64))
+                goalVec = hit.point;
+
+            if (isAttackCharge || attack_type != -1)
+                SetMove(goalVec, 1.5f); // 차징 중이거나 공격 중일 경우 느린 이동
+            else
+                SetMove(goalVec, 3f);
         }
 
         if (playerType.Equals(PlayerType.MEN))
