@@ -1,8 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+
+public enum PlayerType
+{
+    MEN,
+    WOMEN
+}
 
 public enum PlayerState
 {
@@ -10,6 +17,7 @@ public enum PlayerState
     Walk,
     Evasion,
     Attack,
+    CAPTURE,
     Dead
 }
 
@@ -44,6 +52,9 @@ public class PlayerCtrl : MonoBehaviour
     private Animator animator;
 
     [SerializeField]
+    private PlayerType playerType;
+
+    [SerializeField]
     private PlayerState playerState;
     
     public PlayerState state
@@ -57,7 +68,7 @@ public class PlayerCtrl : MonoBehaviour
     }
 
     /// <summary> 플레이어가 해당 기능을 사용할 수 있는 상태인가? </summary>
-    private bool isCanMove, isCanAttack, isCanEvasion;
+    private bool isCanMove, isCanAttack, isCanEvasion, isCanCapture;
 
 
     /// <summary> 현재 공격 차징 중인가? </summary>
@@ -131,7 +142,7 @@ public class PlayerCtrl : MonoBehaviour
         agent.updateRotation = false;
         state = PlayerState.Idle;
 
-        isCanMove = isCanAttack = isCanEvasion = true;
+        isCanMove = isCanAttack = isCanEvasion = isCanCapture = true;
         isAttackCharge = false;
         max_HP = cur_HP = 100f;
         max_MP = cur_MP = 10f;
@@ -171,40 +182,52 @@ public class PlayerCtrl : MonoBehaviour
             }
         }
 
-        if (isCanAttack)
+        if (playerType.Equals(PlayerType.MEN))
         {
-            // 공격
-            if (Input.GetKey(KeyCode.Q))
+            if (isCanAttack)
             {
-                // 공격 버튼 누름
-                attack_clickTime += Time.deltaTime;
-                if (!isAttackCharge)
+                // 공격
+                if (Input.GetKey(KeyCode.Q))
                 {
-                    // 공격 차징 시작
-                    SetMoveSpeed(1.5f);
-                    isAttackCharge = true;
-                    isCanEvasion = false;
-                    animator.SetBool("isAttack", true);
+                    // 공격 버튼 누름
+                    attack_clickTime += Time.deltaTime;
+                    if (!isAttackCharge)
+                    {
+                        // 공격 차징 시작
+                        SetMoveSpeed(1.5f);
+                        isAttackCharge = true;
+                        isCanEvasion = false;
+                        animator.SetBool("isAttack", true);
+                    }
+                }
+                else if (Input.GetKeyUp(KeyCode.Q))
+                {
+                    // 공격 버튼 땜
+                    StartAttack();
                 }
             }
-            else if (Input.GetKeyUp(KeyCode.Q))
+
+            if (isCanEvasion && Input.GetKeyDown(KeyCode.W))
             {
-                // 공격 버튼 땜
-                StartAttack();
+                // 회피
+                if (cur_MP >= 1f)
+                {
+                    // 회피 스테미나 감소
+                    cur_MP -= 1f;
+
+                    // 회피 쿨타임 및 기능 수행
+                    StartCoroutine("EvasionCoolTime");
+                    StartEvasion();
+                }
             }
         }
-
-        if (isCanEvasion && Input.GetKeyDown(KeyCode.W))
+        else
         {
-            // 회피
-            if (cur_MP >= 1f)
+            if (isCanCapture)
             {
-                // 회피 스테미나 감소
-                cur_MP -= 1f;
-
-                // 회피 쿨타임 및 기능 수행
-                StartCoroutine("EvasionCoolTime");
-                StartEvasion();
+                // 사진 촬영
+                if (Input.GetKey(KeyCode.Q))
+                    StartCapture();
             }
         }
     }
@@ -236,8 +259,11 @@ public class PlayerCtrl : MonoBehaviour
                     state = PlayerState.Idle;
                 else
                 {
-                    animator.SetFloat("DirX", agent.velocity.normalized.x);
-                    animator.SetFloat("DirY", agent.velocity.normalized.y);
+                    if (agent.velocity != Vector3.zero)
+                    {
+                        animator.SetFloat("DirX", agent.velocity.normalized.x);
+                        animator.SetFloat("DirY", agent.velocity.normalized.y);
+                    }
                 }
                 break;
         }
@@ -253,6 +279,7 @@ public class PlayerCtrl : MonoBehaviour
             case PlayerState.Idle:
                 animator.SetBool("isWalk", false);
                 animator.SetBool("isEvasion", false);
+                animator.SetBool("isCapture", false);
                 break;
             case PlayerState.Walk:
                 animator.SetBool("isWalk", true);
@@ -263,6 +290,9 @@ public class PlayerCtrl : MonoBehaviour
                 animator.SetBool("isEvasion", true);
                 break;
             case PlayerState.Attack:
+                break;
+            case PlayerState.CAPTURE:
+                animator.SetBool("isCapture", true);
                 break;
         }
     }
@@ -334,20 +364,31 @@ public class PlayerCtrl : MonoBehaviour
                 attack_count = 0;
         }
 
-        isCanAttack = false;
-        isAttackCharge = false;
+        isCanMove = isCanAttack = isAttackCharge = false;
         attack_clickTime = 0f;
-        playerState = PlayerState.Attack;
+        state = PlayerState.Attack;
         animator.SetInteger("AttackType", attack_type);
     }
 
     public void EndAttack()
     {
-        playerState = PlayerState.Idle;
-        isCanAttack = true;
-        isCanEvasion = true;
+        state = PlayerState.Idle;
+        isCanMove = isCanAttack = isCanEvasion = true;
         attack_type = -1;
         animator.SetBool("isAttack", false);
         animator.SetInteger("AttackType", attack_type);
+    }
+
+    private void StartCapture()
+    {
+        agent.SetDestination(this.transform.position);
+        isCanMove = isCanCapture = false;
+        state = PlayerState.CAPTURE;
+    }
+
+    public void EndCapture()
+    {
+        state = PlayerState.Idle;
+        isCanMove = isCanCapture = true;
     }
 }
