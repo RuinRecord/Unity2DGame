@@ -68,7 +68,8 @@ public class PlayerCtrl : MonoBehaviour
     }
 
     /// <summary> 플레이어가 해당 기능을 사용할 수 있는 상태인가? </summary>
-    private bool isCanMove, isCanAttack, isCanEvasion, isCanCapture;
+    private bool isCanMove, isCanAttack, isCanEvasion;
+    public bool isCanCapture;
 
 
     /// <summary> 현재 공격 차징 중인가? </summary>
@@ -142,8 +143,8 @@ public class PlayerCtrl : MonoBehaviour
         agent.updateRotation = false;
         state = PlayerState.Idle;
 
-        isCanMove = isCanAttack = isCanEvasion = isCanCapture = true;
-        isAttackCharge = false;
+        isCanMove = isCanAttack = isCanEvasion = true;
+        isCanCapture = isAttackCharge = false;
         max_HP = cur_HP = 100f;
         max_MP = cur_MP = 10f;
         moveVec = Vector2.up;
