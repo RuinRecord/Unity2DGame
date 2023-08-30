@@ -170,13 +170,18 @@ public class PlayerCtrl : MonoBehaviour
         {
             // 이동
             RaycastHit2D hit;
-            goalVec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mouseVec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mouseVec.Set(mouseVec.x, mouseVec.y, -5f);
+            goalVec = mouseVec;
             moveVec = goalVec - (Vector2)this.transform.position;
             moveVec.Set(moveVec.x, moveVec.y);
 
             // 갈 수 없는 지역을 누른 경우, 갈 수 있는 가장 가까운 곳으로 목표 재설정
-            if (hit = Physics2D.Raycast(this.transform.position, moveVec, moveVec.magnitude, 64))
-                goalVec = hit.point;
+            if (Physics2D.Raycast(mouseVec, Vector3.forward, 10f, 64))
+            {
+                if (hit = Physics2D.Raycast(this.transform.position, moveVec, moveVec.magnitude, 64))
+                    goalVec = hit.point;
+            }
 
             if (isAttackCharge || attack_type != -1)
                 SetMove(goalVec, 1.5f); // 차징 중이거나 공격 중일 경우 느린 이동
@@ -184,6 +189,7 @@ public class PlayerCtrl : MonoBehaviour
                 SetMove(goalVec, 3f);
         }
 
+        // 남자 주인공 기능
         if (playerType.Equals(PlayerType.MEN))
         {
             if (isCanAttack)
@@ -191,7 +197,7 @@ public class PlayerCtrl : MonoBehaviour
                 // 공격
                 if (Input.GetKey(KeyCode.Q))
                 {
-                    // 공격 버튼 누름
+                    // 공격 버튼 누르는 중
                     attack_clickTime += Time.deltaTime;
                     if (!isAttackCharge)
                     {
@@ -223,7 +229,8 @@ public class PlayerCtrl : MonoBehaviour
                 }
             }
         }
-        else
+        // 여자 주인공 기능
+        else if (playerType.Equals(PlayerType.WOMEN))
         {
             if (isCanCapture)
             {
