@@ -9,6 +9,8 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Monster : MonoBehaviour
 {
+    public Spawner spawner;
+
     protected Animator animator;
     protected NavMeshAgent agent;
 
@@ -147,6 +149,12 @@ public class Monster : MonoBehaviour
     protected virtual void Dead()
     {
         animator.SetBool("isDead", true);
+
+        if (spawner != null)
+        {
+            // 스폰 몬스터라면 돌려보내기
+            spawner.RemoveObject(this.gameObject);
+        }
     }
 }
 

@@ -52,6 +52,13 @@ public class TempMonster : Monster
         }
     }
 
+    protected override void Dead()
+    {
+        base.Dead();
+
+        ObjectPool.ReturnObject(ObjectType.TempMonster, this);
+    }
+
     private void OnTriggerStay2D(Collider2D col)
     {
         if (col.transform.tag.Equals("Player"))
