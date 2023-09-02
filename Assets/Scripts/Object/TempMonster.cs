@@ -28,7 +28,7 @@ public class TempMonster : Monster
         if (isRecognized)
         {
             // 감지 성공 => 추적
-            Chase();
+            // Chase();
         }
         else
         {
@@ -39,12 +39,12 @@ public class TempMonster : Monster
                     // 현재 방향에서 x의 부호에 따른 좌우 방향 전환
                     this.transform.localScale = (agent.velocity.x >= 0f) ? new Vector3(1f, 1f, 1f) : new Vector3(-1f, 1f, 1f);
 
-                    // 만약 남은 거리가 0.01 이하라면 Walk -> Idle로 변경
+                    // 만약 남은 거리가 일정 이하라면 Walk -> Idle로 변경
                     if (agent.remainingDistance < 0.01f)
                         state = MonsterState.Idle;
                     break;
                 case MonsterState.Chase:
-                    // 만약 남은 거리가 0.01 이하라면 Chase를 멈추고 Patrol로 변경
+                    // 만약 남은 거리가 일정 이하라면 Chase를 멈추고 Patrol로 변경
                     if (agent.remainingDistance < 0.01f)
                         StartPatrol();
                     break;

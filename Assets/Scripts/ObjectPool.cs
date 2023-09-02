@@ -21,6 +21,9 @@ public class ObjectPool : MonoBehaviour
         get { return Instance; }
     }
 
+    [SerializeField]
+    private Transform mapTr;
+    
     public Transform objectTr;
 
     public GameObject tempMonster_prefab;
@@ -29,9 +32,31 @@ public class ObjectPool : MonoBehaviour
     Queue<TempMonster> tempMonster_queue = new Queue<TempMonster>();
     Queue<MonsterAttack> monsterAttack_queue = new Queue<MonsterAttack>();
 
+    List<SpriteRenderer> sprite_list = new List<SpriteRenderer>();
+
     private void Awake()
     {
         instance = this;
+
+        sprite_list.AddRange(mapTr.GetComponentsInChildren<SpriteRenderer>());
+    }
+
+    private void Update()
+    {
+        if (sprite_list.Count > 0)
+        {
+            // Y축 정렬
+            sprite_list.Sort(delegate (SpriteRenderer a, SpriteRenderer b)
+            {
+                if (a.transform.position.y < b.transform.position.y)
+                    return 1;
+                else
+                    return -1;
+            });
+
+            for (int i = 0; i < sprite_list.Count; i++)
+                sprite_list[i].sortingOrder = i;
+        }
     }
 
     /// <summary>
@@ -77,6 +102,10 @@ public class ObjectPool : MonoBehaviour
             obj.transform.position = pos;
             obj.gameObject.SetActive(true);
 
+            var spriteRender = obj.GetComponent<SpriteRenderer>();
+            if (spriteRender != null)
+                instance.sprite_list.Add(spriteRender);
+
             return obj;
         }
         else
@@ -85,6 +114,11 @@ public class ObjectPool : MonoBehaviour
             newObj.transform.SetParent(tr);
             newObj.transform.position = pos;
             newObj.gameObject.SetActive(true);
+
+            var spriteRender = newObj.GetComponent<SpriteRenderer>();
+            if (spriteRender != null)
+                instance.sprite_list.Add(spriteRender);
+
             return newObj;
         }
     }
@@ -101,6 +135,11 @@ public class ObjectPool : MonoBehaviour
             Debug.LogError("Return Object is Failed.");
             return;
         }
+
+        var spriteRender = obj.GetComponent<SpriteRenderer>();
+        if (spriteRender != null)
+            instance.sprite_list.Remove(spriteRender);
+
         obj.gameObject.SetActive(false);
         obj.transform.SetParent(instance.transform);
 
