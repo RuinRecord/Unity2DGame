@@ -16402,11 +16402,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4160445375362795929, guid: c16dbfa001551734e898a16d6a4b3013, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.5
+      value: -14.06
       objectReference: {fileID: 0}
     - target: {fileID: 4160445375362795929, guid: c16dbfa001551734e898a16d6a4b3013, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12.44
+      value: -12.28
       objectReference: {fileID: 0}
     - target: {fileID: 4160445375362795929, guid: c16dbfa001551734e898a16d6a4b3013, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16638,8 +16638,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -653525413
-  m_SortingLayer: 2
+  m_SortingLayerID: 1166902377
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -16682,28 +16682,28 @@ Tilemap:
     m_Data:
       e00: 0
       e01: 0
-      e02: 1.2884918e+10
-      e03: 1.2884918e+10
+      e02: -1.0285598e-38
+      e03: -1.0285598e-38
       e10: 0
       e11: 0
-      e12: 1.038e-42
-      e13: 1.038e-42
-      e20: -5.066219e-34
-      e21: -3.739341e-22
-      e22: -0.000000001666927
-      e23: -8.918761e+9
-      e30: 4.5904e-41
-      e31: 1.041e-42
-      e32: 1.038e-42
-      e33: 1.041e-42
+      e12: 6.36e-43
+      e13: 6.36e-43
+      e20: -3.2050457e-20
+      e21: -8.1350096e+20
+      e22: 8.548684e-19
+      e23: 2.6235836e-29
+      e30: 4.5905e-41
+      e31: 6.39e-43
+      e32: 6.38e-43
+      e33: 6.4e-43
   m_TileColorArray:
   - m_RefCount: 0
-    m_Data: {r: 4.3028e-41, g: 4.3028e-41, b: 4.3028e-41, a: 4.3028e-41}
+    m_Data: {r: 4.3592e-41, g: 4.3592e-41, b: 4.3592e-41, a: 4.3592e-41}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -10, y: -2, z: 0}
-  m_Size: {x: 21, y: 6, z: 1}
+  m_Size: {x: 21, y: 8, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -16940,7 +16940,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.33333334
+  m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
   m_NavMeshData: {fileID: 23800000, guid: 6cdbace6a7f1e8240b543348638fe065, type: 2}
@@ -17213,7 +17213,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1166902377
   m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16

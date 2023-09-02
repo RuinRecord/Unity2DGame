@@ -170,8 +170,7 @@ public class PlayerCtrl : MonoBehaviour
         {
             // ¿Ãµø
             RaycastHit2D hit;
-            Vector3 mouseVec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mouseVec.Set(mouseVec.x, mouseVec.y, -5f);
+            Vector2 mouseVec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             goalVec = mouseVec;
             moveVec = goalVec - (Vector2)this.transform.position;
             moveVec.Set(moveVec.x, moveVec.y);
