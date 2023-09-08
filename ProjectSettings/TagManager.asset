@@ -41,9 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Map
+  - name: Map & Chracter
     uniqueID: 1166902377
-    locked: 0
-  - name: Chracter
-    uniqueID: 3641441883
     locked: 0
