@@ -21,6 +21,9 @@ public class ObjectPool : MonoBehaviour
         get { return Instance; }
     }
 
+    [SerializeField]
+    private Transform mapTr;
+    
     public Transform objectTr;
 
     public GameObject tempMonster_prefab;
@@ -77,6 +80,8 @@ public class ObjectPool : MonoBehaviour
             obj.transform.position = pos;
             obj.gameObject.SetActive(true);
 
+            MapCtrl.instance.AddSprite(obj.transform);
+
             return obj;
         }
         else
@@ -85,6 +90,9 @@ public class ObjectPool : MonoBehaviour
             newObj.transform.SetParent(tr);
             newObj.transform.position = pos;
             newObj.gameObject.SetActive(true);
+
+            MapCtrl.instance.AddSprite(newObj.transform);
+
             return newObj;
         }
     }
@@ -101,6 +109,7 @@ public class ObjectPool : MonoBehaviour
             Debug.LogError("Return Object is Failed.");
             return;
         }
+
         obj.gameObject.SetActive(false);
         obj.transform.SetParent(instance.transform);
 
