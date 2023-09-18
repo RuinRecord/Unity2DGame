@@ -9,6 +9,8 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Monster : MonoBehaviour
 {
+    public Spawner spawner;
+
     protected Animator animator;
     protected NavMeshAgent agent;
 
@@ -109,10 +111,18 @@ public class Monster : MonoBehaviour
 
     IEnumerator Patrol()
     {
-        float randX = Random.Range(0.75f, 1.5f);
-        float randY = Random.Range(0.75f, 1.5f);
-        Vector3 randVec = new Vector3(Mathf.Sign(Random.Range(-1f, 1f)) * randX, Mathf.Sign(Random.Range(-1f, 1f)) * randY);
-        agent.SetDestination(this.transform.position + randVec);
+        float randX, randY;
+        Vector3 destination;
+
+        do
+        {
+            randX = Random.Range(0.75f, 1.5f);
+            randY = Random.Range(0.75f, 1.5f);
+            destination = transform.position + new Vector3(Mathf.Sign(Random.Range(-1f, 1f)) * randX, Mathf.Sign(Random.Range(-1f, 1f)) * randY);
+            yield return null;
+        } while (Physics2D.Raycast(destination, Vector3.forward, 10f, 64)); // 이동 가능 지역인지 항상 체크
+
+        agent.SetDestination(destination);
         agent.speed = 1f;
         state = MonsterState.Walk;
 
@@ -133,9 +143,9 @@ public class Monster : MonoBehaviour
             case MonsterState.Chase:
                 animator.SetBool("isWalk", true);
                 animator.SetBool("isAttack", false);
-                if (agent.velocity.x >= 0f)
+                if (agent.velocity.x > 0.05f)
                     this.transform.localScale = new Vector3(1f, 1f, 1f);
-                else
+                else if (agent.velocity.x < -0.05f)
                     this.transform.localScale = new Vector3(-1f, 1f, 1f);
                 break;
             case MonsterState.Attack:
@@ -147,6 +157,12 @@ public class Monster : MonoBehaviour
     protected virtual void Dead()
     {
         animator.SetBool("isDead", true);
+
+        if (spawner != null)
+        {
+            // 스폰 몬스터라면 돌려보내기
+            spawner.RemoveObject(this.gameObject);
+        }
     }
 }
 
