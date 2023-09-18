@@ -2,14 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 오브젝트 풀에 사용되는 오브젝트 종류
+/// </summary>
 public enum ObjectType
 {
     TempMonster,
     MonsterAttack,
 };
 
+
+/// <summary>
+/// 오브젝트 풀링 기법으로 사용되는 클래스이다.
+/// 재활용을 통해 오브젝트 생성 및 삭제를 최소화 함으로써 최적화를 담당한다.
+/// </summary>
 public class ObjectPool : MonoBehaviour
 {
+    /// <summary> ObjectPool 싱글톤 </summary>
     private static ObjectPool Instance;
     public static ObjectPool instance
     {
@@ -21,14 +30,16 @@ public class ObjectPool : MonoBehaviour
         get { return Instance; }
     }
 
-    [SerializeField]
-    private Transform mapTr;
-    
+    /// <summary> 오브젝트가 생성될 위치 </summary>
     public Transform objectTr;
 
+
+    /// <summary> 생성될 오브젝트 Prefab </summary>
     public GameObject tempMonster_prefab;
     public GameObject monsterAttack_prefab;
 
+
+    /// <summary> 오브젝트 관리 Queue </summary>
     Queue<TempMonster> tempMonster_queue = new Queue<TempMonster>();
     Queue<MonsterAttack> monsterAttack_queue = new Queue<MonsterAttack>();
 
