@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 씬에 존재하는 모든 오브젝트를 키는 작업을 하는 클래스이다.
+/// This is a class to set active 'true' all objects that exist at scene.
+/// If you add this script at scene, you can work without worrying about object active.
 /// </summary>
 public class SetActiveAllObject : MonoBehaviour
 {
+    /// <summary>
+    /// All objects that exist at scene.
+    /// </summary>
     private GameObject[] objects;
 
     void Awake()
@@ -15,6 +19,9 @@ public class SetActiveAllObject : MonoBehaviour
         SetActiveAllObjects();
     }
 
+    /// <summary>
+    /// Function to set active 'true' all objects that exist at scene.
+    /// </summary>
     private void SetActiveAllObjects()
     {
         for (int i = 0; i < objects.Length; i++)

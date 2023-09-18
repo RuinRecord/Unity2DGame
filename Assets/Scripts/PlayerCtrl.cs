@@ -1,42 +1,60 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
+/// <summary>
+/// 현재 플레이어의 종류
+/// </summary>
 public enum PlayerType
 {
     MEN,
     WOMEN
 }
 
+/// <summary>
+/// 현재 플레이어의 상태
+/// </summary>
 public enum PlayerState
 {
-    Idle,
-    Walk,
-    Evasion,
-    Attack,
+    IDLE,
+    WALK,
+    EVASION,
+    ATTACK,
     CAPTURE,
-    Dead
+    DEAD
 }
 
+/// <summary>
+/// 현재 플레이어의 공격 자세 (남주인공만 유효)
+/// </summary>
 public enum PlayerAttack
 {
-    None,
-    Ready,
-    BasicAttack_1,
-    BasicAttack_2,
-    StrongAttack
+    NODE,
+    READY,
+    BASICATTACK_1,
+    BASICATTACK_2,
+    STRONGATTACK
 }
 
 public class PlayerCtrl : MonoBehaviour
 {
+    /// <summary> 초당 회복하는 마나 수치 </summary>
     private const float MP_CHARGE_SPEED = 1f;
+
+
+    /// <summary> 회피 쿨타임 시간 </summary>
     private const float EVASION_COOLTIME = 0.5f;
+
+
+    /// <summary> 회피 이동 강도 </summary>
     private const float EVASION_FORCE = 2f;
+
+
+    /// <summary> 강한 공격을 시전하기 위한 차징 시간 </summary>
     private const float STRONG_ATTACK_TIME = 3f;
 
+
+    /// <summary> PlayerCtrl 싱글톤 패턴 </summary>
     private static PlayerCtrl Instance;
     public static PlayerCtrl instance
     {
@@ -95,6 +113,7 @@ public class PlayerCtrl : MonoBehaviour
     /// <summary> 현재 공격 Count 상태 </summary>
     private int attack_count;
 
+
     /// <summary> 현재 공격 상태라면 어떤 공격을 수행 중인가? </summary>
     private int attack_type;
 
@@ -133,6 +152,7 @@ public class PlayerCtrl : MonoBehaviour
         instance = this;
     }
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -141,7 +161,7 @@ public class PlayerCtrl : MonoBehaviour
 
         agent.updateUpAxis = false;
         agent.updateRotation = false;
-        state = PlayerState.Idle;
+        state = PlayerState.IDLE;
 
         isCanMove = isCanAttack = isCanEvasion = true;
         isCanCapture = isAttackCharge = false;
@@ -155,68 +175,64 @@ public class PlayerCtrl : MonoBehaviour
         animator.SetInteger("AttackType", attack_type);
     }
 
+
     // Update is called once per frame
     void Update()
     {
-        // 마나 회복
-        cur_MP += Time.deltaTime * MP_CHARGE_SPEED;
-        if (cur_MP > max_MP)
-            cur_MP = max_MP;
+        if (state.Equals(PlayerState.DEAD))
+            return; // 죽은 상태의 경우 기능 동작 불가
 
         // State에 따른 행동 수행
         StateFunc();
 
+        // 마나 회복
+        ChargeMana();
+
+        // 이동
         if (isCanMove && Input.GetMouseButtonDown(0)) 
         {
-            // 이동
-            RaycastHit2D hit;
-            Vector2 mouseVec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            goalVec = mouseVec;
-            moveVec = goalVec - (Vector2)this.transform.position;
-            moveVec.Set(moveVec.x, moveVec.y);
-
-            // 갈 수 없는 지역을 누른 경우, 갈 수 있는 가장 가까운 곳으로 목표 재설정
-            if (Physics2D.Raycast(mouseVec, Vector3.forward, 10f, 64))
-            {
-                if (hit = Physics2D.Raycast(this.transform.position, moveVec, moveVec.magnitude, 64))
-                    goalVec = hit.point;
-            }
+            Vector2 destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            goalVec = GetValidDestination(destination);
 
             if (isAttackCharge || attack_type != -1)
-                SetMove(goalVec, 1.5f); // 차징 중이거나 공격 중일 경우 느린 이동
+                SetMove(goalVec, 1.5f); // 공격 차징 중일 경우 느린 이동
             else
-                SetMove(goalVec, 3f);
+                SetMove(goalVec, 3f); // 그 외 보통 이동
         }
 
-        // 남자 주인공 기능
+        // 남주인공 기능
         if (playerType.Equals(PlayerType.MEN))
         {
+            // 공격
             if (isCanAttack)
             {
-                // 공격
+                // 공격 버튼 꾹 누르는 중
                 if (Input.GetKey(KeyCode.Q))
                 {
-                    // 공격 버튼 누르는 중
+                    // 공격 차징 시간 실시간으로 증가
                     attack_clickTime += Time.deltaTime;
+
+                    // 공격 차징 첫 시작
                     if (!isAttackCharge)
                     {
-                        // 공격 차징 시작
                         SetMoveSpeed(1.5f);
                         isAttackCharge = true;
                         isCanEvasion = false;
                         animator.SetBool("isAttack", true);
                     }
                 }
+                // 공격 버튼 땜
                 else if (Input.GetKeyUp(KeyCode.Q))
                 {
-                    // 공격 버튼 땜
+                    // 공격 수행
                     StartAttack();
                 }
             }
 
+            // 회피
             if (isCanEvasion && Input.GetKeyDown(KeyCode.W))
             {
-                // 회피
+                // 회피 스테미나 체크
                 if (cur_MP >= 1f)
                 {
                     // 회피 스테미나 감소
@@ -231,26 +247,74 @@ public class PlayerCtrl : MonoBehaviour
         // 여자 주인공 기능
         else if (playerType.Equals(PlayerType.WOMEN))
         {
-            if (isCanCapture)
+            // 조사
+            if (isCanCapture && Input.GetKey(KeyCode.Q))
             {
-                // 사진 촬영
-                if (Input.GetKey(KeyCode.Q))
-                    StartCapture();
+                // 조사 시작
+                StartCapture();
             }
         }
     }
 
+
+    /// <summary>
+    /// 마나를 회복시키는 함수이다.
+    /// </summary>
+    private void ChargeMana()
+    {
+        cur_MP += Time.deltaTime * MP_CHARGE_SPEED;
+        if (cur_MP > max_MP)
+            cur_MP = max_MP;
+    }
+    
+
+    /// <summary>
+    /// '_destination' 월드 위치 벡터로 플레이어가 이동 가능하도록 가공하여 반환합니다.
+    /// </summary>
+    /// <param name="_destination">도착 위치 벡터</param>
+    /// <returns>이동 가능한 도착 위치 벡터</returns>
+    private Vector2 GetValidDestination(Vector2 _destination)
+    {
+        RaycastHit2D hit;
+        goalVec = _destination;
+        moveVec = goalVec - (Vector2)this.transform.position;
+        moveVec.Set(moveVec.x, moveVec.y);
+
+        // 갈 수 없는 지역을 누른 경우
+        if (Physics2D.Raycast(_destination, Vector3.forward, 10f, 64))
+        {
+            // 플레이어 위치에서 도착 위치로 ray를 발사 충돌 검사
+            // 충돌 지점으로 임시 도착 위치 재설정
+            if (hit = Physics2D.Raycast(this.transform.position, moveVec, moveVec.magnitude, 64))
+                goalVec = hit.point;
+        }
+
+        return goalVec;
+    }
+
+
+    /// <summary>
+    /// 'moveSpeed'의 속도로 'destination' 월드 위치로 최단 경로를 통해 플레이어를 이동시키는 함수이다.
+    /// </summary>
+    /// <param name="_destination">도착 위치 벡터</param>
+    /// <param name="_moveSpeed">플레이어의 이동속도</param>
     private void SetMove(Vector2 _destination, float _moveSpeed)
     {
-        state = PlayerState.Walk;
+        state = PlayerState.WALK;
         agent.SetDestination(_destination);
         SetMoveSpeed(_moveSpeed);
     }
 
+
+    /// <summary>
+    /// 플레이어의 이동 속도를 'moveSpeed'으로 설정하는 함수이다.
+    /// </summary>
+    /// <param name="_moveSpeed">설정할 플레이어 이동 속도</param>
     private void SetMoveSpeed(float _moveSpeed)
     {
         agent.speed = _moveSpeed;
     }
+
 
     /// <summary>
     /// 플레이어의 상태에 따른 기본 행동 요령을 수행하는 함수이다.
@@ -259,12 +323,12 @@ public class PlayerCtrl : MonoBehaviour
     {
         switch(state)
         {
-            case PlayerState.Idle:
+            case PlayerState.IDLE:
                 break;
-            case PlayerState.Walk:
+            case PlayerState.WALK:
                 // 도착까지 남은 거리가 작으면 Idle로 변경
                 if (agent.remainingDistance < Time.deltaTime)
-                    state = PlayerState.Idle;
+                    state = PlayerState.IDLE;
                 else
                 {
                     if (agent.velocity != Vector3.zero)
@@ -277,6 +341,7 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
+
     /// <summary>
     /// 플레이어의 상태에 따른 애니메이션을 설정하는 함수이다.
     /// </summary>
@@ -284,20 +349,20 @@ public class PlayerCtrl : MonoBehaviour
     {
         switch (state)
         {
-            case PlayerState.Idle:
+            case PlayerState.IDLE:
                 animator.SetBool("isWalk", false);
                 animator.SetBool("isEvasion", false);
                 animator.SetBool("isCapture", false);
                 break;
-            case PlayerState.Walk:
+            case PlayerState.WALK:
                 animator.SetBool("isWalk", true);
                 animator.SetBool("isEvasion", false);
                 break;
-            case PlayerState.Evasion:
+            case PlayerState.EVASION:
                 animator.SetBool("isWalk", false);
                 animator.SetBool("isEvasion", true);
                 break;
-            case PlayerState.Attack:
+            case PlayerState.ATTACK:
                 break;
             case PlayerState.CAPTURE:
                 animator.SetBool("isCapture", true);
@@ -305,34 +370,47 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
+
     /// <summary>
     /// 회피 쿨타임 시작 함수
     /// </summary>
     IEnumerator EvasionCoolTime()
     {
         isCanMove = isCanAttack = isCanEvasion = false;
+
         yield return new WaitForSeconds(EVASION_COOLTIME);
+        // 'EVASION_COOLTIME' 초가 흐른 뒤 아래 구문이 수행됩니다.
+
         isCanMove = isCanAttack = isCanEvasion = true;
     }
 
+
     /// <summary>
-    /// 회피 상태로 설정하는 함수
+    /// 회피 기능을 수행하는 함수이다.
     /// </summary>
     private void StartEvasion()
     {
         float distance = EVASION_FORCE;
+
+        // 회피 방향으로 장애물이 있는지 체크
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -moveVec, EVASION_FORCE, 64);
+
+        // 장애물이 있다면 거리를 조절
         if (hit) distance = hit.distance;
         Debug.Log(distance);
 
-        if (playerState.Equals(PlayerState.Idle))
+        // 정지 상태: 최근 이동한 방향 벡터를 기준으로 회피 도달 위치 설정
+        if (playerState.Equals(PlayerState.IDLE))
             goalVec = (Vector2)transform.position - moveVec.normalized * distance;
+        // 그 외 상태: 현재 이동 중인 방향 벡터를 기준으로 회피 도달 위치 설정
         else
             goalVec = (Vector2)transform.position - (Vector2)agent.velocity.normalized * distance;
 
+        // 회피 수행
         SetMove(goalVec, 6f);
-        state = PlayerState.Evasion;
+        state = PlayerState.EVASION;
     }
+
 
     /// <summary>
     /// 회피 애니메이션이 끝났음을 알리는 애니메이션 이벤트 함수 (Animator Tab에서 사용)
@@ -340,63 +418,85 @@ public class PlayerCtrl : MonoBehaviour
     public void EndEvasion()
     {
         SetMove(transform.position, 3f);
-        state = PlayerState.Idle;
+        state = PlayerState.IDLE;
     }
+
 
     /// <summary>
     /// 현재 공격 상태 변수에 따라 특정 공격을 수행하는 함수이다.
     /// </summary>
     private void StartAttack()
     {
+        // 만약 'STRONG_ATTACK_TIME' 이상 차징했다면 강한 공격 수행
         if (attack_clickTime >= STRONG_ATTACK_TIME)
         {
+            // 일반 공격 1회 이상인 경우
             if (attack_count > 0)
             {
-                // 콤보 공격
+                // 콤보 공격 데이터 설정
                 attack_type = 2;
             }
+            // 일반 공격 0회 인 경우
             else
             {
-                // 강한 공격
+                // 강한 공격 데이터 설정
                 attack_type = 1;
                 cur_MP -= 3;
             }
+
+            // 공격 회수 초기화
             attack_count = 0;
         }
         else
         {
-            // 일반 공격
+            // 일반 공격 데이터 설정
             attack_type = 0;
             cur_MP -= 2;
+
+            // 일반 공격 3회 시 공격 회수 초기화
             if (++attack_count > 2)
                 attack_count = 0;
         }
 
+        // 공격 수행
         isCanMove = isCanAttack = isAttackCharge = false;
         attack_clickTime = 0f;
-        state = PlayerState.Attack;
+        state = PlayerState.ATTACK;
         animator.SetInteger("AttackType", attack_type);
     }
 
+
+    /// <summary>
+    /// (애니메이션 이벤트 함수) 공격 애니메이션이 종료되었을 때 발동, 공격 관련 데이터를 초기화하는 함수이다.
+    /// </summary>
     public void EndAttack()
     {
-        state = PlayerState.Idle;
+        state = PlayerState.IDLE;
         isCanMove = isCanAttack = isCanEvasion = true;
         attack_type = -1;
         animator.SetBool("isAttack", false);
         animator.SetInteger("AttackType", attack_type);
     }
 
+
+    /// <summary>
+    /// 조사 기능을 수행하는 함수이다.
+    /// </summary>
     private void StartCapture()
     {
+        // 제자리에 서도록 만듬
         agent.SetDestination(this.transform.position);
         isCanMove = isCanCapture = false;
         state = PlayerState.CAPTURE;
     }
 
+
+    /// <summary>
+    ///  (애니메이션 이벤트 함수) 조사 애니메이션이 종료되었을 때 발동, 조사 관련 데이터를 초기화하는 함수이다.
+    /// </summary>
     public void EndCapture()
     {
-        state = PlayerState.Idle;
+        state = PlayerState.IDLE;
         isCanMove = isCanCapture = true;
     }
 }

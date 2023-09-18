@@ -9,17 +9,26 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Monster : MonoBehaviour
 {
+    /// <summary> ìŠ¤í° ëª¬ìŠ¤í„°ì˜ ê²½ìš° spawnerë¥¼ ê°€ì§‘ë‹ˆë‹¤. (ì´ë•Œ, ìŠ¤í° ëª¬ìŠ¤í„°ê°€ ì•„ë‹ˆë©´ null) </summary>
     public Spawner spawner;
 
     protected Animator animator;
     protected NavMeshAgent agent;
 
+    /// <summary> ëª¬ìŠ¤í„°ì˜ êµ¬ë¶„ </summary>
     [SerializeField] protected MonsterQuality quality;
-    [SerializeField] protected MonsterType type;
-    [SerializeField] protected MonsterGrade grade;
-    [SerializeField] protected AttackType attackType;
-    [SerializeField] private MonsterState State;
 
+    /// <summary> ëª¬ìŠ¤í„°ì˜ ì¢…ë¥˜ </summary>
+    [SerializeField] protected MonsterType type;
+
+    /// <summary> ëª¬ìŠ¤í„°ì˜ ë“±ê¸‰ </summary>
+    [SerializeField] protected MonsterGrade grade;
+
+    /// <summary> ëª¬ìŠ¤í„°ì˜ ê³µê²© íƒ€ì… </summary>
+    [SerializeField] protected AttackType attackType;
+
+    /// <summary> ëª¬ìŠ¤í„°ì˜ í˜„ì¬ ìƒíƒœ </summary>
+    [SerializeField] private MonsterState State;
     protected MonsterState state
     {
         set
@@ -30,17 +39,28 @@ public class Monster : MonoBehaviour
         get { return State; }
     }
 
+    /// <summary> í”Œë ˆì´ì–´ ê°ì§€ ì‹œì•¼ê° </summary>
     [SerializeField] private float angleRange = 60f;
+
+    /// <summary> í”Œë ˆì´ì–´ ê°ì§€ ê±°ë¦¬ </summary>
     [SerializeField] private float radius = 3f;
+
+    /// <summary> ëª¬ìŠ¤í„° ê³µê²©ë ¥ </summary>
     [SerializeField] public float damage = 10f;
+
+    /// <summary> ëª¬ìŠ¤í„° ì´ë™ì†ë„ </summary>
     [SerializeField] private float moveSpeed = 1f;
 
+    /// <summary> í˜„ì¬ ëª¬ìŠ¤í„°ê°€ í”Œë ˆì´ì–´ë¥¼ ê°ì§€ í–ˆëŠ”ê°€ì— ëŒ€í•œ ì—¬ë¶€ </summary>
     [SerializeField]
     protected bool isRecognized;
 
+    /// <summary> ëª¬ìŠ¤í„°ê°€ ê³µê²©í–ˆì„ ë•Œ, ê³µê²© íŒì • ì˜¤ë¸Œì íŠ¸ê°€ ìƒì„±ë˜ëŠ” ìœ„ì¹˜ ì •ë³´ </summary>
     [SerializeField]
     private Transform attackPoint;
 
+
+    /// <summary> í”Œë ˆì´ì–´ë¥¼ ê°ì§€í•˜ëŠ” í•¨ìˆ˜ </summary>
     public virtual bool Recognize()
     {
         Vector2 lhs = PlayerCtrl.instance.transform.position - transform.position;
@@ -48,21 +68,21 @@ public class Monster : MonoBehaviour
         if (state != MonsterState.Idle)
             rhs = agent.velocity;
 
-        // target°ú ³ª »çÀÌÀÇ °Å¸®°¡ radius º¸´Ù ÀÛ´Ù¸é
+        // targetê³¼ ë‚˜ ì‚¬ì´ì˜ ê±°ë¦¬ê°€ radius ë³´ë‹¤ ì‘ë‹¤ë©´
         if (lhs.magnitude <= radius)
         {
-            // 'Å¸°Ù-³ª º¤ÅÍ'¿Í '³» Á¤¸é º¤ÅÍ'¸¦ ³»Àû
+            // 'íƒ€ê²Ÿ-ë‚˜ ë²¡í„°'ì™€ 'ë‚´ ì •ë©´ ë²¡í„°'ë¥¼ ë‚´ì 
             float dot = Vector2.Dot(lhs.normalized, rhs.normalized);
-            // µÎ º¤ÅÍ ¸ğµÎ ´ÜÀ§ º¤ÅÍÀÌ¹Ç·Î ³»Àû °á°ú¿¡ cosÀÇ ¿ªÀ» ÃëÇØ¼­ theta¸¦ ±¸ÇÔ
+            // ë‘ ë²¡í„° ëª¨ë‘ ë‹¨ìœ„ ë²¡í„°ì´ë¯€ë¡œ ë‚´ì  ê²°ê³¼ì— così˜ ì—­ì„ ì·¨í•´ì„œ thetaë¥¼ êµ¬í•¨
             float theta = Mathf.Acos(dot);
-            // angleRange¿Í ºñ±³ÇÏ±â À§ÇØ degree·Î º¯È¯
+            // angleRangeì™€ ë¹„êµí•˜ê¸° ìœ„í•´ degreeë¡œ ë³€í™˜
             float degree = Mathf.Rad2Deg * theta;
 
-            // Àå¾Ö¹° ÆÇº°
+            // ì¥ì• ë¬¼ íŒë³„
             if (Physics2D.Raycast(transform.position, lhs, 3f, 64))
                 return false;
 
-            // ½Ã¾ß°¢ ÆÇº°
+            // ì‹œì•¼ê° íŒë³„
             if (degree <= angleRange / 2f)
                 return true;
             else
@@ -71,44 +91,76 @@ public class Monster : MonoBehaviour
         return false;
     }
 
+
+    /// <summary>
+    /// í”Œë ˆì´ì–´ë¥¼ ì¶”ì í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
+    /// </summary>
     protected virtual void Chase()
     {
+        // ì´ë™ì„ ë©ˆì¶¤
+        StopPatrol();
+
+        // ì¶”ì  ì„¤ì •
         state = MonsterState.Chase;
         agent.SetDestination(PlayerCtrl.instance.transform.position);
         agent.speed = 2f;
-        StopPatrol();
     }
 
+
+    /// <summary>
+    /// í”Œë ˆì´ì–´ë¥¼ ê³µê²©í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤. ì´í›„ ê³µê²© íŒì •ì€ ì•„ë˜ ì´ë²¤íŠ¸ í•¨ìˆ˜ë¡œ ìˆ˜í–‰ëœë‹¤.
+    /// </summary>
     protected virtual void Attack()
     {
         state = MonsterState.Attack;
         agent.SetDestination(transform.position);
     }
 
+
+    /// <summary>
+    /// (ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸ í•¨ìˆ˜ ì „ìš©) ê³µê²© ì• ë‹ˆë©”ì´ì…˜ì—ì„œ ê³µê²© ì´í™íŠ¸ê°€ í„°ì§€ëŠ” í”„ë ˆì„ ë•Œ ë°œë™í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
+    /// </summary>
     protected virtual void CheckDamage()
     {
-        // ¸ó½ºÅÍ °ø°İ ÆÇÁ¤ »ı¼º
+        // ëª¬ìŠ¤í„° ê³µê²© íŒì • ìƒì„±
         MonsterAttack attack = ObjectPool.GetObject<MonsterAttack>(ObjectType.MonsterAttack, ObjectPool.instance.objectTr, attackPoint.position);
-        attack.destroyTime = 0.025f;
+        attack.destroyTime = 0.025f; // ì•½ 1 frame
         attack.damage = this.damage;
     }
 
+
+    /// <summary>
+    /// (ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸ í•¨ìˆ˜ ì „ìš©) ê³µê²© ì• ë‹ˆë©”ì´ì…˜ì´ ì¢…ë£Œí–ˆì„ ë•Œ ë°œë™í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
+    /// </summary>
     protected virtual void EndAttack()
     {
+        // ê³µê²©ì´ ëë‚˜ë©´ ë‹¤ì‹œ ì¶”ì ì„ ì‹œì‘
         Chase();
     }
 
+
+    /// <summary>
+    /// ìˆœì°° ì½”ë£¨í‹´ì„ ì‹œì‘í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
+    /// </summary>
     protected virtual void StartPatrol()
     {
         StopCoroutine("Patrol");
         StartCoroutine("Patrol");
     }
 
+
+    /// <summary>
+    /// ìˆœì°° ì½”ë£¨í‹´ì„ ì¢…ë£Œí•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
+    /// </summary>
     protected virtual void StopPatrol()
     {
         StopCoroutine("Patrol");
     }
 
+
+    /// <summary>
+    /// ì¼ì • ì‹œê°„ë§ˆë‹¤ ì½”ë£¨í‹´ì„ ëŒë©° ìˆœì°°ì„ ìˆ˜í–‰í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
+    /// </summary>
     IEnumerator Patrol()
     {
         float randX, randY;
@@ -116,21 +168,28 @@ public class Monster : MonoBehaviour
 
         do
         {
+            // ìˆœì°° êµ¬ì—­ íƒìƒ‰
             randX = Random.Range(0.75f, 1.5f);
             randY = Random.Range(0.75f, 1.5f);
             destination = transform.position + new Vector3(Mathf.Sign(Random.Range(-1f, 1f)) * randX, Mathf.Sign(Random.Range(-1f, 1f)) * randY);
             yield return null;
-        } while (Physics2D.Raycast(destination, Vector3.forward, 10f, 64)); // ÀÌµ¿ °¡´É Áö¿ªÀÎÁö Ç×»ó Ã¼Å©
+        } while (Physics2D.Raycast(destination, Vector3.forward, 10f, 64)); // ì´ë™ ê°€ëŠ¥ ì§€ì—­ì¸ì§€ ì²´í¬ -> ë¶ˆê°€ëŠ¥í•œ ì§€ì—­ì´ë©´ ì¬íƒìƒ‰
 
+        // ìˆœì°° êµ¬ì—­ìœ¼ë¡œ ì´ë™
         agent.SetDestination(destination);
         agent.speed = 1f;
         state = MonsterState.Walk;
 
         yield return new WaitForSeconds(Random.Range(4f, 6f));
+        // 4 ~ 6ì´ˆ í›„ ìƒˆë¡­ê²Œ ìˆœì°° êµ¬ì—­ íƒìƒ‰
 
         StartCoroutine("Patrol");
     }
 
+
+    /// <summary>
+    /// í˜„ì¬ ëª¬ìŠ¤í„°ì˜ ìƒíƒœì— ë”°ë¼ ì• ë‹ˆë©”ì´ì…˜ì„ ì²˜ë¦¬í•œë‹¤.
+    /// </summary>
     protected virtual void SetAnimation()
     {
         switch (state)
@@ -154,81 +213,64 @@ public class Monster : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// ëª¬ìŠ¤í„°ê°€ ì£½ìœ¼ë©´ ë°œë™í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
+    /// </summary>
     protected virtual void Dead()
     {
         animator.SetBool("isDead", true);
 
         if (spawner != null)
         {
-            // ½ºÆù ¸ó½ºÅÍ¶ó¸é µ¹·Áº¸³»±â
+            // ìŠ¤í° ëª¬ìŠ¤í„°ë¼ë©´ ëŒë ¤ë³´ë‚´ê¸°
             spawner.RemoveObject(this.gameObject);
         }
     }
 }
 
-/// <summary>
-/// ¸ó½ºÅÍ ±¸ºĞ
-/// ÀÏ¹İ: Ã©ÅÍ º°·Î µîÀåÇÏ´Â ¸ó½ºÅÍ
-/// ¿¡ÇÈ: ¼û°ÜÁø ¸Ê¿¡ µîÀåÇÏ´Â ¸ó½ºÅÍ
-/// </summary>
+
+/// <summary> ëª¬ìŠ¤í„° êµ¬ë¶„ </summary>
 public enum MonsterQuality
 {
-    Normal,
-    Epic
+    Normal,     /// ì¼ë°˜: ì±•í„° ë³„ë¡œ ë“±ì¥í•˜ëŠ” ëª¬ìŠ¤í„°
+    Epic        /// ì—í”½: ìˆ¨ê²¨ì§„ ë§µì— ë“±ì¥í•˜ëŠ” ëª¬ìŠ¤í„°
 }
 
-/// <summary>
-/// ¸ó½ºÅÍ Å¸ÀÔ
-/// Áü½ÂÇü: Áü½Â ÇüÅÂÀÇ ¸ó½ºÅÍ
-/// ±â°èÇü: ±â°è ÇüÅÂÀÇ ¸ó½ºÅÍ
-/// ÀÎ°£Çü: ÀÎ°£ ÇüÅÂÀÇ ¸ó½ºÅÍ
-/// </summary>
+
+/// <summary> ëª¬ìŠ¤í„° íƒ€ì… </summary>
 public enum MonsterType
 {
-    Beast,
-    Robot,
-    Human
+    Beast,      /// ì§ìŠ¹í˜•: ì§ìŠ¹ í˜•íƒœì˜ ëª¬ìŠ¤í„°
+    Robot,      /// ê¸°ê³„í˜•: ê¸°ê³„ í˜•íƒœì˜ ëª¬ìŠ¤í„°
+    Human       /// ì¸ê°„í˜•: ì¸ê°„ í˜•íƒœì˜ ëª¬ìŠ¤í„°
 }
 
-/// <summary>
-/// ¸ó½ºÅÍ µî±Ş
-/// ÀÏ¹İ: ³·Àº ½Ã¾ß°¢°ú ½Ã¾ß ¹üÀ§
-/// ¿À¿°µÈ: Áü½ÂÇü, ÀÎ°£Çü¿¡¼­ ³ªÅ¸³², ´õ ³ĞÀº ½Ã¾ß°¢ & °ø°İ·Â Ã¼·Â Áõ°¡
-/// °¨¿°µÈ: ±â°èÇü¿¡¼­ ³ªÅ¸³², °ø°İ·Â Ãß°İ ÀÎ½Ä Áõ°¡, Ã¼·Â °¨¼Ò
-/// º¸½º: º¸½º ¸ó½ºÅÍ
-/// </summary>
+
+/// <summary> ëª¬ìŠ¤í„° ë“±ê¸‰ </summary>
 public enum MonsterGrade
 {
-    Normal,
-    Polluted,
-    Infected,
-    Boss
+    Normal,     /// ì¼ë°˜: ë‚®ì€ ì‹œì•¼ê°ê³¼ ì‹œì•¼ ë²”ìœ„
+    Polluted,   /// ì˜¤ì—¼ëœ: ì§ìŠ¹í˜•, ì¸ê°„í˜•ì—ì„œ ë‚˜íƒ€ë‚¨, ë” ë„“ì€ ì‹œì•¼ê° & ê³µê²©ë ¥ ì²´ë ¥ ì¦ê°€
+    Infected,   /// ê°ì—¼ëœ: ê¸°ê³„í˜•ì—ì„œ ë‚˜íƒ€ë‚¨, ê³µê²©ë ¥ ì¶”ê²© ì¸ì‹ ì¦ê°€, ì²´ë ¥ ê°ì†Œ
+    Boss        /// ë³´ìŠ¤: ë³´ìŠ¤ ëª¬ìŠ¤í„°
 }
 
-/// <summary>
-/// °ø°İ Å¸ÀÔ
-/// ºñ¼±°ø: ÇÇ°İ ½Ã °ø°İ
-/// ¼±°ø: ¹ß°ß ½Ã °ø°İ
-/// </summary>
+
+/// <summary> ê³µê²© íƒ€ì… </summary>
 public enum AttackType
 {
-    Non_Go_First,
-    Go_First
+    Non_Go_First,   /// ë¹„ì„ ê³µ: í”¼ê²© ì‹œ ê³µê²©
+    Go_First        /// ì„ ê³µ: ë°œê²¬ ì‹œ ê³µê²©
 }
 
-/// <summary>
-/// ÇöÀç ¸ó½ºÅÍ »óÅÂ
-/// Idle: °¡¸¸È÷ ÀÖÀ½
-/// Walk: ¼øÂû
-/// Chase: Ãß°İ
-/// Attack: °ø°İ
-/// Dead: »ç¸Á
-/// </summary>
+
+/// <summary> í˜„ì¬ ëª¬ìŠ¤í„° ìƒíƒœ </summary>
 public enum MonsterState
 {
-    Idle,
-    Walk,
-    Chase,
-    Attack,
-    Dead
+    Idle,       /// Idle: ê°€ë§Œíˆ ìˆìŒ
+    Walk,       /// Walk: ìˆœì°°
+    Chase,      /// Chase: ì¶”ê²©
+    Attack,     /// Attack: ê³µê²©
+    Dead        /// Dead: ì‚¬ë§
 }
