@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/// <summary>
+/// ì„ì‹œ ëª¬ìŠ¤í„° í´ë˜ìŠ¤ì´ë‹¤.
+/// </summary>
 public class TempMonster : Monster
 {
     // Start is called before the first frame update
@@ -21,30 +24,31 @@ public class TempMonster : Monster
     void Update()
     {
         if (state == MonsterState.Dead)
-            return; // Á×Àº »óÅÂ¸é Return
-        // ÇÃ·¹ÀÌ¾î °¨Áö
+            return; // ì£½ì€ ìƒíƒœë©´ ì•„ë˜ ê¸°ëŠ¥ ìˆ˜í–‰ ì•ˆí•¨
+
+        // í”Œë ˆì´ì–´ ê°ì§€
         isRecognized = Recognize();
 
         if (isRecognized)
         {
-            // °¨Áö ¼º°ø => ÃßÀû
+            // ê°ì§€ ì„±ê³µ => ì¶”ì 
             // Chase();
         }
         else
         {
-            // °¨Áö ½ÇÆĞ
+            // ê°ì§€ ì‹¤íŒ¨
             switch (state)
             {
                 case MonsterState.Walk:
-                    // ÇöÀç ¹æÇâ¿¡¼­ xÀÇ ºÎÈ£¿¡ µû¸¥ ÁÂ¿ì ¹æÇâ ÀüÈ¯
+                    // í˜„ì¬ ë°©í–¥ì—ì„œ xì˜ ë¶€í˜¸ì— ë”°ë¥¸ ì¢Œìš° ë°©í–¥ ì „í™˜
                     this.transform.localScale = (agent.velocity.x >= 0f) ? new Vector3(1f, 1f, 1f) : new Vector3(-1f, 1f, 1f);
 
-                    // ¸¸¾à ³²Àº °Å¸®°¡ ÀÏÁ¤ ÀÌÇÏ¶ó¸é Walk -> Idle·Î º¯°æ
+                    // ë§Œì•½ ë‚¨ì€ ê±°ë¦¬ê°€ ì¼ì • ì´í•˜ë¼ë©´ Walk -> Idleë¡œ ë³€ê²½
                     if (agent.remainingDistance < 0.01f)
                         state = MonsterState.Idle;
                     break;
                 case MonsterState.Chase:
-                    // ¸¸¾à ³²Àº °Å¸®°¡ ÀÏÁ¤ ÀÌÇÏ¶ó¸é Chase¸¦ ¸ØÃß°í Patrol·Î º¯°æ
+                    // ë§Œì•½ ë‚¨ì€ ê±°ë¦¬ê°€ ì¼ì • ì´í•˜ë¼ë©´ Chaseë¥¼ ë©ˆì¶”ê³  Patrolë¡œ ë³€ê²½
                     if (agent.remainingDistance < 0.01f)
                         StartPatrol();
                     break;
@@ -52,6 +56,9 @@ public class TempMonster : Monster
         }
     }
 
+    /// <summary>
+    /// ì‚¬ë§í–ˆì„ ê²½ìš° ë°œë™í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤. ì˜¤ë¸Œì íŠ¸ í’€ë§ì„ ìœ„í•´ ë¦¬í„´ì„ ìˆ˜í–‰í•œë‹¤.
+    /// </summary>
     protected override void Dead()
     {
         base.Dead();
@@ -61,12 +68,13 @@ public class TempMonster : Monster
 
     private void OnTriggerStay2D(Collider2D col)
     {
+        // ë§Œì•½ ì¶©ëŒ ê°ì§€ëœ ì˜¤ë¸Œì íŠ¸ê°€ í”Œë ˆì´ì–´ë¼ë©´
         if (col.transform.tag.Equals("Player"))
         {
             switch (state)
             {
                 case MonsterState.Chase:
-                    // ÇÃ·¹ÀÌ¾î °ø°İ
+                    // ê³µê²©ì„ ìˆ˜í–‰
                     Attack();
                     break;
             }
