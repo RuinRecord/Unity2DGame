@@ -1,7 +1,10 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 디스플레이 해상도에 따른 카메라 처리 작업 클래스이다.
+/// </summary>
 public class CameraScaleCtrl : MonoBehaviour
 {
     private void Awake()
