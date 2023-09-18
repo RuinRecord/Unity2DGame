@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /// <summary>
-/// ¸Ê ·»´õ¸µ¿¡ ´ëÇÑ ¿ì¼± ¼øÀ§ Ã³¸®¸¦ À§ÇÑ Å¬·¡½ºÀÌ´Ù.
-/// TransformÀ» ±â¹İÀ¸·Î ·»´õ·¯¸¦ ÀúÀåÇÑ´Ù. ÀÌ¶§, ¾Æ¹« ·»´õ·¯°¡ ¾ø´Ù¸é ¿ì¼± ¼øÀ§ Ã³¸® ´ë»ó¿¡¼­ Á¦¿ÜµÈ´Ù.
+/// ë§µ ë Œë”ë§ì— ëŒ€í•œ ìš°ì„  ìˆœìœ„ ì²˜ë¦¬ë¥¼ ìœ„í•œ í´ë˜ìŠ¤ì´ë‹¤.
+/// Transformì„ ê¸°ë°˜ìœ¼ë¡œ ë Œë”ëŸ¬ë¥¼ ì €ì¥í•œë‹¤. ì´ë•Œ, ì•„ë¬´ ë Œë”ëŸ¬ê°€ ì—†ë‹¤ë©´ ìš°ì„  ìˆœìœ„ ì²˜ë¦¬ ëŒ€ìƒì—ì„œ ì œì™¸ëœë‹¤.
 /// </summary>
 public class Render
 {
@@ -23,11 +23,11 @@ public class Render
 
 
 /// <summary>
-/// ¸Ê °ü·Ã Ã³¸®¸¦ ´ã´çÇÏ´Â ÄÁÆ®·Ñ·¯ Å¬·¡½ºÀÌ´Ù.
+/// ë§µ ê´€ë ¨ ì²˜ë¦¬ë¥¼ ë‹´ë‹¹í•˜ëŠ” ì»¨íŠ¸ë¡¤ëŸ¬ í´ë˜ìŠ¤ì´ë‹¤.
 /// </summary>
 public class MapCtrl : MonoBehaviour
 {
-    /// <summary> MapCtrl ½Ì±ÛÅæ </summary>
+    /// <summary> MapCtrl ì‹±ê¸€í†¤ </summary>
     private static MapCtrl Instance;
     public static MapCtrl instance
     {
@@ -40,12 +40,12 @@ public class MapCtrl : MonoBehaviour
     }
 
 
-    /// <summary> ¸ğµç Å¸ÀÏ¸Ê ·»´õ·¯¸¦ Å½»öÇÏ±â À§ÇÑ ºÎ¸ğ ¿ÀºêÁ§Æ® </summary>
+    /// <summary> ëª¨ë“  íƒ€ì¼ë§µ ë Œë”ëŸ¬ë¥¼ íƒìƒ‰í•˜ê¸° ìœ„í•œ ë¶€ëª¨ ì˜¤ë¸Œì íŠ¸ </summary>
     [SerializeField]
     private GameObject tileMapTr;
 
 
-    /// <summary> ·»´õ·¯¸¦ Æ÷ÇÔÇÑ ¸ğµç ¿ÀºêÁ§Æ®¸¦ ÀúÀåÇÑ ¸®½ºÆ® </summary>
+    /// <summary> ë Œë”ëŸ¬ë¥¼ í¬í•¨í•œ ëª¨ë“  ì˜¤ë¸Œì íŠ¸ë¥¼ ì €ì¥í•œ ë¦¬ìŠ¤íŠ¸ </summary>
     [SerializeField]
     private List<Render> sprites_List;
 
@@ -74,18 +74,18 @@ public class MapCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ¸¸¾à ¸®½ºÆ®¿¡ ·»´õ·¯°¡ ÀÖ´Ù¸é ·»´õ¸µ ¿ì¼± ¼øÀ§ Ã³¸®¸¦ ¼öÇà
+        // ë§Œì•½ ë¦¬ìŠ¤íŠ¸ì— ë Œë”ëŸ¬ê°€ ìˆë‹¤ë©´ ë Œë”ë§ ìš°ì„  ìˆœìœ„ ì²˜ë¦¬ë¥¼ ìˆ˜í–‰
         if (sprites_List.Count > 0)
             SetDepthAllofMapObjects();
     }
 
 
     /// <summary>
-    /// ¸Ê¿¡ Á¸ÀçÇÏ´Â ¸ğµç ¿ÀºêÁ§Æ®¿¡ ´ëÇØ Z Depth¿¡ µû¸¥ ¿ì¼± ¼øÀ§¸¦ ¼³Á¤ÇÏ´Â ÇÔ¼ö
+    /// ë§µì— ì¡´ì¬í•˜ëŠ” ëª¨ë“  ì˜¤ë¸Œì íŠ¸ì— ëŒ€í•´ Z Depthì— ë”°ë¥¸ ìš°ì„  ìˆœìœ„ë¥¼ ì„¤ì •í•˜ëŠ” í•¨ìˆ˜
     /// </summary>
     private void SetDepthAllofMapObjects()
     {
-        // YÃà Á¤·Ä
+        // Yì¶• ì •ë ¬
         sprites_List.Sort(delegate (Render a, Render b)
         {
             if (a.transform.position.y < b.transform.position.y)
@@ -94,7 +94,7 @@ public class MapCtrl : MonoBehaviour
                 return -1;
         });
 
-        // ·»´õ·¯ ¿ì¼±¼øÀ§ ÁöÁ¤
+        // ë Œë”ëŸ¬ ìš°ì„ ìˆœìœ„ ì§€ì •
         for (int i = 0; i < sprites_List.Count; i++)
         {
             if (sprites_List[i].spriteRenderer != null)
@@ -106,9 +106,9 @@ public class MapCtrl : MonoBehaviour
 
 
     /// <summary>
-    /// 'transform'À» °¡Áø ¿ÀºêÁ§Æ®¸¦ sprites_list¿¡ ÀúÀåÇÏ´Â ÇÔ¼öÀÌ´Ù.
+    /// 'transform'ì„ ê°€ì§„ ì˜¤ë¸Œì íŠ¸ë¥¼ sprites_listì— ì €ì¥í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
     /// </summary>
-    /// <param name="_transform">ÀúÀåÇÒ ¿ÀºêÁ§Æ® Transform</param>
+    /// <param name="_transform">ì €ì¥í•  ì˜¤ë¸Œì íŠ¸ Transform</param>
     public void AddSprite(Transform _transform)
     {
         sprites_List.Add(new Render(_transform));
@@ -116,9 +116,9 @@ public class MapCtrl : MonoBehaviour
 
 
     /// <summary>
-    /// 'render'À» °¡Áø ¿ÀºêÁ§Æ®¸¦ sprites_list¿¡ »èÁ¦ÇÏ´Â ÇÔ¼öÀÌ´Ù.
+    /// 'render'ì„ ê°€ì§„ ì˜¤ë¸Œì íŠ¸ë¥¼ sprites_listì— ì‚­ì œí•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
     /// </summary>
-    /// <param name="_transform">»èÁ¦ÇÒ render</param>
+    /// <param name="_transform">ì‚­ì œí•  render</param>
     public void RemoveSprite(Render _render)
     {
         if (!sprites_List.Remove(_render))
