@@ -4,28 +4,40 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    /// <summary> ìŠ¤í° ìµœì†Œ ì‹œê°„ </summary>
     private const float CREATE_TIME_MIN = 5f;
+
+    /// <summary> ìŠ¤í° ìµœëŒ€ ì‹œê°„ </summary>
     private const float CREATE_TIME_MAX = 8f;
+
+    /// <summary> ìŠ¤í° ë¶ˆê°€ëŠ¥ ê±°ë¦¬ (í”Œë ˆì´ì–´ - ìŠ¤í¬ë„ˆ ê±°ë¦¬) </summary>
     private const float CREATE_DISTANCE = 2f;
 
-    /// <summary> ½ºÆ÷³Ê°¡ »ı¼ºÇÏ´Â ¿ÀºêÁ§Æ® Å¸ÀÔ </summary>
+
+    /// <summary> ìŠ¤í¬ë„ˆê°€ ìƒì„±í•˜ëŠ” ì˜¤ë¸Œì íŠ¸ íƒ€ì… </summary>
     [SerializeField]
     private ObjectType objectType;
 
-    /// <summary> ÀÌ ½ºÆ÷³Ê°¡ »ı¼ºÇÑ ¿ÀºêÁ§Æ® ¸®½ºÆ® </summary>
+
+    /// <summary> ì´ ìŠ¤í¬ë„ˆê°€ ìƒì„±í•œ ì˜¤ë¸Œì íŠ¸ ë¦¬ìŠ¤íŠ¸ </summary>
     [SerializeField]
     private List<GameObject> objectList;
 
-    /// <summary> »ı¼ºÇÒ ¼ö ÀÖ´Â ¸ó½ºÅÍÀÇ ÃÖ´ë ¼ö </summary>
+
+    /// <summary> ìƒì„±í•  ìˆ˜ ìˆëŠ” ëª¬ìŠ¤í„°ì˜ ìµœëŒ€ ìˆ˜ </summary>
     [SerializeField]
     private int maxCreateNum;
 
+
+    /// <summary> ìµœê·¼ ìƒì„±ëœ ëª¬ìŠ¤í„° ìˆ˜ </summary>
     private int currentCreateNum;
 
-    /// <summary> ÇöÀç ½ºÆ÷³Ê°¡ ÀÛµ¿ ÁßÀÎÁö¿¡ ´ëÇÑ ¿©ºÎ </summary>
+
+    /// <summary> í˜„ì¬ ìŠ¤í¬ë„ˆê°€ ì‘ë™ ì¤‘ì¸ì§€ì— ëŒ€í•œ ì—¬ë¶€ </summary>
     public bool isOn;
 
-    /// <summary> ÃÖ±Ù¿¡ »ı¼ºÇÑ ÀûÀÌ ÀÖ´Â Áö¿¡ ´ëÇÑ ¿©ºÎ </summary>
+
+    /// <summary> ìµœê·¼ì— ìƒì„±í•œ ì ì´ ìˆëŠ” ì§€ì— ëŒ€í•œ ì—¬ë¶€ </summary>
     private bool isCreate;
 
 
@@ -42,7 +54,7 @@ public class Spawner : MonoBehaviour
     void Update()
     {
         if (!isOn)
-            return;
+            return; // í™œì„±í™” ìƒíƒœê°€ ì•„ë‹ˆë¼ë©´ ìŠ¤í° ê¸°ëŠ¥ ë¯¸ì‘ë™
 
         if (!isCreate)
         {
@@ -52,34 +64,42 @@ public class Spawner : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// ëª¬ìŠ¤í„° ìƒì„± ì½”ë£¨í‹´ í•¨ìˆ˜ì´ë‹¤.
+    /// </summary>
     IEnumerator CreateMonster()
     {
         yield return new WaitForSeconds(Random.Range(CREATE_TIME_MIN, CREATE_TIME_MAX));
+        // MIN ~ MAX ì‚¬ì´ì˜ ëœë¤ ì‹œê°„ ì´í›„ ëª¬ìŠ¤í„° ìŠ¤í° ìˆ˜í–‰
 
         isCreate = false;
         if (maxCreateNum <= currentCreateNum)
         {
-            Debug.Log("¸ó½ºÅÍ »ı¼º ½ÇÆĞ: ÃÖ´ë »ı¼º °³¼ö ÃÊ°ú");
-            yield break; // ÃÖ´ë »ı¼º °³¼ö¸¦ ³Ñ±â¸é »ı¼º Ãë¼Ò
+            Debug.Log("ëª¬ìŠ¤í„° ìƒì„± ì‹¤íŒ¨: ìµœëŒ€ ìƒì„± ê°œìˆ˜ ì´ˆê³¼");
+            yield break; // ìµœëŒ€ ìƒì„± ê°œìˆ˜ë¥¼ ë„˜ê¸°ë©´ ìƒì„± ì·¨ì†Œ
         }
         if (Vector2.Distance(transform.position, PlayerCtrl.instance.transform.position) < CREATE_DISTANCE)
         {
-            Debug.Log("¸ó½ºÅÍ »ı¼º ½ÇÆĞ: ÇÃ·¹ÀÌ¾î °Å¸® °¡±î¿ò");
-            yield break; // ÇÃ·¹ÀÌ¾î °Å¸®°¡ °¡±î¿ì¸é »ı¼º Ãë¼Ò
+            Debug.Log("ëª¬ìŠ¤í„° ìƒì„± ì‹¤íŒ¨: í”Œë ˆì´ì–´ ê±°ë¦¬ ê°€ê¹Œì›€");
+            yield break; // í”Œë ˆì´ì–´ ê±°ë¦¬ê°€ ê°€ê¹Œìš°ë©´ ìƒì„± ì·¨ì†Œ
         }
 
         Vector2 create_pos = (Vector2)transform.position + new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         currentCreateNum++;
         switch (objectType)
         {
-            // ¸ó½ºÅÍ »ı¼º
+            // ëª¬ìŠ¤í„° ìƒì„±
             case ObjectType.TempMonster: objectList.Add(ObjectPool.GetObject<TempMonster>(ObjectType.TempMonster, ObjectPool.instance.objectTr, create_pos).gameObject); break;
         }
 
-        Debug.Log("¸ó½ºÅÍ »ı¼º ¼º°ø");
+        Debug.Log("ëª¬ìŠ¤í„° ìƒì„± ì„±ê³µ");
     }
 
 
+    /// <summary>
+    /// íŒŒê´´ëœ 'gameObject'ì— ë”°ë¼ ìŠ¤í¬ë„ˆ ë°ì´í„°ë¥¼ ì„¤ì •í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
+    /// </summary>
+    /// <param name="_gameObject">ì œê±°ëœ ìŠ¤í¬ë„ˆ ì˜¤ë¸Œì íŠ¸</param>
     public void RemoveObject(GameObject _gameObject)
     {
         currentCreateNum--;
