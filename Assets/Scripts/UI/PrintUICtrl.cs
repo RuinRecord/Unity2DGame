@@ -32,7 +32,7 @@ public class PrintUICtrl : MonoBehaviour
 
 
     /// <summary> 현재 상호작용중인(충돌한) 오브젝트 </summary>
-    private GameObject selected_captureObject;
+    private CaptureObject selected_captureObject;
 
 
     /// <summary> 조사 카메라 연출 애니메이션 </summary>
@@ -70,7 +70,7 @@ public class PrintUICtrl : MonoBehaviour
     /// 현재 상호작용 중인 오브젝트를 'selectedObject'로 설정하고 조사 가능 UI 이미지를 켜는 함수이다.
     /// </summary>
     /// <param name="_selectedObject">충돌한 상호작용 오브젝트</param>
-    public void CaptureInfoOn(GameObject _selectedObject)
+    public void CaptureInfoOn(CaptureObject _selectedObject)
     {
         captureInfo.gameObject.SetActive(true);
 
@@ -100,6 +100,9 @@ public class PrintUICtrl : MonoBehaviour
 
         // 애니메이션 시작 (여주인공의 사진 촬영 애니메이션이 끝나고 카메라 UI 애니메이션 등장)
         captureCameraAnim.Play("Camera_In");
+
+        // 조사 이벤트 등록
+        MapCtrl.instance.AddCapture(selected_captureObject.code);
 
         // 조사 조작 가능
         PlayerCtrl.instance.isCanCapture = true;

@@ -47,8 +47,11 @@ public class MapCtrl : MonoBehaviour
 
     /// <summary> 렌더러를 포함한 모든 오브젝트를 저장한 리스트 </summary>
     [SerializeField]
-    private List<Render> sprites_List;
+    private List<Render> spritesList;
 
+
+    [SerializeField]
+    private List<int> getCapturesList;
 
     private void Awake()
     {
@@ -59,15 +62,16 @@ public class MapCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sprites_List = new List<Render>();
+        spritesList = new List<Render>();
+        getCapturesList = new List<int>();
 
         var tilemaps = tileMapTr.GetComponentsInChildren<TilemapRenderer>();
         for (int i = 0; i < tilemaps.Length; i++)
-            sprites_List.Add(new Render(tilemaps[i].transform));
+            spritesList.Add(new Render(tilemaps[i].transform));
 
         var sprites = GetComponentsInChildren<SpriteRenderer>();
         for (int i = 0; i < sprites.Length; i++)
-            sprites_List.Add(new Render(sprites[i].transform));
+            spritesList.Add(new Render(sprites[i].transform));
     }
 
 
@@ -75,7 +79,7 @@ public class MapCtrl : MonoBehaviour
     void Update()
     {
         // 만약 리스트에 렌더러가 있다면 렌더링 우선 순위 처리를 수행
-        if (sprites_List.Count > 0)
+        if (spritesList.Count > 0)
             SetDepthAllofMapObjects();
     }
 
@@ -86,7 +90,7 @@ public class MapCtrl : MonoBehaviour
     private void SetDepthAllofMapObjects()
     {
         // Y축 정렬
-        sprites_List.Sort(delegate (Render a, Render b)
+        spritesList.Sort(delegate (Render a, Render b)
         {
             if (a.transform.position.y < b.transform.position.y)
                 return 1;
@@ -95,33 +99,49 @@ public class MapCtrl : MonoBehaviour
         });
 
         // 렌더러 우선순위 지정
-        for (int i = 0; i < sprites_List.Count; i++)
+        for (int i = 0; i < spritesList.Count; i++)
         {
-            if (sprites_List[i].spriteRenderer != null)
-                sprites_List[i].spriteRenderer.sortingOrder = i;
-            else if (sprites_List[i].tilemapRenderer != null)
-                sprites_List[i].tilemapRenderer.sortingOrder = i;
+            if (spritesList[i].spriteRenderer != null)
+                spritesList[i].spriteRenderer.sortingOrder = i;
+            else if (spritesList[i].tilemapRenderer != null)
+                spritesList[i].tilemapRenderer.sortingOrder = i;
         }
     }
 
 
     /// <summary>
-    /// 'transform'을 가진 오브젝트를 sprites_list에 저장하는 함수이다.
+    /// 'transform'을 가진 오브젝트를 spritesList에 저장하는 함수이다.
     /// </summary>
     /// <param name="_transform">저장할 오브젝트 Transform</param>
     public void AddSprite(Transform _transform)
     {
-        sprites_List.Add(new Render(_transform));
+        spritesList.Add(new Render(_transform));
     }
 
 
     /// <summary>
-    /// 'render'을 가진 오브젝트를 sprites_list에 삭제하는 함수이다.
+    /// 'render'을 가진 오브젝트를 spritesList에 삭제하는 함수이다.
     /// </summary>
     /// <param name="_transform">삭제할 render</param>
     public void RemoveSprite(Render _render)
     {
-        if (!sprites_List.Remove(_render))
+        if (!spritesList.Remove(_render))
             Debug.LogError("MapCtrl | RemoveSprite Error!");
+    }
+
+    /// <summary>
+    /// 'capture_code'에 해당하는 조사 이벤트를 getCapturesList에 저장하는 함수이다.
+    /// </summary>
+    /// <param name="capture_code">조사 이벤트 식별 번호</param>
+    public void AddCapture(int capture_code)
+    {
+        if (getCapturesList.IndexOf(capture_code) != -1)
+        {
+            Debug.Log("이미 확인된 조사 이벤트");
+            return;
+        }
+
+        getCapturesList.Add(capture_code);
+        EventCtrl.instance.FindNewEvent(capture_code);
     }
 }
