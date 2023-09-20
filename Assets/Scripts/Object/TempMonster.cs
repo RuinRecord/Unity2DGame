@@ -32,7 +32,7 @@ public class TempMonster : Monster
         if (isRecognized)
         {
             // 감지 성공 => 추적
-            // Chase();
+            Chase();
         }
         else
         {
