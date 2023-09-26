@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5591680672243737720}
   - component: {fileID: 674291018722273}
   - component: {fileID: 5528791065376753379}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TempMonster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2827246004811893023}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

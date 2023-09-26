@@ -175,10 +175,26 @@ public class PlayerCtrl : MonoBehaviour
         animator.SetInteger("AttackType", attack_type);
     }
 
+    void Temp()
+    {
+        state = PlayerState.IDLE;
+    }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            state = PlayerState.CAPTURE;
+            RaycastHit2D[] hits = Physics2D.CircleCastAll(this.transform.position, 2f, Vector2.zero, 0f, 128);
+            foreach (var item in hits)
+            {
+                item.transform.GetComponent<TempMonster>().Dead();
+            }
+            Invoke("Temp", 0.5f);
+        }
+
+
         if (state.Equals(PlayerState.DEAD))
             return; // 죽은 상태의 경우 기능 동작 불가
 

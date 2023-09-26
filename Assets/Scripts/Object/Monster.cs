@@ -124,7 +124,7 @@ public class Monster : MonoBehaviour
     {
         // 몬스터 공격 판정 생성
         MonsterAttack attack = ObjectPool.GetObject<MonsterAttack>(ObjectType.MonsterAttack, ObjectPool.instance.objectTr, attackPoint.position);
-        attack.destroyTime = 0.025f; // 약 1 frame
+        attack.destroyTime = 0.05f;
         attack.damage = this.damage;
     }
 
@@ -217,9 +217,12 @@ public class Monster : MonoBehaviour
     /// <summary>
     /// 몬스터가 죽으면 발동하는 함수이다.
     /// </summary>
-    protected virtual void Dead()
+    public virtual void Dead()
     {
+        state = MonsterState.Dead;
+        agent.SetDestination(this.transform.position);
         animator.SetBool("isDead", true);
+        StopPatrol();
 
         if (spawner != null)
         {

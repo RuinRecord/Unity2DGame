@@ -63,11 +63,11 @@ public class TempMonster : Monster
     /// <summary>
     /// 사망했을 경우 발동하는 함수이다. 오브젝트 풀링을 위해 리턴을 수행한다.
     /// </summary>
-    protected override void Dead()
+    public override void Dead()
     {
         base.Dead();
 
-        ObjectPool.ReturnObject(ObjectType.TempMonster, this);
+        // ObjectPool.ReturnObject(ObjectType.TempMonster, this);
     }
 
     private void OnTriggerStay2D(Collider2D col)

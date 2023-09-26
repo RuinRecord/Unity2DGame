@@ -9,7 +9,7 @@ using UnityEngine;
 public class MonsterAttack : MonoBehaviour
 {
     /// <summary> 공격 판정이 지속되는 시간 </summary>
-    public float destroyTime = 0.025f;
+    public float destroyTime = 0.05f;
 
     /// <summary> 공격 데미지 </summary>
     public float damage = 0f;
