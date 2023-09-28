@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 /// <summary>
-/// ÇöÀç ÇÃ·¹ÀÌ¾îÀÇ Á¾·ù
+/// í˜„ì¬ í”Œë ˆì´ì–´ì˜ ì¢…ë¥˜
 /// </summary>
 public enum PlayerType
 {
@@ -12,7 +12,7 @@ public enum PlayerType
 }
 
 /// <summary>
-/// ÇöÀç ÇÃ·¹ÀÌ¾îÀÇ »óÅÂ
+/// í˜„ì¬ í”Œë ˆì´ì–´ì˜ ìƒíƒœ
 /// </summary>
 public enum PlayerState
 {
@@ -25,7 +25,7 @@ public enum PlayerState
 }
 
 /// <summary>
-/// ÇöÀç ÇÃ·¹ÀÌ¾îÀÇ °ø°İ ÀÚ¼¼ (³²ÁÖÀÎ°ø¸¸ À¯È¿)
+/// í˜„ì¬ í”Œë ˆì´ì–´ì˜ ê³µê²© ìì„¸ (ë‚¨ì£¼ì¸ê³µë§Œ ìœ íš¨)
 /// </summary>
 public enum PlayerAttack
 {
@@ -38,23 +38,23 @@ public enum PlayerAttack
 
 public class PlayerCtrl : MonoBehaviour
 {
-    /// <summary> ÃÊ´ç È¸º¹ÇÏ´Â ¸¶³ª ¼öÄ¡ </summary>
+    /// <summary> ì´ˆë‹¹ íšŒë³µí•˜ëŠ” ë§ˆë‚˜ ìˆ˜ì¹˜ </summary>
     private const float MP_CHARGE_SPEED = 1f;
 
 
-    /// <summary> È¸ÇÇ ÄğÅ¸ÀÓ ½Ã°£ </summary>
+    /// <summary> íšŒí”¼ ì¿¨íƒ€ì„ ì‹œê°„ </summary>
     private const float EVASION_COOLTIME = 0.5f;
 
 
-    /// <summary> È¸ÇÇ ÀÌµ¿ °­µµ </summary>
+    /// <summary> íšŒí”¼ ì´ë™ ê°•ë„ </summary>
     private const float EVASION_FORCE = 2f;
 
 
-    /// <summary> °­ÇÑ °ø°İÀ» ½ÃÀüÇÏ±â À§ÇÑ Â÷Â¡ ½Ã°£ </summary>
+    /// <summary> ê°•í•œ ê³µê²©ì„ ì‹œì „í•˜ê¸° ìœ„í•œ ì°¨ì§• ì‹œê°„ </summary>
     private const float STRONG_ATTACK_TIME = 3f;
 
 
-    /// <summary> PlayerCtrl ½Ì±ÛÅæ ÆĞÅÏ </summary>
+    /// <summary> PlayerCtrl ì‹±ê¸€í†¤ íŒ¨í„´ </summary>
     private static PlayerCtrl Instance;
     public static PlayerCtrl instance
     {
@@ -85,44 +85,44 @@ public class PlayerCtrl : MonoBehaviour
         get { return playerState; }
     }
 
-    /// <summary> ÇÃ·¹ÀÌ¾î°¡ ÇØ´ç ±â´ÉÀ» »ç¿ëÇÒ ¼ö ÀÖ´Â »óÅÂÀÎ°¡? </summary>
-    private bool isCanMove, isCanAttack, isCanEvasion;
-    public bool isCanCapture;
+    /// <summary> í”Œë ˆì´ì–´ê°€ í•´ë‹¹ ê¸°ëŠ¥ì„ ì‚¬ìš©í•  ìˆ˜ ìˆëŠ” ìƒíƒœì¸ê°€? </summary>
+    public bool isCanMove, isCanAttack, isCanEvasion;
+    public bool isCanCapture, isCameraOn;
 
 
-    /// <summary> ÇöÀç °ø°İ Â÷Â¡ ÁßÀÎ°¡? </summary>
+    /// <summary> í˜„ì¬ ê³µê²© ì°¨ì§• ì¤‘ì¸ê°€? </summary>
     private bool isAttackCharge;
 
 
-    /// <summary> ÇÃ·¹ÀÌ¾î MAX HP </summary>
+    /// <summary> í”Œë ˆì´ì–´ MAX HP </summary>
     public float max_HP;
 
 
-    /// <summary> ÇÃ·¹ÀÌ¾î MAX MP </summary>
+    /// <summary> í”Œë ˆì´ì–´ MAX MP </summary>
     public float max_MP;
 
 
-    /// <summary> ÃÖ±Ù ÇÃ·¹ÀÌ¾îÀÇ ¹æÇâ º¤ÅÍ </summary>
+    /// <summary> ìµœê·¼ í”Œë ˆì´ì–´ì˜ ë°©í–¥ ë²¡í„° </summary>
     private Vector2 moveVec;
 
 
-    /// <summary> ÃÖ±Ù ÇÃ·¹ÀÌ¾îÀÇ µµÂø º¤ÅÍ </summary>
+    /// <summary> ìµœê·¼ í”Œë ˆì´ì–´ì˜ ë„ì°© ë²¡í„° </summary>
     private Vector2 goalVec;
 
 
-    /// <summary> ÇöÀç °ø°İ Count »óÅÂ </summary>
+    /// <summary> í˜„ì¬ ê³µê²© Count ìƒíƒœ </summary>
     private int attack_count;
 
 
-    /// <summary> ÇöÀç °ø°İ »óÅÂ¶ó¸é ¾î¶² °ø°İÀ» ¼öÇà ÁßÀÎ°¡? </summary>
+    /// <summary> í˜„ì¬ ê³µê²© ìƒíƒœë¼ë©´ ì–´ë–¤ ê³µê²©ì„ ìˆ˜í–‰ ì¤‘ì¸ê°€? </summary>
     private int attack_type;
 
 
-    /// <summary> °ø°İ ÁØºñ ½Ã°£ </summary>
+    /// <summary> ê³µê²© ì¤€ë¹„ ì‹œê°„ </summary>
     private float attack_clickTime;
 
 
-    /// <summary> ÇÃ·¹ÀÌ¾î ÇöÀç HP </summary>
+    /// <summary> í”Œë ˆì´ì–´ í˜„ì¬ HP </summary>
     private float CUR_HP;
     public float cur_HP
     {
@@ -135,7 +135,7 @@ public class PlayerCtrl : MonoBehaviour
     }
 
 
-    /// <summary> ÇÃ·¹ÀÌ¾î ÇöÀç MP </summary>
+    /// <summary> í”Œë ˆì´ì–´ í˜„ì¬ MP </summary>
     private float CUR_MP;
     public float cur_MP
     {
@@ -164,7 +164,7 @@ public class PlayerCtrl : MonoBehaviour
         state = PlayerState.IDLE;
 
         isCanMove = isCanAttack = isCanEvasion = true;
-        isCanCapture = isAttackCharge = false;
+        isCanCapture = isCameraOn = isAttackCharge = false;
         max_HP = cur_HP = 100f;
         max_MP = cur_MP = 10f;
         moveVec = Vector2.up;
@@ -175,44 +175,60 @@ public class PlayerCtrl : MonoBehaviour
         animator.SetInteger("AttackType", attack_type);
     }
 
+    void Temp()
+    {
+        state = PlayerState.IDLE;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (state.Equals(PlayerState.DEAD))
-            return; // Á×Àº »óÅÂÀÇ °æ¿ì ±â´É µ¿ÀÛ ºÒ°¡
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            state = PlayerState.CAPTURE;
+            RaycastHit2D[] hits = Physics2D.CircleCastAll(this.transform.position, 2f, Vector2.zero, 0f, 128);
+            foreach (var item in hits)
+            {
+                item.transform.GetComponent<TempMonster>().Dead();
+            }
+            Invoke("Temp", 0.5f);
+        }
 
-        // State¿¡ µû¸¥ Çàµ¿ ¼öÇà
+
+        if (state.Equals(PlayerState.DEAD))
+            return; // ì£½ì€ ìƒíƒœì˜ ê²½ìš° ê¸°ëŠ¥ ë™ì‘ ë¶ˆê°€
+
+        // Stateì— ë”°ë¥¸ í–‰ë™ ìˆ˜í–‰
         StateFunc();
 
-        // ¸¶³ª È¸º¹
+        // ë§ˆë‚˜ íšŒë³µ
         ChargeMana();
 
-        // ÀÌµ¿
+        // ì´ë™
         if (isCanMove && Input.GetMouseButtonDown(0)) 
         {
             Vector2 destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             goalVec = GetValidDestination(destination);
 
             if (isAttackCharge || attack_type != -1)
-                SetMove(goalVec, 1.5f); // °ø°İ Â÷Â¡ ÁßÀÏ °æ¿ì ´À¸° ÀÌµ¿
+                SetMove(goalVec, 1.5f); // ê³µê²© ì°¨ì§• ì¤‘ì¼ ê²½ìš° ëŠë¦° ì´ë™
             else
-                SetMove(goalVec, 3f); // ±× ¿Ü º¸Åë ÀÌµ¿
+                SetMove(goalVec, 3f); // ê·¸ ì™¸ ë³´í†µ ì´ë™
         }
 
-        // ³²ÁÖÀÎ°ø ±â´É
+        // ë‚¨ì£¼ì¸ê³µ ê¸°ëŠ¥
         if (playerType.Equals(PlayerType.MEN))
         {
-            // °ø°İ
+            // ê³µê²©
             if (isCanAttack)
             {
-                // °ø°İ ¹öÆ° ²Ú ´©¸£´Â Áß
+                // ê³µê²© ë²„íŠ¼ ê¾¹ ëˆ„ë¥´ëŠ” ì¤‘
                 if (Input.GetKey(KeyCode.Q))
                 {
-                    // °ø°İ Â÷Â¡ ½Ã°£ ½Ç½Ã°£À¸·Î Áõ°¡
+                    // ê³µê²© ì°¨ì§• ì‹œê°„ ì‹¤ì‹œê°„ìœ¼ë¡œ ì¦ê°€
                     attack_clickTime += Time.deltaTime;
 
-                    // °ø°İ Â÷Â¡ Ã¹ ½ÃÀÛ
+                    // ê³µê²© ì°¨ì§• ì²« ì‹œì‘
                     if (!isAttackCharge)
                     {
                         SetMoveSpeed(1.5f);
@@ -221,44 +237,48 @@ public class PlayerCtrl : MonoBehaviour
                         animator.SetBool("isAttack", true);
                     }
                 }
-                // °ø°İ ¹öÆ° ¶«
+                // ê³µê²© ë²„íŠ¼ ë•œ
                 else if (Input.GetKeyUp(KeyCode.Q))
                 {
-                    // °ø°İ ¼öÇà
+                    // ê³µê²© ìˆ˜í–‰
                     StartAttack();
                 }
             }
 
-            // È¸ÇÇ
+            // íšŒí”¼
             if (isCanEvasion && Input.GetKeyDown(KeyCode.W))
             {
-                // È¸ÇÇ ½ºÅ×¹Ì³ª Ã¼Å©
+                // íšŒí”¼ ìŠ¤í…Œë¯¸ë‚˜ ì²´í¬
                 if (cur_MP >= 1f)
                 {
-                    // È¸ÇÇ ½ºÅ×¹Ì³ª °¨¼Ò
+                    // íšŒí”¼ ìŠ¤í…Œë¯¸ë‚˜ ê°ì†Œ
                     cur_MP -= 1f;
 
-                    // È¸ÇÇ ÄğÅ¸ÀÓ ¹× ±â´É ¼öÇà
+                    // íšŒí”¼ ì¿¨íƒ€ì„ ë° ê¸°ëŠ¥ ìˆ˜í–‰
                     StartCoroutine("EvasionCoolTime");
                     StartEvasion();
                 }
             }
         }
-        // ¿©ÀÚ ÁÖÀÎ°ø ±â´É
+        // ì—¬ì ì£¼ì¸ê³µ ê¸°ëŠ¥
         else if (playerType.Equals(PlayerType.WOMEN))
         {
-            // Á¶»ç
-            if (isCanCapture && Input.GetKey(KeyCode.Q))
+            // ì¡°ì‚¬
+            if (isCanCapture && Input.GetKeyDown(KeyCode.Q))
             {
-                // Á¶»ç ½ÃÀÛ
-                StartCapture();
+                // ì¡°ì‚¬ ì‹œì‘
+                if (!isCameraOn)
+                    StartCapture();
+                // ì¹´ë©”ë¼ ë„ê¸°
+                else
+                    EndCapture();
             }
         }
     }
 
 
     /// <summary>
-    /// ¸¶³ª¸¦ È¸º¹½ÃÅ°´Â ÇÔ¼öÀÌ´Ù.
+    /// ë§ˆë‚˜ë¥¼ íšŒë³µì‹œí‚¤ëŠ” í•¨ìˆ˜ì´ë‹¤.
     /// </summary>
     private void ChargeMana()
     {
@@ -269,10 +289,10 @@ public class PlayerCtrl : MonoBehaviour
     
 
     /// <summary>
-    /// '_destination' ¿ùµå À§Ä¡ º¤ÅÍ·Î ÇÃ·¹ÀÌ¾î°¡ ÀÌµ¿ °¡´ÉÇÏµµ·Ï °¡°øÇÏ¿© ¹İÈ¯ÇÕ´Ï´Ù.
+    /// '_destination' ì›”ë“œ ìœ„ì¹˜ ë²¡í„°ë¡œ í”Œë ˆì´ì–´ê°€ ì´ë™ ê°€ëŠ¥í•˜ë„ë¡ ê°€ê³µí•˜ì—¬ ë°˜í™˜í•©ë‹ˆë‹¤.
     /// </summary>
-    /// <param name="_destination">µµÂø À§Ä¡ º¤ÅÍ</param>
-    /// <returns>ÀÌµ¿ °¡´ÉÇÑ µµÂø À§Ä¡ º¤ÅÍ</returns>
+    /// <param name="_destination">ë„ì°© ìœ„ì¹˜ ë²¡í„°</param>
+    /// <returns>ì´ë™ ê°€ëŠ¥í•œ ë„ì°© ìœ„ì¹˜ ë²¡í„°</returns>
     private Vector2 GetValidDestination(Vector2 _destination)
     {
         RaycastHit2D hit;
@@ -280,11 +300,11 @@ public class PlayerCtrl : MonoBehaviour
         moveVec = goalVec - (Vector2)this.transform.position;
         moveVec.Set(moveVec.x, moveVec.y);
 
-        // °¥ ¼ö ¾ø´Â Áö¿ªÀ» ´©¸¥ °æ¿ì
+        // ê°ˆ ìˆ˜ ì—†ëŠ” ì§€ì—­ì„ ëˆ„ë¥¸ ê²½ìš°
         if (Physics2D.Raycast(_destination, Vector3.forward, 10f, 64))
         {
-            // ÇÃ·¹ÀÌ¾î À§Ä¡¿¡¼­ µµÂø À§Ä¡·Î ray¸¦ ¹ß»ç Ãæµ¹ °Ë»ç
-            // Ãæµ¹ ÁöÁ¡À¸·Î ÀÓ½Ã µµÂø À§Ä¡ Àç¼³Á¤
+            // í”Œë ˆì´ì–´ ìœ„ì¹˜ì—ì„œ ë„ì°© ìœ„ì¹˜ë¡œ rayë¥¼ ë°œì‚¬ ì¶©ëŒ ê²€ì‚¬
+            // ì¶©ëŒ ì§€ì ìœ¼ë¡œ ì„ì‹œ ë„ì°© ìœ„ì¹˜ ì¬ì„¤ì •
             if (hit = Physics2D.Raycast(this.transform.position, moveVec, moveVec.magnitude, 64))
                 goalVec = hit.point;
         }
@@ -294,10 +314,10 @@ public class PlayerCtrl : MonoBehaviour
 
 
     /// <summary>
-    /// 'moveSpeed'ÀÇ ¼Óµµ·Î 'destination' ¿ùµå À§Ä¡·Î ÃÖ´Ü °æ·Î¸¦ ÅëÇØ ÇÃ·¹ÀÌ¾î¸¦ ÀÌµ¿½ÃÅ°´Â ÇÔ¼öÀÌ´Ù.
+    /// 'moveSpeed'ì˜ ì†ë„ë¡œ 'destination' ì›”ë“œ ìœ„ì¹˜ë¡œ ìµœë‹¨ ê²½ë¡œë¥¼ í†µí•´ í”Œë ˆì´ì–´ë¥¼ ì´ë™ì‹œí‚¤ëŠ” í•¨ìˆ˜ì´ë‹¤.
     /// </summary>
-    /// <param name="_destination">µµÂø À§Ä¡ º¤ÅÍ</param>
-    /// <param name="_moveSpeed">ÇÃ·¹ÀÌ¾îÀÇ ÀÌµ¿¼Óµµ</param>
+    /// <param name="_destination">ë„ì°© ìœ„ì¹˜ ë²¡í„°</param>
+    /// <param name="_moveSpeed">í”Œë ˆì´ì–´ì˜ ì´ë™ì†ë„</param>
     private void SetMove(Vector2 _destination, float _moveSpeed)
     {
         state = PlayerState.WALK;
@@ -307,9 +327,9 @@ public class PlayerCtrl : MonoBehaviour
 
 
     /// <summary>
-    /// ÇÃ·¹ÀÌ¾îÀÇ ÀÌµ¿ ¼Óµµ¸¦ 'moveSpeed'À¸·Î ¼³Á¤ÇÏ´Â ÇÔ¼öÀÌ´Ù.
+    /// í”Œë ˆì´ì–´ì˜ ì´ë™ ì†ë„ë¥¼ 'moveSpeed'ìœ¼ë¡œ ì„¤ì •í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
     /// </summary>
-    /// <param name="_moveSpeed">¼³Á¤ÇÒ ÇÃ·¹ÀÌ¾î ÀÌµ¿ ¼Óµµ</param>
+    /// <param name="_moveSpeed">ì„¤ì •í•  í”Œë ˆì´ì–´ ì´ë™ ì†ë„</param>
     private void SetMoveSpeed(float _moveSpeed)
     {
         agent.speed = _moveSpeed;
@@ -317,7 +337,7 @@ public class PlayerCtrl : MonoBehaviour
 
 
     /// <summary>
-    /// ÇÃ·¹ÀÌ¾îÀÇ »óÅÂ¿¡ µû¸¥ ±âº» Çàµ¿ ¿ä·ÉÀ» ¼öÇàÇÏ´Â ÇÔ¼öÀÌ´Ù.
+    /// í”Œë ˆì´ì–´ì˜ ìƒíƒœì— ë”°ë¥¸ ê¸°ë³¸ í–‰ë™ ìš”ë ¹ì„ ìˆ˜í–‰í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
     /// </summary>
     private void StateFunc()
     {
@@ -326,7 +346,7 @@ public class PlayerCtrl : MonoBehaviour
             case PlayerState.IDLE:
                 break;
             case PlayerState.WALK:
-                // µµÂø±îÁö ³²Àº °Å¸®°¡ ÀÛÀ¸¸é Idle·Î º¯°æ
+                // ë„ì°©ê¹Œì§€ ë‚¨ì€ ê±°ë¦¬ê°€ ì‘ìœ¼ë©´ Idleë¡œ ë³€ê²½
                 if (agent.remainingDistance < Time.deltaTime)
                     state = PlayerState.IDLE;
                 else
@@ -343,7 +363,7 @@ public class PlayerCtrl : MonoBehaviour
 
 
     /// <summary>
-    /// ÇÃ·¹ÀÌ¾îÀÇ »óÅÂ¿¡ µû¸¥ ¾Ö´Ï¸ŞÀÌ¼ÇÀ» ¼³Á¤ÇÏ´Â ÇÔ¼öÀÌ´Ù.
+    /// í”Œë ˆì´ì–´ì˜ ìƒíƒœì— ë”°ë¥¸ ì• ë‹ˆë©”ì´ì…˜ì„ ì„¤ì •í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
     /// </summary>
     private void SetAnimation()
     {
@@ -372,48 +392,48 @@ public class PlayerCtrl : MonoBehaviour
 
 
     /// <summary>
-    /// È¸ÇÇ ÄğÅ¸ÀÓ ½ÃÀÛ ÇÔ¼ö
+    /// íšŒí”¼ ì¿¨íƒ€ì„ ì‹œì‘ í•¨ìˆ˜
     /// </summary>
     IEnumerator EvasionCoolTime()
     {
         isCanMove = isCanAttack = isCanEvasion = false;
 
         yield return new WaitForSeconds(EVASION_COOLTIME);
-        // 'EVASION_COOLTIME' ÃÊ°¡ Èå¸¥ µÚ ¾Æ·¡ ±¸¹®ÀÌ ¼öÇàµË´Ï´Ù.
+        // 'EVASION_COOLTIME' ì´ˆê°€ íë¥¸ ë’¤ ì•„ë˜ êµ¬ë¬¸ì´ ìˆ˜í–‰ë©ë‹ˆë‹¤.
 
         isCanMove = isCanAttack = isCanEvasion = true;
     }
 
 
     /// <summary>
-    /// È¸ÇÇ ±â´ÉÀ» ¼öÇàÇÏ´Â ÇÔ¼öÀÌ´Ù.
+    /// íšŒí”¼ ê¸°ëŠ¥ì„ ìˆ˜í–‰í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
     /// </summary>
     private void StartEvasion()
     {
         float distance = EVASION_FORCE;
 
-        // È¸ÇÇ ¹æÇâÀ¸·Î Àå¾Ö¹°ÀÌ ÀÖ´ÂÁö Ã¼Å©
+        // íšŒí”¼ ë°©í–¥ìœ¼ë¡œ ì¥ì• ë¬¼ì´ ìˆëŠ”ì§€ ì²´í¬
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -moveVec, EVASION_FORCE, 64);
 
-        // Àå¾Ö¹°ÀÌ ÀÖ´Ù¸é °Å¸®¸¦ Á¶Àı
+        // ì¥ì• ë¬¼ì´ ìˆë‹¤ë©´ ê±°ë¦¬ë¥¼ ì¡°ì ˆ
         if (hit) distance = hit.distance;
         Debug.Log(distance);
 
-        // Á¤Áö »óÅÂ: ÃÖ±Ù ÀÌµ¿ÇÑ ¹æÇâ º¤ÅÍ¸¦ ±âÁØÀ¸·Î È¸ÇÇ µµ´Ş À§Ä¡ ¼³Á¤
+        // ì •ì§€ ìƒíƒœ: ìµœê·¼ ì´ë™í•œ ë°©í–¥ ë²¡í„°ë¥¼ ê¸°ì¤€ìœ¼ë¡œ íšŒí”¼ ë„ë‹¬ ìœ„ì¹˜ ì„¤ì •
         if (playerState.Equals(PlayerState.IDLE))
             goalVec = (Vector2)transform.position - moveVec.normalized * distance;
-        // ±× ¿Ü »óÅÂ: ÇöÀç ÀÌµ¿ ÁßÀÎ ¹æÇâ º¤ÅÍ¸¦ ±âÁØÀ¸·Î È¸ÇÇ µµ´Ş À§Ä¡ ¼³Á¤
+        // ê·¸ ì™¸ ìƒíƒœ: í˜„ì¬ ì´ë™ ì¤‘ì¸ ë°©í–¥ ë²¡í„°ë¥¼ ê¸°ì¤€ìœ¼ë¡œ íšŒí”¼ ë„ë‹¬ ìœ„ì¹˜ ì„¤ì •
         else
             goalVec = (Vector2)transform.position - (Vector2)agent.velocity.normalized * distance;
 
-        // È¸ÇÇ ¼öÇà
+        // íšŒí”¼ ìˆ˜í–‰
         SetMove(goalVec, 6f);
         state = PlayerState.EVASION;
     }
 
 
     /// <summary>
-    /// È¸ÇÇ ¾Ö´Ï¸ŞÀÌ¼ÇÀÌ ³¡³µÀ½À» ¾Ë¸®´Â ¾Ö´Ï¸ŞÀÌ¼Ç ÀÌº¥Æ® ÇÔ¼ö (Animator Tab¿¡¼­ »ç¿ë)
+    /// íšŒí”¼ ì• ë‹ˆë©”ì´ì…˜ì´ ëë‚¬ìŒì„ ì•Œë¦¬ëŠ” ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸ í•¨ìˆ˜ (Animator Tabì—ì„œ ì‚¬ìš©)
     /// </summary>
     public void EndEvasion()
     {
@@ -423,42 +443,42 @@ public class PlayerCtrl : MonoBehaviour
 
 
     /// <summary>
-    /// ÇöÀç °ø°İ »óÅÂ º¯¼ö¿¡ µû¶ó Æ¯Á¤ °ø°İÀ» ¼öÇàÇÏ´Â ÇÔ¼öÀÌ´Ù.
+    /// í˜„ì¬ ê³µê²© ìƒíƒœ ë³€ìˆ˜ì— ë”°ë¼ íŠ¹ì • ê³µê²©ì„ ìˆ˜í–‰í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
     /// </summary>
     private void StartAttack()
     {
-        // ¸¸¾à 'STRONG_ATTACK_TIME' ÀÌ»ó Â÷Â¡Çß´Ù¸é °­ÇÑ °ø°İ ¼öÇà
+        // ë§Œì•½ 'STRONG_ATTACK_TIME' ì´ìƒ ì°¨ì§•í–ˆë‹¤ë©´ ê°•í•œ ê³µê²© ìˆ˜í–‰
         if (attack_clickTime >= STRONG_ATTACK_TIME)
         {
-            // ÀÏ¹İ °ø°İ 1È¸ ÀÌ»óÀÎ °æ¿ì
+            // ì¼ë°˜ ê³µê²© 1íšŒ ì´ìƒì¸ ê²½ìš°
             if (attack_count > 0)
             {
-                // ÄŞº¸ °ø°İ µ¥ÀÌÅÍ ¼³Á¤
+                // ì½¤ë³´ ê³µê²© ë°ì´í„° ì„¤ì •
                 attack_type = 2;
             }
-            // ÀÏ¹İ °ø°İ 0È¸ ÀÎ °æ¿ì
+            // ì¼ë°˜ ê³µê²© 0íšŒ ì¸ ê²½ìš°
             else
             {
-                // °­ÇÑ °ø°İ µ¥ÀÌÅÍ ¼³Á¤
+                // ê°•í•œ ê³µê²© ë°ì´í„° ì„¤ì •
                 attack_type = 1;
                 cur_MP -= 3;
             }
 
-            // °ø°İ È¸¼ö ÃÊ±âÈ­
+            // ê³µê²© íšŒìˆ˜ ì´ˆê¸°í™”
             attack_count = 0;
         }
         else
         {
-            // ÀÏ¹İ °ø°İ µ¥ÀÌÅÍ ¼³Á¤
+            // ì¼ë°˜ ê³µê²© ë°ì´í„° ì„¤ì •
             attack_type = 0;
             cur_MP -= 2;
 
-            // ÀÏ¹İ °ø°İ 3È¸ ½Ã °ø°İ È¸¼ö ÃÊ±âÈ­
+            // ì¼ë°˜ ê³µê²© 3íšŒ ì‹œ ê³µê²© íšŒìˆ˜ ì´ˆê¸°í™”
             if (++attack_count > 2)
                 attack_count = 0;
         }
 
-        // °ø°İ ¼öÇà
+        // ê³µê²© ìˆ˜í–‰
         isCanMove = isCanAttack = isAttackCharge = false;
         attack_clickTime = 0f;
         state = PlayerState.ATTACK;
@@ -467,7 +487,7 @@ public class PlayerCtrl : MonoBehaviour
 
 
     /// <summary>
-    /// (¾Ö´Ï¸ŞÀÌ¼Ç ÀÌº¥Æ® ÇÔ¼ö) °ø°İ ¾Ö´Ï¸ŞÀÌ¼ÇÀÌ Á¾·áµÇ¾úÀ» ¶§ ¹ßµ¿, °ø°İ °ü·Ã µ¥ÀÌÅÍ¸¦ ÃÊ±âÈ­ÇÏ´Â ÇÔ¼öÀÌ´Ù.
+    /// (ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸ í•¨ìˆ˜) ê³µê²© ì• ë‹ˆë©”ì´ì…˜ì´ ì¢…ë£Œë˜ì—ˆì„ ë•Œ ë°œë™, ê³µê²© ê´€ë ¨ ë°ì´í„°ë¥¼ ì´ˆê¸°í™”í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
     /// </summary>
     public void EndAttack()
     {
@@ -480,23 +500,31 @@ public class PlayerCtrl : MonoBehaviour
 
 
     /// <summary>
-    /// Á¶»ç ±â´ÉÀ» ¼öÇàÇÏ´Â ÇÔ¼öÀÌ´Ù.
+    /// ì¡°ì‚¬ ê¸°ëŠ¥ì„ ìˆ˜í–‰í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
     /// </summary>
     private void StartCapture()
     {
-        // Á¦ÀÚ¸®¿¡ ¼­µµ·Ï ¸¸µë
+        // ì œìë¦¬ì— ì„œë„ë¡ ë§Œë“¬
         agent.SetDestination(this.transform.position);
         isCanMove = isCanCapture = false;
+        isCameraOn = true;
         state = PlayerState.CAPTURE;
+
+        // ì¹´ë©”ë¼ UI ì¼œì§€ë„ë¡ ì½”ë£¨í‹´ í•¨ìˆ˜ ì‹¤í–‰
+        StartCoroutine(PrintUICtrl.instance.CaptureCameraIn());
     }
 
 
     /// <summary>
-    ///  (¾Ö´Ï¸ŞÀÌ¼Ç ÀÌº¥Æ® ÇÔ¼ö) Á¶»ç ¾Ö´Ï¸ŞÀÌ¼ÇÀÌ Á¾·áµÇ¾úÀ» ¶§ ¹ßµ¿, Á¶»ç °ü·Ã µ¥ÀÌÅÍ¸¦ ÃÊ±âÈ­ÇÏ´Â ÇÔ¼öÀÌ´Ù.
+    /// ì¹´ë©”ë¼ë¥¼ ì¢…ë£Œí•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
     /// </summary>
     public void EndCapture()
     {
         state = PlayerState.IDLE;
-        isCanMove = isCanCapture = true;
+        isCanMove = isCanCapture = false;
+        isCameraOn = false;
+
+        // ì¹´ë©”ë¼ UI êº¼ì§€ë„ë¡ ì½”ë£¨í‹´ í•¨ìˆ˜ ì‹¤í–‰
+        StartCoroutine(PrintUICtrl.instance.CaptureCameraOut());
     }
 }

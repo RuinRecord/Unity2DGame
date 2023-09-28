@@ -17,6 +17,9 @@ public class CaptureObject : MonoBehaviour
     [SerializeField]
     private Material[] materials;
 
+    /// <summary> 조사 이벤트 식별 번호 </summary>
+    public int code;
+
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +43,7 @@ public class CaptureObject : MonoBehaviour
             PlayerCtrl.instance.isCanCapture = true;
 
             // 조사 UI 이미지 켜기
-            PrintUICtrl.instance.CaptureInfoOn(this.gameObject);
+            PrintUICtrl.instance.CaptureInfoOn(this);
         }
     }
 

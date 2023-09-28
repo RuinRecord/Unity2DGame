@@ -89,7 +89,11 @@ public class Spawner : MonoBehaviour
         switch (objectType)
         {
             // 몬스터 생성
-            case ObjectType.TempMonster: objectList.Add(ObjectPool.GetObject<TempMonster>(ObjectType.TempMonster, ObjectPool.instance.objectTr, create_pos).gameObject); break;
+            case ObjectType.TempMonster:
+                var tempMonster = ObjectPool.GetObject<TempMonster>(ObjectType.TempMonster, ObjectPool.instance.objectTr, create_pos);
+                tempMonster.spawner = this;
+                objectList.Add(tempMonster.gameObject); 
+                break;
         }
 
         Debug.Log("몬스터 생성 성공");

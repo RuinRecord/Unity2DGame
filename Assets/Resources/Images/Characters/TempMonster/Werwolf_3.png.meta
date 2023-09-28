@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f431aa8e132b28048b024d79083cd9b4
+guid: 8c82821591419934297cd13bd167aaf2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 40
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,190 +123,253 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spr_death_strip13_0
+      name: Werwolf_3_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 108
+        width: 200
+        height: 108
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c409be96f471fd449c2f98fcdef50ba
+      internalID: 2043586213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Werwolf_3_1
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 108
+        width: 200
+        height: 108
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 148a5f9c4347b22499e80d0d4460288d
+      internalID: -1717747256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Werwolf_3_2
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 108
+        width: 200
+        height: 108
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6122624756a25b42af0588dbfdd4975
+      internalID: 1158172684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Werwolf_3_3
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 108
+        width: 200
+        height: 108
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14de72de2a72b5d4d834cdde299cbcd5
+      internalID: 1973722948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Werwolf_3_4
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 108
+        width: 200
+        height: 108
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72c9f98ecc41e2341b30a549a9c4fbb4
+      internalID: 1360846248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Werwolf_3_5
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 108
+        width: 200
+        height: 108
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c145bd2b5ca95442960b9350106c246
+      internalID: -1891630278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Werwolf_3_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 96
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 200
+        height: 108
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3bcb5af6cc413a4381f5cb94228440d
-      internalID: -600820470
+      spriteID: 9a98a2f5f61f5a54f9115305b524aaac
+      internalID: -157966318
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_death_strip13_1
+      name: Werwolf_3_7
       rect:
         serializedVersion: 2
-        x: 96
+        x: 200
         y: 0
-        width: 96
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 200
+        height: 108
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2352347bb4db8764b8c463481f364d24
-      internalID: -1874449665
+      spriteID: cb9da6993d0b44e46890a3d89b6160b3
+      internalID: -306826520
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_death_strip13_2
+      name: Werwolf_3_8
       rect:
         serializedVersion: 2
-        x: 192
+        x: 400
         y: 0
-        width: 96
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 200
+        height: 108
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 495d8705ddb4bee44aeb4439af9647d3
-      internalID: -266740905
+      spriteID: 7324eefb689b54347a2476c36ead7dfe
+      internalID: 975038224
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_death_strip13_3
+      name: Werwolf_3_9
       rect:
         serializedVersion: 2
-        x: 288
+        x: 600
         y: 0
-        width: 96
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 200
+        height: 108
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 733387e49f228db46b6d76192dca3de4
-      internalID: -162798754
+      spriteID: 7d15eb9409c8b0f40946dffaad1abfab
+      internalID: 1404754873
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_death_strip13_4
+      name: Werwolf_3_10
       rect:
         serializedVersion: 2
-        x: 384
+        x: 800
         y: 0
-        width: 96
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 200
+        height: 108
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af0bfe237994f82449781ba585078b6a
-      internalID: 1390233513
+      spriteID: 41560ae6dd98761469b73e8dce7f53e2
+      internalID: 367129755
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_death_strip13_5
+      name: Werwolf_3_11
       rect:
         serializedVersion: 2
-        x: 480
+        x: 1000
         y: 0
-        width: 96
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 200
+        height: 108
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a38cd7540fe9a1743bad7a616371efe6
-      internalID: 1385526563
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_death_strip13_6
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 96
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 166d8a343f6702942b82fbe8026eec33
-      internalID: -1385794556
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_death_strip13_7
-      rect:
-        serializedVersion: 2
-        x: 672
-        y: 0
-        width: 96
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 88657a303dd32d84c9e12d780ed8c4df
-      internalID: -33964057
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_death_strip13_8
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 96
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4374bb11b7b11b84b8308dc384364c0a
-      internalID: 1349740848
+      spriteID: 27bba968c91878b41b352dbc903bf16e
+      internalID: 1404037546
       vertices: []
       indices: 
       edges: []
@@ -322,15 +385,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      spr_death_strip13_0: -600820470
-      spr_death_strip13_1: -1874449665
-      spr_death_strip13_2: -266740905
-      spr_death_strip13_3: -162798754
-      spr_death_strip13_4: 1390233513
-      spr_death_strip13_5: 1385526563
-      spr_death_strip13_6: -1385794556
-      spr_death_strip13_7: -33964057
-      spr_death_strip13_8: 1349740848
+      Werwolf_3_0: 2043586213
+      Werwolf_3_1: -1717747256
+      Werwolf_3_10: 367129755
+      Werwolf_3_11: 1404037546
+      Werwolf_3_2: 1158172684
+      Werwolf_3_3: 1973722948
+      Werwolf_3_4: 1360846248
+      Werwolf_3_5: -1891630278
+      Werwolf_3_6: -157966318
+      Werwolf_3_7: -306826520
+      Werwolf_3_8: 975038224
+      Werwolf_3_9: 1404754873
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
