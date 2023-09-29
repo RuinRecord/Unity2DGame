@@ -273,6 +273,9 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 플레이어 이동을 멈추는 함수이다.
+    /// </summary>
     public void StopMove()
     {
         SetMove(transform.position, 3f);

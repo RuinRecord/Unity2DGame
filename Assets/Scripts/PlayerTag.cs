@@ -6,17 +6,27 @@ using UnityEngine.EventSystems;
 
 public class PlayerTag : MonoBehaviour
 {
+    /// <summary> 현재 태그 중인 플레이어 타입 </summary>
     public static PlayerType playerType;
 
+
+    /// <summary> 현재 태그 선택 중인지에 대한 여부 </summary>
     public static bool isTagOn;
 
+
+    /// <summary> 남주인공 및 여주인공의 카메라 </summary>
     [SerializeField]
     private Camera cameraM, cameraW;
 
-    [SerializeField]
-    private Animator cameraAnimator;
 
+    /// <summary> 태그 연출을 위한 애니메이션 </summary>
+    [SerializeField]
+    private Animator tagAnimator;
+
+
+    /// <summary> 현재 태그 가능 상태인지에 대한 여부 </summary>
     private bool isCanTag;
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +35,7 @@ public class PlayerTag : MonoBehaviour
         isTagOn = false;
         isCanTag = true;
 
-        cameraAnimator.gameObject.SetActive(false);
+        tagAnimator.gameObject.SetActive(false);
         SetCameraRect(playerType, isTagOn);
     }
 
@@ -34,11 +44,17 @@ public class PlayerTag : MonoBehaviour
     {
         if (isCanTag && Input.GetKeyDown(KeyCode.Tab))
         {
+            // 태그 패널 열기
             isCanTag = false;
             ShowTagPanel();
         }
     }
 
+    /// <summary>
+    /// 게임 카메라를 설정하는 함수이다.
+    /// </summary>
+    /// <param name="_playerType">플레이어 타입</param>
+    /// <param name="_isTagOn">태그 상태</param>
     private void SetCameraRect(PlayerType _playerType, bool _isTagOn)
     {
         if (_isTagOn)
@@ -68,14 +84,24 @@ public class PlayerTag : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 태그 패널 UI를 출력하는 함수이다.
+    /// </summary>
     private void ShowTagPanel()
     {
         isTagOn = true;
-        cameraAnimator.gameObject.SetActive(true);
+        tagAnimator.gameObject.SetActive(true);
+
+        // 현재 플레이어가 움직이는 중이라면 멈추도록 명령
         PlayerCtrl.instance.StopMove();
+
+        // 태그 선택 카메라로 설정
         SetCameraRect(playerType, isTagOn);
     }
 
+    /// <summary>
+    /// (버튼 이벤트 함수) 플레이어 태그 패널을 클릭했을 때, 해당 플레이어로 설정하는 함수이다.
+    /// </summary>
     public void OnClickTagPanel()
     {
         if (EventSystem.current.currentSelectedGameObject == null)
@@ -85,8 +111,10 @@ public class PlayerTag : MonoBehaviour
         if (uibox == null)
             return; // uibox가 없는 오브젝트를 선택
 
-        // 플레이어 카메라 전환
-        cameraAnimator.gameObject.SetActive(false);
+        // 태그 패널 닫기
+        tagAnimator.gameObject.SetActive(false);
+
+        // 플레이어 타입 설정
         switch (uibox.index)
         {
             case 0: playerType = PlayerType.MEN; break;
@@ -94,6 +122,8 @@ public class PlayerTag : MonoBehaviour
         }
         isTagOn = false;
         isCanTag = true;
+
+        // 변경된 플레이어 타입에 따라 카메라 설정
         SetCameraRect(playerType, isTagOn);
     }
 }
