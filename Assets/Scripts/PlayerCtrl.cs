@@ -55,22 +55,24 @@ public class PlayerCtrl : MonoBehaviour
 
 
     /// <summary> PlayerCtrl 싱글톤 패턴 </summary>
-    private static PlayerCtrl Instance;
+    private static PlayerCtrl player_M, player_W;
     public static PlayerCtrl instance
     {
-        set 
-        {
-            if (Instance == null)
-                Instance = value; 
+        get 
+        { 
+            switch (PlayerTag.playerType)
+            {
+                case PlayerType.MEN: return player_M;
+                case PlayerType.WOMEN: return player_W;
+            }
+            return null;
         }
-        get { return Instance; }
     }
+
+    private PlayerType playerType;
 
     private NavMeshAgent agent;
     private Animator animator;
-
-    [SerializeField]
-    private PlayerType playerType;
 
     [SerializeField]
     private PlayerState playerState;
@@ -149,7 +151,16 @@ public class PlayerCtrl : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (name.Equals("Player_M"))
+        {
+            playerType = PlayerType.MEN;
+            player_M = this;
+        }
+        else if (name.Equals("Player_W"))
+        {
+            playerType = PlayerType.WOMEN;
+            player_W = this;
+        }
     }
 
 
@@ -175,16 +186,14 @@ public class PlayerCtrl : MonoBehaviour
         animator.SetInteger("AttackType", attack_type);
     }
 
-    void Temp()
-    {
-        state = PlayerState.IDLE;
-    }
-
     // Update is called once per frame
     void Update()
     {
         if (state.Equals(PlayerState.DEAD))
             return; // 죽은 상태의 경우 기능 동작 불가
+
+        if (PlayerTag.isTagOn || playerType != PlayerTag.playerType)
+            return; // 현재 태그 선택 중이거나, 현재 태그된 플레이어가 아니면 동작 불가
 
         // State에 따른 행동 수행
         StateFunc();
@@ -264,6 +273,11 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
+    public void StopMove()
+    {
+        SetMove(transform.position, 3f);
+        state = PlayerState.IDLE;
+    }
 
     /// <summary>
     /// 마나를 회복시키는 함수이다.
