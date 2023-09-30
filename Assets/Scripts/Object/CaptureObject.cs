@@ -34,7 +34,7 @@ public class CaptureObject : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         // 만약 플레이어가 충돌 범위 안으로 들어온다면
-        if (col.transform.tag.Equals("Player"))
+        if (col.transform.tag.Equals("Player_W"))
         {
             // 외곽선 있는 메터리얼로 변경
             spriteRenderer.material = materials[1];
@@ -50,7 +50,7 @@ public class CaptureObject : MonoBehaviour
     private void OnTriggerExit2D(Collider2D col)
     {
         // 만약 플레이어가 충돌 범위 밖으로 나간다면
-        if (col.transform.tag.Equals("Player"))
+        if (col.transform.tag.Equals("Player_W"))
         {
             // 외곽선 없는 메터리얼로 변경
             spriteRenderer.material = materials[0];

@@ -151,12 +151,12 @@ public class PlayerCtrl : MonoBehaviour
 
     private void Awake()
     {
-        if (name.Equals("Player_M"))
+        if (tag.Equals("Player_M"))
         {
             playerType = PlayerType.MEN;
             player_M = this;
         }
-        else if (name.Equals("Player_W"))
+        else if (tag.Equals("Player_W"))
         {
             playerType = PlayerType.WOMEN;
             player_W = this;

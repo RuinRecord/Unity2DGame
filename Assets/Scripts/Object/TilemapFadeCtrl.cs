@@ -56,7 +56,7 @@ public class TilemapFadeCtrl : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         // 충돌 범위 안으로 들어온 오브젝트가 플레이어라면
-        if (col.tag.Equals("Player"))
+        if (col.tag.Equals("Player_M") || col.tag.Equals("Player_W"))
         {
             // 이미 Fade 중일 경우 해당 Fade 코루틴을 중단
             if (coroutine != null)
@@ -70,7 +70,7 @@ public class TilemapFadeCtrl : MonoBehaviour
     private void OnTriggerExit2D(Collider2D col)
     {
         // 충돌 범위 밖으로 나간 오브젝트가 플레이어라면
-        if (col.tag.Equals("Player"))
+        if (col.tag.Equals("Player_M") || col.tag.Equals("Player_W"))
         {
             // 이미 Fade 중일 경우 해당 Fade 코루틴을 중단
             if (coroutine != null)
