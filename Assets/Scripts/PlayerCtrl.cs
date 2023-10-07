@@ -217,7 +217,6 @@ public class PlayerCtrl : MonoBehaviour
 
             // 상호작용 오브젝트 탐색
             RaycastHit2D hit = Physics2D.Raycast(this.transform.position, dir, 0.75f, 256);
-            Debug.DrawRay(this.transform.position, new Vector3(dir.x, dir.y, 0), Color.green, 2f);
             if (hit)
             {
                 // 있으면 상호작용 대화 시스템 시작
@@ -313,8 +312,6 @@ public class PlayerCtrl : MonoBehaviour
             vec = Vector2Int.right;
         else
             vec = Vector2Int.left;
-
-        Debug.Log(degree + " / " + vec);
 
         return vec;
     }
