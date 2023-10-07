@@ -69,9 +69,6 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
-    /// <summary> 감지된 최근 상호작용 오브젝트 (없으면 null) </summary>
-    public InteractionObject currentInteractionObject;
-
     private PlayerType playerType;
 
     private NavMeshAgent agent;
@@ -192,11 +189,8 @@ public class PlayerCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (state.Equals(PlayerState.DEAD))
-            return; // 죽은 상태의 경우 기능 동작 불가
-
-        if (PlayerTag.isTagOn || playerType != PlayerTag.playerType)
-            return; // 현재 태그 선택 중이거나, 현재 태그된 플레이어가 아니면 동작 불가
+        if (!CheckCanUpdate())
+            return; // 아래 기능을 수행하지 못하는 상태
 
         // State에 따른 행동 수행
         StateFunc();
@@ -217,9 +211,19 @@ public class PlayerCtrl : MonoBehaviour
         }
 
         // 상호작용
-        if (Input.GetKeyDown(KeyCode.Space) && currentInteractionObject != null)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            
+            Vector2Int dir = GetDirection();
+
+            // 상호작용 오브젝트 탐색
+            RaycastHit2D hit = Physics2D.Raycast(this.transform.position, dir, 0.75f, 256);
+            Debug.DrawRay(this.transform.position, new Vector3(dir.x, dir.y, 0), Color.green, 2f);
+            if (hit)
+            {
+                // 있으면 상호작용 대화 시스템 시작
+                StopMove();
+                InteractUICtrl.instance.StartDialog(hit.transform.GetComponent<InteractionObject>().dialogs);
+            }
         }
 
         // 남주인공 기능
@@ -281,6 +285,40 @@ public class PlayerCtrl : MonoBehaviour
             }
         }
     }
+
+    private bool CheckCanUpdate()
+    {
+        if (state.Equals(PlayerState.DEAD))
+            return false; // 죽은 상태의 경우 기능 동작 불가
+
+        if (PlayerTag.isTagOn || playerType != PlayerTag.playerType)
+            return false; // 현재 태그 선택 중이거나, 현재 태그된 플레이어가 아니면 동작 불가
+
+        if (InteractUICtrl.instance.isInteractOn)
+            return false; // 현재 상호작용 대화 시스템이 작동 중이면 동작 불가
+
+        return true;
+    }
+
+    private Vector2Int GetDirection()
+    {
+        Vector2Int vec;
+        float degree = Mathf.Atan2(animator.GetFloat("DirY"), animator.GetFloat("DirX")) * Mathf.Rad2Deg;
+
+        if (45f <= degree && degree < 135f)
+            vec = Vector2Int.up;
+        else if (-135f <= degree && degree < -45f)
+            vec = Vector2Int.down;
+        else if (45f > Mathf.Abs(degree))
+            vec = Vector2Int.right;
+        else
+            vec = Vector2Int.left;
+
+        Debug.Log(degree + " / " + vec);
+
+        return vec;
+    }
+
 
     /// <summary>
     /// 플레이어 이동을 멈추는 함수이다.
