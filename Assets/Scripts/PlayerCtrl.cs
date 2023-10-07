@@ -55,22 +55,24 @@ public class PlayerCtrl : MonoBehaviour
 
 
     /// <summary> PlayerCtrl 싱글톤 패턴 </summary>
-    private static PlayerCtrl Instance;
+    private static PlayerCtrl player_M, player_W;
     public static PlayerCtrl instance
     {
-        set 
-        {
-            if (Instance == null)
-                Instance = value; 
+        get 
+        { 
+            switch (PlayerTag.playerType)
+            {
+                case PlayerType.MEN: return player_M;
+                case PlayerType.WOMEN: return player_W;
+            }
+            return null;
         }
-        get { return Instance; }
     }
+
+    private PlayerType playerType;
 
     private NavMeshAgent agent;
     private Animator animator;
-
-    [SerializeField]
-    private PlayerType playerType;
 
     [SerializeField]
     private PlayerState playerState;
@@ -149,7 +151,16 @@ public class PlayerCtrl : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (tag.Equals("Player_M"))
+        {
+            playerType = PlayerType.MEN;
+            player_M = this;
+        }
+        else if (tag.Equals("Player_W"))
+        {
+            playerType = PlayerType.WOMEN;
+            player_W = this;
+        }
     }
 
 
@@ -175,28 +186,11 @@ public class PlayerCtrl : MonoBehaviour
         animator.SetInteger("AttackType", attack_type);
     }
 
-    void Temp()
-    {
-        state = PlayerState.IDLE;
-    }
-
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            state = PlayerState.CAPTURE;
-            RaycastHit2D[] hits = Physics2D.CircleCastAll(this.transform.position, 2f, Vector2.zero, 0f, 128);
-            foreach (var item in hits)
-            {
-                item.transform.GetComponent<TempMonster>().Dead();
-            }
-            Invoke("Temp", 0.5f);
-        }
-
-
-        if (state.Equals(PlayerState.DEAD))
-            return; // 죽은 상태의 경우 기능 동작 불가
+        if (!CheckCanUpdate())
+            return; // 아래 기능을 수행하지 못하는 상태
 
         // State에 따른 행동 수행
         StateFunc();
@@ -214,6 +208,22 @@ public class PlayerCtrl : MonoBehaviour
                 SetMove(goalVec, 1.5f); // 공격 차징 중일 경우 느린 이동
             else
                 SetMove(goalVec, 3f); // 그 외 보통 이동
+        }
+
+        // 상호작용
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Vector2Int dir = GetDirection();
+
+            // 상호작용 오브젝트 탐색
+            RaycastHit2D hit = Physics2D.Raycast(this.transform.position, dir, 0.75f, 256);
+            Debug.DrawRay(this.transform.position, new Vector3(dir.x, dir.y, 0), Color.green, 2f);
+            if (hit)
+            {
+                // 있으면 상호작용 대화 시스템 시작
+                StopMove();
+                InteractUICtrl.instance.StartDialog(hit.transform.GetComponent<InteractionObject>().dialogs);
+            }
         }
 
         // 남주인공 기능
@@ -276,6 +286,48 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
+    private bool CheckCanUpdate()
+    {
+        if (state.Equals(PlayerState.DEAD))
+            return false; // 죽은 상태의 경우 기능 동작 불가
+
+        if (PlayerTag.isTagOn || playerType != PlayerTag.playerType)
+            return false; // 현재 태그 선택 중이거나, 현재 태그된 플레이어가 아니면 동작 불가
+
+        if (InteractUICtrl.instance.isInteractOn)
+            return false; // 현재 상호작용 대화 시스템이 작동 중이면 동작 불가
+
+        return true;
+    }
+
+    private Vector2Int GetDirection()
+    {
+        Vector2Int vec;
+        float degree = Mathf.Atan2(animator.GetFloat("DirY"), animator.GetFloat("DirX")) * Mathf.Rad2Deg;
+
+        if (45f <= degree && degree < 135f)
+            vec = Vector2Int.up;
+        else if (-135f <= degree && degree < -45f)
+            vec = Vector2Int.down;
+        else if (45f > Mathf.Abs(degree))
+            vec = Vector2Int.right;
+        else
+            vec = Vector2Int.left;
+
+        Debug.Log(degree + " / " + vec);
+
+        return vec;
+    }
+
+
+    /// <summary>
+    /// 플레이어 이동을 멈추는 함수이다.
+    /// </summary>
+    public void StopMove()
+    {
+        SetMove(transform.position, 3f);
+        state = PlayerState.IDLE;
+    }
 
     /// <summary>
     /// 마나를 회복시키는 함수이다.
