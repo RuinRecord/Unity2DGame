@@ -47,7 +47,7 @@ public class PlayerCtrl : MonoBehaviour
 
 
     /// <summary> 회피 이동 강도 </summary>
-    private const float EVASION_FORCE = 2f;
+    private const float EVASION_FORCE = 3f;
 
 
     /// <summary> 강한 공격을 시전하기 위한 차징 시간 </summary>
@@ -465,7 +465,7 @@ public class PlayerCtrl : MonoBehaviour
         float distance = EVASION_FORCE;
 
         // 회피 방향으로 장애물이 있는지 체크
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, -moveVec, EVASION_FORCE, 64);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, moveVec, EVASION_FORCE, 64);
 
         // 장애물이 있다면 거리를 조절
         if (hit) distance = hit.distance;
@@ -473,10 +473,10 @@ public class PlayerCtrl : MonoBehaviour
 
         // 정지 상태: 최근 이동한 방향 벡터를 기준으로 회피 도달 위치 설정
         if (playerState.Equals(PlayerState.IDLE))
-            goalVec = (Vector2)transform.position - moveVec.normalized * distance;
+            goalVec = (Vector2)transform.position + moveVec.normalized * distance;
         // 그 외 상태: 현재 이동 중인 방향 벡터를 기준으로 회피 도달 위치 설정
         else
-            goalVec = (Vector2)transform.position - (Vector2)agent.velocity.normalized * distance;
+            goalVec = (Vector2)transform.position + (Vector2)agent.velocity.normalized * distance;
 
         // 회피 수행
         SetMove(goalVec, 6f);
