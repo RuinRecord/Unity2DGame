@@ -69,6 +69,9 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
+    /// <summary> 감지된 최근 상호작용 오브젝트 (없으면 null) </summary>
+    public InteractionObject currentInteractionObject;
+
     private PlayerType playerType;
 
     private NavMeshAgent agent;
@@ -211,6 +214,12 @@ public class PlayerCtrl : MonoBehaviour
                 SetMove(goalVec, 1.5f); // 공격 차징 중일 경우 느린 이동
             else
                 SetMove(goalVec, 3f); // 그 외 보통 이동
+        }
+
+        // 상호작용
+        if (Input.GetKeyDown(KeyCode.Space) && currentInteractionObject != null)
+        {
+            
         }
 
         // 남주인공 기능
