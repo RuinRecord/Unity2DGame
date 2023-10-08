@@ -231,6 +231,7 @@ public class PlayerCtrl : MonoBehaviour
             // 공격
             if (isCanAttack)
             {
+                /*
                 // 공격 버튼 꾹 누르는 중
                 if (Input.GetKey(KeyCode.Q))
                 {
@@ -250,6 +251,15 @@ public class PlayerCtrl : MonoBehaviour
                 else if (Input.GetKeyUp(KeyCode.Q))
                 {
                     // 공격 수행
+                    StartAttack();
+                }
+                */
+
+                if (Input.GetKey(KeyCode.Q))
+                {
+                    isCanEvasion = false;
+                    animator.SetBool("isAttack", true);
+                    StopMove();
                     StartAttack();
                 }
             }
@@ -466,7 +476,6 @@ public class PlayerCtrl : MonoBehaviour
 
         // 장애물이 있다면 거리를 조절
         if (hit) distance = hit.distance;
-        Debug.Log(distance);
 
         // 정지 상태: 최근 이동한 방향 벡터를 기준으로 회피 도달 위치 설정
         if (playerState.Equals(PlayerState.IDLE))
