@@ -214,9 +214,10 @@ public class PlayerCtrl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Vector2Int dir = GetDirection();
+            // Debug.DrawRay(this.transform.position, new Vector3(dir.x, dir.y, 0f), Color.green, 3f);
 
             // 상호작용 오브젝트 탐색
-            RaycastHit2D hit = Physics2D.Raycast(this.transform.position, dir, 0.75f, 256);
+            RaycastHit2D hit = Physics2D.Raycast(this.transform.position, dir, 1f, 256);
             if (hit)
             {
                 // 있으면 상호작용 대화 시스템 시작

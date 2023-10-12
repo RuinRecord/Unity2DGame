@@ -25,6 +25,8 @@ public class TilemapFadeCtrl : MonoBehaviour
     void Start()
     {
         tilemap = GetComponent<Tilemap>();
+
+        tilemap.color = Color.white;
     }
 
     /// <summary>
