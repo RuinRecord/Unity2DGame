@@ -70,6 +70,7 @@ public class PlayerCtrl : MonoBehaviour
     }
 
     private PlayerType playerType;
+    public Teleport teleport;
 
     private NavMeshAgent agent;
     private Animator animator;
@@ -149,6 +150,7 @@ public class PlayerCtrl : MonoBehaviour
         get { return CUR_MP; }
     }
 
+
     private void Awake()
     {
         if (tag.Equals("Player_M"))
@@ -173,6 +175,7 @@ public class PlayerCtrl : MonoBehaviour
         agent.updateUpAxis = false;
         agent.updateRotation = false;
         state = PlayerState.IDLE;
+        teleport = null;
 
         isCanMove = isCanAttack = isCanEvasion = true;
         isCanCapture = isCameraOn = isAttackCharge = false;
@@ -210,19 +213,30 @@ public class PlayerCtrl : MonoBehaviour
                 SetMove(goalVec, 3f); // 그 외 보통 이동
         }
 
-        // 상호작용
+        // 상호작용 및 포탈 사용
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Vector2Int dir = GetDirection();
-            // Debug.DrawRay(this.transform.position, new Vector3(dir.x, dir.y, 0f), Color.green, 3f);
-
-            // 상호작용 오브젝트 탐색
-            RaycastHit2D hit = Physics2D.Raycast(this.transform.position, dir, 1f, 256);
-            if (hit)
+            if (teleport != null)
             {
-                // 있으면 상호작용 대화 시스템 시작
+                // 포탈 사용
                 StopMove();
-                InteractUICtrl.instance.StartDialog(hit.transform.GetComponent<InteractionObject>().dialogs);
+                teleport.GoToDestination();
+            }
+            else
+            {
+                // 상호작용
+
+                Vector2Int dir = GetDirection();
+                // Debug.DrawRay(this.transform.position, new Vector3(dir.x, dir.y, 0f), Color.green, 3f);
+
+                // 상호작용 오브젝트 탐색
+                RaycastHit2D hit = Physics2D.Raycast(this.transform.position, dir, 1f, 256);
+                if (hit)
+                {
+                    // 있으면 상호작용 대화 시스템 시작
+                    StopMove();
+                    InteractUICtrl.instance.StartDialog(hit.transform.GetComponent<InteractionObject>().dialogs);
+                }
             }
         }
 
@@ -296,6 +310,10 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// 현재 플레이어 조작이 가능한 지 체크하는 함수이다.
+    /// </summary>
     private bool CheckCanUpdate()
     {
         if (state.Equals(PlayerState.DEAD))
@@ -307,9 +325,16 @@ public class PlayerCtrl : MonoBehaviour
         if (InteractUICtrl.instance.isInteractOn)
             return false; // 현재 상호작용 대화 시스템이 작동 중이면 동작 불가
 
+        if (BlindCtrl.instance.isBlind)
+            return false; // 현재 씬 및 위치 전환 중이면 동작 불가
+
         return true;
     }
 
+
+    /// <summary>
+    /// 현재 플레이어가 바라보는 방향을 반환하는 함수이다.
+    /// </summary>
     private Vector2Int GetDirection()
     {
         Vector2Int vec;
@@ -336,6 +361,18 @@ public class PlayerCtrl : MonoBehaviour
         SetMove(transform.position, 3f);
         state = PlayerState.IDLE;
     }
+
+
+    /// <summary>
+    /// 플레이어를 텔레포트하는 함수이다.
+    /// </summary>
+    /// <param name="_destination">목적지 위치</param>
+    public void Teleport(Vector3 _destination)
+    {
+        agent.Warp(_destination);
+        state = PlayerState.IDLE;
+    }
+
 
     /// <summary>
     /// 마나를 회복시키는 함수이다.
