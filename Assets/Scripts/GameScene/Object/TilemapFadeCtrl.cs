@@ -30,7 +30,7 @@ public class TilemapFadeCtrl : MonoBehaviour
     }
 
     /// <summary>
-    /// (_alpha) 투명도로 서서히 Fade 시키는 함수
+    /// (_alpha) 투명도로 서서히 Fade 시키는 함수이다.
     /// </summary>
     /// <param name="_alpha">목표 페이드 투명도</param>
     /// <returns></returns>
