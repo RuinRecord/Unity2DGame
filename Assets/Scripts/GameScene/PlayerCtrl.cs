@@ -205,12 +205,24 @@ public class PlayerCtrl : MonoBehaviour
         if (isCanMove && Input.GetMouseButtonDown(0)) 
         {
             Vector2 destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            goalVec = GetValidDestination(destination);
+            bool isValid; // 이동 가능 지역을 눌렀는가?
 
-            if (isAttackCharge || attack_type != -1)
-                SetMove(goalVec, 1.5f); // 공격 차징 중일 경우 느린 이동
+            // 클릭한 위치 벡터에 대해 실제 이동될 위치 벡터 획득
+            goalVec = GetValidDestination(destination, out isValid);
+
+            if (!isValid && (goalVec - (Vector2)this.transform.position).magnitude < 0.5f)
+            {
+                // 이동 불가 지역 => 플레이어 방향만 수정
+                animator.SetFloat("DirX", moveVec.normalized.x);
+                animator.SetFloat("DirY", moveVec.normalized.y);
+            }
             else
-                SetMove(goalVec, 3f); // 그 외 보통 이동
+            {
+                if (isAttackCharge || attack_type != -1)
+                    SetMove(goalVec, 1.5f); // 공격 차징 중일 경우 느린 이동
+                else
+                    SetMove(goalVec, 3f); // 그 외 보통 이동
+            }
         }
 
         // 상호작용 및 포탈 사용
@@ -390,12 +402,13 @@ public class PlayerCtrl : MonoBehaviour
     /// </summary>
     /// <param name="_destination">도착 위치 벡터</param>
     /// <returns>이동 가능한 도착 위치 벡터</returns>
-    private Vector2 GetValidDestination(Vector2 _destination)
+    private Vector2 GetValidDestination(Vector2 _destination, out bool _isValid)
     {
         RaycastHit2D hit;
         goalVec = _destination;
         moveVec = goalVec - (Vector2)this.transform.position;
         moveVec.Set(moveVec.x, moveVec.y);
+        _isValid = true;
 
         // 갈 수 없는 지역을 누른 경우
         if (Physics2D.Raycast(_destination, Vector3.forward, 10f, 64))
@@ -404,6 +417,7 @@ public class PlayerCtrl : MonoBehaviour
             // 충돌 지점으로 임시 도착 위치 재설정
             if (hit = Physics2D.Raycast(this.transform.position, moveVec, moveVec.magnitude, 64))
                 goalVec = hit.point;
+            _isValid = false;
         }
 
         return goalVec;
