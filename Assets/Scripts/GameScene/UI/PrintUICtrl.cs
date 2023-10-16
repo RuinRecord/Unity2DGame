@@ -84,7 +84,8 @@ public class PrintUICtrl : MonoBehaviour
     /// </summary>
     public void CaptureInfoOff()
     {
-        captureInfo.gameObject.SetActive(false);
+        if (captureInfo != null)
+            captureInfo.gameObject.SetActive(false);
 
         selected_captureObject = null;
     }
