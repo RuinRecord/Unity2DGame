@@ -22,8 +22,12 @@ public class PlayerTag : MonoBehaviour
     public static PlayerType playerType;
 
 
-    /// <summary> 현재 태그 선택 중인지에 대한 여부 </summary>
+    /// <summary> 현재 태그 기능이 동작 중인가? </summary>
     public static bool isTagOn;
+
+
+    /// <summary> 현재 태그 패널이 동작 중인가? </summary>
+    private bool isPanelOn;
 
 
     /// <summary> 남주인공 및 여주인공의 카메라 </summary>
@@ -68,12 +72,12 @@ public class PlayerTag : MonoBehaviour
     void Start()
     {
         playerType = PlayerType.WOMEN;
-        isTagOn = false;
+        isPanelOn = false;
         isCanTag = true;
 
         tagAnim.gameObject.SetActive(false);
         tag_frame.SetActive(false);
-        SetCameraRect(playerType, isTagOn);
+        SetCameraRect(playerType, isPanelOn);
     }
 
 
@@ -93,10 +97,10 @@ public class PlayerTag : MonoBehaviour
     /// 게임 카메라를 설정하는 함수이다.
     /// </summary>
     /// <param name="_playerType">플레이어 타입</param>
-    /// <param name="_isTagOn">태그 상태</param>
-    private void SetCameraRect(PlayerType _playerType, bool _isTagOn)
+    /// <param name="_isPanelOn">태그 상태</param>
+    private void SetCameraRect(PlayerType _playerType, bool _isPanelOn)
     {
-        if (_isTagOn)
+        if (_isPanelOn)
         {
             // Tag Panel 선택 UI에 맞춰 카메라 설정
             cameraM.gameObject.SetActive(true);
@@ -130,6 +134,7 @@ public class PlayerTag : MonoBehaviour
     private void ShowTagPanel()
     {
         isTagOn = true;
+        isPanelOn = true;
 
         // 현재 플레이어가 움직이는 중이라면 멈추도록 명령
         PlayerCtrl.instance.StopMove();
@@ -147,6 +152,9 @@ public class PlayerTag : MonoBehaviour
     /// </summary>
     public void OnClickTagPanel()
     {
+        if (!isPanelOn)
+            return; // space key 중복 처리 예외
+
         if (EventSystem.current.currentSelectedGameObject == null)
             return; // 선택된 오브젝트가 없음
 
@@ -160,8 +168,7 @@ public class PlayerTag : MonoBehaviour
             case 0: playerType = PlayerType.MEN; break;
             case 1: playerType = PlayerType.WOMEN; break;
         }
-        isTagOn = false;
-        isCanTag = true;
+        isPanelOn = false;
 
         // 페이드 애니메이션 시작
         StartCoroutine(Fade(1));
@@ -175,11 +182,11 @@ public class PlayerTag : MonoBehaviour
     /// <returns></returns>
     IEnumerator Fade(int _type)
     {
+        Debug.Log(PlayerTag.isTagOn);
         // 페이드 인 애니메이션 시작
         tagAnim.Play(FADE_OUT_ANIM_NAME);
         tagAnim[FADE_OUT_ANIM_NAME].speed = 1f / FADE_TIME;
         
-
         yield return new WaitForSeconds(FADE_TIME);
         // 페이드 인 애니메이션 종료
 
@@ -199,9 +206,7 @@ public class PlayerTag : MonoBehaviour
                 break;
         }
 
-        // 태그 선택 카메라로 설정
-        SetCameraRect(playerType, isTagOn);
-
+        SetCameraRect(playerType, isPanelOn);
 
         yield return new WaitForSeconds(FADE_TIME);
         // 페이드 아웃 애니메이션 종료
@@ -212,6 +217,8 @@ public class PlayerTag : MonoBehaviour
             case 1:
                 // 태그 패널 닫기
                 tagAnim.gameObject.SetActive(false);
+                isTagOn = false;
+                isCanTag = true;
                 break;
         }
     }
