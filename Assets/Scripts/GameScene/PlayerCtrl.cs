@@ -89,7 +89,7 @@ public class PlayerCtrl : MonoBehaviour
     }
 
     /// <summary> 플레이어가 해당 기능을 사용할 수 있는 상태인가? </summary>
-    public bool isCanMove, isCanAttack, isCanEvasion;
+    public bool isCanInteract, isCanMove, isCanAttack, isCanEvasion;
     public bool isCanCapture, isCameraOn;
 
 
@@ -177,7 +177,7 @@ public class PlayerCtrl : MonoBehaviour
         state = PlayerState.IDLE;
         teleport = null;
 
-        isCanMove = isCanAttack = isCanEvasion = true;
+        isCanInteract = isCanMove = isCanAttack = isCanEvasion = true;
         isCanCapture = isCameraOn = isAttackCharge = false;
         max_HP = cur_HP = 100f;
         max_MP = cur_MP = 10f;
@@ -226,7 +226,7 @@ public class PlayerCtrl : MonoBehaviour
         }
 
         // 상호작용 및 포탈 사용
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (isCanInteract && Input.GetKeyDown(KeyCode.Space))
         {
             if (teleport != null)
             {
