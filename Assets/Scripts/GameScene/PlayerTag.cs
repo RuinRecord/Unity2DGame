@@ -42,7 +42,26 @@ public class PlayerTag : MonoBehaviour
 
 
     /// <summary> 현재 태그 가능 상태인지에 대한 여부 </summary>
-    private bool isCanTag;
+    public bool isCanTag;
+
+
+    /// <summary> PlayerTag 싱글톤 </summary>
+    private static PlayerTag Instance;
+    public static PlayerTag instance
+    {
+        set
+        {
+            if (Instance == null)
+                Instance = value;
+        }
+        get { return Instance; }
+    }
+
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
 
     // Start is called before the first frame update

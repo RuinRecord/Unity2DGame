@@ -618,6 +618,7 @@ public class PlayerCtrl : MonoBehaviour
         agent.SetDestination(this.transform.position);
         isCanMove = isCanCapture = false;
         isCameraOn = true;
+        PlayerTag.instance.isCanTag = false;
         state = PlayerState.CAPTURE;
 
         // 카메라 UI 켜지도록 코루틴 함수 실행
@@ -633,6 +634,7 @@ public class PlayerCtrl : MonoBehaviour
         state = PlayerState.IDLE;
         isCanMove = isCanCapture = false;
         isCameraOn = false;
+        PlayerTag.instance.isCanTag = true;
 
         // 카메라 UI 꺼지도록 코루틴 함수 실행
         StartCoroutine(PrintUICtrl.instance.CaptureCameraOut());
