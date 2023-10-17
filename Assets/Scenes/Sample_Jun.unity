@@ -2979,6 +2979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {x: -6.5, y: -12.5, z: 0}
+  audioClip: {fileID: 8300000, guid: 0f14480105ba651448eaebb8d8cc38bf, type: 3}
   isOn: 1
 --- !u!1 &821582496
 GameObject:
@@ -4189,6 +4190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {x: -6.5, y: 3.5, z: 0}
+  audioClip: {fileID: 8300000, guid: 0f14480105ba651448eaebb8d8cc38bf, type: 3}
   isOn: 1
 --- !u!1 &1245355302
 GameObject:

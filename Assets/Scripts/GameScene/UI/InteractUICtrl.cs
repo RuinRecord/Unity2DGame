@@ -182,10 +182,7 @@ public class InteractUICtrl : MonoBehaviour
 
         // 만약 오디오 클립이 있다면 출력
         if (_dialog.audioClip != null)
-        {
-            audio.clip = _dialog.audioClip;
-            audio.Play();
-        }
+            PlayAudio(_dialog.audioClip);
 
         // 대화를 한 문자씩 천천히 출력
         foreach (var ch in _dialog.dialog)
@@ -203,6 +200,13 @@ public class InteractUICtrl : MonoBehaviour
         else
             // 모든 대화가 끝남 => 변수 설정
             isDoneAll = true;
+    }
+
+
+    public void PlayAudio(AudioClip _audioClip)
+    {
+        audio.clip = _audioClip;
+        audio.Play();
     }
 
 
