@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public struct Dialog
 {
+    public AudioClip audioClip;
     public string dialog;
     public float print_time;
 }

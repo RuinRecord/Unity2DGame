@@ -24,27 +24,56 @@ public class InteractUICtrl : MonoBehaviour
 
     private const float FADE_TIME = 0.2f;
 
+
+    /// <summary> 페이드 애니메이션을 수행하는 컴포넌트 </summary>
     [SerializeField]
     private Animation anim;
 
+
+    /// <summary> 대화를 보여주는 텍스트 </summary>
     [SerializeField]
     private TMP_Text infoText;
 
+
+    /// <summary> 대화 SE 효과를 출력을 담당하는 컴포넌ㅌ, </summary>
+    [SerializeField]
+    private new AudioSource audio;
+
+
+    /// <summary> 모든 대화가 끝나면 다음을 넘길 수 있음을 보여주는 텍스트 </summary>
     [SerializeField]
     private GameObject next_object;
 
+
+    /// <summary> 최근 대화 시스템에서 다루던 대화 리스트 </summary>
     private Dialog[] currentDialogs;
+
+
+    /// <summary> 최근 대화 시스템에서 다루던 대화 리스트의 위치 </summary>
     private int currentIdx;
+
+
+    /// <summary> 최근 대화 출력 중인 코루틴 </summary>
     private Coroutine currentInfoCo;
 
+
+    /// <summary> 현재 대화 시스템을 진행할 수 있는 상황인지에 대한 여부</summary>
     public bool isInteractOn;
+
+
+    /// <summary> 하나의 대화(현재)를 모두 출력한 상태인지에 대한 여부 </summary>
     private bool isDoneOne;
+
+
+    /// <summary> 대화 시스템에 등록된 대화 리스트를 모두 출력한 상태인지에 대한 여부 </summary>
     private bool isDoneAll;
+
 
     private void Awake()
     {
         instance = this;
     }
+
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +85,7 @@ public class InteractUICtrl : MonoBehaviour
         isDoneAll = false;
         next_object.SetActive(false);
     }
+
 
     private void Update()
     {
@@ -115,6 +145,11 @@ public class InteractUICtrl : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// 대화 시스템을 시작하는 함수이다.
+    /// </summary>
+    /// <param name="_dialogs">출력될 모든 대화 리스트</param>
     public void StartDialog(Dialog[] _dialogs)
     {
         // 현재 플레이어가 움직이는 중이라면 멈추도록 명령
@@ -134,12 +169,22 @@ public class InteractUICtrl : MonoBehaviour
         currentInfoCo = StartCoroutine(ShowInfoText(currentDialogs[currentIdx]));
     }
 
+
+    /// <summary>
+    /// 하나의 대화를 출력하는 코루틴 함수이다.
+    /// </summary>
+    /// <param name="_dialog">출력될 하나의 대화</param>
     IEnumerator ShowInfoText(Dialog _dialog)
     {
         infoText.SetText("");
         isDoneOne = false;
         next_object.SetActive(false);
 
+        // 만약 오디오 클립이 있다면 출력
+        if (_dialog.audioClip != null)
+            PlayAudio(_dialog.audioClip);
+
+        // 대화를 한 문자씩 천천히 출력
         foreach (var ch in _dialog.dialog)
         {
             infoText.text += ch;
@@ -157,6 +202,18 @@ public class InteractUICtrl : MonoBehaviour
             isDoneAll = true;
     }
 
+
+    public void PlayAudio(AudioClip _audioClip)
+    {
+        audio.clip = _audioClip;
+        audio.Play();
+    }
+
+
+    /// <summary>
+    /// 0.1초 뒤에 isInteractOn 변수를 후처리하는 코루틴 함수이다.
+    /// </summary>
+    /// <param name="_isOn"></param>
     IEnumerator DelayedSetInteractOn(bool _isOn)
     {
         yield return new WaitForSeconds(0.1f);

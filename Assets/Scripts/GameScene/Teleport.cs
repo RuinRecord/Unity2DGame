@@ -9,6 +9,11 @@ public class Teleport : MonoBehaviour
     private Vector3 destination;
 
 
+    /// <summary> 포탈과 연결된 목적지 </summary>
+    [SerializeField]
+    private AudioClip audioClip;
+
+
     /// <summary> 현재 사용 가능한 포탈인지에 대한 여부 </summary>
     public bool isOn;
 
@@ -22,6 +27,7 @@ public class Teleport : MonoBehaviour
             return; // 만약 닫힌 상태라면 취소
 
         // Fade 애니메이션과 함께 목적지로 이동
+        InteractUICtrl.instance.PlayAudio(audioClip);
         StartCoroutine(BlindCtrl.instance.switchPos(destination));
     }
 
