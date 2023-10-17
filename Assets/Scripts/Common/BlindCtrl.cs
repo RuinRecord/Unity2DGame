@@ -117,6 +117,9 @@ public class BlindCtrl : MonoBehaviour
         if (isBlind)
             yield break; // 현재 작업 중이면 취소
 
+        // 전처리
+        PlayerTag.instance.isCanTag = false;
+
         isBlind = true;
         FadeIn(fadeInTime);
         BGMSetting(-1, fadeInTime);
@@ -130,6 +133,9 @@ public class BlindCtrl : MonoBehaviour
         BGMSetting(BGMindex, fadeOutTime);
 
         yield return new WaitForSeconds(fadeOutTime);
+
+        // 후처리
+        PlayerTag.instance.isCanTag = true;
     }
 
 
@@ -144,16 +150,23 @@ public class BlindCtrl : MonoBehaviour
         if (isBlind)
             yield break; // 현재 작업 중이면 취소
 
+        // 전처리
+        PlayerTag.instance.isCanTag = false;
+
         FadeIn(fadeInTime);
         isBlind = true;
 
         yield return new WaitForSeconds(fadeInTime);
 
+        // FadeIn -> Out 전환 시점
         isBlind = false;
         FadeOut(fadeOutTime);
         PlayerCtrl.instance.Teleport(_pos);
 
         yield return new WaitForSeconds(fadeOutTime);
+
+        // 후처리
+        PlayerTag.instance.isCanTag = true;
     }
 
 
