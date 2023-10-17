@@ -2132,6 +2132,50 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &457171805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 457171807}
+  - component: {fileID: 457171806}
+  m_Layer: 0
+  m_Name: Datapool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &457171806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457171805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 612870733cdd7fc48beae0839b044320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &457171807
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457171805}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &467432511
 GameObject:
   m_ObjectHideFlags: 0
@@ -2313,6 +2357,7 @@ MonoBehaviour:
   cameraW: {fileID: 1499660807}
   tagAnim: {fileID: 893754137}
   tag_frame: {fileID: 357954184}
+  isCanTag: 0
 --- !u!1 &494445863
 GameObject:
   m_ObjectHideFlags: 0
@@ -2772,7 +2817,7 @@ GameObject:
   - component: {fileID: 732328909}
   - component: {fileID: 732328908}
   m_Layer: 0
-  m_Name: Navigation (1)
+  m_Name: Player_Nav
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2832,12 +2877,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 732328907}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1621921778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &804343528
 GameObject:
@@ -3414,6 +3459,7 @@ GameObject:
   - component: {fileID: 931886898}
   - component: {fileID: 931886899}
   - component: {fileID: 931886897}
+  - component: {fileID: 931886900}
   m_Layer: 0
   m_Name: BlindCtrl
   m_TagString: Untagged
@@ -3451,7 +3497,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3566,6 +3612,14 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!81 &931886900
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931886895}
+  m_Enabled: 1
 --- !u!1 &1033740205
 GameObject:
   m_ObjectHideFlags: 0
@@ -4224,7 +4278,7 @@ GameObject:
   - component: {fileID: 1256979911}
   - component: {fileID: 1256979910}
   m_Layer: 0
-  m_Name: Navigation
+  m_Name: Monster_Nav
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4284,12 +4338,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1256979909}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1621921778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1295743532
 GameObject:
@@ -5419,6 +5473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleport: {fileID: 0}
   playerState: 0
+  isCanInteract: 0
   isCanMove: 0
   isCanAttack: 0
   isCanEvasion: 0
@@ -6155,7 +6210,6 @@ GameObject:
   - component: {fileID: 1621921778}
   - component: {fileID: 1621921779}
   - component: {fileID: 1621921780}
-  - component: {fileID: 1621921781}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -6176,6 +6230,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 732328910}
+  - {fileID: 1256979912}
   - {fileID: 1295743534}
   - {fileID: 2013731445}
   - {fileID: 1479713880}
@@ -6211,14 +6267,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventsList:
   - {fileID: 905565953}
---- !u!81 &1621921781
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1621921777}
-  m_Enabled: 1
 --- !u!1 &1628810816
 GameObject:
   m_ObjectHideFlags: 0
@@ -8800,6 +8848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleport: {fileID: 0}
   playerState: 0
+  isCanInteract: 0
   isCanMove: 0
   isCanAttack: 0
   isCanEvasion: 0
@@ -9031,8 +9080,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 308285326}
-  - {fileID: 1256979912}
-  - {fileID: 732328910}
+  - {fileID: 931886896}
+  - {fileID: 457171807}
   - {fileID: 1621921778}
   - {fileID: 475142789}
-  - {fileID: 931886896}

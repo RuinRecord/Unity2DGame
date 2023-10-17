@@ -59,7 +59,7 @@ public class BlindCtrl : MonoBehaviour
         blindImage.color = new Color(0f, 0f, 0f, 0f);
         audio.volume = 0f;
         audio.Play();
-        // BGMSetting(0, false, 1f);
+        BGMSetting(0, FADE_INIT_TIME);
         StartCoroutine(Fade_Init());
     }
 
@@ -233,7 +233,7 @@ public class BlindCtrl : MonoBehaviour
     /// <param name="_fadeTime">Fade 전환 시간</param>
     public void BGMSetting(int bgmIndex, float _fadeTime)
     {
-        // audio.clip = SaveScript.BGMs[bgmIndex];
+        audio.clip = Datapool.instance.GetBGM(bgmIndex);
         StartCoroutine(BGMFade(_fadeTime));
     }
 

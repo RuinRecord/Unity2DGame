@@ -27,15 +27,23 @@ public class Datapool : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            instance = this;
+        }
+        else if (instance != null)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        BGMs = Resources.LoadAll<AudioClip>("Sound/BGM");
-        SEs = Resources.LoadAll<AudioClip>("Sound/SE");
+        BGMs = Resources.LoadAll<AudioClip>("Audios/BGM");
+        SEs = Resources.LoadAll<AudioClip>("Audios/SE");
     }
 
 
