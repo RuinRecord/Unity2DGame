@@ -2525,7 +2525,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogs:
-  - dialog: "\uB3CC\uB354\uBBF8\uAC00 \uC9C0\uC800\uBD84\uD558\uAC8C \uB110\uB824\uC788\uB2E4."
+  - audioClip: {fileID: 0}
+    dialog: "\uB3CC\uB354\uBBF8\uAC00 \uC9C0\uC800\uBD84\uD558\uAC8C \uB110\uB824\uC788\uB2E4."
     print_time: 0.05
 --- !u!212 &504591905
 SpriteRenderer:
@@ -2626,12 +2627,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogs:
-  - dialog: "\uCC45\uC0C1 \uC704\uC5D0 \uBB34\uC5B8\uAC00 \uC788\uB2E4."
+  - audioClip: {fileID: 8300000, guid: bf90f47f13f589e4caa654dcea58f1bd, type: 3}
+    dialog: "\uCC45\uC0C1 \uC704\uC5D0 \uBB38\uC11C\uAC00 \uC788\uB2E4."
     print_time: 0.05
-  - dialog: ...?
+  - audioClip: {fileID: 0}
+    dialog: ...?
     print_time: 0.5
-  - dialog: "\uC54C \uC218 \uC5C6\uB294 \uBB38\uC790\uB85C \uC4F0\uC5EC\uC838\uC11C
-      \uB0B4\uC6A9\uC744 \uC54C \uC218 \uC5C6\uB2E4."
+  - audioClip: {fileID: 0}
+    dialog: "\uC54C \uC218 \uC5C6\uB294 \uBB38\uC790\uB85C \uC4F0\uC5EC\uC838\uC11C
+      \uBB34\uC2A8 \uB0B4\uC6A9\uC778 \uBAA8\uB974\uACA0\uB2E4."
     print_time: 0.05
 --- !u!212 &655710612
 SpriteRenderer:
@@ -3493,7 +3497,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f8b71f4b8f05c404aa66e5c146985156, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3719,7 +3723,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogs:
-  - dialog: "\uC628\uD654\uD55C \uD45C\uC815\uC744 \uC9D3\uACE0 \uC788\uB294 \uC5EC\uC2E0\uC0C1\uC774
+  - audioClip: {fileID: 0}
+    dialog: "\uC628\uD654\uD55C \uD45C\uC815\uC744 \uC9D3\uACE0 \uC788\uB294 \uC5EC\uC2E0\uC0C1\uC774
       \uC788\uB2E4."
     print_time: 0.05
 --- !u!61 &1033740212
@@ -3904,7 +3909,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogs:
-  - dialog: "\uBC1C\uC804\uAE30\uAC00 \uAEBC\uC838\uC788\uB2E4."
+  - audioClip: {fileID: 0}
+    dialog: "\uBC1C\uC804\uAE30\uAC00 \uAEBC\uC838\uC788\uB2E4."
     print_time: 0.05
 --- !u!212 &1138019823
 SpriteRenderer:
@@ -9032,6 +9038,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2094210271}
   - component: {fileID: 2094210272}
+  - component: {fileID: 2094210273}
   m_Layer: 0
   m_Name: Interaction_UI
   m_TagString: Untagged
@@ -9073,8 +9080,105 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 467432515}
   infoText: {fileID: 1164978898}
+  audio: {fileID: 2094210273}
   next_object: {fileID: 1628810816}
   isInteractOn: 0
+--- !u!82 &2094210273
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094210270}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
