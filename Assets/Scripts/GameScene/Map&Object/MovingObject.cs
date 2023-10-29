@@ -6,6 +6,12 @@ using UnityEngine.Rendering;
 
 public class MovingObject : MonoBehaviour
 {
+    private const float MOVE_SPEED = 1.5f;
+    private const int CANNOT_MOVE_LAYERMASK = 64 + 128 + 256 + 512 + 1024;
+
+    [SerializeField]
+    private new AudioSource audio;
+
     [SerializeField]
     private Vector2 up_gap;
 
@@ -57,15 +63,51 @@ public class MovingObject : MonoBehaviour
         // 탑뷰 시점에 맞춰 위치 조정
         new_destination += Vector2.down * 0.25f;
 
-        Debug.Log("방향 벡터 < " + arrowVec + " > 설정");
-
         return new_destination;
     }
 
-    public void Push()
-    {
 
+    /// <summary>
+    /// 물체가 움직일 수 있는지 체크하고 물체를 움직이게 하는 함수이다.
+    /// </summary>
+    /// <returns>이동 수행 여부</returns>
+    public bool Push()
+    {
+        bool isSuccess;
+
+        // 바라보는 방향에 장애물 확인
+        if (isSuccess = !Physics2D.Raycast((Vector2)this.transform.position + arrowVec * 0.75f, arrowVec, 0.2f, CANNOT_MOVE_LAYERMASK))
+        {
+            // 이동 가능한 상태 => 물체 이동
+            StartCoroutine("StartMove");
+
+            // 끄는 소리 오디오 실행
+            audio.clip = Datapool.instance.GetSE(2);
+            audio.Play();
+        }
+        return isSuccess;
     }
+
+
+    /// <summary>
+    /// 물체를 움직이는 코루틴 함수이다.
+    /// </summary>
+    IEnumerator StartMove()
+    {
+        Vector3 savedPos = this.transform.position;
+        Vector2 moveVec = arrowVec;
+
+        // 방향 벡터와 이동 벡터가 반대가 되는 순간까지 이동 수행
+        while (moveVec.normalized == arrowVec.normalized)
+        {
+            this.transform.position += (Vector3)arrowVec * MOVE_SPEED * Time.deltaTime;
+            moveVec -= arrowVec * MOVE_SPEED * Time.deltaTime;
+            yield return null;
+        }
+
+        this.transform.position = savedPos + (Vector3)arrowVec;
+    }
+
 
     /// <summary>
     /// (_start)에서 시작하여 (_end)로 끝나는 벡터에 가장 가까운 방향 벡터(UP, DOWN, RIGHT, LEFT)를 반환하는 함수이다.
@@ -87,6 +129,7 @@ public class MovingObject : MonoBehaviour
 
         return vec;
     }
+
 
     private void OnTriggerStay2D(Collider2D col)
     {

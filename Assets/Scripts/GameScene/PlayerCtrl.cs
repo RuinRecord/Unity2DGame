@@ -61,8 +61,8 @@ public class PlayerCtrl : MonoBehaviour
     private const float EVASION_FORCE = 3f;
 
 
-    /// <summary> 강한 공격을 시전하기 위한 차징 시간 </summary>
-    private const float STRONG_ATTACK_TIME = 3f;
+    /// <summary> 플레이어 이동 속도 </summary>
+    private const float MOVE_SPEED = 3f;
 
 
     /// <summary> PlayerCtrl 싱글톤 패턴 </summary>
@@ -261,8 +261,8 @@ public class PlayerCtrl : MonoBehaviour
                 {
                     // 움직이는 물체 외 클릭
                     // => 밀기 모드였다면 해제
-                    if (playerMode.Equals(PlayerMode.PUSH))
-                        playerMode = PlayerMode.DEFAULT;
+                    if (mode.Equals(PlayerMode.PUSH))
+                        mode = PlayerMode.DEFAULT;
                 }
             }
 
@@ -276,16 +276,16 @@ public class PlayerCtrl : MonoBehaviour
             {
                 // 이동 가능 지역 => 이동
                 if (isAttackCharge || attack_type != -1)
-                    SetMove(goalVec, 1.5f); // 공격 차징 중일 경우 느린 이동
+                    SetMove(goalVec, MOVE_SPEED / 2f); // 공격 차징 중일 경우 느린 이동
                 else
-                    SetMove(goalVec, 3f); // 그 외 보통 이동
+                    SetMove(goalVec, MOVE_SPEED); // 그 외 보통 이동
             }
         }
 
         // 상호작용 및 포탈 사용
         if (isCanInteract && Input.GetKeyDown(KeyCode.Space))
         {
-            if (playerMode.Equals(PlayerMode.DEFAULT))
+            if (mode.Equals(PlayerMode.DEFAULT))
             {
                 if (teleport != null)
                 {
@@ -309,7 +309,7 @@ public class PlayerCtrl : MonoBehaviour
                     }
                 }
             }
-            else if(playerMode.Equals(PlayerMode.PUSH))
+            else if(mode.Equals(PlayerMode.PUSH))
             {
                 // 물건 밀기
                 if (movingObject == null)
@@ -319,8 +319,13 @@ public class PlayerCtrl : MonoBehaviour
                     return;
                 }
 
+                // 물체 이동
                 movingObject.Push();
 
+                // 플레이어 설정
+                StopMove();
+                mode = PlayerMode.DEFAULT;
+                movingObject = null;
             }
         }
 
@@ -442,7 +447,7 @@ public class PlayerCtrl : MonoBehaviour
     /// </summary>
     public void StopMove()
     {
-        SetMove(transform.position, 3f);
+        SetMove(transform.position, MOVE_SPEED);
         state = PlayerState.IDLE;
     }
 
@@ -501,7 +506,6 @@ public class PlayerCtrl : MonoBehaviour
             if (hit = Physics2D.Raycast(this.transform.position, moveVec, moveVec.magnitude, canNotMove_layerMask))
                 goalVec = hit.point;
             _isValid = false;
-            Debug.Log("You click position that can't moved.");
         }
 
         return goalVec;
@@ -666,7 +670,7 @@ public class PlayerCtrl : MonoBehaviour
     /// </summary>
     public void EndEvasion()
     {
-        SetMove(transform.position, 3f);
+        SetMove(transform.position, MOVE_SPEED);
         state = PlayerState.IDLE;
     }
 
@@ -677,7 +681,7 @@ public class PlayerCtrl : MonoBehaviour
     private void StartAttack()
     {
         // 만약 'STRONG_ATTACK_TIME' 이상 차징했다면 강한 공격 수행
-        if (attack_clickTime >= STRONG_ATTACK_TIME)
+        if (attack_clickTime >= MOVE_SPEED)
         {
             // 일반 공격 1회 이상인 경우
             if (attack_count > 0)
