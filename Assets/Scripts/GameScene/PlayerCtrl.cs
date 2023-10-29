@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -36,6 +38,15 @@ public enum PlayerAttack
     STRONGATTACK
 }
 
+/// <summary>
+/// 현재 플레이어의 모드
+/// </summary>
+public enum PlayerMode
+{
+    DEFAULT,    // 평소
+    PUSH,       // 밀기 (남주만 해당)
+}
+
 public class PlayerCtrl : MonoBehaviour
 {
     /// <summary> 초당 회복하는 마나 수치 </summary>
@@ -70,11 +81,35 @@ public class PlayerCtrl : MonoBehaviour
     }
 
     private PlayerType playerType;
+
+    [SerializeField]
+    private LayerMask canNotMove_layerMask;
+
+    /// <summary> 현재 플레이어와 접촉한 포탈 (없으면 NULL) </summary>
     public Teleport teleport;
+
+    /// <summary> 현재 플레이어와 클릭한 옮기기 가능 오브젝트 (없으면 NULL) </summary>
+    public MovingObject movingObject;
 
     private NavMeshAgent agent;
     private Animator animator;
 
+    [Obsolete]
+    [SerializeField]
+    private PlayerMode playerMode;
+
+    public PlayerMode mode
+    {
+        set
+        {
+            playerMode = value;
+            SetAnimation();
+        }
+        get { return playerMode; }
+    }
+
+
+    [Obsolete]
     [SerializeField]
     private PlayerState playerState;
     
@@ -207,17 +242,39 @@ public class PlayerCtrl : MonoBehaviour
             Vector2 destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             bool isValid; // 이동 가능 지역을 눌렀는가?
 
+
             // 클릭한 위치 벡터에 대해 실제 이동될 위치 벡터 획득
             goalVec = GetValidDestination(destination, out isValid);
 
-            if (!isValid && (goalVec - (Vector2)this.transform.position).magnitude < 0.5f)
+
+            // 만약 남주인공이라면 클릭한 위치에 움직일 수 있는 물체 체크
+            if (playerType.Equals(PlayerType.MEN))
+            {
+                movingObject = CheckMovingObject(destination);
+                if (movingObject != null)
+                {
+                    // 움직이는 물체가 존재
+                    // => 자연스럽게 물체에 붙을 수 있도록 이동 목표 지점 재설정
+                    goalVec = movingObject.GetValidDestination(destination);
+                }
+                else
+                {
+                    // 움직이는 물체 외 클릭
+                    // => 밀기 모드였다면 해제
+                    if (playerMode.Equals(PlayerMode.PUSH))
+                        playerMode = PlayerMode.DEFAULT;
+                }
+            }
+
+
+            if (!isValid && (goalVec - (Vector2)this.transform.position).magnitude < 0.1f)
             {
                 // 이동 불가 지역 => 플레이어 방향만 수정
-                animator.SetFloat("DirX", moveVec.normalized.x);
-                animator.SetFloat("DirY", moveVec.normalized.y);
+                SetAnimationDir(moveVec);
             }
             else
             {
+                // 이동 가능 지역 => 이동
                 if (isAttackCharge || attack_type != -1)
                     SetMove(goalVec, 1.5f); // 공격 차징 중일 경우 느린 이동
                 else
@@ -228,27 +285,42 @@ public class PlayerCtrl : MonoBehaviour
         // 상호작용 및 포탈 사용
         if (isCanInteract && Input.GetKeyDown(KeyCode.Space))
         {
-            if (teleport != null)
+            if (playerMode.Equals(PlayerMode.DEFAULT))
             {
-                // 포탈 사용
-                StopMove();
-                teleport.GoToDestination();
-            }
-            else
-            {
-                // 상호작용
-
-                Vector2Int dir = GetDirection();
-                // Debug.DrawRay(this.transform.position, new Vector3(dir.x, dir.y, 0f), Color.green, 3f);
-
-                // 상호작용 오브젝트 탐색
-                RaycastHit2D hit = Physics2D.Raycast(this.transform.position, dir, 1f, 256);
-                if (hit)
+                if (teleport != null)
                 {
-                    // 있으면 상호작용 대화 시스템 시작
+                    // 포탈 사용
                     StopMove();
-                    InteractUICtrl.instance.StartDialog(hit.transform.GetComponent<InteractionObject>().dialogs);
+                    teleport.GoToDestination();
                 }
+                else
+                {
+                    // 상호작용
+                    Vector2Int dir = GetDirection();
+                    // Debug.DrawRay(this.transform.position, new Vector3(dir.x, dir.y, 0f), Color.green, 3f);
+
+                    // 상호작용 오브젝트 탐색
+                    RaycastHit2D hit = Physics2D.Raycast(this.transform.position, dir, 1f, 256);
+                    if (hit)
+                    {
+                        // 있으면 상호작용 대화 시스템 시작
+                        StopMove();
+                        InteractUICtrl.instance.StartDialog(hit.transform.GetComponent<InteractionObject>().dialogs);
+                    }
+                }
+            }
+            else if(playerMode.Equals(PlayerMode.PUSH))
+            {
+                // 물건 밀기
+                if (movingObject == null)
+                {
+                    // 움직이는 오브젝트가 Null이면 오류 반환
+                    Debug.LogError("Error!! MovingObject is null?!");
+                    return;
+                }
+
+                movingObject.Push();
+
             }
         }
 
@@ -347,7 +419,7 @@ public class PlayerCtrl : MonoBehaviour
     /// <summary>
     /// 현재 플레이어가 바라보는 방향을 반환하는 함수이다.
     /// </summary>
-    private Vector2Int GetDirection()
+    public Vector2Int GetDirection()
     {
         Vector2Int vec;
         float degree = Mathf.Atan2(animator.GetFloat("DirY"), animator.GetFloat("DirX")) * Mathf.Rad2Deg;
@@ -395,6 +467,17 @@ public class PlayerCtrl : MonoBehaviour
         if (cur_MP > max_MP)
             cur_MP = max_MP;
     }
+
+
+    /// <summary>
+    /// 방향 벡터에 따라 바라보는 방향을 설정하느 함수이다.
+    /// </summary>
+    /// <param name="dir">뱡향 벡터</param>
+    public void SetAnimationDir(Vector2 dir)
+    {
+        animator.SetFloat("DirX", dir.normalized.x);
+        animator.SetFloat("DirY", dir.normalized.y);
+    }
     
 
     /// <summary>
@@ -411,16 +494,36 @@ public class PlayerCtrl : MonoBehaviour
         _isValid = true;
 
         // 갈 수 없는 지역을 누른 경우
-        if (Physics2D.Raycast(_destination, Vector3.forward, 10f, 64))
+        if (Physics2D.Raycast(_destination, Vector3.forward, 10f, canNotMove_layerMask))
         {
             // 플레이어 위치에서 도착 위치로 ray를 발사 충돌 검사
             // 충돌 지점으로 임시 도착 위치 재설정
-            if (hit = Physics2D.Raycast(this.transform.position, moveVec, moveVec.magnitude, 64))
+            if (hit = Physics2D.Raycast(this.transform.position, moveVec, moveVec.magnitude, canNotMove_layerMask))
                 goalVec = hit.point;
             _isValid = false;
+            Debug.Log("You click position that can't moved.");
         }
 
         return goalVec;
+    }
+
+
+    /// <summary>
+    /// (_clickPos) 위치에 움직일 수 있는 오브젝트가 있는지 체크하고 반환하는 함수이다.
+    /// </summary>
+    /// <param name="_clickPos">마우크 클릭 위치</param>
+    /// <returns>움직일 수 있는 오브젝트 (없다면 NULL 반환)</returns>
+    private MovingObject CheckMovingObject(Vector2 _clickPos)
+    {
+        RaycastHit2D hit;
+        if (hit = Physics2D.Raycast(_clickPos, Vector3.forward, 10f, 512))
+        {
+            // 플레이어 위치에서 도착 위치로 ray를 발사 충돌 검사
+            // 충돌 지점에 옮기긱 가능한 오브젝트가 있는지 체크
+            return hit.transform.gameObject.GetComponent<MovingObject>();
+        }
+        else
+            return null;
     }
 
 
@@ -464,8 +567,7 @@ public class PlayerCtrl : MonoBehaviour
                 {
                     if (agent.velocity != Vector3.zero)
                     {
-                        animator.SetFloat("DirX", agent.velocity.normalized.x);
-                        animator.SetFloat("DirY", agent.velocity.normalized.y);
+                        SetAnimationDir(agent.velocity);
                     }
                 }
                 break;
@@ -478,26 +580,43 @@ public class PlayerCtrl : MonoBehaviour
     /// </summary>
     private void SetAnimation()
     {
-        switch (state)
+        if (mode.Equals(PlayerMode.DEFAULT))
         {
-            case PlayerState.IDLE:
-                animator.SetBool("isWalk", false);
-                animator.SetBool("isEvasion", false);
-                animator.SetBool("isCapture", false);
-                break;
-            case PlayerState.WALK:
-                animator.SetBool("isWalk", true);
-                animator.SetBool("isEvasion", false);
-                break;
-            case PlayerState.EVASION:
-                animator.SetBool("isWalk", false);
-                animator.SetBool("isEvasion", true);
-                break;
-            case PlayerState.ATTACK:
-                break;
-            case PlayerState.CAPTURE:
-                animator.SetBool("isCapture", true);
-                break;
+            animator.SetBool("isPush", false);
+            switch (state)
+            {
+                case PlayerState.IDLE:
+                    animator.SetBool("isWalk", false);
+                    animator.SetBool("isEvasion", false);
+                    animator.SetBool("isCapture", false);
+                    break;
+                case PlayerState.WALK:
+                    animator.SetBool("isWalk", true);
+                    animator.SetBool("isEvasion", false);
+                    break;
+                case PlayerState.EVASION:
+                    animator.SetBool("isWalk", false);
+                    animator.SetBool("isEvasion", true);
+                    break;
+                case PlayerState.ATTACK:
+                    break;
+                case PlayerState.CAPTURE:
+                    animator.SetBool("isCapture", true);
+                    break;
+            }
+        }
+        else
+        {
+            animator.SetBool("isPush", true);
+            switch (state)
+            {
+                case PlayerState.IDLE:
+                    animator.SetBool("isWalk", false);
+                    break;
+                case PlayerState.WALK:
+                    animator.SetBool("isWalk", true);
+                    break;
+            }
         }
     }
 
@@ -530,7 +649,7 @@ public class PlayerCtrl : MonoBehaviour
         if (hit) distance = hit.distance;
 
         // 정지 상태: 최근 이동한 방향 벡터를 기준으로 회피 도달 위치 설정
-        if (playerState.Equals(PlayerState.IDLE))
+        if (state.Equals(PlayerState.IDLE))
             goalVec = (Vector2)transform.position + moveVec.normalized * distance;
         // 그 외 상태: 현재 이동 중인 방향 벡터를 기준으로 회피 도달 위치 설정
         else
