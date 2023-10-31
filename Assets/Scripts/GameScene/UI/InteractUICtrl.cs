@@ -152,9 +152,6 @@ public class InteractUICtrl : MonoBehaviour
     /// <param name="_dialogs">출력될 모든 대화 리스트</param>
     public void StartDialog(Dialog[] _dialogs)
     {
-        // 현재 플레이어가 움직이는 중이라면 멈추도록 명령
-        PlayerCtrl.instance.StopMove();
-
         // 대화창이 켜지는 애니메이션 수행
         anim.Play(FADE_IN_ANIM);
         anim[FADE_IN_ANIM].speed = 1f / FADE_TIME;

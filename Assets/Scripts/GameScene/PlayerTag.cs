@@ -86,9 +86,12 @@ public class PlayerTag : MonoBehaviour
     {
         if (isCanTag && Input.GetKeyDown(KeyCode.Tab))
         {
-            // 태그 패널 열기
-            isCanTag = false;
-            ShowTagPanel();
+            if (!PlayerCtrl.instance.isMoving)
+            {
+                // 태그 패널 열기
+                isCanTag = false;
+                ShowTagPanel();
+            }
         }
     }
 
@@ -135,9 +138,6 @@ public class PlayerTag : MonoBehaviour
     {
         isTagOn = true;
         isPanelOn = true;
-
-        // 현재 플레이어가 움직이는 중이라면 멈추도록 명령
-        PlayerCtrl.instance.StopMove();
 
         // 애니메이션 패널 켜기
         tagAnim.gameObject.SetActive(true);

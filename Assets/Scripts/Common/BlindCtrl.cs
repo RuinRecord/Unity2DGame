@@ -162,6 +162,7 @@ public class BlindCtrl : MonoBehaviour
         isBlind = false;
         FadeOut(fadeOutTime);
         PlayerCtrl.instance.Teleport(_pos);
+        PlayerCtrl.instance.SetCurrentPos(_pos);
 
         yield return new WaitForSeconds(fadeOutTime);
 
