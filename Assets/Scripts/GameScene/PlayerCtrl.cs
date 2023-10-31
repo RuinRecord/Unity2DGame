@@ -9,8 +9,8 @@ using UnityEngine.AI;
 /// </summary>
 public enum PlayerType
 {
-    MEN,
-    WOMEN
+    MEN,    // 남주인공
+    WOMEN   // 여주인공
 }
 
 /// <summary>
@@ -18,24 +18,12 @@ public enum PlayerType
 /// </summary>
 public enum PlayerState
 {
-    IDLE,
-    WALK,
-    EVASION,
-    ATTACK,
-    CAPTURE,
-    DEAD
-}
-
-/// <summary>
-/// 현재 플레이어의 공격 자세 (남주인공만 유효)
-/// </summary>
-public enum PlayerAttack
-{
-    NODE,
-    READY,
-    BASICATTACK_1,
-    BASICATTACK_2,
-    STRONGATTACK
+    IDLE,       // 정지
+    WALK,       // 이동
+    EVASION,    // 회피
+    ATTACK,     // 공격
+    CAPTURE,    // 조사
+    DEAD        // 죽음
 }
 
 /// <summary>
@@ -128,10 +116,6 @@ public class PlayerCtrl : MonoBehaviour
     public bool isCanCapture, isCameraOn;
 
 
-    /// <summary> 현재 공격 차징 중인가? </summary>
-    private bool isAttackCharge;
-
-
     /// <summary> 플레이어 MAX HP </summary>
     public float max_HP;
 
@@ -146,18 +130,6 @@ public class PlayerCtrl : MonoBehaviour
 
     /// <summary> 최근 플레이어의 도착 벡터 </summary>
     private Vector2 goalVec;
-
-
-    /// <summary> 현재 공격 Count 상태 </summary>
-    private int attack_count;
-
-
-    /// <summary> 현재 공격 상태라면 어떤 공격을 수행 중인가? </summary>
-    private int attack_type;
-
-
-    /// <summary> 공격 준비 시간 </summary>
-    private float attack_clickTime;
 
 
     /// <summary> 플레이어 현재 HP </summary>
@@ -213,15 +185,10 @@ public class PlayerCtrl : MonoBehaviour
         teleport = null;
 
         isCanInteract = isCanMove = isCanAttack = isCanEvasion = true;
-        isCanCapture = isCameraOn = isAttackCharge = false;
+        isCanCapture = isCameraOn = false;
         max_HP = cur_HP = 100f;
         max_MP = cur_MP = 10f;
         moveVec = Vector2.up;
-        attack_count = 0;
-        attack_type = -1;
-        attack_clickTime = 0f;
-
-        animator.SetInteger("AttackType", attack_type);
     }
 
     // Update is called once per frame
@@ -274,11 +241,7 @@ public class PlayerCtrl : MonoBehaviour
             }
             else
             {
-                // 이동 가능 지역 => 이동
-                if (isAttackCharge || attack_type != -1)
-                    SetMove(goalVec, MOVE_SPEED / 2f); // 공격 차징 중일 경우 느린 이동
-                else
-                    SetMove(goalVec, MOVE_SPEED); // 그 외 보통 이동
+                SetMove(goalVec, MOVE_SPEED);
             }
         }
 
@@ -333,39 +296,10 @@ public class PlayerCtrl : MonoBehaviour
         if (playerType.Equals(PlayerType.MEN))
         {
             // 공격
-            if (isCanAttack)
+            if (isCanAttack && Input.GetKey(KeyCode.Q))
             {
-                /*
-                // 공격 버튼 꾹 누르는 중
-                if (Input.GetKey(KeyCode.Q))
-                {
-                    // 공격 차징 시간 실시간으로 증가
-                    attack_clickTime += Time.deltaTime;
-
-                    // 공격 차징 첫 시작
-                    if (!isAttackCharge)
-                    {
-                        SetMoveSpeed(1.5f);
-                        isAttackCharge = true;
-                        isCanEvasion = false;
-                        animator.SetBool("isAttack", true);
-                    }
-                }
-                // 공격 버튼 땜
-                else if (Input.GetKeyUp(KeyCode.Q))
-                {
-                    // 공격 수행
-                    StartAttack();
-                }
-                */
-
-                if (Input.GetKey(KeyCode.Q))
-                {
-                    isCanEvasion = false;
-                    animator.SetBool("isAttack", true);
-                    StopMove();
-                    StartAttack();
-                }
+                StopMove();
+                StartAttack();
             }
 
             // 회피
@@ -587,22 +521,21 @@ public class PlayerCtrl : MonoBehaviour
         if (mode.Equals(PlayerMode.DEFAULT))
         {
             animator.SetBool("isPush", false);
+            animator.SetBool("isWalk", false);
+            animator.SetBool("isEvasion", false);
+            animator.SetBool("isCapture", false);
             switch (state)
             {
                 case PlayerState.IDLE:
-                    animator.SetBool("isWalk", false);
-                    animator.SetBool("isEvasion", false);
-                    animator.SetBool("isCapture", false);
                     break;
                 case PlayerState.WALK:
                     animator.SetBool("isWalk", true);
-                    animator.SetBool("isEvasion", false);
                     break;
                 case PlayerState.EVASION:
-                    animator.SetBool("isWalk", false);
                     animator.SetBool("isEvasion", true);
                     break;
                 case PlayerState.ATTACK:
+                    animator.SetBool("isAttack", true);
                     break;
                 case PlayerState.CAPTURE:
                     animator.SetBool("isCapture", true);
@@ -612,10 +545,10 @@ public class PlayerCtrl : MonoBehaviour
         else
         {
             animator.SetBool("isPush", true);
+            animator.SetBool("isWalk", false);
             switch (state)
             {
                 case PlayerState.IDLE:
-                    animator.SetBool("isWalk", false);
                     break;
                 case PlayerState.WALK:
                     animator.SetBool("isWalk", true);
@@ -680,42 +613,10 @@ public class PlayerCtrl : MonoBehaviour
     /// </summary>
     private void StartAttack()
     {
-        // 만약 'STRONG_ATTACK_TIME' 이상 차징했다면 강한 공격 수행
-        if (attack_clickTime >= MOVE_SPEED)
-        {
-            // 일반 공격 1회 이상인 경우
-            if (attack_count > 0)
-            {
-                // 콤보 공격 데이터 설정
-                attack_type = 2;
-            }
-            // 일반 공격 0회 인 경우
-            else
-            {
-                // 강한 공격 데이터 설정
-                attack_type = 1;
-                cur_MP -= 3;
-            }
-
-            // 공격 회수 초기화
-            attack_count = 0;
-        }
-        else
-        {
-            // 일반 공격 데이터 설정
-            attack_type = 0;
-            cur_MP -= 2;
-
-            // 일반 공격 3회 시 공격 회수 초기화
-            if (++attack_count > 2)
-                attack_count = 0;
-        }
-
         // 공격 수행
-        isCanMove = isCanAttack = isAttackCharge = false;
-        attack_clickTime = 0f;
+        isCanMove = isCanAttack = isCanEvasion = false;
         state = PlayerState.ATTACK;
-        animator.SetInteger("AttackType", attack_type);
+        animator.SetBool("isAttack", true);
     }
 
 
@@ -726,9 +627,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         state = PlayerState.IDLE;
         isCanMove = isCanAttack = isCanEvasion = true;
-        attack_type = -1;
         animator.SetBool("isAttack", false);
-        animator.SetInteger("AttackType", attack_type);
     }
 
 
