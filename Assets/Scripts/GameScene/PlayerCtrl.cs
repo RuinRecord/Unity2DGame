@@ -37,10 +37,6 @@ public enum PlayerMode
 
 public class PlayerCtrl : MonoBehaviour
 {
-    /// <summary> 초당 회복하는 마나 수치 </summary>
-    private const float MP_CHARGE_SPEED = 1f;
-
-
     /// <summary> 회피 쿨타임 시간 </summary>
     private const float EVASION_COOLTIME = 0.5f;
 
@@ -120,10 +116,6 @@ public class PlayerCtrl : MonoBehaviour
     public float max_HP;
 
 
-    /// <summary> 플레이어 MAX MP </summary>
-    public float max_MP;
-
-
     /// <summary> 최근 플레이어의 방향 벡터 </summary>
     private Vector2 moveVec;
 
@@ -142,19 +134,6 @@ public class PlayerCtrl : MonoBehaviour
             PlayerStateUI.instance.SetPlayerHP();
         }
         get { return CUR_HP; }
-    }
-
-
-    /// <summary> 플레이어 현재 MP </summary>
-    private float CUR_MP;
-    public float cur_MP
-    {
-        set
-        {
-            CUR_MP = value;
-            PlayerStateUI.instance.SetPlayerMP();
-        }
-        get { return CUR_MP; }
     }
 
 
@@ -187,7 +166,6 @@ public class PlayerCtrl : MonoBehaviour
         isCanInteract = isCanMove = isCanAttack = isCanEvasion = true;
         isCanCapture = isCameraOn = false;
         max_HP = cur_HP = 100f;
-        max_MP = cur_MP = 10f;
         moveVec = Vector2.up;
     }
 
@@ -199,9 +177,6 @@ public class PlayerCtrl : MonoBehaviour
 
         // State에 따른 행동 수행
         StateFunc();
-
-        // 마나 회복
-        ChargeMana();
 
         // 이동
         if (isCanMove && Input.GetMouseButtonDown(0)) 
@@ -305,16 +280,9 @@ public class PlayerCtrl : MonoBehaviour
             // 회피
             if (isCanEvasion && Input.GetKeyDown(KeyCode.W))
             {
-                // 회피 스테미나 체크
-                if (cur_MP >= 1f)
-                {
-                    // 회피 스테미나 감소
-                    cur_MP -= 1f;
-
-                    // 회피 쿨타임 및 기능 수행
-                    StartCoroutine("EvasionCoolTime");
-                    StartEvasion();
-                }
+                // 회피 쿨타임 및 기능 수행
+                StartCoroutine("EvasionCoolTime");
+                StartEvasion();
             }
         }
         // 여자 주인공 기능
@@ -394,17 +362,6 @@ public class PlayerCtrl : MonoBehaviour
     {
         agent.Warp(_destination);
         state = PlayerState.IDLE;
-    }
-
-
-    /// <summary>
-    /// 마나를 회복시키는 함수이다.
-    /// </summary>
-    private void ChargeMana()
-    {
-        cur_MP += Time.deltaTime * MP_CHARGE_SPEED;
-        if (cur_MP > max_MP)
-            cur_MP = max_MP;
     }
 
 
