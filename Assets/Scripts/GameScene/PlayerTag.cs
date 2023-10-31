@@ -182,7 +182,6 @@ public class PlayerTag : MonoBehaviour
     /// <returns></returns>
     IEnumerator Fade(int _type)
     {
-        Debug.Log(PlayerTag.isTagOn);
         // 페이드 인 애니메이션 시작
         tagAnim.Play(FADE_OUT_ANIM_NAME);
         tagAnim[FADE_OUT_ANIM_NAME].speed = 1f / FADE_TIME;

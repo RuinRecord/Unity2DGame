@@ -16,8 +16,8 @@ TagManager:
   - Obstacle
   - Monster
   - InteractObject
-  - 
-  - 
+  - MovingObject
+  - CaptureObject
   - 
   - 
   - 
