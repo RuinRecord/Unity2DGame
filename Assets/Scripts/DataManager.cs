@@ -2,21 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Datapool : MonoBehaviour
+public class DataManager : MonoBehaviour
 {
-    /// <summary> ObjectPool 싱글톤 </summary>
-    private static Datapool Instance;
-    public static Datapool instance
-    {
-        set
-        {
-            if (Instance == null)
-                Instance = value;
-        }
-        get { return Instance; }
-    }
-
-
     /// <summary> 게임 BGM 리소스 </summary>
     private AudioClip[] BGMs;
 
@@ -25,22 +12,7 @@ public class Datapool : MonoBehaviour
     private AudioClip[] SEs;
 
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            DontDestroyOnLoad(this.gameObject);
-            instance = this;
-        }
-        else if (instance != null)
-        {
-            Destroy(this.gameObject);
-        }
-    }
-
-
-    // Start is called before the first frame update
-    void Start()
+    public void Init()
     {
         BGMs = Resources.LoadAll<AudioClip>("Audios/BGM");
         SEs = Resources.LoadAll<AudioClip>("Audios/SE");

@@ -27,8 +27,9 @@ public class Teleport : MonoBehaviour
             return; // 만약 닫힌 상태라면 취소
 
         // Fade 애니메이션과 함께 목적지로 이동
+        PlayerTag.instance.isCanTag = false;
         InteractUICtrl.instance.PlayAudio(audioClip);
-        StartCoroutine(BlindCtrl.instance.switchPos(destination));
+        StartCoroutine(GameManager._change.switchPos(destination));
     }
 
 

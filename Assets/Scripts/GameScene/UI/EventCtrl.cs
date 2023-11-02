@@ -53,6 +53,8 @@ public class EventCtrl : MonoBehaviour
         yield return new WaitForSeconds(EVENT_START_TIME);
 
         Event e = eventsList[capture_code];
+        if (e == null || e.eventObject == null) 
+            yield break;
 
         switch (capture_code)
         {

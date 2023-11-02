@@ -305,6 +305,9 @@ public class PlayerCtrl : MonoBehaviour
     /// </summary>
     private bool CheckCanUpdate()
     {
+        if (GameManager._change.isChanging)
+            return false; // 현재 씬 및 위치 전환 중이면 동작 불가
+
         if (state.Equals(PlayerState.DEAD))
             return false; // 죽은 상태의 경우 기능 동작 불가
 
@@ -313,9 +316,6 @@ public class PlayerCtrl : MonoBehaviour
 
         if (InteractUICtrl.instance.isInteractOn)
             return false; // 현재 상호작용 대화 시스템이 작동 중이면 동작 불가
-
-        if (BlindCtrl.instance.isBlind)
-            return false; // 현재 씬 및 위치 전환 중이면 동작 불가
 
         return true;
     }
@@ -370,7 +370,7 @@ public class PlayerCtrl : MonoBehaviour
         // 데이터 세팅
         SetAnimationDir(_dir);
         isMoving = true;
-        isCanInteract = isCanMove = isCanAttack = isCanCapture = false;
+        isCanInteract = isCanMove = isCanAttack = false;
 
         while (cur_dir.normalized == _dir)
         {
@@ -385,7 +385,7 @@ public class PlayerCtrl : MonoBehaviour
 
         // 데이터 설정
         isMoving = false;
-        isCanInteract = isCanMove = isCanAttack = isCanCapture = true;
+        isCanInteract = isCanMove = isCanAttack = true;
     }
 
 
@@ -417,6 +417,7 @@ public class PlayerCtrl : MonoBehaviour
     public void Teleport(Vector3 _destination)
     {
         this.transform.position = _destination;
+        SetCurrentPos(_destination);
         state = PlayerState.IDLE;
     }
 

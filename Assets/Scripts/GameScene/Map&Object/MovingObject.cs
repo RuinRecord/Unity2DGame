@@ -45,7 +45,7 @@ public class MovingObject : MonoBehaviour
             StartCoroutine("StartMove");
 
             // 끄는 소리 오디오 실행
-            audio.clip = Datapool.instance.GetSE(2);
+            audio.clip = GameManager._data.GetSE(2);
             audio.Play();
         }
         return isSuccess;

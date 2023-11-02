@@ -29,7 +29,7 @@ public class MonsterAttack : MonoBehaviour
         // 파괴 시간(destroyTime)이 지나면 사라짐
 
         // 오브젝트 풀링 삭제 요청 수행
-        ObjectPool.ReturnObject(ObjectType.MonsterAttack, this);
+        ObjectPool.instance.ReturnObject(ObjectType.MonsterAttack, this);
     }
 
     private void OnTriggerStay2D(Collider2D col)
@@ -44,7 +44,7 @@ public class MonsterAttack : MonoBehaviour
             StopCoroutine("DestroyAttack");
 
             // 즉시 오브젝트 풀링 삭제 요청
-            ObjectPool.ReturnObject(ObjectType.MonsterAttack, this);
+            ObjectPool.instance.ReturnObject(ObjectType.MonsterAttack, this);
         }
     }
 }

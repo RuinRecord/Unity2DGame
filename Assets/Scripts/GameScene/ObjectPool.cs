@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,17 +18,24 @@ public enum ObjectType
 /// </summary>
 public class ObjectPool : MonoBehaviour
 {
-    /// <summary> ObjectPool 싱글톤 </summary>
     private static ObjectPool Instance;
-    public static ObjectPool instance
+
+    static public ObjectPool instance
     {
-        set 
+        set
         {
             if (Instance == null)
-                Instance = value; 
+                Instance = value;
         }
         get { return Instance; }
     }
+
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
 
     /// <summary> 오브젝트가 생성될 위치 </summary>
     public Transform objectTr;
@@ -43,10 +50,6 @@ public class ObjectPool : MonoBehaviour
     Queue<TempMonster> tempMonster_queue = new Queue<TempMonster>();
     Queue<MonsterAttack> monsterAttack_queue = new Queue<MonsterAttack>();
 
-    private void Awake()
-    {
-        instance = this;
-    }
 
     /// <summary>
     /// 현재 오브젝트 풀에서 꺼내 쓸 자원이 없을 경우 새로운 오브젝트를 풀에 추가하는 함수
@@ -68,13 +71,14 @@ public class ObjectPool : MonoBehaviour
         return newObj;
     }
 
+
     /// <summary>
     /// (tr)을 부모 오브젝트로 삼고 (pos) 월드 포지션으로 (type) 종류에 해당하는 오브젝트를 풀에서 꺼내는 함수
     /// </summary>
     /// <param name="type">생성할 오브젝트 종류</param>
     /// <param name="tr">생성 위치를 위한 부모 Transform</param>
     /// <param name="pos">생성 위치</param>
-    public static T GetObject<T>(ObjectType type, Transform tr, Vector3 pos) where T : MonoBehaviour
+    public T CreateObject<T>(ObjectType type, Transform tr, Vector3 pos) where T : MonoBehaviour
     {
         int count = GetCount(type);
         if (count > 0)
@@ -83,8 +87,8 @@ public class ObjectPool : MonoBehaviour
 
             switch (type)
             {
-                case ObjectType.TempMonster: obj = instance.tempMonster_queue.Dequeue().GetComponent<T>(); break;
-                case ObjectType.MonsterAttack: obj = instance.monsterAttack_queue.Dequeue().GetComponent<T>(); break;
+                case ObjectType.TempMonster: obj = tempMonster_queue.Dequeue().GetComponent<T>(); break;
+                case ObjectType.MonsterAttack: obj = monsterAttack_queue.Dequeue().GetComponent<T>(); break;
             }
 
             obj.transform.SetParent(tr);
@@ -97,7 +101,7 @@ public class ObjectPool : MonoBehaviour
         }
         else
         {
-            var newObj = instance.CreateNewObject<T>(type, tr, pos);
+            var newObj = CreateNewObject<T>(type, tr, pos);
             newObj.transform.SetParent(tr);
             newObj.transform.position = pos;
             newObj.gameObject.SetActive(true);
@@ -113,7 +117,7 @@ public class ObjectPool : MonoBehaviour
     /// </summary>
     /// <param name="type">돌려보낼 오브젝트 종류</param>
     /// <param name="obj">오브젝트 풀로 돌려보낼 Instance Object</param>
-    public static void ReturnObject<T>(ObjectType type, T obj) where T : MonoBehaviour
+    public void ReturnObject<T>(ObjectType type, T obj) where T : MonoBehaviour
     {
         if (obj == null)
         {
@@ -122,12 +126,12 @@ public class ObjectPool : MonoBehaviour
         }
 
         obj.gameObject.SetActive(false);
-        obj.transform.SetParent(instance.transform);
+        obj.transform.SetParent(transform);
 
         switch (type)
         {
-            case ObjectType.TempMonster: instance.tempMonster_queue.Enqueue(obj.GetComponent<TempMonster>()); break;
-            case ObjectType.MonsterAttack: instance.monsterAttack_queue.Enqueue(obj.GetComponent<MonsterAttack>()); break;
+            case ObjectType.TempMonster: tempMonster_queue.Enqueue(obj.GetComponent<TempMonster>()); break;
+            case ObjectType.MonsterAttack: monsterAttack_queue.Enqueue(obj.GetComponent<MonsterAttack>()); break;
         }
     }
 
@@ -135,14 +139,14 @@ public class ObjectPool : MonoBehaviour
     /// 현재까지 풀에 생성된 (type)에 해당하는 오브젝트 개수를 반환하는 함수
     /// </summary>
     /// <param name="type">수를 세릴 오브젝트 종류</param>
-    private static int GetCount(ObjectType type)
+    private int GetCount(ObjectType type)
     {
         int count = 0;
 
         switch (type)
         {
-            case ObjectType.TempMonster: count = instance.tempMonster_queue.Count; break;
-            case ObjectType.MonsterAttack: count = instance.monsterAttack_queue.Count; break;
+            case ObjectType.TempMonster: count = tempMonster_queue.Count; break;
+            case ObjectType.MonsterAttack: count = monsterAttack_queue.Count; break;
         }
 
         return count;

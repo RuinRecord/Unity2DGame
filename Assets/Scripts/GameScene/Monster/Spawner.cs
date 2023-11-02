@@ -90,7 +90,7 @@ public class Spawner : MonoBehaviour
         {
             // 몬스터 생성
             case ObjectType.TempMonster:
-                var tempMonster = ObjectPool.GetObject<TempMonster>(ObjectType.TempMonster, ObjectPool.instance.objectTr, create_pos);
+                var tempMonster = ObjectPool.instance.CreateObject<TempMonster>(ObjectType.TempMonster, ObjectPool.instance.objectTr, create_pos);
                 tempMonster.spawner = this;
                 objectList.Add(tempMonster.gameObject); 
                 break;

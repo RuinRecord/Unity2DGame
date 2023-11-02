@@ -123,7 +123,7 @@ public class Monster : MonoBehaviour
     protected virtual void CheckDamage()
     {
         // 몬스터 공격 판정 생성
-        MonsterAttack attack = ObjectPool.GetObject<MonsterAttack>(ObjectType.MonsterAttack, ObjectPool.instance.objectTr, attackPoint.position);
+        MonsterAttack attack = ObjectPool.instance.CreateObject<MonsterAttack>(ObjectType.MonsterAttack, ObjectPool.instance.objectTr, attackPoint.position);
         attack.destroyTime = 0.05f;
         attack.damage = this.damage;
     }
