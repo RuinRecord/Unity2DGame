@@ -43,8 +43,12 @@ public class PlayerCtrl : MonoBehaviour
     private const int EVASION_FORCE = 3;
 
 
-    /// <summary> 플레이어 이동 속도 </summary>
-    private const float MOVE_SPEED = 4f;
+    /// <summary> 플레이어 걷기 속도 </summary>
+    private const float WALK_SPEED = 4f;
+
+
+    /// <summary> 플레이어 달리기 속도 </summary>
+    private const float RUN_SPEED = 6f;
 
 
     /// <summary> 플레이어 이동 속도 </summary>
@@ -123,6 +127,10 @@ public class PlayerCtrl : MonoBehaviour
     public float max_HP;
 
 
+    /// <summary> 플레이어 현재 속도 </summary>
+    public float moveSpeed;
+
+
     /// <summary> 최근 플레이어의 위치 </summary>
     private Vector2Int currentPos;
 
@@ -166,6 +174,8 @@ public class PlayerCtrl : MonoBehaviour
         isCanInteract = isCanMove = isCanAttack = isCanEvasion = true;
         isCanCapture = isCameraOn = isMoving = false;
         max_HP = cur_HP = 100f;
+        moveSpeed = WALK_SPEED;
+        animator.speed = 1;
 
         SetCurrentPos();
         this.transform.position = new Vector3(currentPos.x, currentPos.y, 0);
@@ -177,9 +187,23 @@ public class PlayerCtrl : MonoBehaviour
         if (!CheckCanUpdate())
             return; // 아래 기능을 수행하지 못하는 상태
 
+
         // 최근 위치에서 크기 1만큼 변경될 경우 currentPos 재갱신
         if (currentPos.x != Mathf.RoundToInt(this.transform.position.x) || currentPos.y != Mathf.RoundToInt(this.transform.position.y))
             SetCurrentPos();
+
+
+        // 달리기 기능
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+        {
+            moveSpeed = RUN_SPEED;
+            animator.speed = 1.5f;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+        {
+            moveSpeed = WALK_SPEED;
+            animator.speed = 1f;
+        }
 
         // 이동
         if (isCanMove)
@@ -220,7 +244,7 @@ public class PlayerCtrl : MonoBehaviour
 
                 // 이동
                 if (isValid)
-                    SetMove(dir, 1, MOVE_SPEED);
+                    SetMove(dir, 1, moveSpeed);
                 SetAnimationDir(dir);
             }
         }
