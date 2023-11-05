@@ -26,12 +26,12 @@ public class PrintUICtrl : MonoBehaviour
     }
 
 
-    /// <summary> 조사 상호작용 오브젝트와 충돌할 때 나오는 UI 이미지 </summary>
+    /// <summary> 조사 오브젝트와 충돌할 때 나오는 UI 이미지 </summary>
     [SerializeField]
     private RectTransform captureInfo;
 
 
-    /// <summary> 현재 상호작용중인(충돌한) 오브젝트 </summary>
+    /// <summary> 현재 조사 오브젝트와 충돌한 오브젝트 </summary>
     private CaptureObject selected_captureObject;
 
 
@@ -90,6 +90,7 @@ public class PrintUICtrl : MonoBehaviour
         selected_captureObject = null;
     }
 
+
     /// <summary>
     /// 카메라 UI가 켜지도록 하는 코루틴 함수이다.
     /// </summary>
@@ -103,11 +104,12 @@ public class PrintUICtrl : MonoBehaviour
         captureCameraAnim.Play("Camera_In");
 
         // 조사 이벤트 등록
-        MapCtrl.instance.AddCapture(selected_captureObject.code);
+        GameManager._data.player.AddCapture(selected_captureObject.code);
 
         // 조사 조작 가능
         PlayerCtrl.instance.isCanCapture = true;
     }
+
 
     /// <summary>
     /// 카메라 UI가 꺼지도록 하는 코루틴 함수이다.

@@ -50,9 +50,6 @@ public class MapCtrl : MonoBehaviour
     private List<Render> spritesList;
 
 
-    [SerializeField]
-    private List<int> getCapturesList;
-
     private void Awake()
     {
         instance = this;
@@ -63,7 +60,6 @@ public class MapCtrl : MonoBehaviour
     void Start()
     {
         spritesList = new List<Render>();
-        getCapturesList = new List<int>();
 
         var tilemaps = tileMapTr.GetComponentsInChildren<TilemapRenderer>();
         for (int i = 0; i < tilemaps.Length; i++)
@@ -127,21 +123,5 @@ public class MapCtrl : MonoBehaviour
     {
         if (!spritesList.Remove(_render))
             Debug.LogError("MapCtrl | RemoveSprite Error!");
-    }
-
-    /// <summary>
-    /// 'capture_code'에 해당하는 조사 이벤트를 getCapturesList에 저장하는 함수이다.
-    /// </summary>
-    /// <param name="capture_code">조사 이벤트 식별 번호</param>
-    public void AddCapture(int capture_code)
-    {
-        if (getCapturesList.IndexOf(capture_code) != -1)
-        {
-            Debug.Log("이미 확인된 조사 이벤트");
-            return;
-        }
-
-        getCapturesList.Add(capture_code);
-        EventCtrl.instance.FindNewEvent(capture_code);
     }
 }
