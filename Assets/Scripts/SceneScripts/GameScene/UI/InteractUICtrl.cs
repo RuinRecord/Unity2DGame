@@ -24,6 +24,8 @@ public class InteractUICtrl : MonoBehaviour
 
     private const float FADE_TIME = 0.2f;
 
+    private const float DEFAULT_PRINT_TIME = 0.05f;
+
 
     /// <summary> 페이드 애니메이션을 수행하는 컴포넌트 </summary>
     [SerializeField]
@@ -46,7 +48,7 @@ public class InteractUICtrl : MonoBehaviour
 
 
     /// <summary> 최근 대화 시스템에서 다루던 대화 리스트 </summary>
-    private Dialog[] currentDialogs;
+    private PlayerDialog[] currentDialogs;
 
 
     /// <summary> 최근 대화 시스템에서 다루던 대화 리스트의 위치 </summary>
@@ -105,12 +107,12 @@ public class InteractUICtrl : MonoBehaviour
                     StopCoroutine(currentInfoCo);
 
                     // 현재 대화 바로 출력
-                    infoText.SetText(currentDialogs[currentIdx++].dialog);
+                    infoText.SetText(currentDialogs[currentIdx++].GetWords());
 
                     // 넘기기 아이콘 출력
                     next_object.SetActive(true);
 
-                    if (currentIdx < currentDialogs.Length)
+                    if (CheckDialog())
                         // 아직 대화가 남음 => 변수 설정
                         isDoneOne = true; 
                     else
@@ -124,7 +126,7 @@ public class InteractUICtrl : MonoBehaviour
                     // 넘기기 아이콘 출력
                     next_object.SetActive(true);
 
-                    if (currentIdx < currentDialogs.Length)
+                    if (CheckDialog())
                         // 아직 대화가 남음 => 다음 대화 출력
                         currentInfoCo = StartCoroutine(ShowInfoText(currentDialogs[currentIdx])); 
                     else
@@ -150,7 +152,7 @@ public class InteractUICtrl : MonoBehaviour
     /// 대화 시스템을 시작하는 함수이다.
     /// </summary>
     /// <param name="_dialogs">출력될 모든 대화 리스트</param>
-    public void StartDialog(Dialog[] _dialogs)
+    public void StartDialog(PlayerDialog[] _dialogs)
     {
         // 대화창이 켜지는 애니메이션 수행
         anim.Play(FADE_IN_ANIM);
@@ -171,27 +173,33 @@ public class InteractUICtrl : MonoBehaviour
     /// 하나의 대화를 출력하는 코루틴 함수이다.
     /// </summary>
     /// <param name="_dialog">출력될 하나의 대화</param>
-    IEnumerator ShowInfoText(Dialog _dialog)
+    IEnumerator ShowInfoText(PlayerDialog _dialog)
     {
         infoText.SetText("");
         isDoneOne = false;
         next_object.SetActive(false);
 
         // 만약 오디오 클립이 있다면 출력
-        if (_dialog.audioClip != null)
-            PlayAudio(_dialog.audioClip);
+        AudioClip audioClip = _dialog.GetAudioClip();
+        if (audioClip != null)
+            PlayAudio(audioClip);
 
         // 대화를 한 문자씩 천천히 출력
-        foreach (var ch in _dialog.dialog)
+        string words = _dialog.GetWords();
+        float printTime = _dialog.GetPrintTime();
+        if (printTime == 0) printTime = DEFAULT_PRINT_TIME;
+
+        foreach (var ch in words)
         {
             infoText.text += ch;
-            yield return new WaitForSeconds(_dialog.print_time);
+            yield return new WaitForSeconds(printTime);
         }
 
         // 넘기기 아이콘 출력
         next_object.SetActive(true);
+        ++currentIdx;
 
-        if (++currentIdx < currentDialogs.Length)
+        if (CheckDialog())
             // 아직 대화가 남음 => 변수 설정
             isDoneOne = true;
         else
@@ -205,6 +213,10 @@ public class InteractUICtrl : MonoBehaviour
         audio.clip = _audioClip;
         audio.Play();
     }
+
+
+    /// <summary> 대사가 아직 존재하는지에 대한 여부를 반환하는 함수이다. </summary>
+    private bool CheckDialog() => currentIdx < currentDialogs.Length && !string.IsNullOrEmpty(currentDialogs[currentIdx].GetWords());
 
 
     /// <summary>
