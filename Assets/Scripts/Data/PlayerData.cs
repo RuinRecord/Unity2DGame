@@ -55,7 +55,7 @@ public class PlayerData
         hasCaptures.Add(capture_code);
 
         // 사진에 등록된 이벤트를 실행
-        int eventCode = GameManager._data.captureDatas[capture_code].eventCode;
+        int eventCode = GameManager._data.captureDatas[capture_code].unLockEventCode;
         EventCtrl.instance.StartEvent(eventCode);
     }
 }

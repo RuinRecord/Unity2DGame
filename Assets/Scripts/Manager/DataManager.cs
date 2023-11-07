@@ -27,19 +27,19 @@ public class DataManager : MonoBehaviour
 
 
     /// <summary> 아이템 SO 데이터 </summary>
-    public ItemData[] itemDatas;
+    public ItemSO[] itemDatas;
 
 
     /// <summary> 사진 SO 데이터 </summary>
-    public CaptureData[] captureDatas;
+    public CaptureSO[] captureDatas;
 
 
     /// <summary> 조사 일지 SO 데이터 </summary>
-    public RecordData[] recordDatas;
+    public RecordSO[] recordDatas;
 
 
     /// <summary> 상호 작용 대사 SO 데이터 </summary>
-    public InteractionDialog[] interactionDialogDatas;
+    public InteractionDialogSO[] interactionDialogDatas;
 
 
     /// <summary> 게임 BGM 리소스 </summary>
@@ -52,15 +52,12 @@ public class DataManager : MonoBehaviour
 
     public void Init()
     {
-        itemDatas = LoadAll<ItemData>("ScriptObjects/Items");
-        captureDatas = LoadAll<CaptureData>("ScriptObjects/Captures");
-        recordDatas = LoadAll<RecordData>("ScriptObjects/Records");
-        interactionDialogDatas = LoadAll<InteractionDialog>("ScriptObjects/Dialogs/InteractionObjects");
+        itemDatas = LoadAll<ItemSO>("SO/Items");
+        captureDatas = LoadAll<CaptureSO>("SO/Captures");
+        recordDatas = LoadAll<RecordSO>("SO/Records");
+        interactionDialogDatas = LoadAll<InteractionDialogSO>("SO/Dialogs/InteractionObjects");
         BGMs = LoadAll<AudioClip>("Audios/BGM");
         SEs = LoadAll<AudioClip>("Audios/SE");
-
-        Debug.Log(captureDatas.Length);
-        Debug.Log(interactionDialogDatas.Length);
     }
 
 
@@ -75,9 +72,10 @@ public class DataManager : MonoBehaviour
 
         if (resource == null)
         {
-            Debug.Log($"Failed to load Resource : {path}");
+            Debug.LogError($"Failed to load Resource : {path}");
             return null;
         }
+        Debug.Log($"Load Resource '{path}' is Successful. [{typeof(T)} : {resource.Length}]");
 
         return resource;
     }

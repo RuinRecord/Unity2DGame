@@ -3,52 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary> 아이템의 정보를 담는 SO이다. </summary>
-[CreateAssetMenu(fileName = "ItemData", menuName = "Scriptable Object/ItemData")]
-public class ItemData : ScriptableObject
-{
-    public string item_name;
-    public string item_info;
-
-    /// <summary> 아이템 식별 번호 </summary>
-    public int itemCode;
-}
-
-
-/// <summary> 사진의 정보를 담는 SO이다. </summary>
-[CreateAssetMenu(fileName = "CaptureData", menuName = "Scriptable Object/CaptureData")]
-public class CaptureData : ScriptableObject
-{
-    public string capture_name;
-    public string capture_info;
-
-    /// <summary> 사진 식별 번호 </summary>
-    public int captureCode;
-
-    /// <summary> 해금되는 이벤트 식별 번호 </summary>
-    public int eventCode;
-}
-
-
-/// <summary> 조사일지의 정보를 담는 SO이다. </summary>
-[CreateAssetMenu(fileName = "RecordData", menuName = "Scriptable Object/RecordData")]
-public class RecordData : ScriptableObject
-{
-    public string record_name;
-    public string record_info;
-
-    /// <summary> 조사일지 식별 번호 </summary>
-    public int recordCode;
-}
-
-
-/// <summary> 상호작용 물체에 대한 대사 리스트 정보를 담는 SO이다. </summary>
-[CreateAssetMenu(fileName = "InteractionDialog", menuName = "Scriptable Object/InteractionDialog")]
-public class InteractionDialog : ScriptableObject
-{
-    public List<PlayerDialog> dialogs;
-}
-
 
 [Serializable]
 public struct PlayerDialog
