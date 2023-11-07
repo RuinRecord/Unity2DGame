@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: KakaoTalk_20231012_152757784_01_0
+      name: Bunker_2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55f303502db765342b4d42095aa4b07d
-      internalID: -295088332
+      spriteID: e34bb62ab66899f449648f222317ce2c
+      internalID: 50889323
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KakaoTalk_20231012_152757784_01_1
+      name: Bunker_2_1
       rect:
         serializedVersion: 2
         x: 64
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d78e6d13a0b68845a40da96f3a7aecf
-      internalID: -57509073
+      spriteID: 6f55b675415fdfd47990bacb1cb25ecc
+      internalID: -1141885392
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KakaoTalk_20231012_152757784_01_2
+      name: Bunker_2_2
       rect:
         serializedVersion: 2
         x: 128
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30c8c62a1a3d3f644b36d536a1f6ed1c
-      internalID: -1844066904
+      spriteID: 47311e968ee556b44bda76aa3bada334
+      internalID: -1160149061
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KakaoTalk_20231012_152757784_01_3
+      name: Bunker_2_3
       rect:
         serializedVersion: 2
         x: 192
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8cb0458a2f6792e4c85e20c259ee70be
-      internalID: 497090451
+      spriteID: e9c681019b94ecd448b1c3c4fdc57974
+      internalID: 1577297428
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KakaoTalk_20231012_152757784_01_4
+      name: Bunker_2_4
       rect:
         serializedVersion: 2
         x: 0
@@ -221,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 361a89f9a79ff5b40af79473c13acbba
-      internalID: 1724699961
+      spriteID: fa25949f3c4a1594db2b16305f92fbee
+      internalID: -969182324
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KakaoTalk_20231012_152757784_01_5
+      name: Bunker_2_5
       rect:
         serializedVersion: 2
         x: 64
@@ -242,14 +242,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c4e14c1b216e784dbf3868fbb9cd492
-      internalID: -289075735
+      spriteID: d08b98fecdae84e4182defcfbc86021c
+      internalID: -389389189
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KakaoTalk_20231012_152757784_01_6
+      name: Bunker_2_6
       rect:
         serializedVersion: 2
         x: 128
@@ -263,14 +263,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d569f3d164bce1449ba15702379e21ad
-      internalID: -144634703
+      spriteID: 3bed3be761d8ad84fbcdfcc6004b0226
+      internalID: -1639190006
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KakaoTalk_20231012_152757784_01_7
+      name: Bunker_2_7
       rect:
         serializedVersion: 2
         x: 192
@@ -284,14 +284,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7641d69d39aef04ea23875584729feb
-      internalID: 1913196993
+      spriteID: 60b55790f0dee224e942c3cf2499014d
+      internalID: 1083462901
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KakaoTalk_20231012_152757784_01_8
+      name: Bunker_2_8
       rect:
         serializedVersion: 2
         x: 0
@@ -305,14 +305,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09e29312a7cd0154096713e08da179b3
-      internalID: -446402862
+      spriteID: bae31f43040b083449d9faa31186be1d
+      internalID: -1848820262
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KakaoTalk_20231012_152757784_01_9
+      name: Bunker_2_9
       rect:
         serializedVersion: 2
         x: 64
@@ -326,14 +326,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff5252a5f73fe4445ab4a4631086389d
-      internalID: 1677362788
+      spriteID: b9c012ef3a45d5040842e6a165141e18
+      internalID: 1407600266
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KakaoTalk_20231012_152757784_01_10
+      name: Bunker_2_10
       rect:
         serializedVersion: 2
         x: 128
@@ -347,14 +347,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64c4f5ecb71db034ca9204c51eddbfa3
-      internalID: 1370110168
+      spriteID: 523a1c910c1c7f248b8e014fa2fbf7cc
+      internalID: 1973504443
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KakaoTalk_20231012_152757784_01_11
+      name: Bunker_2_11
       rect:
         serializedVersion: 2
         x: 192
@@ -368,8 +368,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2c9e177d479f344ea17084ec2fd7ae9
-      internalID: -302162469
+      spriteID: 8304859ad8c1ac44da42a4bc63f2a267
+      internalID: -575323526
       vertices: []
       indices: 
       edges: []
@@ -385,18 +385,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      KakaoTalk_20231012_152757784_01_0: -295088332
-      KakaoTalk_20231012_152757784_01_1: -57509073
-      KakaoTalk_20231012_152757784_01_10: 1370110168
-      KakaoTalk_20231012_152757784_01_11: -302162469
-      KakaoTalk_20231012_152757784_01_2: -1844066904
-      KakaoTalk_20231012_152757784_01_3: 497090451
-      KakaoTalk_20231012_152757784_01_4: 1724699961
-      KakaoTalk_20231012_152757784_01_5: -289075735
-      KakaoTalk_20231012_152757784_01_6: -144634703
-      KakaoTalk_20231012_152757784_01_7: 1913196993
-      KakaoTalk_20231012_152757784_01_8: -446402862
-      KakaoTalk_20231012_152757784_01_9: 1677362788
+      Bunker_2_0: 50889323
+      Bunker_2_1: -1141885392
+      Bunker_2_10: 1973504443
+      Bunker_2_11: -575323526
+      Bunker_2_2: -1160149061
+      Bunker_2_3: 1577297428
+      Bunker_2_4: -969182324
+      Bunker_2_5: -389389189
+      Bunker_2_6: -1639190006
+      Bunker_2_7: 1083462901
+      Bunker_2_8: -1848820262
+      Bunker_2_9: 1407600266
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

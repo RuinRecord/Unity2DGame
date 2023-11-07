@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9db115f7612f572419263a9404947bdb, type: 3}
+  m_Name: "02.R_0_\uC0AC\uB2E4\uB9AC"
+  m_EditorClassIdentifier: 
+  dialogs:
+  - Player_M_dialog:
+      audioClip: {fileID: 0}
+      words: "\uC0AC\uB2E4\uB9AC\uAC00 \uB193\uC5EC \uC788\uB2E4."
+      print_time: 0
+    Player_W_dialog:
+      audioClip: {fileID: 0}
+      words: "\uB0A1\uC740 \uB098\uBB34\uB85C \uB9CC\uB4E4\uC5B4\uC9C4 \uC0AC\uB2E4\uB9AC\uB2E4."
+      print_time: 0
