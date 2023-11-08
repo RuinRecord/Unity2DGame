@@ -6,29 +6,15 @@ using UnityEngine.UI;
 /// <summary>
 /// 플레이어 상태 관련 UI 컨트롤러 클래스이다.
 /// </summary>
-public class PlayerStateUI : MonoBehaviour
+public class PlayerUICtrl : MonoBehaviour
 {
-    /// <summary> PlayerStateUI 싱글톤 </summary>
-    private static PlayerStateUI Instance;
-    public static PlayerStateUI instance
-    {
-        set
-        {
-            if (Instance == null)
-                Instance = value;
-        }
-        get { return Instance; }
-    }
-
-
     /// <summary> 플레이어 HP 및 MP 출력용 UI 이미지 </summary>
     [SerializeField]
     private Image HP_fillImage;
 
-
-    private void Awake()
+    public void Init()
     {
-        instance = this;
+        
     }
 
 

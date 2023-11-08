@@ -2,29 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// 출력 관련 UI 컨트롤러 클래스이다.
-/// </summary>
-public class PrintUICtrl : MonoBehaviour
+public class CaptureUICtrl : MonoBehaviour
 {
     private const float CAPTURE_CAMERA_IN_TIME = 0.5f;
 
     /// <summary> 조사 상호작용 오브젝트 생성 위치 조정 벡터 </summary>
-    private static Vector3 capture_upVec = Vector3.up * 0.75f;
+    private static Vector3 capture_upVec = Vector3.up * 1.6f;
 
 
-    /// <summary> PrintUICtrl 싱글톤 </summary>
-    private static PrintUICtrl Instance;
-    public static PrintUICtrl instance
+    public void Init()
     {
-        set 
-        {
-            if (Instance == null)
-                Instance = value; 
-        }
-        get { return Instance; }
-    }
+        captureCameraAnim.gameObject.SetActive(true);
 
+        CaptureInfoOff();
+    }
 
     /// <summary> 조사 오브젝트와 충돌할 때 나오는 UI 이미지 </summary>
     [SerializeField]
@@ -40,28 +31,13 @@ public class PrintUICtrl : MonoBehaviour
     private Animation captureCameraAnim;
 
 
-    private void Awake()
-    {
-        instance = this;
-    }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        captureCameraAnim.gameObject.SetActive(true);
-
-        CaptureInfoOff();
-    }
-
-
     void Update()
     {
-        if (selected_captureObject != null) 
+        if (selected_captureObject != null)
         {
             // 현재 선택된 조사 가능 물체 존재
             // -> 실시간으로 이미지 UI를 물체 위에 위치 시키기 (카메라가 이동하기 때문에 조정)
-            captureInfo.position = Camera.main.WorldToScreenPoint(selected_captureObject.transform.position + capture_upVec);
+            captureInfo.position = Camera.main.WorldToScreenPoint(PlayerCtrl.instance.transform.position + capture_upVec);
         }
     }
 

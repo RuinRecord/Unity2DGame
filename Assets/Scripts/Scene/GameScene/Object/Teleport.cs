@@ -28,7 +28,7 @@ public class Teleport : MonoBehaviour
 
         // Fade 애니메이션과 함께 목적지로 이동
         PlayerTag.instance.isCanTag = false;
-        InteractUICtrl.instance.PlayAudio(audioClip);
+        UIManager._interactUI.PlayAudio(audioClip);
         StartCoroutine(GameManager._change.switchPos(destination));
     }
 

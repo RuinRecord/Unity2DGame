@@ -142,7 +142,7 @@ public class PlayerCtrl : MonoBehaviour
         set 
         { 
             CUR_HP = value;
-            PlayerStateUI.instance.SetPlayerHP();
+            UIManager._playerUI.SetPlayerHP();
         }
         get { return CUR_HP; }
     }
@@ -271,7 +271,7 @@ public class PlayerCtrl : MonoBehaviour
                     {
                         // 있으면 상호작용 대화 시스템 시작
                         PlayerDialog[] dialogs = hit.transform.GetComponent<InteractionObject>().dialogData.dialogs.ToArray();
-                        InteractUICtrl.instance.StartDialog(dialogs);
+                        UIManager._interactUI.StartDialog(dialogs);
                     }
                 }
             }
@@ -339,7 +339,7 @@ public class PlayerCtrl : MonoBehaviour
         if (PlayerTag.isTagOn || playerType != PlayerTag.playerType)
             return false; // 현재 태그 선택 중이거나, 현재 태그된 플레이어가 아니면 동작 불가
 
-        if (InteractUICtrl.instance.isInteractOn)
+        if (UIManager._interactUI.isInteractOn)
             return false; // 현재 상호작용 대화 시스템이 작동 중이면 동작 불가
 
         return true;
@@ -615,7 +615,7 @@ public class PlayerCtrl : MonoBehaviour
         state = PlayerState.CAPTURE;
 
         // 카메라 UI 켜지도록 코루틴 함수 실행
-        StartCoroutine(PrintUICtrl.instance.CaptureCameraIn());
+        StartCoroutine(UIManager._captureUI.CaptureCameraIn());
     }
 
 
@@ -630,6 +630,6 @@ public class PlayerCtrl : MonoBehaviour
         PlayerTag.instance.isCanTag = true;
 
         // 카메라 UI 꺼지도록 코루틴 함수 실행
-        StartCoroutine(PrintUICtrl.instance.CaptureCameraOut());
+        StartCoroutine(UIManager._captureUI.CaptureCameraOut());
     }
 }

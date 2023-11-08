@@ -43,7 +43,7 @@ public class CaptureObject : MonoBehaviour
             PlayerCtrl.instance.isCanCapture = true;
 
             // 조사 UI 이미지 켜기
-            PrintUICtrl.instance.CaptureInfoOn(this);
+            UIManager._captureUI.CaptureInfoOn(this);
         }
     }
 
@@ -59,7 +59,7 @@ public class CaptureObject : MonoBehaviour
             PlayerCtrl.instance.isCanCapture = false;
 
             // 조사 UI 이미지 끄기
-            PrintUICtrl.instance.CaptureInfoOff();
+            UIManager._captureUI.CaptureInfoOff();
         }
     }
 }

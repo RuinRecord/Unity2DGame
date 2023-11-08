@@ -5,19 +5,6 @@ using TMPro;
 
 public class InteractUICtrl : MonoBehaviour
 {
-    static private InteractUICtrl Instance;
-
-    static public InteractUICtrl instance
-    {
-        set
-        {
-            if (Instance == null)
-                Instance = value;
-        }
-
-        get { return Instance; }
-    }
-
     private const string FADE_IN_ANIM = "Interact_In";
 
     private const string FADE_OUT_ANIM = "Interact_Out";
@@ -71,9 +58,9 @@ public class InteractUICtrl : MonoBehaviour
     private bool isDoneAll;
 
 
-    private void Awake()
+    public void Init()
     {
-        instance = this;
+        
     }
 
 
