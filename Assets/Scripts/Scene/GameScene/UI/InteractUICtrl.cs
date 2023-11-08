@@ -160,12 +160,11 @@ public class InteractUICtrl : MonoBehaviour
 
         // 최근 상호작용 메세지 및 변수 설정
         currentDialogs = _dialogs;
-
-        isInteractOn = true;
         currentIdx = 0;
 
         // 출력 시작
         currentInfoCo = StartCoroutine(ShowInfoText(currentDialogs[currentIdx]));
+        StartCoroutine(DelayedSetInteractOn(true));
     }
 
 
@@ -187,7 +186,10 @@ public class InteractUICtrl : MonoBehaviour
         // 대화를 한 문자씩 천천히 출력
         string words = _dialog.GetWords();
         float printTime = _dialog.GetPrintTime();
-        if (printTime == 0) printTime = DEFAULT_PRINT_TIME;
+
+        // 출력 속도 체크
+        if (printTime == 0f) 
+            printTime = DEFAULT_PRINT_TIME;
 
         foreach (var ch in words)
         {
@@ -220,12 +222,12 @@ public class InteractUICtrl : MonoBehaviour
 
 
     /// <summary>
-    /// 0.1초 뒤에 isInteractOn 변수를 후처리하는 코루틴 함수이다.
+    /// 1 프레임 뒤에 isInteractOn 변수를 후처리하는 코루틴 함수이다.
     /// </summary>
     /// <param name="_isOn"></param>
     IEnumerator DelayedSetInteractOn(bool _isOn)
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForEndOfFrame();
 
         isInteractOn = _isOn;
     }
