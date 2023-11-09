@@ -39,6 +39,9 @@ public class MapCtrl : MonoBehaviour
         get { return Instance; }
     }
 
+    /// <summary> 이동 불가능한 오브젝트 레이어 마스트 </summary>
+    public LayerMask canNotMove_layerMask;
+
 
     /// <summary> 모든 타일맵 렌더러를 탐색하기 위한 부모 오브젝트 </summary>
     [SerializeField]
@@ -78,6 +81,13 @@ public class MapCtrl : MonoBehaviour
         if (spritesList.Count > 0)
             SetDepthAllofMapObjects();
     }
+
+
+    /// <summary>
+    /// '_destination' 월드 위치가 막혀있는지 체크하고 반환합니다.
+    /// </summary>
+    /// <param name="_destination">도착 위치 벡터</param>
+    public bool CheckValidArea(Vector2 _destination) => !Physics2D.Raycast(_destination, Vector2.up, 0.25f, canNotMove_layerMask);
 
 
     /// <summary>

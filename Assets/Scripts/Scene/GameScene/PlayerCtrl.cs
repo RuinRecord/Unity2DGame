@@ -74,10 +74,6 @@ public class PlayerCtrl : MonoBehaviour
 
     private PlayerType playerType;
 
-    /// <summary> 이동 불가능한 오브젝트 레이어 마스트 </summary>
-    [SerializeField]
-    private LayerMask canNotMove_layerMask;
-
     /// <summary> 현재 플레이어와 접촉한 포탈 (없으면 NULL) </summary>
     public Teleport teleport;
 
@@ -222,7 +218,7 @@ public class PlayerCtrl : MonoBehaviour
             {
                 // 이동 방향키 눌림
                 Vector2Int destination = currentPos + dir;
-                bool isValid = CheckValidArea(destination); // 이동 가능 지역인가?
+                bool isValid = MapCtrl.instance.CheckValidArea(destination); // 이동 가능 지역인가?
 
                 // 클릭한 위치에 움직일 수 있는 물체 체크
                 movingObject = CheckMovingObject(destination);
@@ -462,14 +458,6 @@ public class PlayerCtrl : MonoBehaviour
         animator.SetFloat("DirX", dir.normalized.x);
         animator.SetFloat("DirY", dir.normalized.y);
     }
-    
-
-    /// <summary>
-    /// '_destination' 월드 위치 벡터로 플레이어가 이동한지 체크하고 반환합니다.
-    /// </summary>
-    /// <param name="_destination">도착 위치 벡터</param>
-    /// <returns>이동 가능한지에 대한 여부</returns>
-    private bool CheckValidArea(Vector2 _destination) => !Physics2D.Raycast(_destination, Vector2.up, 0.25f, canNotMove_layerMask);
 
 
     /// <summary>
@@ -560,7 +548,7 @@ public class PlayerCtrl : MonoBehaviour
         Vector2 dir_half = new Vector2(dir.x * 0.51f, dir.y * 0.51f);
 
         // 회피 방향으로 장애물이 있는지 체크
-        RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position + dir_half, dir, EVASION_FORCE, canNotMove_layerMask);
+        RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position + dir_half, dir, EVASION_FORCE, MapCtrl.instance.canNotMove_layerMask);
 
         // 장애물이 있다면 거리를 조절
         if (hit) distance = Mathf.RoundToInt(hit.distance);
