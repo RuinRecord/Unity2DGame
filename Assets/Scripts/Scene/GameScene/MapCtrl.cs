@@ -104,6 +104,21 @@ public class MapCtrl : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 'transform'을 가진 Render를 spritesList에서 찾아 반환하는 함수이다.
+    /// </summary>
+    /// <param name="_transform"></param>
+    /// <returns></returns>
+    public Render FindRender(Transform _transform)
+    {
+        foreach (var render in spritesList)
+        {
+            if (render.transform == _transform)
+                return render;
+        }
+        return null;
+    }
+
 
     /// <summary>
     /// 'transform'을 가진 오브젝트를 spritesList에 저장하는 함수이다.
@@ -116,12 +131,12 @@ public class MapCtrl : MonoBehaviour
 
 
     /// <summary>
-    /// 'render'을 가진 오브젝트를 spritesList에 삭제하는 함수이다.
+    /// '_transform'을 가진 오브젝트를 spritesList에 삭제하는 함수이다.
     /// </summary>
-    /// <param name="_transform">삭제할 render</param>
-    public void RemoveSprite(Render _render)
+    /// <param name="_transform">삭제할 오브젝트 Transform</param>
+    public void RemoveSprite(Transform _transform)
     {
-        if (!spritesList.Remove(_render))
+        if (!spritesList.Remove(FindRender(_transform)))
             Debug.LogError("MapCtrl | RemoveSprite Error!");
     }
 }

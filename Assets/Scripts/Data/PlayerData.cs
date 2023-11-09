@@ -40,12 +40,29 @@ public class PlayerData
     }
 
 
-    /// <summary>
-    /// 'capture_code'에 해당하는 사진을 저장하는 함수이다.
-    /// </summary>
+    /// <summary> 'item_code'에 해당하는 아이템을 저장하는 함수이다. </summary>
+    /// <param name="item_code">아이템 식별 번호</param>
+    public void AddItem(int item_code)
+    {
+        if (item_code < 0 || item_code >= DataManager.itemNum)
+        {
+            Debug.LogError("아이템 획득 Error!! : 올바르지 못한 아이템 코드");
+            return;
+        }
+
+        hasItems.Add(item_code);
+    }
+
+    /// <summary> 'capture_code'에 해당하는 사진을 저장하는 함수이다. </summary>
     /// <param name="capture_code">조사 이벤트 식별 번호</param>
     public void AddCapture(int capture_code)
     {
+        if (capture_code < 0 || capture_code >= DataManager.captureNum)
+        {
+            Debug.LogError("사진 획득 Error!! : 올바르지 못한 사진 코드");
+            return;
+        }
+
         if (hasCaptures.IndexOf(capture_code) != -1)
         {
             Debug.Log("이미 확인된 조사 이벤트");
@@ -53,9 +70,18 @@ public class PlayerData
         }
 
         hasCaptures.Add(capture_code);
+    }
 
-        // 사진에 등록된 이벤트를 실행
-        int eventCode = GameManager._data.captureDatas[capture_code].unLockEventCode;
-        EventCtrl.instance.StartEvent(eventCode);
+    /// <summary> 'record_code'에 해당하는 조사일지를 저장하는 함수이다. </summary>
+    /// <param name="record_code">조사일지 식별 번호</param>
+    public void AddRecord(int record_code)
+    {
+        if (record_code < 0 || record_code >= DataManager.recordNum)
+        {
+            Debug.LogError("조사일지 획득 Error!! : 올바르지 못한 조사일지 코드");
+            return;
+        }
+
+        hasRecords.Add(record_code);
     }
 }

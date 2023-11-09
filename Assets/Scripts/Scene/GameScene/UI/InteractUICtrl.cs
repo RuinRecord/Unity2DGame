@@ -34,6 +34,10 @@ public class InteractUICtrl : MonoBehaviour
     private GameObject next_object;
 
 
+    /// <summary> 최근 대화 시스템에서 다루던 상호작용 오브젝트 </summary>
+    private InteractionObject currentObject;
+
+
     /// <summary> 최근 대화 시스템에서 다루던 대화 리스트 </summary>
     private PlayerDialog[] currentDialogs;
 
@@ -59,13 +63,6 @@ public class InteractUICtrl : MonoBehaviour
 
 
     public void Init()
-    {
-        
-    }
-
-
-    // Start is called before the first frame update
-    void Start()
     {
         currentIdx = 0;
         currentInfoCo = null;
@@ -99,7 +96,7 @@ public class InteractUICtrl : MonoBehaviour
                     // 넘기기 아이콘 출력
                     next_object.SetActive(true);
 
-                    if (CheckDialog())
+                    if (CheckLeftDialog())
                         // 아직 대화가 남음 => 변수 설정
                         isDoneOne = true; 
                     else
@@ -110,10 +107,7 @@ public class InteractUICtrl : MonoBehaviour
                 {
                     // 하나의 대화가 모두 끝났다면
 
-                    // 넘기기 아이콘 출력
-                    next_object.SetActive(true);
-
-                    if (CheckDialog())
+                    if (CheckLeftDialog())
                         // 아직 대화가 남음 => 다음 대화 출력
                         currentInfoCo = StartCoroutine(ShowInfoText(currentDialogs[currentIdx])); 
                     else
@@ -125,6 +119,7 @@ public class InteractUICtrl : MonoBehaviour
             {
                 // 모든 대화가 끝났다면 => 창 닫기
                 isDoneOne = isDoneAll = false;
+                currentObject = null;
                 next_object.SetActive(false);
                 StartCoroutine(DelayedSetInteractOn(false));
 
@@ -136,17 +131,39 @@ public class InteractUICtrl : MonoBehaviour
 
 
     /// <summary>
-    /// 대화 시스템을 시작하는 함수이다.
+    /// 상호작용 오브젝트로 대화 시스템을 시작하는 함수이다.
     /// </summary>
-    /// <param name="_dialogs">출력될 모든 대화 리스트</param>
-    public void StartDialog(PlayerDialog[] _dialogs)
+    /// <param name="interactionObject">출력을 수행할 상호작용 오브젝트</param>
+    public void StartDialog(InteractionObject interactionObject)
     {
         // 대화창이 켜지는 애니메이션 수행
         anim.Play(FADE_IN_ANIM);
         anim[FADE_IN_ANIM].speed = 1f / FADE_TIME;
 
         // 최근 상호작용 메세지 및 변수 설정
-        currentDialogs = _dialogs;
+        currentObject = interactionObject;
+        currentDialogs = currentObject.GetDialogs().ToArray();
+        currentIdx = 0;
+
+        // 출력 시작
+        currentInfoCo = StartCoroutine(ShowInfoText(currentDialogs[currentIdx]));
+        StartCoroutine(DelayedSetInteractOn(true));
+    }
+
+
+    /// <summary>
+    /// 대사로 대화 시스템을 시작하는 함수이다.
+    /// </summary>
+    /// <param name="dialogs">출력을 수행할 대사</param>
+    public void StartDialog(PlayerDialog[] dialogs)
+    {
+        // 대화창이 켜지는 애니메이션 수행
+        anim.Play(FADE_IN_ANIM);
+        anim[FADE_IN_ANIM].speed = 1f / FADE_TIME;
+
+        // 최근 상호작용 메세지 및 변수 설정
+        currentObject = null;
+        currentDialogs = dialogs;
         currentIdx = 0;
 
         // 출력 시작
@@ -170,6 +187,20 @@ public class InteractUICtrl : MonoBehaviour
         if (audioClip != null)
             PlayAudio(audioClip);
 
+        // 현재 여주라면
+        if (PlayerTag.playerType.Equals(PlayerType.WOMEN))
+        {
+            // 아이템 체크 및 획득
+            if (CheckDropItem())
+            {
+                currentObject.DropItem();
+
+                // 획득 사운드 출력
+                var clip = GameManager._data.GetSE(3);
+                PlayAudio(clip);
+            }
+        }
+
         // 대화를 한 문자씩 천천히 출력
         string words = _dialog.GetWords();
         float printTime = _dialog.GetPrintTime();
@@ -188,7 +219,7 @@ public class InteractUICtrl : MonoBehaviour
         next_object.SetActive(true);
         ++currentIdx;
 
-        if (CheckDialog())
+        if (CheckLeftDialog())
             // 아직 대화가 남음 => 변수 설정
             isDoneOne = true;
         else
@@ -205,7 +236,11 @@ public class InteractUICtrl : MonoBehaviour
 
 
     /// <summary> 대사가 아직 존재하는지에 대한 여부를 반환하는 함수이다. </summary>
-    private bool CheckDialog() => currentIdx < currentDialogs.Length && !string.IsNullOrEmpty(currentDialogs[currentIdx].GetWords());
+    private bool CheckLeftDialog() => currentIdx < currentDialogs.Length && !string.IsNullOrEmpty(currentDialogs[currentIdx].GetWords());
+
+
+    /// <summary> 아이템 획득이 가능한지 체크하는 함수이다. </summary>
+    private bool CheckDropItem() => currentIdx == currentDialogs.Length - 1 && currentObject != null && currentObject.hasItem;
 
 
     /// <summary>

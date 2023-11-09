@@ -79,8 +79,12 @@ public class CaptureUICtrl : MonoBehaviour
         // 애니메이션 시작 (여주인공의 사진 촬영 애니메이션이 끝나고 카메라 UI 애니메이션 등장)
         captureCameraAnim.Play("Camera_In");
 
-        // 조사 이벤트 등록
+        // 인벤토리에 등록
         GameManager._data.player.AddCapture(selected_captureObject.code);
+
+        // 사진에 등록된 이벤트를 실행
+        int eventCode = GameManager._data.captureDatas[selected_captureObject.code].unLockEventCode;
+        EventCtrl.instance.StartEvent(eventCode);
 
         // 조사 조작 가능
         PlayerCtrl.instance.isCanCapture = true;

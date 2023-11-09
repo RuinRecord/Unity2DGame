@@ -267,8 +267,8 @@ public class PlayerCtrl : MonoBehaviour
                     if (hit)
                     {
                         // 있으면 상호작용 대화 시스템 시작
-                        PlayerDialog[] dialogs = hit.transform.GetComponent<InteractionObject>().dialogData.dialogs.ToArray();
-                        UIManager._interactUI.StartDialog(dialogs);
+                        InteractionObject @object = hit.transform.GetComponent<InteractionObject>();
+                        UIManager._interactUI.StartDialog(@object);
                     }
                 }
             }

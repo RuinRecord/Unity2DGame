@@ -6,5 +6,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "InteractionDialogSO", menuName = "Scriptable Object/InteractionDialogSO")]
 public class InteractionDialogSO : ScriptableObject
 {
+    /// <summary> 상호작용 플레이어 대사 </summary>
     public List<PlayerDialog> dialogs;
+
+    /// <summary> 상호작용을 통한 아이템 획득 </summary>
+    /// 만약 Null 이라면 아이템 획득이 없는 상호작용
+    public ItemSO itemSO;
 }
