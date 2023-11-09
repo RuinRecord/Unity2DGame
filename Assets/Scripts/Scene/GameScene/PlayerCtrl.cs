@@ -224,22 +224,19 @@ public class PlayerCtrl : MonoBehaviour
                 Vector2Int destination = currentPos + dir;
                 bool isValid = CheckValidArea(destination); // 이동 가능 지역인가?
 
-                // 만약 남주인공이라면 클릭한 위치에 움직일 수 있는 물체 체크
-                if (playerType.Equals(PlayerType.MEN))
+                // 클릭한 위치에 움직일 수 있는 물체 체크
+                movingObject = CheckMovingObject(destination);
+                if (movingObject != null)
                 {
-                    movingObject = CheckMovingObject(destination);
-                    if (movingObject != null)
-                    {
-                        mode = PlayerMode.PUSH;
-                        movingObject.SetDirection(GetDirection());
-                    }
-                    else
-                    {
-                        // 움직이는 물체 외 클릭
-                        // => 밀기 모드였다면 해제
-                        if (mode.Equals(PlayerMode.PUSH))
-                            mode = PlayerMode.DEFAULT;
-                    }
+                    mode = PlayerMode.PUSH;
+                    movingObject.SetDirection(GetDirection());
+                }
+                else
+                {
+                    // 움직이는 물체 외 클릭
+                    // => 밀기 모드였다면 해제
+                    if (mode.Equals(PlayerMode.PUSH))
+                        mode = PlayerMode.DEFAULT;
                 }
 
                 // 이동
@@ -277,16 +274,25 @@ public class PlayerCtrl : MonoBehaviour
             }
             else if(mode.Equals(PlayerMode.PUSH))
             {
-                // 물건 밀기
-                if (movingObject == null)
+                if (playerType.Equals(PlayerType.MEN))
                 {
-                    // 움직이는 오브젝트가 Null이면 오류 반환
-                    Debug.LogError("Error!! MovingObject is null?!");
-                    return;
-                }
+                    // 물건 밀기
+                    if (movingObject == null)
+                    {
+                        // 움직이는 오브젝트가 Null이면 오류 반환
+                        Debug.LogError("Error!! MovingObject is null?!");
+                        return;
+                    }
 
-                // 물체 이동
-                movingObject.Push();
+                    // 물체 이동
+                    movingObject.Push();
+                }
+                else if (playerType.Equals(PlayerType.WOMEN))
+                {
+                    // 상호작용 대사
+                    PlayerDialog[] dialogs = movingObject.player_m_dialogs.ToArray();
+                    UIManager._interactUI.StartDialog(dialogs);
+                }
             }
         }
 

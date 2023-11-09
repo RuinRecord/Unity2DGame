@@ -2604,7 +2604,7 @@ GameObject:
   - component: {fileID: 306254227}
   - component: {fileID: 306254228}
   m_Layer: 0
-  m_Name: CaptureInfo
+  m_Name: CaptureInfoUIObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2628,7 +2628,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 17.5, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &306254228
@@ -4418,6 +4418,16 @@ MonoBehaviour:
   down_gap: {x: 0, y: -0.5}
   right_gap: {x: 0.75, y: 0}
   left_gap: {x: -0.75, y: 0}
+  player_m_dialogs:
+  - Player_M_dialog:
+      audioClip: {fileID: 0}
+      words: 
+      print_time: 0
+    Player_W_dialog:
+      audioClip: {fileID: 0}
+      words: "\uC6C0\uC9C1\uC77C \uC218 \uC788\uC744 \uAC83 \uAC19\uC740 \uC0C1\uC790\uAC00
+        \uC788\uB2E4."
+      print_time: 0
 --- !u!82 &806668341
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4594,7 +4604,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -50, y: 0}
-  m_SizeDelta: {x: 80, y: 80}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &821582498
 MonoBehaviour:
@@ -6373,9 +6383,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1406312969}
+  - component: {fileID: 1406312971}
   - component: {fileID: 1406312970}
   m_Layer: 0
-  m_Name: Investigating_UI
+  m_Name: Capture_UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6419,6 +6430,20 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &1406312971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406312968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcdf3ab27b5113d4bb2e7ea24e000f6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  captureInfo: {fileID: 306254227}
+  captureCameraAnim: {fileID: 1406312970}
 --- !u!1 &1450115476
 GameObject:
   m_ObjectHideFlags: 0
@@ -7507,7 +7532,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 35, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1606180841
@@ -7532,8 +7557,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC870\uC0AC"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d6e1dbeefaaefff4585c870b4d443765, type: 2}
-  m_sharedMaterial: {fileID: 1362586212420810065, guid: d6e1dbeefaaefff4585c870b4d443765, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6ca7bac6a757b6e4ebb58b0167b95984, type: 2}
+  m_sharedMaterial: {fileID: -1314494500939287186, guid: 6ca7bac6a757b6e4ebb58b0167b95984, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7557,14 +7582,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -8022,8 +8047,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18d8aef30c37f3446ae105fb5cf68bb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  captureInfo: {fileID: 306254227}
-  captureCameraAnim: {fileID: 1406312970}
+  playerUICtrl: {fileID: 1801629700}
+  interactUICtrl: {fileID: 2094210272}
+  captureUICtrl: {fileID: 1406312971}
 --- !u!1 &1727543971
 GameObject:
   m_ObjectHideFlags: 0
@@ -9676,7 +9702,7 @@ GameObject:
   - component: {fileID: 1801629699}
   - component: {fileID: 1801629700}
   m_Layer: 0
-  m_Name: PlayerState
+  m_Name: PlayerState_UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
