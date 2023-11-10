@@ -105,5 +105,6 @@ public class CaptureUICtrl : MonoBehaviour
         // 이동 및 조사 조작 가능
         PlayerCtrl.instance.isCanMove = true;
         PlayerCtrl.instance.isCanCapture = true;
+        PlayerCtrl.instance.isCanInven = true;
     }
 }

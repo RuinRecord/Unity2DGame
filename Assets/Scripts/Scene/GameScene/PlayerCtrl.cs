@@ -113,7 +113,7 @@ public class PlayerCtrl : MonoBehaviour
 
     /// <summary> 플레이어가 해당 기능을 사용할 수 있는 상태인가? </summary>
     public bool isCanInteract, isCanMove, isCanAttack, isCanEvasion;
-    public bool isCanCapture, isCameraOn;
+    public bool isCanCapture, isCameraOn, isCanInven;
 
     /// <summary> 플레이어가 현재 움직이는 중인가? </summary>
     public bool isMoving;
@@ -167,7 +167,7 @@ public class PlayerCtrl : MonoBehaviour
         state = PlayerState.IDLE;
         teleport = null;
 
-        isCanInteract = isCanMove = isCanAttack = isCanEvasion = true;
+        isCanInteract = isCanMove = isCanAttack = isCanEvasion = isCanInven = true;
         isCanCapture = isCameraOn = isMoving = false;
         max_HP = cur_HP = 100f;
         moveSpeed = WALK_SPEED;
@@ -322,6 +322,13 @@ public class PlayerCtrl : MonoBehaviour
                 // 카메라 끄기
                 else
                     EndCapture();
+            }
+
+            // 인벤토리 ON & OFF
+            if (isCanInven && Input.GetKeyDown(KeyCode.E))
+            {
+                UIManager._invenUI.OnOffInven();
+                isCanMove = isCanCapture = isCanInteract = !UIManager._invenUI.isOnInven;
             }
         }
     }
@@ -603,7 +610,7 @@ public class PlayerCtrl : MonoBehaviour
     private void StartCapture()
     {
         // 제자리에 서도록 만듬
-        isCanMove = isCanCapture = false;
+        isCanMove = isCanCapture = isCanInven = false;
         isCameraOn = true;
         PlayerTag.instance.isCanTag = false;
         state = PlayerState.CAPTURE;
@@ -619,7 +626,7 @@ public class PlayerCtrl : MonoBehaviour
     public void EndCapture()
     {
         state = PlayerState.IDLE;
-        isCanMove = isCanCapture = false;
+        isCanMove = isCanCapture = isCanInven = false;
         isCameraOn = false;
         PlayerTag.instance.isCanTag = true;
 

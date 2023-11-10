@@ -2,12 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// 출력 관련 UI 컨트롤러 클래스이다.
-/// </summary>
 public class UIManager : MonoBehaviour
 {
-    /// <summary> UIManager 싱글톤 </summary>
     private static UIManager Instance;
     public static UIManager instance
     {
@@ -28,6 +24,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private CaptureUICtrl captureUICtrl;
     public static CaptureUICtrl _captureUI => instance.captureUICtrl;
 
+    [SerializeField] private InvenUICtrl invenUICtrl;
+    public static InvenUICtrl _invenUI => instance.invenUICtrl;
+
 
     private void Awake()
     {
@@ -36,5 +35,6 @@ public class UIManager : MonoBehaviour
         _playerUI.Init();
         _interactUI.Init();
         _captureUI.Init();
+        _invenUI.Init();
     }
 }
