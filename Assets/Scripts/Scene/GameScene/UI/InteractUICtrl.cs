@@ -125,6 +125,9 @@ public class InteractUICtrl : MonoBehaviour
 
                 anim.Play(FADE_OUT_ANIM);
                 anim[FADE_OUT_ANIM].speed = 1f / FADE_TIME;
+
+                // 태그 기능 해제
+                PlayerTag.instance.isCanTag = true;
             }
         }
     }
@@ -136,6 +139,9 @@ public class InteractUICtrl : MonoBehaviour
     /// <param name="interactionObject">출력을 수행할 상호작용 오브젝트</param>
     public void StartDialog(InteractionObject interactionObject)
     {
+        // 태그 기능 잠금
+        PlayerTag.instance.isCanTag = false;
+
         // 대화창이 켜지는 애니메이션 수행
         anim.Play(FADE_IN_ANIM);
         anim[FADE_IN_ANIM].speed = 1f / FADE_TIME;
@@ -157,6 +163,9 @@ public class InteractUICtrl : MonoBehaviour
     /// <param name="dialogs">출력을 수행할 대사</param>
     public void StartDialog(PlayerDialog[] dialogs)
     {
+        // 태그 기능 잠금
+        PlayerTag.instance.isCanTag = false;
+
         // 대화창이 켜지는 애니메이션 수행
         anim.Play(FADE_IN_ANIM);
         anim[FADE_IN_ANIM].speed = 1f / FADE_TIME;
