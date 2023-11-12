@@ -42,6 +42,8 @@ public class InvenUICtrl : MonoBehaviour
         get { return ContentIndex; }
     }
 
+
+
     [Header("[ Item Fields ]")]
     [SerializeField]
     private GameObject itemSlot;
@@ -57,6 +59,7 @@ public class InvenUICtrl : MonoBehaviour
 
     [SerializeField]
     private TMP_Text itemInfoText;
+
 
 
     [Header("[ Gallery Fields ]")]
@@ -76,6 +79,22 @@ public class InvenUICtrl : MonoBehaviour
     private TMP_Text captureCardText;
 
     private bool isCanTouchCard;
+
+
+
+    [Header("[ Record Fields ]")]
+    [SerializeField]
+    private GameObject recordSlot;
+
+    [SerializeField]
+    private Transform recordContentTr;
+
+    [SerializeField]
+    private GameObject recordInfoOb;
+
+    [SerializeField]
+    private TMP_Text recordInfoText;
+
 
 
     public void Init()
@@ -107,6 +126,7 @@ public class InvenUICtrl : MonoBehaviour
 
         itemInfoOb.SetActive(false);
         galleryAnim.gameObject.SetActive(false);
+        recordInfoOb.SetActive(false);
 
         switch (index)
         {
@@ -165,7 +185,19 @@ public class InvenUICtrl : MonoBehaviour
 
     private void SetRecordContent()
     {
+        var pre_objects = recordContentTr.GetComponentsInChildren<UIBox>();
+        foreach (var ob in pre_objects)
+            Destroy(ob.gameObject);
 
+        List<int> records = GameManager._data.player.hasRecords;
+        foreach (var recordCode in records)
+        {
+            UIBox uIBox = Instantiate(recordSlot, recordContentTr).GetComponent<UIBox>();
+
+            uIBox.tmp_texts[0].SetText(GameManager._data.recordDatas[recordCode].record_name);
+            uIBox.button.onClick.AddListener(OnRecordSlot);
+            uIBox.index = recordCode;
+        }
     }
 
     private void OnItemSlot()
@@ -204,6 +236,20 @@ public class InvenUICtrl : MonoBehaviour
 
         captureCardImage.sprite = itemSprite;
         captureCardText.SetText($"{captureData.capture_info}");
+    }
+
+    private void OnRecordSlot()
+    {
+        UIBox uiBox = CheckUIBoxOnClick();
+        if (uiBox == null)
+            return;
+
+        recordInfoOb.SetActive(true);
+
+        int recordCode = uiBox.index;
+        RecordSO recordData = GameManager._data.recordDatas[recordCode];
+
+        itemInfoText.SetText($"{recordData.record_name}\n\n <size=70%>{recordData.record_info}");
     }
 
     public void OnCaptureCard()
