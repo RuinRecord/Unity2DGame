@@ -9,6 +9,8 @@ public class CaptureSO : ScriptableObject
     public string capture_name;
     public string capture_info;
 
+    public Sprite capture_sprite;
+
     /// <summary> 사진 식별 번호 </summary>
     public int captureCode;
 

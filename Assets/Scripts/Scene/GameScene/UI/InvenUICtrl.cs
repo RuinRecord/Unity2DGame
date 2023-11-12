@@ -11,6 +11,12 @@ public class InvenUICtrl : MonoBehaviour
 
     private readonly float itemInfoImageSize = 350;
 
+    private readonly float galleryAnimTime = 0.75f;
+
+    private readonly string galleryAnimName_In = "CaptureCard_In";
+
+    private readonly string galleryAnimName_Out = "CaptureCard_Out";
+
     [SerializeField]
     private GameObject InvenObject;
 
@@ -53,6 +59,25 @@ public class InvenUICtrl : MonoBehaviour
     private TMP_Text itemInfoText;
 
 
+    [Header("[ Gallery Fields ]")]
+    [SerializeField]
+    private GameObject captureSlot;
+
+    [SerializeField]
+    private Transform captureContentTr;
+
+    [SerializeField]
+    private Animation galleryAnim;
+
+    [SerializeField]
+    private Image captureCardImage;
+
+    [SerializeField]
+    private TMP_Text captureCardText;
+
+    private bool isCanTouchCard;
+
+
     public void Init()
     {
         isOnInven = false;
@@ -81,6 +106,7 @@ public class InvenUICtrl : MonoBehaviour
         contents[index].SetActive(true);
 
         itemInfoOb.SetActive(false);
+        galleryAnim.gameObject.SetActive(false);
 
         switch (index)
         {
@@ -121,7 +147,20 @@ public class InvenUICtrl : MonoBehaviour
 
     private void SetGalleryContent()
     {
+        var pre_objects = captureContentTr.GetComponentsInChildren<UIBox>();
+        foreach (var ob in pre_objects)
+            Destroy(ob.gameObject);
 
+        List<int> captures = GameManager._data.player.hasCaptures;
+        foreach (var captureCode in captures)
+        {
+            UIBox uIBox = Instantiate(captureSlot, captureContentTr).GetComponent<UIBox>();
+            Sprite itemSprite = GameManager._data.captureDatas[captureCode].capture_sprite;
+
+            uIBox.images[0].sprite = itemSprite;
+            uIBox.button.onClick.AddListener(OnCaptureSlot);
+            uIBox.index = captureCode;
+        }
     }
 
     private void SetRecordContent()
@@ -145,6 +184,38 @@ public class InvenUICtrl : MonoBehaviour
         itemInfoImage.GetComponent<RectTransform>().sizeDelta 
             = new Vector2(itemSprite.rect.width, itemSprite.rect.height).normalized * itemInfoImageSize;
         itemInfoText.SetText($"{itemData.item_name}\n\n <size=70%>{itemData.item_info}");
+    }
+
+    private void OnCaptureSlot()
+    {
+        UIBox uiBox = CheckUIBoxOnClick();
+        if (uiBox == null)
+            return;
+
+        isCanTouchCard = false;
+        galleryAnim.gameObject.SetActive(true);
+        galleryAnim.Play(galleryAnimName_In);
+        galleryAnim[galleryAnimName_In].speed = 1f / galleryAnimTime;
+        Invoke("EndGalleryAnimIn", galleryAnimTime);
+
+        int captureCode = uiBox.index;
+        CaptureSO captureData = GameManager._data.captureDatas[captureCode];
+        Sprite itemSprite = captureData.capture_sprite;
+
+        captureCardImage.sprite = itemSprite;
+        captureCardText.SetText($"{captureData.capture_info}");
+    }
+
+    public void OnCaptureCard()
+    {
+        if (!isCanTouchCard) return;
+        isCanTouchCard = false;
+        galleryAnim.Play(galleryAnimName_Out);
+    }
+
+    public void EndGalleryAnimIn()
+    {
+        isCanTouchCard = true;
     }
 
     private UIBox CheckUIBoxOnClick()
