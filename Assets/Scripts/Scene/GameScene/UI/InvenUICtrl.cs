@@ -109,6 +109,8 @@ public class InvenUICtrl : MonoBehaviour
         isOnInven = !isOnInven;
         contentIndex = 0;
         InvenObject.SetActive(isOnInven);
+
+        UIManager.instance.PlayAudio(8);
     }
 
     public void SetMenus(int index)
@@ -143,6 +145,7 @@ public class InvenUICtrl : MonoBehaviour
             return;
 
         contentIndex = uiBox.index;
+        UIManager.instance.PlayAudio(6);
     }
 
     private void SetItemContent()
@@ -207,7 +210,8 @@ public class InvenUICtrl : MonoBehaviour
             return;
 
         itemInfoOb.SetActive(true);
-        
+        UIManager.instance.PlayAudio(6);
+
         int itemCode = uiBox.index;
         ItemSO itemData = GameManager._data.itemDatas[itemCode];
         Sprite itemSprite = itemData.item_sprite;
@@ -223,6 +227,8 @@ public class InvenUICtrl : MonoBehaviour
         UIBox uiBox = CheckUIBoxOnClick();
         if (uiBox == null)
             return;
+
+        UIManager.instance.PlayAudio(6);
 
         isCanTouchCard = false;
         galleryAnim.gameObject.SetActive(true);
@@ -245,6 +251,7 @@ public class InvenUICtrl : MonoBehaviour
             return;
 
         recordInfoOb.SetActive(true);
+        UIManager.instance.PlayAudio(6);
 
         int recordCode = uiBox.index;
         RecordSO recordData = GameManager._data.recordDatas[recordCode];
@@ -257,6 +264,7 @@ public class InvenUICtrl : MonoBehaviour
         if (!isCanTouchCard) return;
         isCanTouchCard = false;
         galleryAnim.Play(galleryAnimName_Out);
+        UIManager.instance.PlayAudio(6);
     }
 
     public void EndGalleryAnimIn()

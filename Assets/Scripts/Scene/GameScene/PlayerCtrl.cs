@@ -82,6 +82,8 @@ public class PlayerCtrl : MonoBehaviour
 
     private Animator animator;
 
+    private new AudioSource audio;
+
     [Obsolete]
     [SerializeField]
     private PlayerMode playerMode;
@@ -163,6 +165,9 @@ public class PlayerCtrl : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
+        if (audio == null)
+            audio = gameObject.AddComponent<AudioSource>();
 
         state = PlayerState.IDLE;
         teleport = null;
@@ -360,6 +365,15 @@ public class PlayerCtrl : MonoBehaviour
     /// </summary>
     public void SetCurrentPos() => SetCurrentPos(this.transform.position);
 
+    /// <summary>
+    /// 'SEIndex' 번호의 사운드 이펙트를 출력하는 함수이다.
+    /// </summary>
+    /// <param name="SEIndex">SE 효과음 식별 번호</param>
+    private void PlayAudio(int SEIndex)
+    {
+        audio.clip = GameManager._data.GetSE(SEIndex);
+        audio.Play();
+    }
 
     /// <summary>
     /// CurrentPos를 '_pos'위치에 맞춰 재갱신하는 함수이다.
@@ -590,6 +604,9 @@ public class PlayerCtrl : MonoBehaviour
         isCanMove = isCanAttack = isCanEvasion = false;
         state = PlayerState.ATTACK;
         animator.SetBool("isAttack", true);
+
+        // 공격 소리 출력
+        PlayAudio(5);
     }
 
 
@@ -614,6 +631,9 @@ public class PlayerCtrl : MonoBehaviour
         isCameraOn = true;
         PlayerTag.instance.isCanTag = false;
         state = PlayerState.CAPTURE;
+
+        // 사진기 소리 출력
+        PlayAudio(4);
 
         // 카메라 UI 켜지도록 코루틴 함수 실행
         StartCoroutine(UIManager._captureUI.CaptureCameraIn());

@@ -24,11 +24,6 @@ public class InteractUICtrl : MonoBehaviour
     private TMP_Text infoText;
 
 
-    /// <summary> 대화 SE 효과를 출력을 담당하는 컴포넌ㅌ, </summary>
-    [SerializeField]
-    private new AudioSource audio;
-
-
     /// <summary> 모든 대화가 끝나면 다음을 넘길 수 있음을 보여주는 텍스트 </summary>
     [SerializeField]
     private GameObject next_object;
@@ -194,7 +189,7 @@ public class InteractUICtrl : MonoBehaviour
         // 만약 오디오 클립이 있다면 출력
         AudioClip audioClip = _dialog.GetAudioClip();
         if (audioClip != null)
-            PlayAudio(audioClip);
+            UIManager.instance.PlayAudio(audioClip);
 
         // 현재 여주라면
         if (PlayerTag.playerType.Equals(PlayerType.WOMEN))
@@ -206,7 +201,7 @@ public class InteractUICtrl : MonoBehaviour
 
                 // 획득 사운드 출력
                 var clip = GameManager._data.GetSE(3);
-                PlayAudio(clip);
+                UIManager.instance.PlayAudio(clip);
             }
         }
 
@@ -235,14 +230,6 @@ public class InteractUICtrl : MonoBehaviour
             // 모든 대화가 끝남 => 변수 설정
             isDoneAll = true;
     }
-
-
-    public void PlayAudio(AudioClip _audioClip)
-    {
-        audio.clip = _audioClip;
-        audio.Play();
-    }
-
 
     /// <summary> 대사가 아직 존재하는지에 대한 여부를 반환하는 함수이다. </summary>
     private bool CheckLeftDialog() => currentIdx < currentDialogs.Length && !string.IsNullOrEmpty(currentDialogs[currentIdx].GetWords());
