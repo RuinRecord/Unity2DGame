@@ -189,7 +189,7 @@ public class InteractUICtrl : MonoBehaviour
         // 만약 오디오 클립이 있다면 출력
         AudioClip audioClip = _dialog.GetAudioClip();
         if (audioClip != null)
-            UIManager.instance.PlayAudio(audioClip);
+            GameManager._sound.PlaySE(audioClip);
 
         // 현재 여주라면
         if (PlayerTag.playerType.Equals(PlayerType.WOMEN))
@@ -200,8 +200,7 @@ public class InteractUICtrl : MonoBehaviour
                 currentObject.DropItem();
 
                 // 획득 사운드 출력
-                var clip = GameManager._data.GetSE(3);
-                UIManager.instance.PlayAudio(clip);
+                GameManager._sound.PlaySE("아이템획득");
             }
         }
 

@@ -41,30 +41,30 @@ public class ChangeManager : MonoBehaviour
     /// <summary>
     /// 씬 전환 함수이다.
     /// </summary>
-    /// <param name="destination">전환될 씬 번호</param>
-    /// <param name="BGMindex">전환할 BGM 번호</param>
-    public void GoToScene(Scene scene, int BGMindex)
+    /// <param name="scene">전환될 씬</param>
+    /// <param name="BGM_name">출력할 BGM 이름</param>
+    public void GoToScene(Scene scene, string BGM_name)
     {
         if (isChanging)
             return;
 
-        StartCoroutine(switchScene(scene, BGMindex, FADE_DEFAULT_TIME));
+        StartCoroutine(switchScene(scene, BGM_name, FADE_DEFAULT_TIME));
     }
 
 
     /// <summary>
     /// BGM이 변하면서 씬을 전환하는 코루틴 함수이다.
     /// </summary>
-    /// <param name="Sceneindex">전환할 씬 번호</param>
-    /// <param name="BGMindex">전환할 BGM 번호</param>
-    /// <param name="fadeInTime">FadeIn 전환 시간</param>
-    /// <param name="fadeOutTime">FadeOut 전환 시간</param>
-    public IEnumerator switchScene(Scene scene, int BGMindex, float fadeTime)
+    /// <param name="scene">전환될 씬</param>
+    /// <param name="BGM_name">출력할 BGM 이름</param>
+    /// <param name="fadeTime">페이드 진행시간</param>
+    /// <returns></returns>
+    public IEnumerator switchScene(Scene scene, string BGM_name, float fadeTime)
     {
         if (isChanging)
             yield break; // 현재 작업 중이면 취소
 
-        GameManager._sound.BGMSetting(BGMindex, fadeTime);
+        GameManager._sound.PlayBGM(BGM_name, fadeTime);
         isChanging = true;
         FadeIn(fadeTime);
 
@@ -83,16 +83,15 @@ public class ChangeManager : MonoBehaviour
     /// <summary>
     /// BGM이 변하면서 플레이어 위치를 전환하는 코루틴 함수이다.
     /// </summary>
-    /// <param name="_pos">목적지 위치</param>
-    /// <param name="BGMindex">전환할 BGM 번호</param>
-    /// <param name="fadeInTime">FadeIn 전환 시간</param>
-    /// <param name="fadeOutTime">FadeOut 전환 시간</param>
-    public IEnumerator switchPos(Vector3 _pos, int BGMindex, float fadeTime)
+    /// <param name="destination">이동할 위치</param>
+    /// <param name="BGM_name">출력할 BGM 이름</param>
+    /// <param name="fadeTime">페이드 진행시간</param>
+    public IEnumerator switchPos(Vector3 destination, string BGM_name, float fadeTime)
     {
         if (isChanging)
             yield break; // 현재 작업 중이면 취소
 
-        GameManager._sound.BGMSetting(BGMindex, fadeTime);
+        GameManager._sound.PlayBGM(BGM_name, fadeTime);
         isChanging = true;
         FadeIn(fadeTime);
 
@@ -103,7 +102,7 @@ public class ChangeManager : MonoBehaviour
         
         if (SceneManager.GetActiveScene().name.Equals("Sample_Jun") || SceneManager.GetActiveScene().name.Equals("SampleScene"))
         {
-            PlayerCtrl.instance.Teleport(_pos);
+            PlayerCtrl.instance.Teleport(destination);
         }
 
         yield return new WaitForSeconds(fadeTime);
@@ -119,10 +118,10 @@ public class ChangeManager : MonoBehaviour
     /// <summary>
     /// BGM이 변하지 않으면서 위치를 전환하는 코루틴 함수이다.
     /// </summary>
-    /// <param name="_pos">목적지 위치</param>
+    /// <param name="destination">목적지 위치</param>
     /// <param name="fadeInTime">FadeIn 전환 시간</param>
     /// <param name="fadeOutTime">FadeOut 전환 시간</param>
-    public IEnumerator switchPos(Vector3 _pos, float fadeInTime, float fadeOutTime)
+    public IEnumerator switchPos(Vector3 destination, float fadeInTime, float fadeOutTime)
     {
         if (isChanging)
             yield break; // 현재 작업 중이면 취소
@@ -138,7 +137,7 @@ public class ChangeManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name.Equals("Sample_Jun") || SceneManager.GetActiveScene().name.Equals("SampleScene"))
         {
-            PlayerCtrl.instance.Teleport(_pos);
+            PlayerCtrl.instance.Teleport(destination);
         }
 
         yield return new WaitForSeconds(fadeOutTime);
@@ -154,13 +153,13 @@ public class ChangeManager : MonoBehaviour
     /// <summary>
     /// BGM이 변하지 않으면서 위치를 전환하는 코루틴 함수이다.
     /// </summary>
-    /// <param name="_pos">목적지 위치</param>
-    public IEnumerator switchPos(Vector3 _pos)
+    /// <param name="destination">목적지 위치</param>
+    public IEnumerator switchPos(Vector3 destination)
     {
         if (isChanging)
             yield break; // 현재 작업 중이면 취소
 
-        StartCoroutine(switchPos(_pos, FADE_DEFAULT_TIME, FADE_DEFAULT_TIME));
+        StartCoroutine(switchPos(destination, FADE_DEFAULT_TIME, FADE_DEFAULT_TIME));
     }
 
 

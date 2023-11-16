@@ -283,7 +283,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10847f25937233a4c945cc087ff73ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio: {fileID: 7157459306682585935}
+  SE_tr: {fileID: 2441214861664359205}
+  SE_audioList: []
+  BGM_audio: {fileID: 7157459306682585935}
 --- !u!82 &7157459306682585935
 AudioSource:
   m_ObjectHideFlags: 0
@@ -432,6 +434,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 612870733cdd7fc48beae0839b044320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player:
+    hasItems: 
+    hasCaptures: 
+    hasRecords: 
+    player_w_hp: 3
+    player_m_hp: 3
+    player_w_pos: {x: 0, y: 0}
+    player_m_pos: {x: 0, y: 0}
+  map:
+    hasEvents: 00000000
+  itemDatas: []
+  captureDatas: []
+  recordDatas: []
+  interactionDialogDatas: []
 --- !u!1 &7273567513650516493
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class InteractionObject : MonoBehaviour
 {
-    private new AudioSource audio;
-
     /// <summary> 상호작용 플레이어 대사 </summary>
     private List<PlayerDialog> dialogs;
 
@@ -34,11 +32,6 @@ public class InteractionObject : MonoBehaviour
         hasItem = dialogData.itemSO != null;
         itemCode = hasItem ? dialogData.itemSO.itemCode : -1;
         isDestroy = hasItem ? dialogData.itemSO.isDestroy : false;
-
-        audio = GetComponent<AudioSource>();
-        // 획득 아이템을 포함한다면 AudioSource 컴포넌트 필요
-        if (hasItem && audio == null)
-            audio = gameObject.AddComponent<AudioSource>();
     }
 
     /// <summary>

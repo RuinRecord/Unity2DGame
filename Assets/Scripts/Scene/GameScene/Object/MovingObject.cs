@@ -10,9 +10,6 @@ public class MovingObject : MonoBehaviour
     private const int CANNOT_MOVE_LAYERMASK = 64 + 128 + 256 + 512 + 1024;
 
     [SerializeField]
-    private new AudioSource audio;
-
-    [SerializeField]
     private Vector2 up_gap;
 
     [SerializeField]
@@ -49,8 +46,7 @@ public class MovingObject : MonoBehaviour
             StartCoroutine("StartMove");
 
             // 끄는 소리 오디오 실행
-            audio.clip = GameManager._data.GetSE(2);
-            audio.Play();
+            GameManager._sound.PlaySE("상자밀기");
         }
         return isSuccess;
     }

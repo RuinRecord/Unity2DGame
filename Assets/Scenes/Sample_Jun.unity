@@ -6146,7 +6146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aa4e09c01c455a46b67a348aad9565b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio: {fileID: 806668341}
   up_gap: {x: 0, y: 0.35}
   down_gap: {x: 0, y: -0.5}
   right_gap: {x: 0.75, y: 0}
@@ -14868,7 +14867,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 467432515}
   infoText: {fileID: 1164978898}
-  audio: {fileID: 2094210273}
   next_object: {fileID: 1628810816}
   isInteractOn: 0
 --- !u!82 &2094210273

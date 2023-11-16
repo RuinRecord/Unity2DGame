@@ -110,7 +110,7 @@ public class InvenUICtrl : MonoBehaviour
         contentIndex = 0;
         InvenObject.SetActive(isOnInven);
 
-        UIManager.instance.PlayAudio(8);
+        GameManager._sound.PlaySE("가방여닫기");
     }
 
     public void SetMenus(int index)
@@ -145,7 +145,7 @@ public class InvenUICtrl : MonoBehaviour
             return;
 
         contentIndex = uiBox.index;
-        UIManager.instance.PlayAudio(6);
+        GameManager._sound.PlaySE("UI클릭");
     }
 
     private void SetItemContent()
@@ -210,7 +210,7 @@ public class InvenUICtrl : MonoBehaviour
             return;
 
         itemInfoOb.SetActive(true);
-        UIManager.instance.PlayAudio(6);
+        GameManager._sound.PlaySE("UI클릭");
 
         int itemCode = uiBox.index;
         ItemSO itemData = GameManager._data.itemDatas[itemCode];
@@ -228,7 +228,7 @@ public class InvenUICtrl : MonoBehaviour
         if (uiBox == null)
             return;
 
-        UIManager.instance.PlayAudio(6);
+        GameManager._sound.PlaySE("UI클릭");
 
         isCanTouchCard = false;
         galleryAnim.gameObject.SetActive(true);
@@ -251,7 +251,7 @@ public class InvenUICtrl : MonoBehaviour
             return;
 
         recordInfoOb.SetActive(true);
-        UIManager.instance.PlayAudio(6);
+        GameManager._sound.PlaySE("UI클릭");
 
         int recordCode = uiBox.index;
         RecordSO recordData = GameManager._data.recordDatas[recordCode];
@@ -264,7 +264,7 @@ public class InvenUICtrl : MonoBehaviour
         if (!isCanTouchCard) return;
         isCanTouchCard = false;
         galleryAnim.Play(galleryAnimName_Out);
-        UIManager.instance.PlayAudio(6);
+        GameManager._sound.PlaySE("UI클릭");
     }
 
     public void EndGalleryAnimIn()

@@ -98,26 +98,4 @@ public class DataManager : MonoBehaviour
 
         return resource;
     }
-
-
-    /// <summary>
-    /// BGM 오디오 소스를 반환하는 함수
-    /// </summary>
-    /// <param name="_index">원하는 BGM</param>
-    /// <returns>BGM 오디오 소스</returns>
-    public AudioClip GetBGM(int _index)
-    {
-        return BGMs[_index];
-    }
-
-
-    /// <summary>
-    /// SE 오디오 소스를 반환하는 함수
-    /// </summary>
-    /// <param name="_index">원하는 SE</param>
-    /// <returns>SE 오디오 소스</returns>
-    public AudioClip GetSE(int _index)
-    {
-        return SEs[_index];
-    }
 }

@@ -28,7 +28,7 @@ public class Teleport : MonoBehaviour
 
         // Fade 애니메이션과 함께 목적지로 이동
         PlayerTag.instance.isCanTag = false;
-        UIManager.instance.PlayAudio(audioClip);
+        GameManager._sound.PlaySE(audioClip);
 
         // 막힌 공간이라면 플레이어가 바라보는 방향으로 1칸 더 던진
         while (!MapCtrl.instance.CheckValidArea(destination))
