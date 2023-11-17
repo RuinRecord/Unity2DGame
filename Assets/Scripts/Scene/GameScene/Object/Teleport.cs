@@ -2,21 +2,54 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum DoorType
+{
+    Ivory_window,
+    Navy_no_window,
+    Ivory_no_window,
+}
+
 public class Teleport : MonoBehaviour
 {
+    [SerializeField]
+    private DoorType doorType;
+
+
     /// <summary> 포탈과 연결된 목적지 </summary>
     [SerializeField]
     private Vector3 destination;
 
 
-    /// <summary> 포탈과 연결된 목적지 </summary>
+    /// <summary> 포탈 사용 시 출력되는 오디오 </summary>
     [SerializeField]
     private AudioClip audioClip;
+
+
+    [SerializeField]
+    private Animator animator;
 
 
     /// <summary> 현재 사용 가능한 포탈인지에 대한 여부 </summary>
     public bool isOn;
 
+
+    private void Start()
+    {
+        if (animator != null)
+            animator.SetInteger("DoorType", (int)doorType);
+    }
+
+    public void Open()
+    {
+        if (animator != null)
+            animator.SetBool("isOpen", true);
+    }
+
+    public void Close()
+    {
+        if (animator != null)
+            animator.SetBool("isOpen", false);
+    }
 
     /// <summary>
     /// 포탈 목적지로 이동하는 함수이다.
@@ -25,6 +58,8 @@ public class Teleport : MonoBehaviour
     {
         if (!isOn)
             return; // 만약 닫힌 상태라면 취소
+
+        Open();
 
         // Fade 애니메이션과 함께 목적지로 이동
         PlayerTag.instance.isCanTag = false;
@@ -37,23 +72,6 @@ public class Teleport : MonoBehaviour
         StartCoroutine(GameManager._change.switchPos(destination));
     }
 
-    /// <summary>
-    /// (_clickPos) 위치에 움직일 수 있는 오브젝트가 있는지 체크하고 반환하는 함수이다.
-    /// </summary>
-    /// <param name="_clickPos">체크 위치</param>
-    /// <returns>움직일 수 있는 오브젝트 (없다면 NULL 반환)</returns>
-    private MovingObject CheckObject(Vector2 _clickPos)
-    {
-        RaycastHit2D hit;
-        if (hit = Physics2D.Raycast(_clickPos, Vector2.up, 0.25f, 512))
-        {
-            // 플레이어 위치에서 도착 위치로 ray를 발사 충돌 검사
-            // 충돌 지점에 옮기긱 가능한 오브젝트가 있는지 체크
-            return hit.transform.gameObject.GetComponent<MovingObject>();
-        }
-        else
-            return null;
-    }
 
     private void OnTriggerStay2D(Collider2D col)
     {

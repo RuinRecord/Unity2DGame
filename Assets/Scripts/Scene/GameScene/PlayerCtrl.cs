@@ -450,6 +450,7 @@ public class PlayerCtrl : MonoBehaviour
     /// <param name="_destination">목적지 위치</param>
     public void Teleport(Vector3 _destination)
     {
+        teleport.Close();
         this.transform.position = _destination;
         SetCurrentPos(_destination);
         state = PlayerState.IDLE;
