@@ -180,14 +180,16 @@ public class PlayerCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!CheckCanUpdate())
-            return; // 아래 기능을 수행하지 못하는 상태
-
+        #region 항상 수행되는 구간
 
         // 최근 위치에서 크기 1만큼 변경될 경우 currentPos 재갱신
         if (currentPos.x != Mathf.RoundToInt(this.transform.position.x) || currentPos.y != Mathf.RoundToInt(this.transform.position.y))
             SetCurrentPos();
 
+        #endregion
+
+        if (!CheckCanUpdate())
+            return; // 아래 기능을 수행하지 못하는 상태
 
         // 달리기 기능
         if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
@@ -223,7 +225,6 @@ public class PlayerCtrl : MonoBehaviour
                 // 이동
                 if (isValid)
                     SetMove(dir, 1, moveSpeed);
-                SetAnimationDir(dir);
 
                 // 위치에 움직일 수 있는 물체 감지
                 movingObject = CheckMovingObject(destination);
@@ -345,6 +346,9 @@ public class PlayerCtrl : MonoBehaviour
         if (state.Equals(PlayerState.DEAD))
             return false; // 죽은 상태의 경우 기능 동작 불가
 
+        if (CutSceneCtrl.isCutSceneOn)
+            return false; // 컷씬이 진행중이면 동작 불가
+
         if (PlayerTag.isTagOn || playerType != PlayerTag.playerType)
             return false; // 현재 태그 선택 중이거나, 현재 태그된 플레이어가 아니면 동작 불가
 
@@ -377,9 +381,10 @@ public class PlayerCtrl : MonoBehaviour
     /// <param name="_dir">이동 방향 벡터</param>
     /// <param name="_dis">이동 거리</param>
     /// <param name="_moveSpeed">플레이어의 이동속도</param>
-    private void SetMove(Vector2Int _dir, int _dis, float _moveSpeed)
+    public void SetMove(Vector2Int _dir, int _dis, float _moveSpeed)
     {
         state = PlayerState.WALK;
+        SetAnimationDir(_dir);
 
         if (moveCo != null)
             StopCoroutine(moveCo);
@@ -420,6 +425,7 @@ public class PlayerCtrl : MonoBehaviour
         // 데이터 설정
         isMoving = false;
         isCanInteract = isCanMove = isCanAttack = true;
+        state = PlayerState.IDLE;
     }
 
 

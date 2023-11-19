@@ -84,16 +84,37 @@ public class PlayerTag : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!CheckCanTag())
+            return;
+
         if (isCanTag && Input.GetKeyDown(KeyCode.Tab))
         {
-            if (!PlayerCtrl.instance.isMoving)
-            {
-                // 태그 패널 열기
-                isCanTag = false;
-                ShowTagPanel();
-            }
+            // 태그 패널 열기
+            isCanTag = false;
+            ShowTagPanel();
         }
     }
+
+    /// <summary>
+    /// 현재 플레이어 태그가 가능한 지 체크하는 함수이다.
+    /// </summary>
+    private bool CheckCanTag()
+    {
+        if (GameManager._change.isChanging)
+            return false; // 현재 씬 및 위치 전환 중이면 동작 불가
+
+        if (CutSceneCtrl.isCutSceneOn)
+            return false; // 컷씬이 진행중이면 동작 불가
+
+        if (UIManager._interactUI.isInteractOn)
+            return false; // 현재 상호작용 대화 시스템이 작동 중이면 동작 불가
+
+        if (PlayerCtrl.instance.isMoving)
+            return false; // 플레이어가 이동 중이면 동작 불가
+
+        return true;
+    }
+
 
 
     /// <summary>

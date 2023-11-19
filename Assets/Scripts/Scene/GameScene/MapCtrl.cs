@@ -80,6 +80,9 @@ public class MapCtrl : MonoBehaviour
         // 만약 리스트에 렌더러가 있다면 렌더링 우선 순위 처리를 수행
         if (spritesList.Count > 0)
             SetDepthAllofMapObjects();
+
+        if (Input.GetKeyDown(KeyCode.P))
+            CutSceneCtrl.instance.SetCutScene(GameManager._data.cutSceneDatas[0]);
     }
 
 

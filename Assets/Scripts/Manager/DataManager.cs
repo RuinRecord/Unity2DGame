@@ -42,12 +42,8 @@ public class DataManager : MonoBehaviour
     public InteractionDialogSO[] interactionDialogDatas;
 
 
-    /// <summary> 게임 BGM 리소스 </summary>
-    private AudioClip[] BGMs;
-
-
-    /// <summary> 게임 SE 리소스 </summary>
-    private AudioClip[] SEs;
+    /// <summary> 컷씬 SO 데이터 </summary>
+    public CutSceneSO[] cutSceneDatas;
 
 
     public void Init()
@@ -56,8 +52,7 @@ public class DataManager : MonoBehaviour
         captureDatas = LoadAll<CaptureSO>("SO/Captures");
         recordDatas = LoadAll<RecordSO>("SO/Records");
         interactionDialogDatas = LoadAll<InteractionDialogSO>("SO/Dialogs/InteractionObjects");
-        BGMs = LoadAll<AudioClip>("Audios/BGM");
-        SEs = LoadAll<AudioClip>("Audios/SE");
+        cutSceneDatas = LoadAll<CutSceneSO>("SO/CutScenes");
     }
 
 

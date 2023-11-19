@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87b114766b044714f9f253cc9d1da6ad, type: 3}
+  m_Name: "00.\uD504\uB864\uB85C\uADF8"
+  m_EditorClassIdentifier: 
+  cutSceneCode: 0
+  isEventObjectOn: 1
+  funcCode: 0
+  actions:
+  - playTime: 0.5
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 2
+    isCameraMoveOn: 1
+    camera_destination: {x: 2, y: 0}
+    camera_moveSpeed: 5
+    camera_isMoveSmooth: 1
+    isCameraZoomOn: 1
+    camera_zoomSize: 4
+    camera_zoomSpeed: 3
+    camera_isZoomSmooth: 1
+  - playTime: 0
+    isCameraMoveOn: 1
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 1
+    camera_isMoveSmooth: 1
+    isCameraZoomOn: 1
+    camera_zoomSize: 5
+    camera_zoomSpeed: 1
+    camera_isZoomSmooth: 1
