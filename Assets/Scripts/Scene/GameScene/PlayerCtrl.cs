@@ -220,7 +220,12 @@ public class PlayerCtrl : MonoBehaviour
                 Vector2Int destination = currentPos + dir;
                 bool isValid = MapCtrl.instance.CheckValidArea(destination); // 이동 가능 지역인가?
 
-                // 클릭한 위치에 움직일 수 있는 물체 체크
+                // 이동
+                if (isValid)
+                    SetMove(dir, 1, moveSpeed);
+                SetAnimationDir(dir);
+
+                // 위치에 움직일 수 있는 물체 감지
                 movingObject = CheckMovingObject(destination);
                 if (movingObject != null)
                 {
@@ -234,11 +239,6 @@ public class PlayerCtrl : MonoBehaviour
                     if (mode.Equals(PlayerMode.PUSH))
                         mode = PlayerMode.DEFAULT;
                 }
-
-                // 이동
-                if (isValid)
-                    SetMove(dir, 1, moveSpeed);
-                SetAnimationDir(dir);
             }
         }
 

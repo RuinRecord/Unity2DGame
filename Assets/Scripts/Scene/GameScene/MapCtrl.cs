@@ -87,7 +87,7 @@ public class MapCtrl : MonoBehaviour
     /// '_destination' 월드 위치가 막혀있는지 체크하고 반환합니다.
     /// </summary>
     /// <param name="_destination">도착 위치 벡터</param>
-    public bool CheckValidArea(Vector2 _destination) => !Physics2D.Raycast(_destination, Vector2.up, 0.25f, canNotMove_layerMask);
+    public bool CheckValidArea(Vector2 _destination) => !Physics2D.OverlapBox(_destination, Vector2.one * 0.75f, 0f, canNotMove_layerMask);
 
 
     /// <summary>
