@@ -186,6 +186,10 @@ public class PlayerCtrl : MonoBehaviour
         if (currentPos.x != Mathf.RoundToInt(this.transform.position.x) || currentPos.y != Mathf.RoundToInt(this.transform.position.y))
             SetCurrentPos();
 
+        // 이동 모드 + 이동 가능 -> state를 Idle로 초기화
+        if (state.Equals(PlayerState.WALK) && isCanMove)
+            state = PlayerState.IDLE;
+
         #endregion
 
         if (!CheckCanUpdate())
@@ -211,10 +215,6 @@ public class PlayerCtrl : MonoBehaviour
             else if (Input.GetKey(KeyCode.DownArrow)) dir = Vector2Int.down;
             else if (Input.GetKey(KeyCode.RightArrow)) dir = Vector2Int.right;
             else if (Input.GetKey(KeyCode.LeftArrow)) dir = Vector2Int.left;
-
-            // 기본 모드의 경우, state를 Idle로 초기화
-            if (mode.Equals(PlayerMode.DEFAULT))
-                state = PlayerState.IDLE;
 
             if (dir != Vector2Int.zero)
             {
@@ -425,7 +425,6 @@ public class PlayerCtrl : MonoBehaviour
         // 데이터 설정
         isMoving = false;
         isCanInteract = isCanMove = isCanAttack = true;
-        state = PlayerState.IDLE;
     }
 
 
