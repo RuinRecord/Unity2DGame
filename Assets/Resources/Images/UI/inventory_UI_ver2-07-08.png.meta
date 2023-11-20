@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 023e81d916134b14bb240d2d1fde798d
+guid: 956df115d1d00ba4e9d6ac3787337ce7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,337 +123,463 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: floor tile_0
+      name: inventory_UI_ver2-07-08_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 192
-        width: 64
-        height: 64
+        x: 173
+        y: 2825
+        width: 55
+        height: 396
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2ff38f93e6ae354a8aeb90344741f9b
-      internalID: 1404727617
+      spriteID: 680d9d1a4208d7a48a15bafac2298a07
+      internalID: -1878360850
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: floor tile_1
+      name: inventory_UI_ver2-07-08_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 192
-        width: 64
-        height: 64
+        x: 212
+        y: 2363
+        width: 1513
+        height: 837
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08225bf6ff75fd74d8a0cd6c3d66a8c7
-      internalID: 1339507381
+      spriteID: e5bd4cf6a0c3bd84fae7f36192fb1f0c
+      internalID: 566385150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: floor tile_2
+      name: inventory_UI_ver2-07-08_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 192
-        width: 64
-        height: 64
+        x: 202
+        y: 2357
+        width: 26
+        height: 461
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8706173048434c84fa9f0e1bd6245632
-      internalID: 1473892234
+      spriteID: cf423713eb3a2fe46a21593f3035990c
+      internalID: 454234495
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: floor tile_3
+      name: inventory_UI_ver2-07-08_3
       rect:
         serializedVersion: 2
-        x: 192
-        y: 192
-        width: 64
-        height: 64
+        x: 244
+        y: 2343
+        width: 1345
+        height: 15
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 805575c3e8d23aa4eb63ff0a6c3942d3
-      internalID: 864862486
+      spriteID: 288c751eff715ac40920b5520e48b815
+      internalID: -717064419
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: floor tile_4
+      name: inventory_UI_ver2-07-08_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 128
-        width: 64
-        height: 64
+        x: 1594
+        y: 2338
+        width: 25
+        height: 21
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 444ec1bf2822a9f4fb603f506925931f
-      internalID: -284238885
+      spriteID: 86eb8b0859262794a89aeaeedca14938
+      internalID: -1736192038
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: floor tile_5
+      name: inventory_UI_ver2-07-08_5
       rect:
         serializedVersion: 2
-        x: 64
-        y: 128
-        width: 64
-        height: 64
+        x: 1621
+        y: 2338
+        width: 24
+        height: 21
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce2f882ba493978478bd21fccfaf507a
-      internalID: 885872409
+      spriteID: d679320709b3b954ebba36c132ce62be
+      internalID: -511842276
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: floor tile_6
+      name: inventory_UI_ver2-07-08_6
       rect:
         serializedVersion: 2
-        x: 128
-        y: 128
-        width: 64
-        height: 64
+        x: 1647
+        y: 2338
+        width: 25
+        height: 21
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ddc4f99f7811f14597f798dd1b1e804
-      internalID: -304432663
+      spriteID: 6f53de937545c4a43895602e8cd9fbc9
+      internalID: -471189546
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: floor tile_7
+      name: inventory_UI_ver2-07-08_7
       rect:
         serializedVersion: 2
-        x: 192
-        y: 128
-        width: 64
-        height: 64
+        x: 343
+        y: 1976
+        width: 381
+        height: 302
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cadf621cece73a5458c40c8f1fd0a74f
-      internalID: 219846258
+      spriteID: bb2c3cd44d2d5924c8ed7520d60bdfe8
+      internalID: -1013933270
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: floor tile_8
+      name: inventory_UI_ver2-07-08_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 64
-        height: 64
+        x: 777
+        y: 1976
+        width: 382
+        height: 302
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ffda7effa2489742a574ad9bef2da08
-      internalID: 225801163
+      spriteID: 931cfd5abb2be2c4cb371b58f10991e1
+      internalID: -1325751379
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: floor tile_9
+      name: inventory_UI_ver2-07-08_9
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
+        x: 1206
+        y: 1976
+        width: 383
+        height: 302
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48c7d44385692984ca6f9985fc48cf7b
-      internalID: 1253886431
+      spriteID: 638c6bbc78b4e1c4f821ea598cf3b36f
+      internalID: -1453964502
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: floor tile_10
+      name: inventory_UI_ver2-07-08_10
       rect:
         serializedVersion: 2
-        x: 128
-        y: 64
-        width: 64
-        height: 64
+        x: 343
+        y: 1633
+        width: 381
+        height: 301
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: acac1b817a6efb2419a643bfd2fd3981
-      internalID: -537882147
+      spriteID: 27d212dac9eb3ee43b9dfd9ded300743
+      internalID: 275093335
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: floor tile_11
+      name: inventory_UI_ver2-07-08_11
       rect:
         serializedVersion: 2
-        x: 192
-        y: 64
-        width: 64
-        height: 64
+        x: 777
+        y: 1633
+        width: 382
+        height: 301
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2365bf7f7dab824479051cd143f59d4c
-      internalID: -179799582
+      spriteID: 36915add19ebe3641896d31cf2bda6ae
+      internalID: -1003766084
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: floor tile_12
+      name: inventory_UI_ver2-07-08_12
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 64
+        x: 1206
+        y: 1633
+        width: 383
+        height: 301
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9052e7c63c0b5e041bc780715461c8d3
-      internalID: 91303430
+      spriteID: 78cf13b9d299979408f8059ebd33ac35
+      internalID: 69883837
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: floor tile_13
+      name: inventory_UI_ver2-07-08_13
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
+        x: 777
+        y: 1546
+        width: 35
+        height: 39
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 971eeef5233a4df47b82f716623e0a22
-      internalID: -448991798
+      spriteID: 51cf831261c63ba47b429f577939553c
+      internalID: -1751233173
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: floor tile_14
+      name: inventory_UI_ver2-07-08_14
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
+        x: 877
+        y: 1551
+        width: 13
+        height: 29
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be4b37da146560e40bb468f2a1389fa6
-      internalID: -2086901324
+      spriteID: 54da481b52471a04d8a0b1ecffecad51
+      internalID: 1391144442
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: floor tile_15
+      name: inventory_UI_ver2-07-08_15
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
+        x: 910
+        y: 1556
+        width: 15
+        height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03f3b9516b062224aad65c4173bee9ed
-      internalID: 1791336547
+      spriteID: 16a41445778abdb4aa8f9514c4ac5197
+      internalID: -2115081516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventory_UI_ver2-07-08_16
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 1555
+        width: 17
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1c36e08af840704c9d60be3e9b5f83b
+      internalID: -466543996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventory_UI_ver2-07-08_17
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 1556
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: feeee0ef06e6a4948815a266c95870bf
+      internalID: -1370841537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventory_UI_ver2-07-08_18
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 1551
+        width: 14
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 479e48395a1fd2744a5b09b20083ea9b
+      internalID: -486762795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventory_UI_ver2-07-08_19
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 1546
+        width: 34
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c484df3957b415439bb94a912e313b8
+      internalID: -703365627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventory_UI_ver2-07-08_20
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 796
+        width: 1385
+        height: 706
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee8facda09c324b4682c88a3098660c9
+      internalID: 2101616952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventory_UI_ver2-07-08_21
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 149
+        width: 693
+        height: 603
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e658758036e62347a063cfd7c8b4c06
+      internalID: -2054975423
       vertices: []
       indices: 
       edges: []
@@ -469,22 +595,28 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      floor tile_0: 1404727617
-      floor tile_1: 1339507381
-      floor tile_10: -537882147
-      floor tile_11: -179799582
-      floor tile_12: 91303430
-      floor tile_13: -448991798
-      floor tile_14: -2086901324
-      floor tile_15: 1791336547
-      floor tile_2: 1473892234
-      floor tile_3: 864862486
-      floor tile_4: -284238885
-      floor tile_5: 885872409
-      floor tile_6: -304432663
-      floor tile_7: 219846258
-      floor tile_8: 225801163
-      floor tile_9: 1253886431
+      inventory_UI_ver2-07-08_0: -1878360850
+      inventory_UI_ver2-07-08_1: 566385150
+      inventory_UI_ver2-07-08_10: 275093335
+      inventory_UI_ver2-07-08_11: -1003766084
+      inventory_UI_ver2-07-08_12: 69883837
+      inventory_UI_ver2-07-08_13: -1751233173
+      inventory_UI_ver2-07-08_14: 1391144442
+      inventory_UI_ver2-07-08_15: -2115081516
+      inventory_UI_ver2-07-08_16: -466543996
+      inventory_UI_ver2-07-08_17: -1370841537
+      inventory_UI_ver2-07-08_18: -486762795
+      inventory_UI_ver2-07-08_19: -703365627
+      inventory_UI_ver2-07-08_2: 454234495
+      inventory_UI_ver2-07-08_20: 2101616952
+      inventory_UI_ver2-07-08_21: -2054975423
+      inventory_UI_ver2-07-08_3: -717064419
+      inventory_UI_ver2-07-08_4: -1736192038
+      inventory_UI_ver2-07-08_5: -511842276
+      inventory_UI_ver2-07-08_6: -471189546
+      inventory_UI_ver2-07-08_7: -1013933270
+      inventory_UI_ver2-07-08_8: -1325751379
+      inventory_UI_ver2-07-08_9: -1453964502
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
