@@ -71,7 +71,6 @@ public class CutSceneCtrl : MonoBehaviour
     {
         while (currentActionIdx < cutSceneSO.actions.Count)
         {
-            Debug.Log($"#.{currentActionIdx} 시작!");
             StartCoroutine(StartAction(cutSceneSO.actions[currentActionIdx++]));
             isActionDone = false;
 
