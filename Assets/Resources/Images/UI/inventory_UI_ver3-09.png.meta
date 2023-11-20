@@ -127,9 +127,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 176
-        y: 1427
-        width: 51
-        height: 392
+        y: 940
+        width: 1554
+        height: 881
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,140 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc67f95856c9f5e4082b91df102b659c
-      internalID: -9196051
+      spriteID: 573fde0f5a7ef25409748f8d15b53ee8
+      internalID: 1668638997
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
       name: inventory_UI_ver3-09_1
-      rect:
-        serializedVersion: 2
-        x: 213
-        y: 965
-        width: 1510
-        height: 834
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f5a7b24a7f740cf49b13f18b494ddca7
-      internalID: -1753133027
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: inventory_UI_ver3-09_2
-      rect:
-        serializedVersion: 2
-        x: 204
-        y: 958
-        width: 23
-        height: 459
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 90d9f50924ef41b4db3c55697316957b
-      internalID: 1094551497
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: inventory_UI_ver3-09_3
-      rect:
-        serializedVersion: 2
-        x: 246
-        y: 945
-        width: 1341
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 387eeafe921f2a349a8ce5984dcbb655
-      internalID: -702004025
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: inventory_UI_ver3-09_4
-      rect:
-        serializedVersion: 2
-        x: 1596
-        y: 941
-        width: 21
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1053b084c75a0c2489dc88a617566ca5
-      internalID: -1967184112
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: inventory_UI_ver3-09_5
-      rect:
-        serializedVersion: 2
-        x: 1623
-        y: 941
-        width: 20
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 28b2a1b92717e014e81991471da9c693
-      internalID: -2103062689
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: inventory_UI_ver3-09_6
-      rect:
-        serializedVersion: 2
-        x: 1649
-        y: 941
-        width: 21
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 444cbc6bc020db840a16958d7d408065
-      internalID: 1299946895
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: inventory_UI_ver3-09_7
       rect:
         serializedVersion: 2
         x: 343
@@ -284,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b8df2395dba2834f994109b3c8cfefe
-      internalID: 1794556029
+      spriteID: 0a5f7eabf835b934c8aca47d19bec9d2
+      internalID: -910415310
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inventory_UI_ver3-09_8
+      name: inventory_UI_ver3-09_2
       rect:
         serializedVersion: 2
         x: 949
@@ -305,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b690cec3e3114447a6f122e76e3499c
-      internalID: 1051529988
+      spriteID: e6b37dd4cdec0fc43899f4e107bdf7f9
+      internalID: 927519677
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inventory_UI_ver3-09_9
+      name: inventory_UI_ver3-09_3
       rect:
         serializedVersion: 2
         x: 984
@@ -326,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ea779f268340104da2e6b8843c0939c
-      internalID: 1543899408
+      spriteID: 78c407d59da0dcc4c8de57d23eaec8d7
+      internalID: -174694915
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inventory_UI_ver3-09_10
+      name: inventory_UI_ver3-09_4
       rect:
         serializedVersion: 2
         x: 343
@@ -347,8 +221,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad80ef3a27e6dcf4bbaa52c08d51fdcf
-      internalID: 1894171335
+      spriteID: d8d6697a09f1efe46b31a3afdb3ca4a4
+      internalID: 402542986
       vertices: []
       indices: 
       edges: []
@@ -364,17 +238,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      inventory_UI_ver3-09_0: -9196051
-      inventory_UI_ver3-09_1: -1753133027
-      inventory_UI_ver3-09_10: 1894171335
-      inventory_UI_ver3-09_2: 1094551497
-      inventory_UI_ver3-09_3: -702004025
-      inventory_UI_ver3-09_4: -1967184112
-      inventory_UI_ver3-09_5: -2103062689
-      inventory_UI_ver3-09_6: 1299946895
-      inventory_UI_ver3-09_7: 1794556029
-      inventory_UI_ver3-09_8: 1051529988
-      inventory_UI_ver3-09_9: 1543899408
+      inventory_UI_ver3-09_0: 1668638997
+      inventory_UI_ver3-09_1: -910415310
+      inventory_UI_ver3-09_2: 927519677
+      inventory_UI_ver3-09_3: -174694915
+      inventory_UI_ver3-09_4: 402542986
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

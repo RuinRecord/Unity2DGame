@@ -7,9 +7,9 @@ using TMPro;
 
 public class InvenUICtrl : MonoBehaviour
 {
-    private readonly float itemSlotImageSize = 200;
+    private readonly float itemSlotImageSize = 150;
 
-    private readonly float itemInfoImageSize = 350;
+    private readonly float itemInfoImageSize = 400;
 
     private readonly float galleryAnimTime = 0.75f;
 
@@ -29,19 +29,13 @@ public class InvenUICtrl : MonoBehaviour
     public bool isOnInven;
 
     [SerializeField]
-    private int ContentIndex;
+    private int contentIndex;
 
-    private int contentIndex
-    {
-        set 
-        { 
-            ContentIndex = value;
-            SetMenus(ContentIndex);
-            SetContents(ContentIndex);
-        }
-        get { return ContentIndex; }
-    }
+    [SerializeField]
+    private Sprite[] menuOnSprites;
 
+    [SerializeField]
+    private Sprite[] menuOffSprites;
 
 
     [Header("[ Item Fields ]")]
@@ -64,10 +58,16 @@ public class InvenUICtrl : MonoBehaviour
 
     [Header("[ Gallery Fields ]")]
     [SerializeField]
-    private GameObject captureSlot;
+    private Transform captureContentTr;
 
     [SerializeField]
-    private Transform captureContentTr;
+    private GameObject captureNextPageButton;
+
+    [SerializeField]
+    private GameObject capturePrePageButton;
+
+    [SerializeField]
+    private TMP_Text capturePageText;
 
     [SerializeField]
     private Animation galleryAnim;
@@ -80,6 +80,8 @@ public class InvenUICtrl : MonoBehaviour
 
     private bool isCanTouchCard;
 
+    private int galleryPage;
+
 
 
     [Header("[ Record Fields ]")]
@@ -88,6 +90,9 @@ public class InvenUICtrl : MonoBehaviour
 
     [SerializeField]
     private Transform recordContentTr;
+
+    [SerializeField]
+    private Sprite recordSelected, recordNotSelected;
 
     [SerializeField]
     private GameObject recordInfoOb;
@@ -101,14 +106,20 @@ public class InvenUICtrl : MonoBehaviour
     {
         isOnInven = false;
         contentIndex = 0;
+        galleryPage = 0;
         InvenObject.SetActive(false);
+        SetMenus(contentIndex);
+        SetContents(contentIndex);
     }
 
     public void OnOffInven()
     {
         isOnInven = !isOnInven;
         contentIndex = 0;
+        galleryPage = 0;
         InvenObject.SetActive(isOnInven);
+        SetMenus(contentIndex);
+        SetContents(contentIndex);
 
         GameManager._sound.PlaySE("가방여닫기");
     }
@@ -116,8 +127,12 @@ public class InvenUICtrl : MonoBehaviour
     public void SetMenus(int index)
     {
         for (int i = 0; i < menus.Length; i++)
-            menus[i].images[0].color = Color.white * 0.4f;
-        menus[index].images[0].color = Color.white * 0.8f;
+        {
+            if (i == index)
+                menus[i].images[0].sprite = menuOnSprites[i];
+            else
+                menus[i].images[0].sprite = menuOffSprites[i];
+        }
     }
 
     public void SetContents(int index)
@@ -145,6 +160,8 @@ public class InvenUICtrl : MonoBehaviour
             return;
 
         contentIndex = uiBox.index;
+        SetMenus(contentIndex);
+        SetContents(contentIndex);
         GameManager._sound.PlaySE("UI클릭");
     }
 
@@ -160,9 +177,10 @@ public class InvenUICtrl : MonoBehaviour
             UIBox uIBox = Instantiate(itemSlot, itemContentTr).GetComponent<UIBox>();
             Sprite itemSprite = GameManager._data.itemDatas[itemCode].item_sprite;
 
-            uIBox.images[0].GetComponent<RectTransform>().sizeDelta = 
+            uIBox.images[0].enabled = false;
+            uIBox.images[1].GetComponent<RectTransform>().sizeDelta = 
                 new Vector2(itemSprite.rect.width, itemSprite.rect.height).normalized * itemSlotImageSize;
-            uIBox.images[0].sprite = itemSprite;
+            uIBox.images[1].sprite = itemSprite;
             uIBox.button.onClick.AddListener(OnItemSlot);
             uIBox.index = itemCode;
         }
@@ -170,33 +188,57 @@ public class InvenUICtrl : MonoBehaviour
 
     private void SetGalleryContent()
     {
-        var pre_objects = captureContentTr.GetComponentsInChildren<UIBox>();
-        foreach (var ob in pre_objects)
-            Destroy(ob.gameObject);
-
+        UIBox[] captureSlots = captureContentTr.GetComponentsInChildren<UIBox>();
         List<int> captures = GameManager._data.player.hasCaptures;
-        foreach (var captureCode in captures)
-        {
-            UIBox uIBox = Instantiate(captureSlot, captureContentTr).GetComponent<UIBox>();
-            Sprite itemSprite = GameManager._data.captureDatas[captureCode].capture_sprite;
+        galleryPage = 0;
+        SetGalleryPageButton();
 
-            uIBox.images[0].sprite = itemSprite;
-            uIBox.button.onClick.AddListener(OnCaptureSlot);
-            uIBox.index = captureCode;
+        for (int i = 0; i < captureSlots.Length; i++)
+        {
+            UIBox uIBox = captureSlots[i + galleryPage * 6];
+
+            if (i + galleryPage * 6 < captures.Count)
+            {
+                int idx = captures[i + galleryPage * 6];
+                
+                Sprite itemSprite = GameManager._data.captureDatas[idx].capture_sprite;
+
+                uIBox.images[0].sprite = itemSprite;
+                uIBox.images[0].color = Color.white;
+                uIBox.button.enabled = true;
+                uIBox.button.onClick.AddListener(OnCaptureSlot);
+                uIBox.index = idx;
+            }
+            else
+            {
+                // 해당하는 갤러리가 없음 => 비활성화
+                uIBox.images[0].sprite = null;
+                uIBox.images[0].color = new Color(0f, 0f, 0f, 0f);
+                uIBox.button.enabled = false;
+                uIBox.index = -1;
+            }
         }
     }
 
     private void SetRecordContent()
     {
-        var pre_objects = recordContentTr.GetComponentsInChildren<UIBox>();
+        UIBox[] pre_objects = recordContentTr.GetComponentsInChildren<UIBox>();
         foreach (var ob in pre_objects)
-            Destroy(ob.gameObject);
+        {
+            ob.images[0].sprite = recordNotSelected;
+            ob.tmp_texts[0].color = Color.white;
+        }
+
+        //foreach (var ob in pre_objects)
+        //    Destroy(ob.gameObject);
 
         List<int> records = GameManager._data.player.hasRecords;
         foreach (var recordCode in records)
         {
             UIBox uIBox = Instantiate(recordSlot, recordContentTr).GetComponent<UIBox>();
 
+            uIBox.images[0].sprite = recordNotSelected;
+            uIBox.tmp_texts[0].color = Color.white;
             uIBox.tmp_texts[0].SetText(GameManager._data.recordDatas[recordCode].record_name);
             uIBox.button.onClick.AddListener(OnRecordSlot);
             uIBox.index = recordCode;
@@ -210,12 +252,16 @@ public class InvenUICtrl : MonoBehaviour
             return;
 
         itemInfoOb.SetActive(true);
+        var pre_objects = itemContentTr.GetComponentsInChildren<UIBox>();
+        foreach (var ob in pre_objects)
+            ob.images[0].enabled = false;
         GameManager._sound.PlaySE("UI클릭");
 
         int itemCode = uiBox.index;
         ItemSO itemData = GameManager._data.itemDatas[itemCode];
         Sprite itemSprite = itemData.item_sprite;
 
+        uiBox.images[0].enabled = true;
         itemInfoImage.sprite = itemSprite;
         itemInfoImage.GetComponent<RectTransform>().sizeDelta 
             = new Vector2(itemSprite.rect.width, itemSprite.rect.height).normalized * itemInfoImageSize;
@@ -244,19 +290,55 @@ public class InvenUICtrl : MonoBehaviour
         captureCardText.SetText($"{captureData.capture_info}");
     }
 
-    private void OnRecordSlot()
+    public void OnRecordSlot()
     {
         UIBox uiBox = CheckUIBoxOnClick();
         if (uiBox == null)
             return;
 
         recordInfoOb.SetActive(true);
+        UIBox[] pre_objects = recordContentTr.GetComponentsInChildren<UIBox>();
+        foreach (var ob in pre_objects)
+        {
+            ob.images[0].sprite = recordNotSelected;
+            ob.tmp_texts[0].color = Color.white;
+        }
         GameManager._sound.PlaySE("UI클릭");
 
         int recordCode = uiBox.index;
+        uiBox.images[0].sprite = recordSelected;
+        uiBox.tmp_texts[0].color = Color.black;
         RecordSO recordData = GameManager._data.recordDatas[recordCode];
 
         itemInfoText.SetText($"{recordData.record_name}\n\n <size=70%>{recordData.record_info}");
+    }
+
+    public void SetGalleryPageButton()
+    {
+        int maxPage = (GameManager._data.player.hasCaptures.Count - 1) / 6;
+
+        capturePrePageButton.SetActive(true);
+        captureNextPageButton.SetActive(true);
+        if (galleryPage == 0)
+            capturePrePageButton.SetActive(false);
+        if (GameManager._data.player.hasCaptures.Count == 0 || galleryPage == maxPage)
+            captureNextPageButton.SetActive(false);
+
+        capturePageText.SetText($"( {galleryPage + 1} / { maxPage + 1 } )");
+    }
+
+    public void OnGalleryPreButton()
+    {
+        galleryPage--;
+        SetGalleryContent();
+        GameManager._sound.PlaySE("UI클릭");
+    }
+
+    public void OnGalleryNextButton()
+    {
+        galleryPage++;
+        SetGalleryContent();
+        GameManager._sound.PlaySE("UI클릭");
     }
 
     public void OnCaptureCard()
