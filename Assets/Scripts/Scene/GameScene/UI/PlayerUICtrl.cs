@@ -32,6 +32,6 @@ public class PlayerUICtrl : MonoBehaviour
     /// </summary>
     public void SetPlayerHP()
     {
-        HP_fillImage.fillAmount = PlayerCtrl.instance.cur_HP / PlayerCtrl.instance.max_HP;
+        //HP_fillImage.fillAmount = PlayerCtrl.instance.cur_HP / PlayerCtrl.instance.max_HP;
     }
 }
