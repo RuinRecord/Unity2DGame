@@ -221,10 +221,11 @@ public class PlayerCtrl : MonoBehaviour
                 // 이동 방향키 눌림
                 Vector2Int destination = currentPos + dir;
                 bool isValid = MapCtrl.instance.CheckValidArea(destination); // 이동 가능 지역인가?
-
-                // 이동
-                if (isValid)
+                
+                if (isValid) // 이동
                     SetMove(dir, 1, moveSpeed);
+                else // 방향만 변경
+                    SetAnimationDir(dir);
 
                 // 위치에 움직일 수 있는 물체 감지
                 movingObject = CheckMovingObject(destination);
