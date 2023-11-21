@@ -108,12 +108,32 @@ public class MapCtrl : MonoBehaviour
         });
 
         // 렌더러 우선순위 지정
-        for (int i = 0; i < spritesList.Count; i++)
+        int sortIndex = 1;
+        float currentY = 0f;
+        if (spritesList.Count > 0 && spritesList[0].spriteRenderer != null && spritesList[0].tilemapRenderer != null)
         {
-            if (spritesList[i].spriteRenderer != null)
-                spritesList[i].spriteRenderer.sortingOrder = i;
-            else if (spritesList[i].tilemapRenderer != null)
-                spritesList[i].tilemapRenderer.sortingOrder = i;
+            spritesList[0].spriteRenderer.sortingOrder = 0;
+            currentY = spritesList[0].transform.position.y;
+        }
+
+        foreach (var render in spritesList)
+        {
+            if (render.spriteRenderer != null)
+            {
+                if (currentY != render.transform.position.y)
+                {
+                    render.spriteRenderer.sortingOrder = sortIndex++;
+                    currentY = render.transform.position.y;
+                }
+            }
+            else if (render.tilemapRenderer != null)
+            {
+                if (currentY != render.transform.position.y)
+                {
+                    render.tilemapRenderer.sortingOrder = sortIndex++;
+                    currentY = render.transform.position.y;
+                }
+            }
         }
     }
 
