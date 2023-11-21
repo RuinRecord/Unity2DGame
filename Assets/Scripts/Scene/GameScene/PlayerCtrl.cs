@@ -186,8 +186,8 @@ public class PlayerCtrl : MonoBehaviour
         if (currentPos.x != Mathf.RoundToInt(this.transform.position.x) || currentPos.y != Mathf.RoundToInt(this.transform.position.y))
             SetCurrentPos();
 
-        // 이동 모드 + 이동 가능 -> state를 Idle로 초기화
-        if (state.Equals(PlayerState.WALK) && isCanMove)
+        // 이동 모드 + 이동 중 아님 -> state를 Idle로 초기화
+        if (state.Equals(PlayerState.WALK) && !isMoving && isCanInteract)
             state = PlayerState.IDLE;
 
         #endregion
@@ -329,7 +329,7 @@ public class PlayerCtrl : MonoBehaviour
             if (isCanInven && Input.GetKeyDown(KeyCode.E))
             {
                 UIManager._invenUI.OnOffInven();
-                isCanMove = isCanCapture = isCanInteract = !UIManager._invenUI.isOnInven;
+                isCanMove = isCanInteract = !UIManager._invenUI.isOnInven;
             }
         }
     }
@@ -340,11 +340,11 @@ public class PlayerCtrl : MonoBehaviour
     /// </summary>
     private bool CheckCanUpdate()
     {
+        if (state.Equals(PlayerState.DEAD))
+            return false; // 죽은 상태의 경우 & 움직이는 경우 기능 동작 불가
+
         if (GameManager._change.isChanging)
             return false; // 현재 씬 및 위치 전환 중이면 동작 불가
-
-        if (state.Equals(PlayerState.DEAD))
-            return false; // 죽은 상태의 경우 기능 동작 불가
 
         if (CutSceneCtrl.isCutSceneOn)
             return false; // 컷씬이 진행중이면 동작 불가
@@ -424,7 +424,10 @@ public class PlayerCtrl : MonoBehaviour
 
         // 데이터 설정
         isMoving = false;
-        isCanInteract = isCanMove = isCanAttack = true;
+        
+        // 특별한 수행이 없을 때 기능 활성화
+        if (!UIManager._invenUI.isOnInven)
+            isCanInteract = isCanMove = isCanAttack = true;
     }
 
 
