@@ -7,9 +7,9 @@ using UnityEngine;
 public class InteractionObject : MonoBehaviour
 {
     /// <summary> 상호작용 플레이어 대사 </summary>
-    private List<PlayerDialog> dialogs;
+    private List<DialogSet> dialogs;
 
-    public List<PlayerDialog> GetDialogs() => dialogs;
+    public List<DialogSet> GetDialogs() => dialogs;
 
     /// <summary> 상호작용 식별 코드 </summary>
     public int code;

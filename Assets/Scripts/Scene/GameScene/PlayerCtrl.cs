@@ -288,7 +288,7 @@ public class PlayerCtrl : MonoBehaviour
                 else if (playerType.Equals(PlayerType.WOMEN))
                 {
                     // 상호작용 대사
-                    PlayerDialog[] dialogs = movingObject.player_m_dialogs.ToArray();
+                    DialogSet[] dialogs = movingObject.player_m_dialogs.ToArray();
                     UIManager._interactUI.StartDialog(dialogs);
                 }
             }
@@ -353,7 +353,7 @@ public class PlayerCtrl : MonoBehaviour
         if (PlayerTag.isTagOn || playerType != PlayerTag.playerType)
             return false; // 현재 태그 선택 중이거나, 현재 태그된 플레이어가 아니면 동작 불가
 
-        if (UIManager._interactUI.isInteractOn)
+        if (UIManager._interactUI.isDialog)
             return false; // 현재 상호작용 대화 시스템이 작동 중이면 동작 불가
 
         return true;

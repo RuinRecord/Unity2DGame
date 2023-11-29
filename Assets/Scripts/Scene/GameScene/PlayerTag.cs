@@ -106,7 +106,7 @@ public class PlayerTag : MonoBehaviour
         if (CutSceneCtrl.isCutSceneOn)
             return false; // 컷씬이 진행중이면 동작 불가
 
-        if (UIManager._interactUI.isInteractOn)
+        if (UIManager._interactUI.isDialog)
             return false; // 현재 상호작용 대화 시스템이 작동 중이면 동작 불가
 
         if (PlayerCtrl.instance.isMoving)

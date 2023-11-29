@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [Serializable]
-public struct PlayerDialog
+public struct DialogSet
 {
     /// <summary> 남주 대사 </summary>
     [SerializeField]
@@ -15,32 +15,68 @@ public struct PlayerDialog
     [SerializeField]
     private Dialog Player_W_dialog;
 
+    public DialogType GetDialogType()
+    {
+        if (PlayerTag.playerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetDialogType();
+        else return Player_W_dialog.GetDialogType();
+    }
+
     public AudioClip GetAudioClip()
     {
-        if (PlayerTag.playerType.Equals(PlayerType.MEN)) return Player_M_dialog.getAudioClip();
-        else return Player_W_dialog.getAudioClip();
+        if (PlayerTag.playerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetAudioClip();
+        else return Player_W_dialog.GetAudioClip();
+    }
+
+    public Sprite GetLeftSprite()
+    {
+        if (PlayerTag.playerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetLeftSprite();
+        else return Player_W_dialog.GetLeftSprite();
+    }
+
+    public Sprite GetRightSprite()
+    {
+        if (PlayerTag.playerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetRightSprite();
+        else return Player_W_dialog.GetRightSprite();
     }
 
     public string GetWords()
     {
-        if (PlayerTag.playerType.Equals(PlayerType.MEN)) return Player_M_dialog.getWord();
-        else return Player_W_dialog.getWord();
+        if (PlayerTag.playerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetWord();
+        else return Player_W_dialog.GetWord();
     }
 
     public float GetPrintTime()
     {
-        if (PlayerTag.playerType.Equals(PlayerType.MEN)) return Player_M_dialog.getPrintTime();
-        else return Player_W_dialog.getPrintTime();
+        if (PlayerTag.playerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetPrintTime();
+        else return Player_W_dialog.GetPrintTime();
     }
+}
+
+public enum DialogType
+{
+    Interaction,
+    Player
 }
 
 
 [Serializable]
 public struct Dialog
 {
+    /// <summary> 대화 타입 (0 = 상호작용, 1 = 플레이어) </summary>
+    [SerializeField]
+    private DialogType type;
+
     /// <summary> 대사 출력 시 등장하는 오디오 (NULL = 오디오 없음) </summary>
     [SerializeField]
     private AudioClip audioClip;
+
+    /// <summary> 대사 출력 시 왼쪽 이미지 (NULL = 이미지 없음) </summary>
+    [SerializeField]
+    private Sprite leftSprite;
+
+    /// <summary> 대사 출력 시 오른쪽 이미지 (NULL = 이미지 없음) </summary>
+    [SerializeField]
+    private Sprite rightSprite;
 
     /// <summary> 상호작용 문장 </summary>
     [SerializeField]
@@ -50,11 +86,17 @@ public struct Dialog
     [SerializeField]
     private float print_time;
 
-    public AudioClip getAudioClip() => audioClip;
+    public DialogType GetDialogType() => type;
 
-    public string getWord() => words;
+    public AudioClip GetAudioClip() => audioClip;
 
-    public float getPrintTime() => print_time;
+    public Sprite GetLeftSprite() => leftSprite;
+
+    public Sprite GetRightSprite() => rightSprite;
+
+    public string GetWord() => words;
+
+    public float GetPrintTime() => print_time;
 }
 
 

@@ -26,7 +26,7 @@ public class MovingObject : MonoBehaviour
 
     /// <summary> 여주인공 전용 대사 (남주 대사 설정해도 동작 X) </summary>
     /// 이 대사는 SO 파일이 없습니다. 직접 오브젝트 인스펙터에서 설정해야 합니다.
-    public List<PlayerDialog> player_m_dialogs;
+    public List<DialogSet> player_m_dialogs;
 
     public void SetDirection(Vector2 _vec) => direction = _vec;
 
