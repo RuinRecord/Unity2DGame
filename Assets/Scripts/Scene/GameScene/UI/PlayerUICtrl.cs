@@ -8,30 +8,70 @@ using UnityEngine.UI;
 /// </summary>
 public class PlayerUICtrl : MonoBehaviour
 {
-    /// <summary> 플레이어 HP 및 MP 출력용 UI 이미지 </summary>
+    [Header("[ 프로필 관련 변수 ]")]
+    [SerializeField]
+    private GameObject profile_object;
+
+    [SerializeField]
+    private Image profile_image;
+
+    [SerializeField]
+    private Sprite profile_w_sprite, profile_m_sprite;
+
+
     [SerializeField]
     private Image HP_fillImage;
+
+
+    [Header("[ 조작키 관련 변수 ]")]
+
+    [SerializeField]
+    private UIBox player_w_ctrlBox, player_m_ctrlBox;
+
 
     public void Init()
     {
         
     }
 
-
-    /// <summary>
-    /// 플레이어의 MP 및 HP UI를 설정하는 함수이다.
-    /// </summary>
-    public void SetPlayerState()
+    public void SetActivePlayerUI(bool isActive)
     {
+        profile_object.SetActive(isActive);
+        player_w_ctrlBox.gameObject.SetActive(isActive);
+        player_m_ctrlBox.gameObject.SetActive(isActive);
+    }
+
+
+    public void SetPlayerUIAll(PlayerType playerType)
+    {
+        SetPlayerProfile(playerType);
+        SetPlayerCtrlUI(playerType);
+    }
+
+
+    private void SetPlayerProfile(PlayerType playerType)
+    {
+        if (playerType.Equals(PlayerType.WOMEN))
+        {
+            profile_image.sprite = profile_w_sprite;
+        }
+        else if (playerType.Equals(PlayerType.MEN))
+        {
+            profile_image.sprite = profile_m_sprite;
+        }
         SetPlayerHP();
     }
 
 
-    /// <summary>
-    /// 플레이어의 HP UI를 설정하는 함수이다.
-    /// </summary>
     public void SetPlayerHP()
     {
         //HP_fillImage.fillAmount = PlayerCtrl.instance.cur_HP / PlayerCtrl.instance.max_HP;
+    }
+
+
+    private void SetPlayerCtrlUI(PlayerType playerType)
+    {
+        player_w_ctrlBox.gameObject.SetActive(playerType.Equals(PlayerType.WOMEN));
+        player_m_ctrlBox.gameObject.SetActive(playerType.Equals(PlayerType.MEN));
     }
 }

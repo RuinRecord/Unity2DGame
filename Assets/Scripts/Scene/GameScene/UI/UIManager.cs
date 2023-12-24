@@ -37,4 +37,9 @@ public class UIManager : MonoBehaviour
         _captureUI.Init();
         _invenUI.Init();
     }
+
+    public void SetActiveUI(bool isActive)
+    {
+        _playerUI.SetActivePlayerUI(isActive);
+    }
 }

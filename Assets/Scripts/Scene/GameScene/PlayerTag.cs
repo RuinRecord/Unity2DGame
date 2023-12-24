@@ -78,6 +78,7 @@ public class PlayerTag : MonoBehaviour
         tagAnim.gameObject.SetActive(false);
         tag_frame.SetActive(false);
         SetCameraRect(playerType, isPanelOn);
+        UIManager._playerUI.SetPlayerUIAll(playerType);
     }
 
 
@@ -214,15 +215,17 @@ public class PlayerTag : MonoBehaviour
         tagAnim.Play(FADE_IN_ANIM_NAME);
         tagAnim[FADE_IN_ANIM_NAME].speed = 1f / FADE_TIME;
 
-
         // 페이드 아웃 시작 시 기능 처리
         switch (_type)
         {
             case 0:
                 tag_frame.SetActive(true);
+                UIManager.instance.SetActiveUI(false);
                 break;
             case 1:
                 tag_frame.SetActive(false);
+                UIManager.instance.SetActiveUI(true);
+                UIManager._playerUI.SetPlayerUIAll(playerType);
                 break;
         }
 
@@ -232,6 +235,7 @@ public class PlayerTag : MonoBehaviour
         // 페이드 아웃 애니메이션 종료
 
         // 페이드 완전 종료 시 기능 처리
+
         switch (_type)
         {
             case 1:
