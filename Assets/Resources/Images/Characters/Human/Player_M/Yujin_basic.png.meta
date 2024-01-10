@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1006c0d71688c9d419cb8d93e0d8bd19
+guid: 619bfe279a95141419edee3a252b1d06
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -94,19 +94,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -136,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_M_Idle&Walk_0
+      name: Yujin_basic_0
       rect:
         serializedVersion: 2
         x: 0
@@ -150,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2a4fcfc91606144ea8bd542f670b4d7
-      internalID: -1974263549
+      spriteID: b9adf83dc4b25d44c990db802b200323
+      internalID: 154298845
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_M_Idle&Walk_1
+      name: Yujin_basic_1
       rect:
         serializedVersion: 2
         x: 64
@@ -171,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e0bd72ba3eeea94ea42cc61609cdd63
-      internalID: 1385432862
+      spriteID: affb4b57adbb98a4db2f55fe8ea24efa
+      internalID: 125139225
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_M_Idle&Walk_2
+      name: Yujin_basic_2
       rect:
         serializedVersion: 2
         x: 128
@@ -192,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2fe07b41e3d92f64097eb5feda0ff716
-      internalID: -1130113207
+      spriteID: 5fb2cd182699d8f4fa615645d69a872c
+      internalID: -1672303339
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_M_Idle&Walk_3
+      name: Yujin_basic_3
       rect:
         serializedVersion: 2
         x: 0
@@ -213,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f4da22588e6a694d81f79575cdc36c2
-      internalID: 353407740
+      spriteID: 92b57f2c866f6d64d9c56136707a3a2b
+      internalID: -1124422413
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_M_Idle&Walk_4
+      name: Yujin_basic_4
       rect:
         serializedVersion: 2
         x: 64
@@ -234,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b673cbfb9d768224d90f7e1f7348ef15
-      internalID: -234166160
+      spriteID: 832790226b996bb40a193f210df9f82c
+      internalID: -1760213394
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_M_Idle&Walk_5
+      name: Yujin_basic_5
       rect:
         serializedVersion: 2
         x: 128
@@ -255,14 +242,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5de9085f348d0244794511707bc9faf9
-      internalID: -1668796306
+      spriteID: 0300c7dd1e7f3354aaf670ab34dabe64
+      internalID: 1041759176
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_M_Idle&Walk_6
+      name: Yujin_basic_6
       rect:
         serializedVersion: 2
         x: 0
@@ -276,14 +263,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e24fd486552628a4383a572e88b2cc0c
-      internalID: -1014390180
+      spriteID: c4e9bed3e389fc04eb7046f6d7792eb1
+      internalID: -1642086775
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_M_Idle&Walk_7
+      name: Yujin_basic_7
       rect:
         serializedVersion: 2
         x: 64
@@ -297,14 +284,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 771b85a00fe13324394d000ed052e098
-      internalID: 1919945777
+      spriteID: 84e82b1c14310574c9c9b269b14d5bfe
+      internalID: -1416404306
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_M_Idle&Walk_8
+      name: Yujin_basic_8
       rect:
         serializedVersion: 2
         x: 128
@@ -318,14 +305,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6bbe2132c972ad4981154d22952e83f
-      internalID: 762525041
+      spriteID: 7271b0bf2b6aa714c838c24fc378f65f
+      internalID: 1877226585
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_M_Idle&Walk_9
+      name: Yujin_basic_9
       rect:
         serializedVersion: 2
         x: 0
@@ -339,14 +326,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4c86e7ea830f4c4da921fb2e081bced
-      internalID: 485542774
+      spriteID: 50216f57302cfab4486a5270609766e4
+      internalID: -2139829312
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_M_Idle&Walk_10
+      name: Yujin_basic_10
       rect:
         serializedVersion: 2
         x: 64
@@ -360,14 +347,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad8f3796492ffae45b53c1ed6eb7f7f3
-      internalID: 2078815065
+      spriteID: 85433dc5ab34dd84fa3d504e1fd77cb0
+      internalID: 1903615104
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_M_Idle&Walk_11
+      name: Yujin_basic_11
       rect:
         serializedVersion: 2
         x: 128
@@ -381,8 +368,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 844151699004c0b478058b0a47a693b3
-      internalID: -2075202730
+      spriteID: dbe5e1b697e5d2a4cbafa16926776b81
+      internalID: 311342798
       vertices: []
       indices: 
       edges: []
@@ -398,18 +385,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Player_M_Idle&Walk_0: -1974263549
-      Player_M_Idle&Walk_1: 1385432862
-      Player_M_Idle&Walk_10: 2078815065
-      Player_M_Idle&Walk_11: -2075202730
-      Player_M_Idle&Walk_2: -1130113207
-      Player_M_Idle&Walk_3: 353407740
-      Player_M_Idle&Walk_4: -234166160
-      Player_M_Idle&Walk_5: -1668796306
-      Player_M_Idle&Walk_6: -1014390180
-      Player_M_Idle&Walk_7: 1919945777
-      Player_M_Idle&Walk_8: 762525041
-      Player_M_Idle&Walk_9: 485542774
+      Yujin_basic_0: 154298845
+      Yujin_basic_1: 125139225
+      Yujin_basic_10: 1903615104
+      Yujin_basic_11: 311342798
+      Yujin_basic_2: -1672303339
+      Yujin_basic_3: -1124422413
+      Yujin_basic_4: -1760213394
+      Yujin_basic_5: 1041759176
+      Yujin_basic_6: -1642086775
+      Yujin_basic_7: -1416404306
+      Yujin_basic_8: 1877226585
+      Yujin_basic_9: -2139829312
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
