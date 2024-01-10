@@ -3,22 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public enum LightAnim
-{
-    None,
-    Blink_Slow,
-    Blink_Normal,
-    Blink_Fast,
-}
-
-public enum LightColor
-{
-    White,
-    Red,
-    Blue,
-    Yellow,
-}
-
 public class LightObject : MonoBehaviour
 {
     private readonly string[] animNames =

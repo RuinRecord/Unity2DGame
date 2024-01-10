@@ -21,7 +21,6 @@ public class Render
     }
 }
 
-
 /// <summary>
 /// 맵 관련 처리를 담당하는 컨트롤러 클래스이다.
 /// </summary>

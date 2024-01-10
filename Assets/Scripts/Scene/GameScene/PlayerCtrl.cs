@@ -2,37 +2,6 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-/// <summary>
-/// 현재 플레이어의 종류
-/// </summary>
-public enum PlayerType
-{
-    MEN,    // 남주인공
-    WOMEN   // 여주인공
-}
-
-/// <summary>
-/// 현재 플레이어의 상태
-/// </summary>
-public enum PlayerState
-{
-    IDLE,       // 정지
-    WALK,       // 이동
-    EVASION,    // 회피
-    ATTACK,     // 공격
-    CAPTURE,    // 조사
-    DEAD        // 죽음
-}
-
-/// <summary>
-/// 현재 플레이어의 모드
-/// </summary>
-public enum PlayerMode
-{
-    DEFAULT,    // 평소
-    PUSH,       // 밀기 (남주만 해당)
-}
-
 public class PlayerCtrl : MonoBehaviour
 {
     /// <summary> 회피 쿨타임 시간 </summary>

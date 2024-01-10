@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class DataManager : MonoBehaviour
 {
     /// <summary> 게임에 존재하는 아이템 개수 </summary>
