@@ -51,6 +51,8 @@ public class PlayerCtrl : MonoBehaviour
 
     private Animator animator;
 
+    private Rigidbody2D rigidbody;
+
     [Obsolete]
     [SerializeField]
     private PlayerMode playerMode;
@@ -132,6 +134,7 @@ public class PlayerCtrl : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        rigidbody = GetComponent<Rigidbody2D>();
 
         state = PlayerState.IDLE;
         teleport = null;
@@ -146,8 +149,7 @@ public class PlayerCtrl : MonoBehaviour
         this.transform.position = new Vector3(currentPos.x, currentPos.y, 0);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         #region 항상 수행되는 구간
 
@@ -164,18 +166,6 @@ public class PlayerCtrl : MonoBehaviour
         if (!CheckCanUpdate())
             return; // 아래 기능을 수행하지 못하는 상태
 
-        // 달리기 기능
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
-        {
-            moveSpeed = RUN_SPEED;
-            animator.speed = 1.5f;
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
-        {
-            moveSpeed = WALK_SPEED;
-            animator.speed = 1f;
-        }
-
         // 이동
         if (isCanMove)
         {
@@ -188,16 +178,10 @@ public class PlayerCtrl : MonoBehaviour
             if (dir != Vector2Int.zero)
             {
                 // 이동 방향키 눌림
-                Vector2Int destination = currentPos + dir;
-                bool isValid = MapCtrl.instance.CheckValidArea(destination); // 이동 가능 지역인가?
-                
-                if (isValid) // 이동
-                    SetMove(dir, 1, moveSpeed);
-                else // 방향만 변경
-                    SetAnimationDir(dir);
+                Move(dir);
 
                 // 위치에 움직일 수 있는 물체 감지
-                movingObject = CheckMovingObject(destination);
+                movingObject = CheckMovingObject(dir);
                 if (movingObject != null)
                 {
                     mode = PlayerMode.PUSH;
@@ -211,6 +195,25 @@ public class PlayerCtrl : MonoBehaviour
                         mode = PlayerMode.DEFAULT;
                 }
             }
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (!CheckCanUpdate())
+            return; // 아래 기능을 수행하지 못하는 상태
+
+        // 달리기 기능
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+        {
+            moveSpeed = RUN_SPEED;
+            animator.speed = 1.5f;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+        {
+            moveSpeed = WALK_SPEED;
+            animator.speed = 1f;
         }
 
         // 상호작용 및 포탈 사용
@@ -227,7 +230,7 @@ public class PlayerCtrl : MonoBehaviour
                 {
                     // 상호작용
                     Vector2Int dir = GetDirection();
-                    // Debug.DrawRay(this.transform.position, new Vector3(dir.x, dir.y, 0f), Color.green, 3f);
+                    Debug.DrawRay(this.transform.position, new Vector3(dir.x, dir.y, 0f), Color.green, 3f);
 
                     // 상호작용 오브젝트 탐색
                     RaycastHit2D hit = Physics2D.Raycast(this.transform.position, dir, 1f, 256);
@@ -304,10 +307,6 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
-
-    /// <summary>
-    /// 현재 플레이어 조작이 가능한 지 체크하는 함수이다.
-    /// </summary>
     private bool CheckCanUpdate()
     {
         if (state.Equals(PlayerState.DEAD))
@@ -328,31 +327,26 @@ public class PlayerCtrl : MonoBehaviour
         return true;
     }
 
+    public void SetCurrentPos() 
+        => SetCurrentPos(this.transform.position);
 
-    /// <summary>
-    /// CurrentPos를 플레이어의 현재 위치에 맞춰 재갱신하는 함수이다.
-    /// </summary>
-    public void SetCurrentPos() => SetCurrentPos(this.transform.position);
-
-
-    /// <summary>
-    /// CurrentPos를 '_pos'위치에 맞춰 재갱신하는 함수이다.
-    /// </summary>
     public void SetCurrentPos(Vector3 _pos)
     {
         currentPos.x = Mathf.RoundToInt(_pos.x); 
         currentPos.y = Mathf.RoundToInt(_pos.y);
     }
 
-
-    /// <summary>
-    /// 'moveSpeed'의 속도로 플레이어를 '_dir' 한칸 이동 시키는 함수이다.
-    /// </summary>
-    /// <param name="_dir">이동 방향 벡터</param>
-    /// <param name="_dis">이동 거리</param>
-    /// <param name="_moveSpeed">플레이어의 이동속도</param>
-    public void SetMove(Vector2Int _dir, int _dis, float _moveSpeed)
+    public void Move(Vector2Int _dir)
     {
+        state = PlayerState.WALK;
+
+        Vector2 movePos = (Vector2)this.transform.position + new Vector2(_dir.x, _dir.y) * Time.deltaTime * moveSpeed;
+        rigidbody.MovePosition(movePos);
+        SetAnimationDir(_dir);
+    }
+
+    public void SetMove(Vector2Int _dir, int _dis, float _moveSpeed)
+    { 
         state = PlayerState.WALK;
         SetAnimationDir(_dir);
 
@@ -361,13 +355,6 @@ public class PlayerCtrl : MonoBehaviour
         moveCo = StartCoroutine(StartMove(_dir, _dis, _moveSpeed));
     }
 
-
-    /// <summary>
-    /// 'moveSpeed'의 속도로 플레이어를 '_dir'로 '_dir'거리 만큼 부드럽게 이동시키는 코루틴 함수이다.
-    /// </summary>
-    /// <param name="_dir">이동 방향 벡터</param>
-    /// <param name="_dis">이동 거리</param>
-    /// <param name="_moveSpeed">플레이어의 이동속도</param>
     IEnumerator StartMove(Vector2Int _dir, int _dis, float _moveSpeed)
     {
         Vector3 dir_vec3 = new Vector3(_dir.x, _dir.y, 0);
@@ -394,16 +381,12 @@ public class PlayerCtrl : MonoBehaviour
 
         // 데이터 설정
         isMoving = false;
-        
+
         // 특별한 수행이 없을 때 기능 활성화
         if (!UIManager._invenUI.isOnInven)
             isCanInteract = isCanMove = isCanAttack = true;
     }
 
-
-    /// <summary>
-    /// 현재 플레이어가 바라보는 방향을 반환하는 함수이다.
-    /// </summary>
     public Vector2Int GetDirection()
     {
         Vector2Int vec;
@@ -421,11 +404,6 @@ public class PlayerCtrl : MonoBehaviour
         return vec;
     }
 
-
-    /// <summary>
-    /// 플레이어를 텔레포트하는 함수이다.
-    /// </summary>
-    /// <param name="_destination">목적지 위치</param>
     public void Teleport(Vector3 _destination)
     {
         teleport.Close();
@@ -434,40 +412,22 @@ public class PlayerCtrl : MonoBehaviour
         state = PlayerState.IDLE;
     }
 
-
-    /// <summary>
-    /// 방향 벡터에 따라 바라보는 방향을 설정하느 함수이다.
-    /// </summary>
-    /// <param name="dir">뱡향 벡터</param>
     public void SetAnimationDir(Vector2 dir)
     {
         animator.SetFloat("DirX", dir.normalized.x);
         animator.SetFloat("DirY", dir.normalized.y);
     }
 
-
-    /// <summary>
-    /// (_clickPos) 위치에 움직일 수 있는 오브젝트가 있는지 체크하고 반환하는 함수이다.
-    /// </summary>
-    /// <param name="_clickPos">체크 위치</param>
-    /// <returns>움직일 수 있는 오브젝트 (없다면 NULL 반환)</returns>
-    private MovingObject CheckMovingObject(Vector2 _clickPos)
+    private MovingObject CheckMovingObject(Vector2 _dir)
     {
         RaycastHit2D hit;
-        if (hit = Physics2D.Raycast(_clickPos, Vector2.up, 0.25f, 512))
-        {
-            // 플레이어 위치에서 도착 위치로 ray를 발사 충돌 검사
-            // 충돌 지점에 옮기긱 가능한 오브젝트가 있는지 체크
+
+        if (hit = Physics2D.Raycast(this.transform.position, _dir, 1f, 512))
             return hit.transform.gameObject.GetComponent<MovingObject>();
-        }
         else
             return null;
     }
 
-
-    /// <summary>
-    /// 플레이어의 상태에 따른 애니메이션을 설정하는 함수이다.
-    /// </summary>
     private void SetAnimation()
     {
         if (mode.Equals(PlayerMode.DEFAULT))
@@ -509,10 +469,6 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
-
-    /// <summary>
-    /// 회피 쿨타임 시작 함수
-    /// </summary>
     IEnumerator EvasionCoolTime()
     {
         isCanMove = isCanAttack = isCanEvasion = false;
@@ -523,10 +479,6 @@ public class PlayerCtrl : MonoBehaviour
         isCanMove = isCanAttack = isCanEvasion = true;
     }
 
-
-    /// <summary>
-    /// 회피 기능을 수행하는 함수이다.
-    /// </summary>
     private void StartEvasion()
     {
         int distance = EVASION_FORCE;
@@ -537,32 +489,20 @@ public class PlayerCtrl : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position + dir_half, dir, EVASION_FORCE, MapCtrl.instance.canNotMove_layerMask);
 
         // 장애물이 있다면 거리를 조절
-        if (hit) distance = Mathf.RoundToInt(hit.distance);
-        if (distance == 0) return; // 회피 불가능 => 취소
+        if (hit) 
+            distance = Mathf.RoundToInt(hit.distance);
 
-        // 이전에 이동 중이라면 중지
-        if (moveCo != null)
-            StopCoroutine(moveCo);
+        if (distance == 0) 
+            return; // 회피 불가능 => 취소
 
         // 회피 쿨타임 및 기능 수행
         StartCoroutine("EvasionCoolTime");
-        moveCo = StartCoroutine(StartMove(dir, distance, EVASION_SPEED));
         state = PlayerState.EVASION;
     }
 
-
-    /// <summary>
-    /// 회피 애니메이션이 끝났음을 알리는 애니메이션 이벤트 함수 (Animator Tab에서 사용)
-    /// </summary>
     public void EndEvasion()
-    {
-        state = PlayerState.IDLE;
-    }
+        => state = PlayerState.IDLE;
 
-
-    /// <summary>
-    /// 현재 공격 상태 변수에 따라 특정 공격을 수행하는 함수이다.
-    /// </summary>
     private void StartAttack()
     {
         // 공격 수행
@@ -574,10 +514,6 @@ public class PlayerCtrl : MonoBehaviour
         GameManager._sound.PlaySE("남주공격");
     }
 
-
-    /// <summary>
-    /// (애니메이션 이벤트 함수) 공격 애니메이션이 종료되었을 때 발동, 공격 관련 데이터를 초기화하는 함수이다.
-    /// </summary>
     public void EndAttack()
     {
         isCanMove = isCanAttack = isCanEvasion = true;
