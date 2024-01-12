@@ -73,7 +73,6 @@ public class MovingObject : MonoBehaviour
 
         PlayerCtrl.instance.state = PlayerState.IDLE;
         PlayerCtrl.instance.isCanInteract = PlayerCtrl.instance.isCanMove = true;
-        PlayerCtrl.instance.transform.position = savedPos;
         PlayerCtrl.instance.SetCurrentPos(savedPos);
         this.transform.position = savedPos + (Vector3)direction;
     }

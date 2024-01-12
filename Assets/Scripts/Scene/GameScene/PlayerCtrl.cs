@@ -4,24 +4,17 @@ using UnityEngine;
 
 public class PlayerCtrl : MonoBehaviour
 {
-    /// <summary> 회피 쿨타임 시간 </summary>
     private const float EVASION_COOLTIME = 1.5f;
 
-
-    /// <summary> 회피 이동 강도 </summary>
     private const int EVASION_FORCE = 3;
 
-
-    /// <summary> 플레이어 걷기 속도 </summary>
     private const float WALK_SPEED = 4f;
 
-
-    /// <summary> 플레이어 달리기 속도 </summary>
     private const float RUN_SPEED = 6f;
 
+    private const float MOVE_OBJECT_DETECT_DISTANCE = 0.275f;
 
-    /// <summary> 플레이어 이동 속도 </summary>
-    private const float EVASION_SPEED = 6f;
+    private const float INTERACTION_OBJECT_DETECT_DISTANCE = 1f;
 
 
     /// <summary> PlayerCtrl 싱글톤 패턴 </summary>
@@ -230,10 +223,10 @@ public class PlayerCtrl : MonoBehaviour
                 {
                     // 상호작용
                     Vector2Int dir = GetDirection();
-                    Debug.DrawRay(this.transform.position, new Vector3(dir.x, dir.y, 0f), Color.green, 3f);
+                    //Debug.DrawRay(this.transform.position, new Vector3(dir.x, dir.y, 0f), Color.green, 3f);
 
                     // 상호작용 오브젝트 탐색
-                    RaycastHit2D hit = Physics2D.Raycast(this.transform.position, dir, 1f, 256);
+                    RaycastHit2D hit = Physics2D.Raycast(this.transform.position, dir, INTERACTION_OBJECT_DETECT_DISTANCE, 256);
                     if (hit)
                     {
                         // 있으면 상호작용 대화 시스템 시작
@@ -422,7 +415,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         RaycastHit2D hit;
 
-        if (hit = Physics2D.Raycast(this.transform.position, _dir, 1f, 512))
+        if (hit = Physics2D.Raycast(this.transform.position, _dir, MOVE_OBJECT_DETECT_DISTANCE, 512))
             return hit.transform.gameObject.GetComponent<MovingObject>();
         else
             return null;
