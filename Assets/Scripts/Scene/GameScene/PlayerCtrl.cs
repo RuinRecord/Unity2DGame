@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class PlayerCtrl : MonoBehaviour
 {
-    private const float EVASION_COOLTIME = 1.5f;
+    private const float EVASION_COOLTIME = 1f;
 
     private const int EVASION_FORCE = 3;
 
     private const float WALK_SPEED = 4f;
 
     private const float RUN_SPEED = 6f;
+
+    private const float EVASION_SPEED = 6f;
 
     private const float MOVE_OBJECT_DETECT_DISTANCE = 0.275f;
 
@@ -142,6 +144,7 @@ public class PlayerCtrl : MonoBehaviour
         this.transform.position = new Vector3(currentPos.x, currentPos.y, 0);
     }
 
+
     private void FixedUpdate()
     {
         #region 항상 수행되는 구간
@@ -190,6 +193,7 @@ public class PlayerCtrl : MonoBehaviour
             }
         }
     }
+
 
     // Update is called once per frame
     void Update()
@@ -300,6 +304,7 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
+
     private bool CheckCanUpdate()
     {
         if (state.Equals(PlayerState.DEAD))
@@ -320,8 +325,10 @@ public class PlayerCtrl : MonoBehaviour
         return true;
     }
 
+
     public void SetCurrentPos() 
         => SetCurrentPos(this.transform.position);
+
 
     public void SetCurrentPos(Vector3 _pos)
     {
@@ -329,16 +336,18 @@ public class PlayerCtrl : MonoBehaviour
         currentPos.y = Mathf.RoundToInt(_pos.y);
     }
 
-    public void Move(Vector2Int _dir)
+
+    public void Move(Vector2 _dir)
     {
         state = PlayerState.WALK;
 
-        Vector2 movePos = (Vector2)this.transform.position + new Vector2(_dir.x, _dir.y) * Time.deltaTime * moveSpeed;
+        Vector2 movePos = (Vector2)this.transform.position + _dir * Time.deltaTime * moveSpeed;
         rigidbody.MovePosition(movePos);
         SetAnimationDir(_dir);
     }
 
-    public void SetMove(Vector2Int _dir, int _dis, float _moveSpeed)
+
+    public void SetMove(Vector2 _dir, float _dis, float _moveSpeed)
     { 
         state = PlayerState.WALK;
         SetAnimationDir(_dir);
@@ -348,15 +357,10 @@ public class PlayerCtrl : MonoBehaviour
         moveCo = StartCoroutine(StartMove(_dir, _dis, _moveSpeed));
     }
 
-    IEnumerator StartMove(Vector2Int _dir, int _dis, float _moveSpeed)
+
+    IEnumerator StartMove(Vector2 _dir, float _dis, float _moveSpeed)
     {
-        Vector3 dir_vec3 = new Vector3(_dir.x, _dir.y, 0);
         Vector2 cur_dir = _dir * _dis;
-
-        // 만약 이동(or 회피) 중에 발동됐다면 이동한 만큼 재조정
-        cur_dir -= new Vector2(this.transform.position.x - currentPos.x, this.transform.position.y - currentPos.y);
-
-        // 데이터 세팅
         SetAnimationDir(_dir);
         isMoving = true;
         isCanInteract = isCanMove = isCanAttack = false;
@@ -364,21 +368,19 @@ public class PlayerCtrl : MonoBehaviour
         while (cur_dir.normalized == _dir)
         {
             // 플레이어 이동
-            this.transform.position += Time.deltaTime * _moveSpeed * dir_vec3;
-            cur_dir -= Time.deltaTime * _moveSpeed * (Vector2)dir_vec3;
+            Vector2 moveVec = _dir * _moveSpeed * Time.deltaTime;
+            this.transform.position = (Vector2)this.transform.position + moveVec;
+            cur_dir -= moveVec;
             yield return null;
         }
 
-        // 위치 보정
-        this.transform.position = new Vector3(currentPos.x, currentPos.y, 0);
-
-        // 데이터 설정
         isMoving = false;
 
         // 특별한 수행이 없을 때 기능 활성화
         if (!UIManager._invenUI.isOnInven)
             isCanInteract = isCanMove = isCanAttack = true;
     }
+
 
     public Vector2Int GetDirection()
     {
@@ -397,6 +399,7 @@ public class PlayerCtrl : MonoBehaviour
         return vec;
     }
 
+
     public void Teleport(Vector3 _destination)
     {
         teleport.Close();
@@ -405,11 +408,13 @@ public class PlayerCtrl : MonoBehaviour
         state = PlayerState.IDLE;
     }
 
+
     public void SetAnimationDir(Vector2 dir)
     {
         animator.SetFloat("DirX", dir.normalized.x);
         animator.SetFloat("DirY", dir.normalized.y);
     }
+
 
     private MovingObject CheckMovingObject(Vector2 _dir)
     {
@@ -420,6 +425,7 @@ public class PlayerCtrl : MonoBehaviour
         else
             return null;
     }
+
 
     private void SetAnimation()
     {
@@ -462,6 +468,7 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
+
     IEnumerator EvasionCoolTime()
     {
         isCanMove = isCanAttack = isCanEvasion = false;
@@ -472,29 +479,30 @@ public class PlayerCtrl : MonoBehaviour
         isCanMove = isCanAttack = isCanEvasion = true;
     }
 
+
     private void StartEvasion()
     {
-        int distance = EVASION_FORCE;
+        float distance = EVASION_FORCE;
         Vector2Int dir = GetDirection();
-        Vector2 dir_half = new Vector2(dir.x * 0.51f, dir.y * 0.51f);
 
         // 회피 방향으로 장애물이 있는지 체크
-        RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position + dir_half, dir, EVASION_FORCE, MapCtrl.instance.canNotMove_layerMask);
+        RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position + (Vector2)dir * MOVE_OBJECT_DETECT_DISTANCE, dir, EVASION_FORCE, MapCtrl.instance.canNotMove_layerMask);
 
         // 장애물이 있다면 거리를 조절
-        if (hit) 
-            distance = Mathf.RoundToInt(hit.distance);
+        if (hit)
+            distance = hit.distance;
 
-        if (distance == 0) 
-            return; // 회피 불가능 => 취소
+        SetMove(dir, distance, EVASION_SPEED);
 
         // 회피 쿨타임 및 기능 수행
         StartCoroutine("EvasionCoolTime");
         state = PlayerState.EVASION;
     }
 
+
     public void EndEvasion()
         => state = PlayerState.IDLE;
+
 
     private void StartAttack()
     {
@@ -507,6 +515,7 @@ public class PlayerCtrl : MonoBehaviour
         GameManager._sound.PlaySE("남주공격");
     }
 
+
     public void EndAttack()
     {
         isCanMove = isCanAttack = isCanEvasion = true;
@@ -515,9 +524,6 @@ public class PlayerCtrl : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// 조사 기능을 수행하는 함수이다.
-    /// </summary>
     private void StartCapture()
     {
         // 제자리에 서도록 만듬
@@ -534,9 +540,6 @@ public class PlayerCtrl : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// 카메라를 종료하는 함수이다.
-    /// </summary>
     public void EndCapture()
     {
         state = PlayerState.IDLE;
