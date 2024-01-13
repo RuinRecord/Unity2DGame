@@ -48,8 +48,7 @@ public class InteractionObject : MonoBehaviour
         // 맵 오브젝트 제거
         if (isDestroy)
         {
-            MapCtrl.instance.RemoveSprite(this.transform);
-            Destroy(this.gameObject);
+            MapCtrl.instance.DestroyObject(this.gameObject);
         }
     }
 }

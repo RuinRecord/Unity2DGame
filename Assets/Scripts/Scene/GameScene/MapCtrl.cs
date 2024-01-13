@@ -65,11 +65,11 @@ public class MapCtrl : MonoBehaviour
 
         var tilemaps = tileMapTr.GetComponentsInChildren<TilemapRenderer>();
         for (int i = 0; i < tilemaps.Length; i++)
-            spritesList.Add(new Render(tilemaps[i].transform));
+            AddSprite(tilemaps[i].transform);
 
         var sprites = GetComponentsInChildren<SpriteRenderer>();
         for (int i = 0; i < sprites.Length; i++)
-            spritesList.Add(new Render(sprites[i].transform));
+            AddSprite(sprites[i].transform);
     }
 
 
@@ -100,38 +100,32 @@ public class MapCtrl : MonoBehaviour
         // Y축 정렬
         spritesList.Sort(delegate (Render a, Render b)
         {
-            if (a.transform.position.y < b.transform.position.y)
+            if (a.transform.position.y <= b.transform.position.y)
                 return 1;
             else
                 return -1;
         });
 
         // 렌더러 우선순위 지정
-        int sortIndex = 1;
-        float currentY = 0f;
-        if (spritesList.Count > 0 && spritesList[0].spriteRenderer != null && spritesList[0].tilemapRenderer != null)
-        {
-            spritesList[0].spriteRenderer.sortingOrder = 0;
-            currentY = spritesList[0].transform.position.y;
-        }
+        int sortIndex = 0;
+        float currentY = spritesList[0].transform.position.y;
 
         foreach (var render in spritesList)
         {
             if (render.spriteRenderer != null)
             {
-                if (currentY != render.transform.position.y)
-                {
-                    render.spriteRenderer.sortingOrder = sortIndex++;
-                    currentY = render.transform.position.y;
-                }
+                if (!IsEqualFloat(currentY, render.transform.position.y))
+                    sortIndex++;
+                render.spriteRenderer.sortingOrder = sortIndex;
+                currentY = render.transform.position.y;
+                
             }
             else if (render.tilemapRenderer != null)
             {
-                if (currentY != render.transform.position.y)
-                {
-                    render.tilemapRenderer.sortingOrder = sortIndex++;
-                    currentY = render.transform.position.y;
-                }
+                if (!IsEqualFloat(currentY, render.transform.position.y))
+                    sortIndex++;
+                render.tilemapRenderer.sortingOrder = sortIndex;
+                currentY = render.transform.position.y;
             }
         }
     }
@@ -158,7 +152,8 @@ public class MapCtrl : MonoBehaviour
     /// <param name="_transform">저장할 오브젝트 Transform</param>
     public void AddSprite(Transform _transform)
     {
-        spritesList.Add(new Render(_transform));
+        Render render = new Render(_transform);
+        spritesList.Add(render);
     }
 
 
@@ -169,6 +164,15 @@ public class MapCtrl : MonoBehaviour
     public void RemoveSprite(Transform _transform)
     {
         if (!spritesList.Remove(FindRender(_transform)))
-            Debug.LogError("MapCtrl | RemoveSprite Error!");
+            Debug.LogError("MapCtrl :: RemoveSprite Error!");
     }
+
+    public void DestroyObject(GameObject ob)
+    {
+        RemoveSprite(ob.transform);
+        Destroy(ob);
+    }
+
+    private bool IsEqualFloat(float a, float b)
+        => Mathf.Abs(a - b) <= 0.01f;
 }
