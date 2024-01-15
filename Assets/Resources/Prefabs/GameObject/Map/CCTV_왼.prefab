@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6306237235769269172}
   - component: {fileID: 6983268101868854084}
   m_Layer: 8
-  m_Name: CCTV
+  m_Name: "CCTV_\uC67C"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
