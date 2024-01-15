@@ -76,7 +76,8 @@ public class Teleport : MonoBehaviour
     private void OnTriggerStay2D(Collider2D col)
     {
         // 충돌 범위 안으로 들어온 오브젝트가 플레이어라면
-        if (col.tag.Equals("Player_M") || col.tag.Equals("Player_W"))
+        if (col.tag.Equals("Player_M") && PlayerTag.playerType.Equals(PlayerType.MEN) || 
+            col.tag.Equals("Player_W") && PlayerTag.playerType.Equals(PlayerType.WOMEN))
         {
             PlayerCtrl.instance.teleport = this;
         }
@@ -86,7 +87,8 @@ public class Teleport : MonoBehaviour
     private void OnTriggerExit2D(Collider2D col)
     {
         // 충돌 범위 밖으로 나간 오브젝트가 플레이어라면
-        if (col.tag.Equals("Player_M") || col.tag.Equals("Player_W"))
+        if (col.tag.Equals("Player_M") && PlayerTag.playerType.Equals(PlayerType.MEN) ||
+            col.tag.Equals("Player_W") && PlayerTag.playerType.Equals(PlayerType.WOMEN))
         {
             PlayerCtrl.instance.teleport = null;
         }
