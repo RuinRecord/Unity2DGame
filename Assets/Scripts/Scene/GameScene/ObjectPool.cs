@@ -95,7 +95,7 @@ public class ObjectPool : MonoBehaviour
             obj.transform.position = pos;
             obj.gameObject.SetActive(true);
 
-            MapCtrl.instance.AddSprite(obj.transform);
+            MapCtrl.instance.AddSortRenderer(obj.gameObject);
 
             return obj;
         }
@@ -106,7 +106,7 @@ public class ObjectPool : MonoBehaviour
             newObj.transform.position = pos;
             newObj.gameObject.SetActive(true);
 
-            MapCtrl.instance.AddSprite(newObj.transform);
+            MapCtrl.instance.AddSortRenderer(newObj.gameObject);
 
             return newObj;
         }

@@ -4,24 +4,6 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /// <summary>
-/// 맵 렌더링에 대한 우선 순위 처리를 위한 클래스이다.
-/// Transform을 기반으로 렌더러를 저장한다. 이때, 아무 렌더러가 없다면 우선 순위 처리 대상에서 제외된다.
-/// </summary>
-public class Render
-{
-    public Transform transform;
-    public SpriteRenderer spriteRenderer;
-    public TilemapRenderer tilemapRenderer;
-
-    public Render(Transform _transform)
-    {
-        transform = _transform;
-        spriteRenderer = transform.GetComponent<SpriteRenderer>();
-        tilemapRenderer = transform.GetComponent<TilemapRenderer>();
-    }
-}
-
-/// <summary>
 /// 맵 관련 처리를 담당하는 컨트롤러 클래스이다.
 /// </summary>
 public class MapCtrl : MonoBehaviour
@@ -49,7 +31,7 @@ public class MapCtrl : MonoBehaviour
 
     /// <summary> 렌더러를 포함한 모든 오브젝트를 저장한 리스트 </summary>
     [SerializeField]
-    private List<Render> spritesList;
+    private List<SortRenderer> spritesList;
 
 
     private void Awake()
@@ -61,15 +43,8 @@ public class MapCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spritesList = new List<Render>();
-
-        var tilemaps = tileMapTr.GetComponentsInChildren<TilemapRenderer>();
-        for (int i = 0; i < tilemaps.Length; i++)
-            AddSprite(tilemaps[i].transform);
-
-        var sprites = GetComponentsInChildren<SpriteRenderer>();
-        for (int i = 0; i < sprites.Length; i++)
-            AddSprite(sprites[i].transform);
+        spritesList = new List<SortRenderer>();
+        spritesList.AddRange(GetComponentsInChildren<SortRenderer>());
     }
 
 
@@ -98,7 +73,7 @@ public class MapCtrl : MonoBehaviour
     private void SetDepthAllofMapObjects()
     {
         // Y축 정렬
-        spritesList.Sort(delegate (Render a, Render b)
+        spritesList.Sort(delegate (SortRenderer a, SortRenderer b)
         {
             if (a.transform.position.y <= b.transform.position.y)
                 return 1;
@@ -112,21 +87,10 @@ public class MapCtrl : MonoBehaviour
 
         foreach (var render in spritesList)
         {
-            if (render.spriteRenderer != null)
-            {
-                if (!IsEqualFloat(currentY, render.transform.position.y))
-                    sortIndex++;
-                render.spriteRenderer.sortingOrder = sortIndex;
-                currentY = render.transform.position.y;
-                
-            }
-            else if (render.tilemapRenderer != null)
-            {
-                if (!IsEqualFloat(currentY, render.transform.position.y))
-                    sortIndex++;
-                render.tilemapRenderer.sortingOrder = sortIndex;
-                currentY = render.transform.position.y;
-            }
+            if (!IsEqualFloat(currentY, render.transform.position.y))
+                sortIndex++;
+            render.SetSortingOrder(sortIndex);
+            currentY = render.transform.position.y;
         }
     }
 
@@ -135,7 +99,7 @@ public class MapCtrl : MonoBehaviour
     /// </summary>
     /// <param name="_transform"></param>
     /// <returns></returns>
-    public Render FindRender(Transform _transform)
+    public SortRenderer FindRender(Transform _transform)
     {
         foreach (var render in spritesList)
         {
@@ -150,9 +114,15 @@ public class MapCtrl : MonoBehaviour
     /// 'transform'을 가진 오브젝트를 spritesList에 저장하는 함수이다.
     /// </summary>
     /// <param name="_transform">저장할 오브젝트 Transform</param>
-    public void AddSprite(Transform _transform)
+    public void AddSortRenderer(GameObject _ob)
     {
-        Render render = new Render(_transform);
+        SortRenderer render = _ob.GetComponent<SortRenderer>();
+        if (render == null)
+        {
+            Debug.LogWarning("Hey! SortRenderer is null!");
+            return;
+        }
+
         spritesList.Add(render);
     }
 
