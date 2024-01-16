@@ -17,6 +17,8 @@ public class SortRenderer : MonoBehaviour
 
     private List<SortRenderer> childSortRenders;
 
+    public bool isChild;
+
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -27,37 +29,47 @@ public class SortRenderer : MonoBehaviour
         {
             SortRenderer _render = transform.GetChild(i).GetComponent<SortRenderer>();
             if (_render != null)
+            {
+                _render.isChild = true;
                 childSortRenders.Add(_render);
+            }
         }
     }
 
-    public void SetSortingOrder(int _order)
+    public void SetSortingOrder(int _startOrder, out int _outOrder)
     {
-        if (spriteRenderer != null)
-            spriteRenderer.sortingOrder = _order;
-        else if (tilemapRenderer != null)
-            tilemapRenderer.sortingOrder = _order;
+        int _order = _startOrder;
 
-        SetChildOrder();
+        if (!isChild)
+        {
+            if (spriteRenderer != null)
+                spriteRenderer.sortingOrder = _order;
+            else if (tilemapRenderer != null)
+                tilemapRenderer.sortingOrder = _order;
+            SetChildOrder(_order, out _order);
+        }
+        
+        _outOrder = _order;
     }
 
-    private void SetChildOrder()
+    private void SetChildOrder(int _startOrder, out int _outOrder)
     {
-        int order = -1;
-
-        if (spriteRenderer != null)
-            order = spriteRenderer.sortingOrder;
-        else if (tilemapRenderer != null)
-            order = tilemapRenderer.sortingOrder;
+        int _order = _startOrder;
+        float _currentY = this.transform.position.y;
 
         for (int i = 0; i < childSortRenders.Count; i++)
         {
             SortRenderer _childRender = childSortRenders[i];
+            if (!MapCtrl.instance.IsEqualFloat(_currentY, _childRender.transform.position.y))
+                _order++;
+            _currentY = _childRender.transform.position.y;
 
             if (_childRender.spriteRenderer != null)
-                _childRender.spriteRenderer.sortingOrder = ++order;
-            if (_childRender.tilemapRenderer != null)
-                _childRender.tilemapRenderer.sortingOrder = ++order;
+                _childRender.spriteRenderer.sortingOrder = _order;
+            else if (_childRender.tilemapRenderer != null)
+                _childRender.tilemapRenderer.sortingOrder = _order;
         }
+
+        _outOrder = _order;
     }
 }

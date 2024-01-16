@@ -89,7 +89,7 @@ public class MapCtrl : MonoBehaviour
         {
             if (!IsEqualFloat(currentY, render.transform.position.y))
                 sortIndex++;
-            render.SetSortingOrder(sortIndex);
+            render.SetSortingOrder(sortIndex, out sortIndex);
             currentY = render.transform.position.y;
         }
     }
@@ -143,6 +143,6 @@ public class MapCtrl : MonoBehaviour
         Destroy(ob);
     }
 
-    private bool IsEqualFloat(float a, float b)
+    public bool IsEqualFloat(float a, float b)
         => Mathf.Abs(a - b) <= 0.01f;
 }
