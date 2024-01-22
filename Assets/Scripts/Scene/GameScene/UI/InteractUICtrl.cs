@@ -281,11 +281,13 @@ public class InteractUICtrl : MonoBehaviour
 
 
     /// <summary> 대사가 아직 존재하는지에 대한 여부를 반환하는 함수이다. </summary>
-    private bool CheckLeftDialog() => currentIdx < currentDialogs.Length && !string.IsNullOrEmpty(currentDialogs[currentIdx].GetWords());
+    private bool CheckLeftDialog()
+        => currentIdx < currentDialogs.Length && !string.IsNullOrEmpty(currentDialogs[currentIdx].GetWords());
 
 
     /// <summary> 아이템 획득이 가능한지 체크하는 함수이다. </summary>
-    private bool CheckDropItem() => currentIdx == currentDialogs.Length - 1 && currentObject != null && currentObject.hasItem;
+    private bool CheckDropItem() 
+        => currentIdx == currentDialogs.Length - 1 && currentObject != null && currentObject.hasItem;
 
 
     /// <summary> 페널 타입에 따른 페널 설정 함수이다. </summary>

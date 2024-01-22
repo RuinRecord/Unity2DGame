@@ -79,35 +79,8 @@ MonoBehaviour:
         audioClip: {fileID: 0}
         leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
         rightSprite: {fileID: 0}
-        words: "\uC5B4\uCC0C\uC5B4\uCC0C \uB4E4\uC5B4\uC624\uAE34 \uD588\uB294\uB370..."
-        print_time: 0
-    isCameraMoveOn: 0
-    camera_destination: {x: 0, y: 0}
-    camera_moveSpeed: 0
-    camera_isMoveSmooth: 0
-    isCameraZoomOn: 0
-    camera_zoomSize: 0
-    camera_zoomSpeed: 0
-    camera_isZoomSmooth: 0
-  - playTime: 0.25
-    isDialogOn: 1
-    dialogs:
-      Player_M_dialog:
-        type: 0
-        audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
-        rightSprite: {fileID: 0}
-        words: 
-        print_time: 0
-      Player_W_dialog:
-        type: 1
-        audioClip: {fileID: 0}
-        leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
-        rightSprite: {fileID: 0}
-        words: "\uBC14\uB2E5\uC5D0 \uB098\uB4B9\uAD6C\uB294 \uBB38\uC11C... \uC313\uC5EC
-          \uC788\uB294 \uC4F0\uB808\uAE30 \uBD09\uD22C... \uB2E4 \uBA39\uACE0 \uCE58\uC6B0\uC9C0
-          \uC54A\uC740 \uD53C\uC790\uC5D0... \uC5EC\uAE30 \uAD00\uB9AC\uC790\uB294
-          \uCC38 \uB300\uCC45\uC5C6\uC774 \uC0AC\uB294\uAD6C\uB098?"
+        words: "\uC544\uAE4C \uB4E4\uC5B4\uC62C \uB54C \uCE74\uBA54\uB77C\uAC00 \uBD80\uB52A\uD78C
+          \uAC83 \uAC19\uC740\uB370..."
         print_time: 0
     isCameraMoveOn: 0
     camera_destination: {x: 0, y: 0}

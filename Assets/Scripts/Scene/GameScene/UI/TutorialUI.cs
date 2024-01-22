@@ -1,19 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class TutorialUI : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject panelOb;
+    private const float DEFAULT_PRINT_TIME = 0.1f;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private GameObject tooltip;
+
+    [SerializeField]
+    private TMP_Text tooltipText;
+
+    public void ShowTooltip(string info)
     {
-        ClosePanel();
+        tooltip.SetActive(true);
+        StartCoroutine(SetTooltipText(info));
     }
 
-    public void ClosePanel()
-        => panelOb.SetActive(false);
+    public void CloseTooltip()
+        => tooltip.SetActive(false);
+
+    IEnumerator SetTooltipText(string text)
+    {
+        string words = "";
+
+        // 한글자씩 천천히 출력
+        foreach (var ch in text)
+        {
+            words += ch;
+            tooltipText.SetText(words);
+            // GameManager._sound.PlaySE("");
+            yield return new WaitForSeconds(DEFAULT_PRINT_TIME);
+        }
+    }
 }
