@@ -63,7 +63,7 @@ public class PlayerData
             return;
         }
 
-        if (hasCaptures.IndexOf(capture_code) != -1)
+        if (CheckHasCapture(capture_code))
         {
             Debug.Log("이미 확인된 조사 이벤트");
             return;
@@ -71,6 +71,9 @@ public class PlayerData
 
         hasCaptures.Add(capture_code);
     }
+
+    public bool CheckHasCapture(int capture_code)
+        => hasCaptures.IndexOf(capture_code) != -1;
 
     /// <summary> 'record_code'에 해당하는 조사일지를 저장하는 함수이다. </summary>
     /// <param name="record_code">조사일지 식별 번호</param>

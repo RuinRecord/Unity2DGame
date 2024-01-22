@@ -145,8 +145,8 @@ public class PlayerCtrl : MonoBehaviour
         state = PlayerState.IDLE;
         teleport = null;
 
-        isCanInteract = isCanMove = isCanAttack = isCanEvasion = isCanInven = true;
-        isCanCapture = isCameraOn = isMoving = false;
+        isCanInteract = isCanMove = isCanAttack = isCanEvasion = isCanCapture = isCanInven = true;
+        isCameraOn = isMoving = false;
         max_HP = cur_HP = 100f;
         MoveSpeed = WALK_SPEED;
 
@@ -543,13 +543,13 @@ public class PlayerCtrl : MonoBehaviour
     private void StartCapture()
     {
         // 제자리에 서도록 만듬
-        isCanMove = isCanCapture = isCanInven = false;
-        isCameraOn = true;
-        PlayerTag.instance.isCanTag = false;
         state = PlayerState.CAPTURE;
 
         // 사진기 소리 출력
         GameManager._sound.PlaySE("여주조사");
+
+        isCanMove = isCanCapture = isCanInven = false;
+        PlayerTag.instance.isCanTag = false;
 
         // 카메라 UI 켜지도록 코루틴 함수 실행
         StartCoroutine(UIManager._captureUI.CaptureCameraIn());

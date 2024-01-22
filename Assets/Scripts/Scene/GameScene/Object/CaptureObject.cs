@@ -39,9 +39,6 @@ public class CaptureObject : MonoBehaviour
             // 외곽선 있는 메터리얼로 변경
             spriteRenderer.material = materials[1];
 
-            // 플레이어 조사 기능 활성화
-            PlayerCtrl.instance.isCanCapture = true;
-
             // 조사 UI 이미지 켜기
             UIManager._captureUI.CaptureInfoOn(this);
         }
@@ -54,9 +51,6 @@ public class CaptureObject : MonoBehaviour
         {
             // 외곽선 없는 메터리얼로 변경
             spriteRenderer.material = materials[0];
-
-            // 플레이어 조사 기능 비활성화
-            PlayerCtrl.instance.isCanCapture = false;
 
             // 조사 UI 이미지 끄기
             UIManager._captureUI.CaptureInfoOff();

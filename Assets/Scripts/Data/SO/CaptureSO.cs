@@ -13,7 +13,4 @@ public class CaptureSO : ScriptableObject
 
     /// <summary> 사진 식별 번호 </summary>
     public int captureCode;
-
-    /// <summary> 해금되는 이벤트 식별 번호 </summary>
-    public int unLockEventCode;
 }

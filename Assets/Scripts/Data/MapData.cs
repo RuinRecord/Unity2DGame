@@ -10,11 +10,8 @@ using UnityEngine;
 [Serializable]
 public class MapData
 {
-    public List<int> hasEvents;
-
     public MapData()
     {
-        hasEvents = new List<int>();
-        hasEvents.Add(0); // 시작 이벤트 추가
+
     }
 }
