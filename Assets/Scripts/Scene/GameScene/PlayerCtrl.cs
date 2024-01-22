@@ -8,9 +8,9 @@ public class PlayerCtrl : MonoBehaviour
 
     private const int EVASION_FORCE = 3;
 
-    private const float WALK_SPEED = 4f;
+    public const float WALK_SPEED = 4f;
 
-    private const float RUN_SPEED = 6f;
+    public const float RUN_SPEED = 6f;
 
     private const float EVASION_SPEED = 6f;
 
@@ -90,7 +90,18 @@ public class PlayerCtrl : MonoBehaviour
 
 
     /// <summary> 플레이어 현재 속도 </summary>
-    public float moveSpeed;
+    [Obsolete]
+    private float moveSpeed;
+
+    public float MoveSpeed
+    {
+        get { return moveSpeed; }
+        set
+        {
+            moveSpeed = value;
+            SetAnimationSpeed(MoveSpeedToAnimSpeed(moveSpeed));
+        }
+    }
 
 
     /// <summary> 최근 플레이어의 위치 </summary>
@@ -137,11 +148,10 @@ public class PlayerCtrl : MonoBehaviour
         isCanInteract = isCanMove = isCanAttack = isCanEvasion = isCanInven = true;
         isCanCapture = isCameraOn = isMoving = false;
         max_HP = cur_HP = 100f;
-        moveSpeed = WALK_SPEED;
-        animator.speed = 1;
+        MoveSpeed = WALK_SPEED;
 
         SetCurrentPos();
-        this.transform.position = new Vector3(currentPos.x, currentPos.y, 0);
+        //this.transform.position = new Vector3(currentPos.x, currentPos.y, 0);
     }
 
 
@@ -203,15 +213,9 @@ public class PlayerCtrl : MonoBehaviour
 
         // 달리기 기능
         if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
-        {
-            moveSpeed = RUN_SPEED;
-            animator.speed = 1.5f;
-        }
+            MoveSpeed = RUN_SPEED;
         else if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
-        {
-            moveSpeed = WALK_SPEED;
-            animator.speed = 1f;
-        }
+            MoveSpeed = WALK_SPEED;
 
         // 상호작용 및 포탈 사용
         if (isCanInteract && Input.GetKeyDown(KeyCode.Space))
@@ -346,7 +350,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         state = PlayerState.WALK;
 
-        Vector2 movePos = (Vector2)this.transform.position + _dir * Time.deltaTime * moveSpeed;
+        Vector2 movePos = (Vector2)this.transform.position + _dir * Time.deltaTime * MoveSpeed;
         rigidbody.MovePosition(movePos);
         SetAnimationDir(_dir);
     }
@@ -355,15 +359,16 @@ public class PlayerCtrl : MonoBehaviour
     public void SetMove(Vector2 _dir, float _dis, float _moveSpeed)
     { 
         state = PlayerState.WALK;
+        MoveSpeed = _moveSpeed;
         SetAnimationDir(_dir);
 
         if (moveCo != null)
             StopCoroutine(moveCo);
-        moveCo = StartCoroutine(StartMove(_dir, _dis, _moveSpeed));
+        moveCo = StartCoroutine(StartMove(_dir, _dis));
     }
 
 
-    IEnumerator StartMove(Vector2 _dir, float _dis, float _moveSpeed)
+    IEnumerator StartMove(Vector2 _dir, float _dis)
     {
         Vector2 cur_dir = _dir * _dis;
         SetAnimationDir(_dir);
@@ -373,7 +378,7 @@ public class PlayerCtrl : MonoBehaviour
         while (cur_dir.normalized == _dir)
         {
             // 플레이어 이동
-            Vector2 moveVec = _dir * _moveSpeed * Time.deltaTime;
+            Vector2 moveVec = _dir * MoveSpeed * Time.deltaTime;
             this.transform.position = (Vector2)this.transform.position + moveVec;
             cur_dir -= moveVec;
             yield return null;
@@ -419,6 +424,12 @@ public class PlayerCtrl : MonoBehaviour
         animator.SetFloat("DirX", dir.normalized.x);
         animator.SetFloat("DirY", dir.normalized.y);
     }
+
+    private void SetAnimationSpeed(float speed)
+        => animator.speed = speed;
+
+    private float MoveSpeedToAnimSpeed(float moveSpeed)
+        => moveSpeed / 4f;
 
 
     private MovingObject CheckMovingObject(Vector2 _dir)

@@ -7,25 +7,50 @@ public class CF_00 : CutSceneFunction
     [SerializeField]
     private PlayerCtrl player_W;
 
-    [SerializeField]
-    private PlayerCtrl player_M;
-
-
-    public override void Play()
+    public override void OnFuntionEnter()
     {
-        base.Play();
-
-        #region 수행 이벤트
-
-        MovePlayerM();
-        Invoke("TurnPlayerW", 1.5f);
-
-        #endregion
-
-        base.OnEventEnd();
+        base.OnFuntionEnter();
     }
 
-    private void MovePlayerM() => player_M.SetMove(Vector2Int.left, 4, 2);
+    public override void Play(int actionIdx)
+    {
+        switch (actionIdx)
+        {
+            case 3: MoveUp(); break;
+            case 4: StartCoroutine(LookArround()); break;
+            case 5: MoveDown(); break;
+        }
+    }
 
-    private void TurnPlayerW() => player_W.SetAnimationDir(Vector2.right);
+    public override void OnFunctionExit()
+    {
+        base.OnFunctionExit();
+
+        player_W.MoveSpeed = PlayerCtrl.WALK_SPEED;
+    }
+
+    private void MoveUp()
+        => player_W.SetMove(Vector2Int.up, 1, 1f);
+
+    IEnumerator LookArround()
+    {
+        player_W.SetAnimationDir(Vector2.down);
+
+        yield return new WaitForSeconds(1f);
+
+        player_W.SetAnimationDir(Vector2.up);
+
+        yield return new WaitForSeconds(1f);
+
+        player_W.SetAnimationDir(Vector2.down);
+
+        yield return new WaitForSeconds(1f);
+
+        player_W.SetAnimationDir(Vector2.up);
+
+        yield return new WaitForSeconds(1f);
+    }
+
+    private void MoveDown()
+        => player_W.SetMove(Vector2Int.down, 1, 1f);
 }

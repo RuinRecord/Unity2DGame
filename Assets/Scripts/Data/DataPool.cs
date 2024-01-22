@@ -106,6 +106,10 @@ public struct CutSceneAction
     [Header("다음 연출로 넘어가는 시간")]
     public float playTime;
 
+    [Header("플레이어 대사 관련")]
+    public bool isDialogOn;
+    public DialogSet dialogs;
+
     [Header("카메라 이동 관련")]
     public bool isCameraMoveOn;
     public Vector2 camera_destination;

@@ -108,6 +108,9 @@ public class InteractUICtrl : MonoBehaviour
                 {
                     // 아직 하나의 대화가 끝나지 않았다면
 
+                    if (CutSceneCtrl.isCutSceneOn)
+                        return; // 컷씬 전용 대사면 상호작용 불가능
+
                     // 현재 대화 중지
                     StopCoroutine(currentInfoCo);
 
@@ -149,6 +152,10 @@ public class InteractUICtrl : MonoBehaviour
 
                 // 태그 기능 해제
                 PlayerTag.instance.isCanTag = true;
+
+                // 만약 연출용 대화였다면
+                if (CutSceneCtrl.isCutSceneOn)
+                    CutSceneCtrl.instance.isDialogDone = true;
             }
         }
     }
@@ -212,9 +219,27 @@ public class InteractUICtrl : MonoBehaviour
         if (dialogType.Equals(DialogType.Player))
         {
             player_leftImage.sprite = _dialog.GetLeftSprite();
-            player_leftImage.color = (player_leftImage.sprite == null) ? new Color(1f, 1f, 1f, 0f) : Color.white;
             player_rightImage.sprite = _dialog.GetRightSprite();
-            player_rightImage.color = (player_rightImage.sprite == null) ? new Color(1f, 1f, 1f, 0f) : Color.white;
+
+            if (player_leftImage.sprite != null)
+            {
+                player_leftImage.GetComponent<RectTransform>().sizeDelta = _dialog.GetLeftSprite().rect.size;
+                player_leftImage.color = Color.white;
+            }
+            else
+            {
+                player_leftImage.color = new Color(1f, 1f, 1f, 0f);
+            }
+
+            if (player_rightImage.sprite != null)
+            {
+                player_rightImage.GetComponent<RectTransform>().sizeDelta = _dialog.GetRightSprite().rect.size;
+                player_rightImage.color = Color.white;
+            }
+            else
+            {
+                player_rightImage.color = new Color(1f, 1f, 1f, 0f);
+            }
         }
 
         // 만약 오디오 클립이 있다면 출력

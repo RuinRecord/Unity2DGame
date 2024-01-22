@@ -1,0 +1,144 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87b114766b044714f9f253cc9d1da6ad, type: 3}
+  m_Name: "00.\uB0A8\uC8FC\uBC29\uC548"
+  m_EditorClassIdentifier: 
+  cutSceneCode: 0
+  actions:
+  - playTime: 2
+    isDialogOn: 0
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 0
+        print_time: 0.5
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 1
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
+        rightSprite: {fileID: 0}
+        words: ...
+        print_time: 0.5
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 1
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
+        rightSprite: {fileID: 0}
+        words: "\uC5B4\uCC0C\uC5B4\uCC0C \uB4E4\uC5B4\uC624\uAE34 \uD588\uB294\uB370..."
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0.25
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
+        rightSprite: {fileID: 0}
+        words: "\uBC14\uB2E5\uC5D0 \uB098\uB4B9\uAD6C\uB294 \uBB38\uC11C... \uC313\uC5EC
+          \uC788\uB294 \uC4F0\uB808\uAE30 \uBD09\uD22C... \uB2E4 \uBA39\uACE0 \uCE58\uC6B0\uC9C0
+          \uC54A\uC740 \uD53C\uC790\uC5D0... \uC5EC\uAE30 \uAD00\uB9AC\uC790\uB294
+          \uCC38 \uB300\uCC45\uC5C6\uC774 \uC0AC\uB294\uAD6C\uB098?"
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
+        rightSprite: {fileID: 0}
+        words: "\uBB50... \uC77C\uB2E8 \uC870\uC0AC\uBD80\uD130 \uD574\uBCFC\uAE4C?"
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0

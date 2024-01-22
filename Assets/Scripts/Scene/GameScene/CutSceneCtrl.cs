@@ -27,7 +27,11 @@ public class CutSceneCtrl : MonoBehaviour
 
     private Coroutine cameraMoveCo, cameraZoomCo;
 
+    private int cutSceneCode;
+
     private int currentActionIdx;
+
+    public bool isDialogDone;
 
     private bool isActionDone;
 
@@ -40,9 +44,19 @@ public class CutSceneCtrl : MonoBehaviour
 
     private void Start()
     {
+        cutSceneCode = -1;
         currentActionIdx = -1;
         isActionDone = false;
+        isDialogDone = true;
         events.AddRange(GetComponentsInChildren<CutSceneFunction>());
+
+        // 프롤로그 시작
+        StartPrologue();
+    }
+
+    private void StartPrologue()
+    {
+        SetCutScene(GameManager._data.cutSceneDatas[0]);
     }
 
 
@@ -58,11 +72,8 @@ public class CutSceneCtrl : MonoBehaviour
     public void SetCutScene(CutSceneSO cutSceneSO)
     {
         isCutSceneOn = true;
+        cutSceneCode = cutSceneSO.cutSceneCode;
         currentActionIdx = 0;
-
-        // 컷씬 이벤트가 존재한다면 수행
-        if (cutSceneSO.isEventObjectOn)
-            events[cutSceneSO.funcCode].Play();
 
         StartCoroutine(StartCutScene(cutSceneSO));
     }
@@ -79,6 +90,8 @@ public class CutSceneCtrl : MonoBehaviour
                 yield return null;
         }
 
+        events[cutSceneCode].OnFunctionExit();
+
         EndCutScene();
     }
 
@@ -89,11 +102,23 @@ public class CutSceneCtrl : MonoBehaviour
         if (cameraZoomCo != null)
             StopCoroutine(cameraZoomCo);
 
+        if (action.isDialogOn)
+        {
+            isDialogDone = false;
+            UIManager._interactUI.StartDialog(new DialogSet[] { action.dialogs });
+        }
+
         if (action.isCameraMoveOn)
             cameraMoveCo = StartCoroutine(MoveCamera(GetCamera(), action.camera_destination, action.camera_moveSpeed, action.camera_isMoveSmooth));
         if (action.isCameraZoomOn)
             cameraZoomCo = StartCoroutine(ZoomCamera(GetCamera(), action.camera_zoomSize, action.camera_zoomSpeed, action.camera_isZoomSmooth));
-            
+
+        events[cutSceneCode].Play(currentActionIdx);
+
+        // 대화가 끝날 때까지 대기
+        while (!isDialogDone)
+            yield return null;
+
         yield return new WaitForSeconds(action.playTime);
 
         isActionDone = true;

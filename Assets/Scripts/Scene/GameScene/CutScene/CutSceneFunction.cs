@@ -4,17 +4,9 @@ using UnityEngine;
 
 public class CutSceneFunction : MonoBehaviour
 {
-    public bool isFuncOn;
+    public virtual void OnFuntionEnter() { }
 
-    public virtual void Play()
-    {
-        OnEventStart();
-    }
+    public virtual void Play(int actionIdx) { }
 
-
-    protected virtual void OnEventStart() => isFuncOn = true;
-
-    protected virtual void OnEventUpdate() { }
-
-    protected virtual void OnEventEnd() => isFuncOn = false;
+    public virtual void OnFunctionExit() { }
 }
