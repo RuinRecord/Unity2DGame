@@ -41,6 +41,10 @@ public class DataManager : MonoBehaviour
     public InteractionDialogSO[] interactionDialogDatas;
 
 
+    /// <summary> 상호 작용 대사 SO 데이터 </summary>
+    public InteractionDialogSO[] specialDialogDatas;
+
+
     /// <summary> 컷씬 SO 데이터 </summary>
     public CutSceneSO[] cutSceneDatas;
 
@@ -51,6 +55,7 @@ public class DataManager : MonoBehaviour
         captureDatas = LoadAll<CaptureSO>("SO/Captures");
         recordDatas = LoadAll<RecordSO>("SO/Records");
         interactionDialogDatas = LoadAll<InteractionDialogSO>("SO/Dialogs/InteractionObjects");
+        specialDialogDatas = LoadAll<InteractionDialogSO>("SO/Dialogs/SpecialCase");
         cutSceneDatas = LoadAll<CutSceneSO>("SO/CutScenes");
     }
 

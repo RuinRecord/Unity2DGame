@@ -5,7 +5,7 @@ using TMPro;
 
 public class TutorialUI : MonoBehaviour
 {
-    private const float DEFAULT_PRINT_TIME = 0.1f;
+    private const float DEFAULT_PRINT_TIME = 0.075f;
 
     [SerializeField]
     private GameObject tooltip;

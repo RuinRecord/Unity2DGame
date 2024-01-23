@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class CaptureObject : MonoBehaviour
 {
+    private const float SCALE_ZOOM_POWER = 0.1f;
+
     private SpriteRenderer spriteRenderer;
 
     /// <summary>
@@ -39,6 +41,8 @@ public class CaptureObject : MonoBehaviour
             // 외곽선 있는 메터리얼로 변경
             spriteRenderer.material = materials[1];
 
+            this.transform.localScale += Vector3.one * SCALE_ZOOM_POWER;
+
             // 조사 UI 이미지 켜기
             UIManager._captureUI.CaptureInfoOn(this);
         }
@@ -51,6 +55,8 @@ public class CaptureObject : MonoBehaviour
         {
             // 외곽선 없는 메터리얼로 변경
             spriteRenderer.material = materials[0];
+
+            this.transform.localScale -= Vector3.one * SCALE_ZOOM_POWER;
 
             // 조사 UI 이미지 끄기
             UIManager._captureUI.CaptureInfoOff();

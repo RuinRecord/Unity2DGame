@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EventCtrl : MonoBehaviour
@@ -27,5 +24,33 @@ public class EventCtrl : MonoBehaviour
     private void Start()
     {
         CurrentEvent = 0;
+    }
+
+    public void CheckEvent(EventType eventType)
+    {
+        switch (eventType)
+        {
+            case EventType.Capture:
+                if (CurrentEvent == 0)
+                {
+                    CurrentEvent = 1;
+                    TutorialManager.instance.ShowTooltip("갤러리 저장 완료. 추가로 더 조사하세요.");
+                }
+                break;
+            case EventType.Interact:
+                if (CurrentEvent == 1)
+                {
+                    CurrentEvent = 2;
+                    TutorialManager.instance.ShowTooltip("[E] 버튼을 눌러 인벤토리를 확인하세요.");
+                }
+                break;
+            case EventType.Inventory:
+                if (CurrentEvent == 2)
+                {
+                    CurrentEvent = 3;
+                    TutorialManager.instance.ShowTooltip("인벤토리 확인 완료. 이제 시설을 조사하세요");
+                }
+                break;
+        }
     }
 }

@@ -12,7 +12,4 @@ public class ItemSO : ScriptableObject
 
     /// <summary> 아이템 식별 번호 </summary>
     public int itemCode;
-
-    /// <summary> 획득 시 맵 오브젝트가 사라지는지에 대한 여부 </summary>
-    public bool isDestroy;
 }

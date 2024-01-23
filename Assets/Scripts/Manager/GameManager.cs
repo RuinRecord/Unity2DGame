@@ -52,6 +52,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))
+            Time.timeScale = 1f;
+        else if (Input.GetKeyDown(KeyCode.F2))
+            Time.timeScale = 5f;
+    }
+
     static private void CreateGameManager()
     {
         GameObject go = GameObject.Find("@GameManager");

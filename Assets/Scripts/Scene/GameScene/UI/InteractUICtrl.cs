@@ -52,6 +52,9 @@ public class InteractUICtrl : MonoBehaviour
     private GameObject player_next_object;
 
 
+    /// <summary> 최근 대화 시스템에서 다루던 캐비넷 오브젝트 </summary>
+    private Cabinet currentCabinet;
+
 
     /// <summary> 최근 대화 시스템에서 다루던 상호작용 오브젝트 </summary>
     private InteractionObject currentObject;
@@ -144,6 +147,7 @@ public class InteractUICtrl : MonoBehaviour
             {
                 // 모든 대화가 끝났다면 => 창 닫기
                 isDoneOne = isDoneAll = false;
+                currentCabinet = null;
                 currentObject = null;
                 StartCoroutine(DelayedSetInteractOn(false));
 
@@ -171,7 +175,30 @@ public class InteractUICtrl : MonoBehaviour
         PlayerTag.instance.isCanTag = false;
 
         // 최근 상호작용 메세지 및 변수 설정
+        currentCabinet = null;
         currentObject = interactionObject;
+        currentDialogs = currentObject.GetDialogs().ToArray();
+        currentIdx = 0;
+
+        // 출력 시작
+        currentInfoCo = StartCoroutine(ShowInfoText(currentDialogs[currentIdx]));
+        StartCoroutine(DelayedSetInteractOn(true));
+    }
+
+
+
+    /// <summary>
+    /// 상호작용 오브젝트로 대화 시스템을 시작하는 함수이다.
+    /// </summary>
+    /// <param name="interactionObject">출력을 수행할 상호작용 오브젝트</param>
+    public void StartDialog(Cabinet cabinet)
+    {
+        // 태그 기능 잠금
+        PlayerTag.instance.isCanTag = false;
+
+        // 최근 상호작용 메세지 및 변수 설정
+        currentCabinet = cabinet;
+        currentObject = currentCabinet.InteractionOb;
         currentDialogs = currentObject.GetDialogs().ToArray();
         currentIdx = 0;
 
@@ -191,6 +218,7 @@ public class InteractUICtrl : MonoBehaviour
         PlayerTag.instance.isCanTag = false;
 
         // 최근 상호작용 메세지 및 변수 설정
+        currentCabinet = null;
         currentObject = null;
         currentDialogs = dialogs;
         currentIdx = 0;
@@ -258,6 +286,18 @@ public class InteractUICtrl : MonoBehaviour
                 // 획득 사운드 출력
                 GameManager._sound.PlaySE("아이템획득");
             }
+
+            // 아이템 체크 및 획득
+            if (CheckDropRecord())
+            {
+                currentObject.DropRecord();
+                currentCabinet.SetAnimOfGetItem();
+
+                EventCtrl.Instance.CheckEvent(EventType.Interact);
+
+                // 획득 사운드 출력
+                GameManager._sound.PlaySE("아이템획득");
+            }
         }
 
         // 한글자씩 천천히 출력
@@ -288,6 +328,11 @@ public class InteractUICtrl : MonoBehaviour
     /// <summary> 아이템 획득이 가능한지 체크하는 함수이다. </summary>
     private bool CheckDropItem() 
         => currentIdx == currentDialogs.Length - 1 && currentObject != null && currentObject.hasItem;
+
+
+    /// <summary> 조사일지 획득이 가능한지 체크하는 함수이다. </summary>
+    private bool CheckDropRecord()
+        => currentIdx == currentDialogs.Length - 1 && currentObject != null && currentObject.hasRecord;
 
 
     /// <summary> 페널 타입에 따른 페널 설정 함수이다. </summary>

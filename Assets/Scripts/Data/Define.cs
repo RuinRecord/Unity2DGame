@@ -54,3 +54,10 @@ public enum LightColor
     Blue,
     Yellow,
 }
+
+public enum EventType
+{
+    Capture,
+    Interact,
+    Inventory,
+}

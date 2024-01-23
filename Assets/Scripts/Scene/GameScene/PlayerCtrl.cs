@@ -220,54 +220,75 @@ public class PlayerCtrl : MonoBehaviour
         // 상호작용 및 포탈 사용
         if (isCanInteract && Input.GetKeyDown(KeyCode.Space))
         {
-            if (mode.Equals(PlayerMode.DEFAULT))
+            // 카메라 끄기
+            if (isCameraOn)
             {
-                if (teleport != null)
-                {
-                    // 포탈 사용
-                    teleport.GoToDestination();
-                }
-                else
-                {
-                    // 상호작용
-                    Vector2Int dir = GetDirection();
-                    //Debug.DrawRay(this.transform.position, new Vector3(dir.x, dir.y, 0f), Color.green, 3f);
-
-                    // 상호작용 오브젝트 탐색
-                    RaycastHit2D hit = Physics2D.Raycast(this.transform.position, dir, INTERACTION_OBJECT_DETECT_DISTANCE, 256);
-                    if (hit)
-                    {
-                        // 있으면 상호작용 대화 시스템 시작
-                        InteractionObject interaction = hit.transform.GetComponent<InteractionObject>();
-                        if (interaction != null)
-                            UIManager._interactUI.StartDialog(interaction);
-
-                        Cabinet cabinet = hit.transform.GetComponent<Cabinet>();
-                        if (cabinet != null)
-                            cabinet.Open();
-                    }
-                }
+                EndCapture();
             }
-            else if(mode.Equals(PlayerMode.PUSH))
+            else
             {
-                if (playerType.Equals(PlayerType.MEN))
+                if (mode.Equals(PlayerMode.DEFAULT))
                 {
-                    // 물건 밀기
-                    if (movingObject == null)
+                    if (teleport != null)
                     {
-                        // 움직이는 오브젝트가 Null이면 오류 반환
-                        Debug.LogError("Error!! MovingObject is null?!");
-                        return;
+                        // 포탈 사용
+                        teleport.GoToDestination();
                     }
+                    else
+                    {
+                        // 상호작용
+                        Vector2Int dir = GetDirection();
+                        //Debug.DrawRay(this.transform.position, new Vector3(dir.x, dir.y, 0f), Color.green, 3f);
 
-                    // 물체 이동
-                    movingObject.Push();
+                        // 상호작용 오브젝트 탐색
+                        RaycastHit2D hit = Physics2D.Raycast(this.transform.position, dir, INTERACTION_OBJECT_DETECT_DISTANCE, 256);
+                        if (hit)
+                        {
+                            Cabinet cabinet = hit.transform.GetComponent<Cabinet>();
+                            if (cabinet != null)
+                            {
+                                if (cabinet.IsOpen && cabinet.Type == 2)
+                                {
+                                    // 특수 캐비넷의 경우
+                                    cabinet.StartDialog();
+                                }
+                                else
+                                {
+                                    cabinet.Open();
+                                }
+                            }
+
+                            if (cabinet == null)
+                            {
+                                // 있으면 상호작용 대화 시스템 시작
+                                InteractionObject interaction = hit.transform.GetComponent<InteractionObject>();
+                                if (interaction != null)
+                                    UIManager._interactUI.StartDialog(interaction);
+                            }
+                        }
+                    }
                 }
-                else if (playerType.Equals(PlayerType.WOMEN))
+                else if (mode.Equals(PlayerMode.PUSH))
                 {
-                    // 상호작용 대사
-                    DialogSet[] dialogs = movingObject.player_m_dialogs.ToArray();
-                    UIManager._interactUI.StartDialog(dialogs);
+                    if (playerType.Equals(PlayerType.MEN))
+                    {
+                        // 물건 밀기
+                        if (movingObject == null)
+                        {
+                            // 움직이는 오브젝트가 Null이면 오류 반환
+                            Debug.LogError("Error!! MovingObject is null?!");
+                            return;
+                        }
+
+                        // 물체 이동
+                        movingObject.Push();
+                    }
+                    else if (playerType.Equals(PlayerType.WOMEN))
+                    {
+                        // 상호작용 대사
+                        DialogSet[] dialogs = movingObject.player_m_dialogs.ToArray();
+                        UIManager._interactUI.StartDialog(dialogs);
+                    }
                 }
             }
         }
@@ -299,7 +320,7 @@ public class PlayerCtrl : MonoBehaviour
                 // 조사 시작
                 if (!isCameraOn)
                     StartCapture();
-                // 카메라 끄기
+                // 카메라 끄기 (Q로)
                 else
                     EndCapture();
             }
@@ -548,7 +569,7 @@ public class PlayerCtrl : MonoBehaviour
         // 사진기 소리 출력
         GameManager._sound.PlaySE("여주조사");
 
-        isCanMove = isCanCapture = isCanInven = false;
+        isCanMove = isCanInteract = isCanCapture = isCanInven = false;
         PlayerTag.instance.isCanTag = false;
 
         // 카메라 UI 켜지도록 코루틴 함수 실행
@@ -559,7 +580,7 @@ public class PlayerCtrl : MonoBehaviour
     public void EndCapture()
     {
         state = PlayerState.IDLE;
-        isCanMove = isCanCapture = isCanInven = false;
+        isCanMove = isCanInteract = isCanCapture = isCanInven = false;
         isCameraOn = false;
         PlayerTag.instance.isCanTag = true;
 

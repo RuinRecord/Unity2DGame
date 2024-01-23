@@ -73,6 +73,33 @@ public class Teleport : MonoBehaviour
     }
 
 
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        // 충돌 범위 안으로 들어온 오브젝트가 플레이어라면
+        if (col.tag.Equals("Player_M") && PlayerTag.playerType.Equals(PlayerType.MEN) ||
+            col.tag.Equals("Player_W") && PlayerTag.playerType.Equals(PlayerType.WOMEN))
+        {
+            switch (this.gameObject.name)
+            {
+                case "R2-1_To_R2 (No_Door)":
+                    if (EventCtrl.Instance.CurrentEvent <= 0)
+                    {
+                        UIManager._interactUI.StartDialog(GameManager._data.specialDialogDatas[0].dialogs.ToArray());
+                        PlayerCtrl.instance.SetMove(Vector2Int.right, 1, PlayerCtrl.WALK_SPEED);
+                    }
+                    break;
+                case "H_To_R2 (Door)":
+                    if (EventCtrl.Instance.CurrentEvent <= 2)
+                    {
+                        UIManager._interactUI.StartDialog(GameManager._data.specialDialogDatas[1].dialogs.ToArray());
+                        PlayerCtrl.instance.SetMove(Vector2Int.down, 1, PlayerCtrl.WALK_SPEED);
+                    }
+                    break;
+            }
+        }
+    }
+
+
     private void OnTriggerStay2D(Collider2D col)
     {
         // 충돌 범위 안으로 들어온 오브젝트가 플레이어라면

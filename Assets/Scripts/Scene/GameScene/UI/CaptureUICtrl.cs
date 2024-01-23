@@ -10,18 +10,6 @@ public class CaptureUICtrl : MonoBehaviour
     private static Vector3 capture_upVec = Vector3.up * 1.6f;
 
 
-    public void Init()
-    {
-        captureCameraAnim.gameObject.SetActive(true);
-
-        CaptureInfoOff();
-    }
-
-    /// <summary> 조사 오브젝트와 충돌할 때 나오는 UI 이미지 </summary>
-    [SerializeField]
-    private RectTransform captureInfo;
-
-
     /// <summary> 현재 조사 오브젝트와 충돌한 오브젝트 </summary>
     private CaptureObject selected_captureObject;
 
@@ -31,45 +19,20 @@ public class CaptureUICtrl : MonoBehaviour
     private Animation captureCameraAnim;
 
 
-    void Update()
+    public void Init()
     {
-        if (selected_captureObject != null)
-        {
-            // 현재 선택된 조사 가능 물체 존재
-            // -> 실시간으로 이미지 UI를 물체 위에 위치 시키기 (카메라가 이동하기 때문에 조정)
-            captureInfo.position = Camera.main.WorldToScreenPoint(PlayerCtrl.instance.transform.position + capture_upVec);
-        }
+        captureCameraAnim.gameObject.SetActive(true);
+
+        CaptureInfoOff();
     }
 
-
-    /// <summary>
-    /// 현재 상호작용 중인 오브젝트를 'selectedObject'로 설정하고 조사 가능 UI 이미지를 켜는 함수이다.
-    /// </summary>
-    /// <param name="_selectedObject">충돌한 상호작용 오브젝트</param>
     public void CaptureInfoOn(CaptureObject _selectedObject)
-    {
-        captureInfo.gameObject.SetActive(true);
-
-        selected_captureObject = _selectedObject;
-        captureInfo.position = Camera.main.WorldToScreenPoint(_selectedObject.transform.position + capture_upVec);
-    }
+        => selected_captureObject = _selectedObject;
 
 
-    /// <summary>
-    /// 조사 가능 UI 이미지 끄는 함수이다.
-    /// </summary>
     public void CaptureInfoOff()
-    {
-        if (captureInfo != null)
-            captureInfo.gameObject.SetActive(false);
+        => selected_captureObject = null;
 
-        selected_captureObject = null;
-    }
-
-
-    /// <summary>
-    /// 카메라 UI가 켜지도록 하는 코루틴 함수이다.
-    /// </summary>
 
     public IEnumerator CaptureCameraIn()
     {
@@ -89,6 +52,7 @@ public class CaptureUICtrl : MonoBehaviour
 
         // 이동 및 조사 조작 가능
         PlayerCtrl.instance.isCanMove = true;
+        PlayerCtrl.instance.isCanInteract = true;
         PlayerCtrl.instance.isCanCapture = true;
         PlayerCtrl.instance.isCanInven = true;
 
@@ -109,9 +73,12 @@ public class CaptureUICtrl : MonoBehaviour
 
         // 이동 및 조사 조작 가능
         PlayerCtrl.instance.isCanMove = true;
+        PlayerCtrl.instance.isCanInteract = true;
         PlayerCtrl.instance.isCanCapture = true;
         PlayerCtrl.instance.isCanInven = true;
 
         PlayerCtrl.instance.state = PlayerState.IDLE;
+
+        EventCtrl.Instance.CheckEvent(EventType.Capture);
     }
 }

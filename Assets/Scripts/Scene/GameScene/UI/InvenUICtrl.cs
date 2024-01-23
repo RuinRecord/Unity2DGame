@@ -122,6 +122,9 @@ public class InvenUICtrl : MonoBehaviour
         SetContents(contentIndex);
 
         GameManager._sound.PlaySE("가방여닫기");
+
+        if (!isOnInven)
+            EventCtrl.Instance.CheckEvent(EventType.Inventory);
     }
 
     public void SetMenus(int index)
@@ -229,8 +232,8 @@ public class InvenUICtrl : MonoBehaviour
             ob.tmp_texts[0].color = Color.white;
         }
 
-        //foreach (var ob in pre_objects)
-        //    Destroy(ob.gameObject);
+        foreach (var ob in pre_objects)
+            Destroy(ob.gameObject);
 
         List<int> records = GameManager._data.player.hasRecords;
         foreach (var recordCode in records)
@@ -310,7 +313,7 @@ public class InvenUICtrl : MonoBehaviour
         uiBox.tmp_texts[0].color = Color.black;
         RecordSO recordData = GameManager._data.recordDatas[recordCode];
 
-        itemInfoText.SetText($"{recordData.record_name}\n\n <size=70%>{recordData.record_info}");
+        recordInfoText.SetText($"{recordData.record_name}\n\n <size=70%>{recordData.record_info}");
     }
 
     public void SetGalleryPageButton()

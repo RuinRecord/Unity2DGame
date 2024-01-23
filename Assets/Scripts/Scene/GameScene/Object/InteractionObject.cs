@@ -15,10 +15,20 @@ public class InteractionObject : MonoBehaviour
     public int code;
 
     /// <summary> 이 상호작용이 아이템 획득을 가능케 하는가? </summary>
+    [HideInInspector]
     public bool hasItem;
 
+    /// <summary> 이 상호작용이 조사일지 획득을 가능케 하는가? </summary>
+    [HideInInspector]
+    public bool hasRecord;
+
     /// <summary> 보유한 아이템 식별 번호 (아이템 없다면 이 값은 -1) </summary>
+    [HideInInspector]
     public int itemCode;
+
+    /// <summary> 보유한 식별 번호 (조사일지가 없다면 이 값은 -1) </summary>
+    [HideInInspector]
+    public int recordCode;
 
     /// <summary> 획득 시 맵 오브젝트가 사라지는지에 대한 여부 </summary>
     public bool isDestroy;
@@ -30,8 +40,9 @@ public class InteractionObject : MonoBehaviour
 
         dialogs = dialogData.dialogs;
         hasItem = dialogData.itemSO != null;
+        hasRecord = dialogData.recordSO != null;
         itemCode = hasItem ? dialogData.itemSO.itemCode : -1;
-        isDestroy = hasItem ? dialogData.itemSO.isDestroy : false;
+        recordCode = hasRecord ? dialogData.recordSO.recordCode : -1;
     }
 
     /// <summary>
@@ -44,6 +55,24 @@ public class InteractionObject : MonoBehaviour
 
         // 아이템 획득
         GameManager._data.player.AddItem(itemCode);
+
+        // 맵 오브젝트 제거
+        if (isDestroy)
+        {
+            MapCtrl.instance.DestroyObject(this.gameObject);
+        }
+    }
+
+    /// <summary>
+    /// 조사일지를 획득하는 함수이다.
+    /// </summary>
+    public void DropRecord()
+    {
+        if (!hasRecord)
+            return; // 이 상호작용은 아이템을 보유하지 않음
+
+        // 아이템 획득
+        GameManager._data.player.AddRecord(recordCode);
 
         // 맵 오브젝트 제거
         if (isDestroy)

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 53a7ff22fbeaae646b5380c1de52928e
+guid: e99480c6780b9624893643f4bf660c82
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cabinet_open_0
+      name: "\uC0AC\uBB3C\uD5683_0"
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e30e60a65701bd4797d9041be6bc0dc
-      internalID: -1594732376
+      spriteID: 5252e4da79cc86c4c9902c95c14c921b
+      internalID: 1122487398
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cabinet_open_1
+      name: "\uC0AC\uBB3C\uD5683_1"
       rect:
         serializedVersion: 2
         x: 72
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16a2ccb4a111c504d82a59261765a051
-      internalID: 1840282175
+      spriteID: f4d1c822a300b8d4f8fff43574b96287
+      internalID: -1248445147
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cabinet_open_2
+      name: "\uC0AC\uBB3C\uD5683_2"
       rect:
         serializedVersion: 2
         x: 144
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26f661db7f18e6348a2578f67ab11ad2
-      internalID: -912978262
+      spriteID: c6a9cd65ba1c0b147adfde75d2a01161
+      internalID: -1564950927
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cabinet_open_3
+      name: "\uC0AC\uBB3C\uD5683_3"
       rect:
         serializedVersion: 2
         x: 216
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd79cde56d46b8349b68618867d5066c
-      internalID: -964316295
+      spriteID: 2fffafef92d4c3641a3696ddaf7fca86
+      internalID: -305155564
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cabinet_open_4
+      name: "\uC0AC\uBB3C\uD5683_4"
       rect:
         serializedVersion: 2
         x: 288
@@ -221,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81719de2cf1c5b04da448ccccf1a7567
-      internalID: 1999967225
+      spriteID: 29222fbecfeaf244ca29964278e95225
+      internalID: -1836895475
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cabinet_open_5
+      name: "\uC0AC\uBB3C\uD5683_5"
       rect:
         serializedVersion: 2
         x: 360
@@ -242,8 +242,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c6e440c39d3a4442a13e6e2090134e0
-      internalID: 793277371
+      spriteID: 4116f5abe7a809c4194ba93201f8f34f
+      internalID: 2120589527
       vertices: []
       indices: 
       edges: []
@@ -259,12 +259,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      cabinet_open_0: -1594732376
-      cabinet_open_1: 1840282175
-      cabinet_open_2: -912978262
-      cabinet_open_3: -964316295
-      cabinet_open_4: 1999967225
-      cabinet_open_5: 793277371
+      "\uC0AC\uBB3C\uD5683_0": 1122487398
+      "\uC0AC\uBB3C\uD5683_1": -1248445147
+      "\uC0AC\uBB3C\uD5683_2": -1564950927
+      "\uC0AC\uBB3C\uD5683_3": -305155564
+      "\uC0AC\uBB3C\uD5683_4": -1836895475
+      "\uC0AC\uBB3C\uD5683_5": 2120589527
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

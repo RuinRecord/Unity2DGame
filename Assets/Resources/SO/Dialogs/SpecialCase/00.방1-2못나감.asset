@@ -10,23 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9db115f7612f572419263a9404947bdb, type: 3}
-  m_Name: "02.R_0_\uC0AC\uB2E4\uB9AC"
+  m_Name: "00.\uBC291-2\uBABB\uB098\uAC10"
   m_EditorClassIdentifier: 
+  itemSO: {fileID: 0}
   dialogs:
   - Player_M_dialog:
+      type: 0
       audioClip: {fileID: 0}
-      words: "\uB0A1\uC740 \uB098\uBB34\uB85C \uB9CC\uB4E4\uC5B4\uC9C4 \uC0AC\uB2E4\uB9AC\uB2E4."
-      print_time: 0
-    Player_W_dialog:
-      audioClip: {fileID: 0}
-      words: "\uC4F8\uB9CC\uD55C \uC0AC\uB2E4\uB9AC\uAC00 \uB193\uC5EC \uC788\uB2E4."
-      print_time: 0
-  - Player_M_dialog:
-      audioClip: {fileID: 0}
+      leftSprite: {fileID: 0}
+      rightSprite: {fileID: 0}
       words: 
       print_time: 0
     Player_W_dialog:
+      type: 1
       audioClip: {fileID: 0}
-      words: "'\uC0AC\uB2E4\uB9AC'\uB97C \uD68D\uB4DD\uD558\uC600\uC2B5\uB2C8\uB2E4."
+      leftSprite: {fileID: 0}
+      rightSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
+      words: "\uC544\uC9C1 \uC774 \uBC29\uC744 \uC870\uC0AC\uD558\uC9C0 \uC54A\uC558\uC5B4"
       print_time: 0
-  itemSO: {fileID: 11400000, guid: a12ab66f054cdc840bdebb9729ef16da, type: 2}

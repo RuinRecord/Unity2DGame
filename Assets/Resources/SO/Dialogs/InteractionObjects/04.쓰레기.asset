@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9db115f7612f572419263a9404947bdb, type: 3}
-  m_Name: "00.\uC5EC\uC2E0\uC0C1"
+  m_Name: "04.\uC4F0\uB808\uAE30"
   m_EditorClassIdentifier: 
   itemSO: {fileID: 0}
   dialogs:
@@ -19,28 +19,26 @@ MonoBehaviour:
       audioClip: {fileID: 0}
       leftSprite: {fileID: 0}
       rightSprite: {fileID: 0}
-      words: "\uC628\uD654\uD55C \uD45C\uC815\uC744 \uC9D3\uACE0 \uC788\uB294 \uC5EC\uC2E0\uC0C1\uC774\uB2E4."
+      words: "\uC4F0\uB808\uAE30 \uB354\uBBF8\uAC00 \uB193\uC5EC \uC788\uB2E4."
       print_time: 0
     Player_W_dialog:
       type: 0
       audioClip: {fileID: 0}
       leftSprite: {fileID: 0}
       rightSprite: {fileID: 0}
-      words: ...?
-      print_time: 0.5
+      words: "\uC4F0\uB808\uAE30 \uB354\uBBF8\uAC00 \uB193\uC5EC \uC788\uB2E4."
+      print_time: 0
   - Player_M_dialog:
       type: 1
       audioClip: {fileID: 0}
-      leftSprite: {fileID: 1126201346, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
+      leftSprite: {fileID: 0}
       rightSprite: {fileID: 0}
-      words: "\uC774 \uC5EC\uC2E0\uC0C1\uC740 \uC544\uBB34\uB9AC \uBD10\uB3C4 \uC801\uC751\uC774
-        \uC548\uB41C\uB2E8 \uB9D0\uC774\uC9C0."
+      words: 
       print_time: 0
     Player_W_dialog:
       type: 1
       audioClip: {fileID: 0}
       leftSprite: {fileID: 0}
       rightSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
-      words: "\uBC29\uAE08 \uC0B4\uC9DD \uC6C0\uC9C1\uC778 \uAC83 \uAC19\uC740\uB370
-        \uAE30\uBD84 \uD0D3\uC77C\uAE4C?"
+      words: "\uC73C... \uC880 \uCE58\uC6B0\uACE0 \uC0B4\uC9C0."
       print_time: 0
