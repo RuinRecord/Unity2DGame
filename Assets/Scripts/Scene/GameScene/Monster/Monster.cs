@@ -10,7 +10,7 @@ using static UnityEngine.GraphicsBuffer;
 public class Monster : MonoBehaviour
 {
     /// <summary> 스폰 몬스터의 경우 spawner를 가집니다. (이때, 스폰 몬스터가 아니면 null) </summary>
-    public Spawner spawner;
+    public Spawner Spawner;
 
     protected Animator animator;
     protected NavMeshAgent agent;
@@ -29,6 +29,7 @@ public class Monster : MonoBehaviour
 
     /// <summary> 몬스터의 현재 상태 </summary>
     [SerializeField] private MonsterState State;
+
     protected MonsterState state
     {
         set
@@ -63,27 +64,27 @@ public class Monster : MonoBehaviour
     /// <summary> 플레이어를 감지하는 함수 </summary>
     public virtual bool Recognize()
     {
-        Vector2 lhs = PlayerCtrl.instance.transform.position - transform.position;
-        Vector2 rhs = transform.right * Mathf.Sign(transform.localScale.x);
+        Vector2 _lhs = PlayerCtrl.Instance.transform.position - transform.position;
+        Vector2 _rhs = transform.right * Mathf.Sign(transform.localScale.x);
         if (state != MonsterState.Idle)
-            rhs = agent.velocity;
+            _rhs = agent.velocity;
 
         // target과 나 사이의 거리가 radius 보다 작다면
-        if (lhs.magnitude <= radius)
+        if (_lhs.magnitude <= radius)
         {
             // '타겟-나 벡터'와 '내 정면 벡터'를 내적
-            float dot = Vector2.Dot(lhs.normalized, rhs.normalized);
+            float _dot = Vector2.Dot(_lhs.normalized, _rhs.normalized);
             // 두 벡터 모두 단위 벡터이므로 내적 결과에 cos의 역을 취해서 theta를 구함
-            float theta = Mathf.Acos(dot);
+            float _theta = Mathf.Acos(_dot);
             // angleRange와 비교하기 위해 degree로 변환
-            float degree = Mathf.Rad2Deg * theta;
+            float _degree = Mathf.Rad2Deg * _theta;
 
             // 장애물 판별
-            if (Physics2D.Raycast(transform.position, lhs, 3f, 64))
+            if (Physics2D.Raycast(transform.position, _lhs, 3f, 64))
                 return false;
 
             // 시야각 판별
-            if (degree <= angleRange / 2f)
+            if (_degree <= angleRange / 2f)
                 return true;
             else
                 return false;
@@ -102,7 +103,7 @@ public class Monster : MonoBehaviour
 
         // 추적 설정
         state = MonsterState.Chase;
-        agent.SetDestination(PlayerCtrl.instance.transform.position);
+        agent.SetDestination(PlayerCtrl.Instance.transform.position);
         agent.speed = 2f;
     }
 
@@ -123,9 +124,9 @@ public class Monster : MonoBehaviour
     protected virtual void CheckDamage()
     {
         // 몬스터 공격 판정 생성
-        MonsterAttack attack = ObjectPool.instance.CreateObject<MonsterAttack>(ObjectType.MonsterAttack, ObjectPool.instance.objectTr, attackPoint.position);
-        attack.destroyTime = 0.05f;
-        attack.damage = this.damage;
+        MonsterAttack _attack = ObjectPool.Instance.CreateObject<MonsterAttack>(ObjectType.MonsterAttack, ObjectPool.Instance.ObjectTr, attackPoint.position);
+        _attack.destroyTime = 0.05f;
+        _attack.damage = this.damage;
     }
 
 
@@ -163,20 +164,20 @@ public class Monster : MonoBehaviour
     /// </summary>
     IEnumerator Patrol()
     {
-        float randX, randY;
-        Vector3 destination;
+        float _randX, _randY;
+        Vector3 _destination;
 
         do
         {
             // 순찰 구역 탐색
-            randX = Random.Range(0.75f, 1.5f);
-            randY = Random.Range(0.75f, 1.5f);
-            destination = transform.position + new Vector3(Mathf.Sign(Random.Range(-1f, 1f)) * randX, Mathf.Sign(Random.Range(-1f, 1f)) * randY);
+            _randX = Random.Range(0.75f, 1.5f);
+            _randY = Random.Range(0.75f, 1.5f);
+            _destination = transform.position + new Vector3(Mathf.Sign(Random.Range(-1f, 1f)) * _randX, Mathf.Sign(Random.Range(-1f, 1f)) * _randY);
             yield return null;
-        } while (Physics2D.Raycast(destination, Vector3.forward, 10f, 64)); // 이동 가능 지역인지 체크 -> 불가능한 지역이면 재탐색
+        } while (Physics2D.Raycast(_destination, Vector3.forward, 10f, 64)); // 이동 가능 지역인지 체크 -> 불가능한 지역이면 재탐색
 
         // 순찰 구역으로 이동
-        agent.SetDestination(destination);
+        agent.SetDestination(_destination);
         agent.speed = 1f;
         state = MonsterState.Walk;
 
@@ -224,10 +225,10 @@ public class Monster : MonoBehaviour
         animator.SetBool("isDead", true);
         StopPatrol();
 
-        if (spawner != null)
+        if (Spawner != null)
         {
             // 스폰 몬스터라면 돌려보내기
-            spawner.RemoveObject(this.gameObject);
+            Spawner.RemoveObject(this.gameObject);
         }
     }
 }

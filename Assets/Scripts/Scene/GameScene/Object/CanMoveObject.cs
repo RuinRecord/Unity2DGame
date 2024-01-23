@@ -4,7 +4,7 @@ using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class MovingObject : MonoBehaviour
+public class CanMoveObject : MonoBehaviour
 {
     private const float MOVE_SPEED = 3f;
     private const int CANNOT_MOVE_LAYERMASK = 64 + 128 + 256 + 512 + 1024;
@@ -26,9 +26,10 @@ public class MovingObject : MonoBehaviour
 
     /// <summary> 여주인공 전용 대사 (남주 대사 설정해도 동작 X) </summary>
     /// 이 대사는 SO 파일이 없습니다. 직접 오브젝트 인스펙터에서 설정해야 합니다.
-    public List<DialogSet> player_m_dialogs;
+    public List<DialogSet> Player_m_dialogs;
 
-    public void SetDirection(Vector2 _vec) => direction = _vec;
+    public void SetForceDirection(Vector2 _vec) 
+        => direction = _vec;
 
 
     /// <summary>
@@ -37,18 +38,18 @@ public class MovingObject : MonoBehaviour
     /// <returns>이동 수행 여부</returns>
     public bool Push()
     {
-        bool isSuccess;
+        bool _isSuccess;
 
         // 바라보는 방향에 장애물 확인
-        if (isSuccess = !Physics2D.Raycast((Vector2)this.transform.position + direction * 0.55f, direction, 0.4f, CANNOT_MOVE_LAYERMASK))
+        if (_isSuccess = !Physics2D.Raycast((Vector2)this.transform.position + direction * 0.55f, direction, 0.4f, CANNOT_MOVE_LAYERMASK))
         {
             // 이동 가능한 상태 => 물체 이동
             StartCoroutine("StartMove");
 
             // 끄는 소리 오디오 실행
-            GameManager._sound.PlaySE("상자밀기");
+            GameManager.Sound.PlaySE("상자밀기");
         }
-        return isSuccess;
+        return _isSuccess;
     }
 
 
@@ -57,33 +58,32 @@ public class MovingObject : MonoBehaviour
     /// </summary>
     IEnumerator StartMove()
     {
-        Vector3 savedPos = this.transform.position;
-        Vector2 moveVec = direction;
-        PlayerCtrl.instance.state = PlayerState.WALK;
-        PlayerCtrl.instance.isCanInteract = PlayerCtrl.instance.isCanMove = false;
+        Vector3 _savedPos = this.transform.position;
+        Vector2 _moveVec = direction;
+        PlayerCtrl.Instance.State = PlayerState.WALK;
+        PlayerCtrl.Instance.IsCanInteract = PlayerCtrl.Instance.IsCanMove = false;
 
         // 방향 벡터와 이동 벡터가 반대가 되는 순간까지 이동 수행
-        while (moveVec.normalized == direction.normalized)
+        while (_moveVec.normalized == direction.normalized)
         {
-            PlayerCtrl.instance.transform.position += (Vector3)direction * MOVE_SPEED * Time.deltaTime;
+            PlayerCtrl.Instance.transform.position += (Vector3)direction * MOVE_SPEED * Time.deltaTime;
             this.transform.position += (Vector3)direction * MOVE_SPEED * Time.deltaTime;
-            moveVec -= direction * MOVE_SPEED * Time.deltaTime;
+            _moveVec -= direction * MOVE_SPEED * Time.deltaTime;
             yield return null;
         }
 
-        PlayerCtrl.instance.state = PlayerState.IDLE;
-        PlayerCtrl.instance.isCanInteract = PlayerCtrl.instance.isCanMove = true;
-        PlayerCtrl.instance.SetCurrentPos(savedPos);
-        this.transform.position = savedPos + (Vector3)direction;
+        PlayerCtrl.Instance.State = PlayerState.IDLE;
+        PlayerCtrl.Instance.IsCanInteract = PlayerCtrl.Instance.IsCanMove = true;
+        this.transform.position = _savedPos + (Vector3)direction;
     }
 
     private void OnTriggerStay2D(Collider2D col)
     {
-        if (PlayerCtrl.instance.movingObject == this)
+        if (PlayerCtrl.Instance.CurrentCanMoveOb == this)
         {
             // 만약 플레이어가 클릭한 MovingObject에 다다르면
             // 모드 변경
-            PlayerCtrl.instance.mode = PlayerMode.PUSH;
+            PlayerCtrl.Instance.Mode = PlayerMode.PUSH;
         }   
     }
 }

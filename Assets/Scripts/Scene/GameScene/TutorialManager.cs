@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
 {
-    public static TutorialManager instance;
-    public static bool isTutorialOn = false;
+    /// <summary> TutorialManager 싱글톤 </summary>
+    private static TutorialManager instance;
+    public static TutorialManager Instance
+    {
+        set
+        {
+            if (instance == null)
+                instance = value;
+        }
+        get { return instance; }
+    }
+
+    public static bool IsTutorialOn = false;
 
     [SerializeField]
     private TutorialUI UI;
 
+
+
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
 
     // Start is called before the first frame update
@@ -23,13 +36,13 @@ public class TutorialManager : MonoBehaviour
 
     public void ShowTooltip(string info)
     {
-        isTutorialOn = true;
+        IsTutorialOn = true;
         UI.ShowTooltip(info);
     }
 
     public void CloseTutorial()
     {
-        isTutorialOn = false;
+        IsTutorialOn = false;
         UI.CloseTooltip();
     }
 }

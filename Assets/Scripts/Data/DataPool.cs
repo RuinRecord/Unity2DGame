@@ -17,37 +17,37 @@ public struct DialogSet
 
     public DialogType GetDialogType()
     {
-        if (PlayerTag.playerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetDialogType();
+        if (PlayerTag.PlayerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetDialogType();
         else return Player_W_dialog.GetDialogType();
     }
 
     public AudioClip GetAudioClip()
     {
-        if (PlayerTag.playerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetAudioClip();
+        if (PlayerTag.PlayerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetAudioClip();
         else return Player_W_dialog.GetAudioClip();
     }
 
     public Sprite GetLeftSprite()
     {
-        if (PlayerTag.playerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetLeftSprite();
+        if (PlayerTag.PlayerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetLeftSprite();
         else return Player_W_dialog.GetLeftSprite();
     }
 
     public Sprite GetRightSprite()
     {
-        if (PlayerTag.playerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetRightSprite();
+        if (PlayerTag.PlayerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetRightSprite();
         else return Player_W_dialog.GetRightSprite();
     }
 
     public string GetWords()
     {
-        if (PlayerTag.playerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetWord();
+        if (PlayerTag.PlayerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetWord();
         else return Player_W_dialog.GetWord();
     }
 
     public float GetPrintTime()
     {
-        if (PlayerTag.playerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetPrintTime();
+        if (PlayerTag.PlayerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetPrintTime();
         else return Player_W_dialog.GetPrintTime();
     }
 }

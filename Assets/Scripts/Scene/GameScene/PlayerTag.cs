@@ -19,11 +19,15 @@ public class PlayerTag : MonoBehaviour
 
 
     /// <summary> 현재 태그 중인 플레이어 타입 </summary>
-    public static PlayerType playerType;
+    public static PlayerType PlayerType;
 
 
     /// <summary> 현재 태그 기능이 동작 중인가? </summary>
-    public static bool isTagOn;
+    public static bool IsTagOn;
+
+
+    /// <summary> 현재 태그 가능 상태인지에 대한 여부 </summary>
+    public bool IsCanTag;
 
 
     /// <summary> 현재 태그 패널이 동작 중인가? </summary>
@@ -45,40 +49,36 @@ public class PlayerTag : MonoBehaviour
     private GameObject tag_frame;
 
 
-    /// <summary> 현재 태그 가능 상태인지에 대한 여부 </summary>
-    public bool isCanTag;
-
-
     /// <summary> PlayerTag 싱글톤 </summary>
-    private static PlayerTag Instance;
-    public static PlayerTag instance
+    private static PlayerTag instance;
+    public static PlayerTag Instance
     {
         set
         {
-            if (Instance == null)
-                Instance = value;
+            if (instance == null)
+                instance = value;
         }
-        get { return Instance; }
+        get { return instance; }
     }
 
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        playerType = PlayerType.WOMEN;
+        PlayerType = PlayerType.WOMEN;
         isPanelOn = false;
-        isCanTag = true;
+        IsCanTag = true;
 
         tagAnim.gameObject.SetActive(false);
         tag_frame.SetActive(false);
-        SetCameraRect(playerType, isPanelOn);
-        UIManager._playerUI.SetPlayerUIAll(playerType);
+        SetCameraRect(PlayerType, isPanelOn);
+        UIManager.PlayerUI.SetPlayerUIAll(PlayerType);
     }
 
 
@@ -88,10 +88,10 @@ public class PlayerTag : MonoBehaviour
         if (!CheckCanTag())
             return;
 
-        if (isCanTag && Input.GetKeyDown(KeyCode.Tab))
+        if (IsCanTag && Input.GetKeyDown(KeyCode.Tab))
         {
             // 태그 패널 열기
-            isCanTag = false;
+            IsCanTag = false;
             ShowTagPanel();
         }
     }
@@ -101,16 +101,16 @@ public class PlayerTag : MonoBehaviour
     /// </summary>
     private bool CheckCanTag()
     {
-        if (GameManager._change.isChanging)
+        if (GameManager.Change.IsChanging)
             return false; // 현재 씬 및 위치 전환 중이면 동작 불가
 
-        if (CutSceneCtrl.isCutSceneOn)
+        if (CutSceneCtrl.IsCutSceneOn)
             return false; // 컷씬이 진행중이면 동작 불가
 
-        if (UIManager._interactUI.isDialog)
+        if (UIManager.InteractUI.IsDialog)
             return false; // 현재 상호작용 대화 시스템이 작동 중이면 동작 불가
 
-        if (PlayerCtrl.instance.isMoving)
+        if (PlayerCtrl.Instance.IsMoving)
             return false; // 플레이어가 이동 중이면 동작 불가
 
         return true;
@@ -158,7 +158,7 @@ public class PlayerTag : MonoBehaviour
     /// </summary>
     private void ShowTagPanel()
     {
-        isTagOn = true;
+        IsTagOn = true;
         isPanelOn = true;
 
         // 애니메이션 패널 켜기
@@ -187,8 +187,8 @@ public class PlayerTag : MonoBehaviour
         // 플레이어 타입 설정
         switch (uibox.index)
         {
-            case 0: playerType = PlayerType.MEN; break;
-            case 1: playerType = PlayerType.WOMEN; break;
+            case 0: PlayerType = PlayerType.MEN; break;
+            case 1: PlayerType = PlayerType.WOMEN; break;
         }
         isPanelOn = false;
 
@@ -220,16 +220,16 @@ public class PlayerTag : MonoBehaviour
         {
             case 0:
                 tag_frame.SetActive(true);
-                UIManager.instance.SetActiveUI(false);
+                UIManager.Instance.SetActiveUI(false);
                 break;
             case 1:
                 tag_frame.SetActive(false);
-                UIManager.instance.SetActiveUI(true);
-                UIManager._playerUI.SetPlayerUIAll(playerType);
+                UIManager.Instance.SetActiveUI(true);
+                UIManager.PlayerUI.SetPlayerUIAll(PlayerType);
                 break;
         }
 
-        SetCameraRect(playerType, isPanelOn);
+        SetCameraRect(PlayerType, isPanelOn);
 
         yield return new WaitForSeconds(FADE_TIME);
         // 페이드 아웃 애니메이션 종료
@@ -241,8 +241,8 @@ public class PlayerTag : MonoBehaviour
             case 1:
                 // 태그 패널 닫기
                 tagAnim.gameObject.SetActive(false);
-                isTagOn = false;
-                isCanTag = true;
+                IsTagOn = false;
+                IsCanTag = true;
                 break;
         }
     }

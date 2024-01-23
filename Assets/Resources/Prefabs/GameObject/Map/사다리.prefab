@@ -99,12 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 10
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 10
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!61 &6134243441434162794
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -162,6 +162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0

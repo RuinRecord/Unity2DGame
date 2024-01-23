@@ -396,8 +396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!66 &18173176
 CompositeCollider2D:
@@ -1292,12 +1292,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 6
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 6
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &61617207
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1362,8 +1362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &63441036
 GameObject:
@@ -1413,8 +1413,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!114 &63441039
 MonoBehaviour:
@@ -2594,8 +2594,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &81860543
 GameObject:
@@ -2989,8 +2989,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &115075325
 GameObject:
@@ -3089,8 +3089,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &120193846
 GameObject:
@@ -3240,8 +3240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &136613994
 BoxCollider2D:
@@ -3300,12 +3300,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &136613996
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3546,8 +3546,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &151850986
 BoxCollider2D:
@@ -3606,12 +3606,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &151850988
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3756,12 +3756,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 11
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 11
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &157701004
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3871,8 +3871,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &164038260
 GameObject:
@@ -4059,8 +4059,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &188714242
 GameObject:
@@ -4111,7 +4111,7 @@ MonoBehaviour:
   destination: {x: 22, y: -13, z: 0}
   audioClip: {fileID: 8300000, guid: 0f14480105ba651448eaebb8d8cc38bf, type: 3}
   animator: {fileID: 0}
-  isOn: 1
+  IsOn: 1
 --- !u!61 &188714245
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5267,7 +5267,7 @@ MonoBehaviour:
   destination: {x: -27, y: -20, z: 0}
   audioClip: {fileID: 8300000, guid: 0f14480105ba651448eaebb8d8cc38bf, type: 3}
   animator: {fileID: 0}
-  isOn: 1
+  IsOn: 1
 --- !u!61 &267462921
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11118,8 +11118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1001 &270675696
 PrefabInstance:
@@ -11275,8 +11275,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!114 &275056368
 MonoBehaviour:
@@ -11719,8 +11719,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!114 &297528910
 MonoBehaviour:
@@ -12266,8 +12266,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &357954184
 GameObject:
@@ -12462,8 +12462,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!114 &364390380
 MonoBehaviour:
@@ -12647,8 +12647,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!212 &368215479
 SpriteRenderer:
@@ -12750,8 +12750,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!114 &372300745
 MonoBehaviour:
@@ -13007,8 +13007,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &379377259
 BoxCollider2D:
@@ -13067,12 +13067,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &379377261
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13172,8 +13172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &391970501
 BoxCollider2D:
@@ -13232,12 +13232,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &391970503
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13687,8 +13687,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1001 &421123291
 PrefabInstance:
@@ -13875,8 +13875,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &440865038
 BoxCollider2D:
@@ -13935,12 +13935,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &440865040
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14040,8 +14040,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &445867906
 BoxCollider2D:
@@ -14100,12 +14100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &445867908
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14339,7 +14339,7 @@ MonoBehaviour:
   destination: {x: 11, y: 5, z: 0}
   audioClip: {fileID: 8300000, guid: 0f14480105ba651448eaebb8d8cc38bf, type: 3}
   animator: {fileID: 0}
-  isOn: 1
+  IsOn: 1
 --- !u!61 &451105391
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14432,8 +14432,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &460207497
 BoxCollider2D:
@@ -14492,12 +14492,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &460207499
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14723,8 +14723,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &464864527
 BoxCollider2D:
@@ -14783,12 +14783,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &464864529
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15145,8 +15145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!212 &477135475
 SpriteRenderer:
@@ -15249,11 +15249,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 979cd1effafc9ba4c99667aa06658e44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsCanTag: 0
   cameraM: {fileID: 137078864}
   cameraW: {fileID: 1499660807}
   tagAnim: {fileID: 893754137}
   tag_frame: {fileID: 357954184}
-  isCanTag: 0
 --- !u!1 &480029054
 GameObject:
   m_ObjectHideFlags: 0
@@ -15301,8 +15301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &480029057
 BoxCollider2D:
@@ -15361,12 +15361,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &480029059
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15543,12 +15543,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 4
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 4
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &493471587
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15613,8 +15613,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1001 &508239010
 PrefabInstance:
@@ -15735,7 +15735,7 @@ MonoBehaviour:
   destination: {x: 11, y: 21, z: 0}
   audioClip: {fileID: 8300000, guid: 0f14480105ba651448eaebb8d8cc38bf, type: 3}
   animator: {fileID: 0}
-  isOn: 1
+  IsOn: 1
 --- !u!61 &511931141
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15828,8 +15828,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &525017645
 BoxCollider2D:
@@ -15888,12 +15888,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &525017647
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16117,8 +16117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &528080226
 BoxCollider2D:
@@ -16177,12 +16177,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &528080228
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16357,8 +16357,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &546057463
 BoxCollider2D:
@@ -16417,12 +16417,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &546057465
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16628,8 +16628,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &563419840
 BoxCollider2D:
@@ -16688,12 +16688,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &563419842
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16931,8 +16931,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &571625647
 GameObject:
@@ -17056,8 +17056,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!114 &575097816
 MonoBehaviour:
@@ -17071,12 +17071,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &575097817
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17327,8 +17327,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &585502707
 BoxCollider2D:
@@ -17387,12 +17387,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &585502709
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17692,8 +17692,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &620820420
 GameObject:
@@ -17747,7 +17747,7 @@ MonoBehaviour:
   destination: {x: -7, y: 16, z: 0}
   audioClip: {fileID: 8300000, guid: 0f14480105ba651448eaebb8d8cc38bf, type: 3}
   animator: {fileID: 620820423}
-  isOn: 1
+  IsOn: 1
 --- !u!95 &620820423
 Animator:
   serializedVersion: 5
@@ -18546,12 +18546,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 1
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 1
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &701241331
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18616,8 +18616,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &711308220
 GameObject:
@@ -18739,8 +18739,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!212 &718232700
 SpriteRenderer:
@@ -18993,8 +18993,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &725605383
 BoxCollider2D:
@@ -19053,12 +19053,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &725605385
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20090,8 +20090,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &762908162
 GameObject:
@@ -20320,8 +20320,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!114 &789966356
 MonoBehaviour:
@@ -20819,22 +20819,7 @@ MonoBehaviour:
   down_gap: {x: 0, y: -0.5}
   right_gap: {x: 0.75, y: 0}
   left_gap: {x: -0.75, y: 0}
-  player_m_dialogs:
-  - Player_M_dialog:
-      type: 0
-      audioClip: {fileID: 0}
-      leftSprite: {fileID: 0}
-      rightSprite: {fileID: 0}
-      words: 
-      print_time: 0
-    Player_W_dialog:
-      type: 0
-      audioClip: {fileID: 0}
-      leftSprite: {fileID: 0}
-      rightSprite: {fileID: 0}
-      words: "\uC6C0\uC9C1\uC77C \uC218 \uC788\uC744 \uAC83 \uAC19\uC740 \uC0C1\uC790\uAC00
-        \uC788\uB2E4."
-      print_time: 0
+  Player_m_dialogs: []
 --- !u!82 &806668341
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20988,8 +20973,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &814141837
 GameObject:
@@ -21159,8 +21144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &821755372
 BoxCollider2D:
@@ -21219,12 +21204,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &821755374
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21344,7 +21329,7 @@ MonoBehaviour:
   - {fileID: 1368157701}
   - {fileID: 12517224}
   - {fileID: 14964482}
-  isOnInven: 0
+  IsOnInven: 0
   contentIndex: 0
   menuOnSprites:
   - {fileID: -1544922075, guid: cb1066605e018464fb193deb7236e4fe, type: 3}
@@ -21696,8 +21681,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &875932744
 GameObject:
@@ -21744,8 +21729,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!212 &875932747
 SpriteRenderer:
@@ -21846,8 +21831,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &879842983
 BoxCollider2D:
@@ -21906,12 +21891,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &879842985
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22010,8 +21995,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!114 &888158879
 MonoBehaviour:
@@ -22025,12 +22010,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &888158880
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22401,7 +22386,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   - {fileID: 2100000, guid: 9f02db78bd5bba740804b7d497a3c1dc, type: 2}
-  code: 0
+  Code: 0
 --- !u!114 &905565953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22414,8 +22399,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &905565954
 BoxCollider2D:
@@ -22510,8 +22495,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!114 &912690443
 MonoBehaviour:
@@ -22697,12 +22682,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 2
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 2
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &940211276
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22812,8 +22797,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &940411355
 GameObject:
@@ -22999,8 +22984,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!66 &947721239
 CompositeCollider2D:
@@ -24079,7 +24064,7 @@ MonoBehaviour:
   destination: {x: -7, y: 16, z: 0}
   audioClip: {fileID: 8300000, guid: 0f14480105ba651448eaebb8d8cc38bf, type: 3}
   animator: {fileID: 979004800}
-  isOn: 1
+  IsOn: 1
 --- !u!95 &979004800
 Animator:
   serializedVersion: 5
@@ -24194,8 +24179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!114 &980569037
 MonoBehaviour:
@@ -24382,8 +24367,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!114 &985397431
 MonoBehaviour:
@@ -24569,8 +24554,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &1004008425
 BoxCollider2D:
@@ -24629,12 +24614,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &1004008427
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24981,12 +24966,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 3
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &1075103938
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25096,8 +25081,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &1075695341
 GameObject:
@@ -25265,8 +25250,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!114 &1087277993
 MonoBehaviour:
@@ -25280,12 +25265,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &1087277994
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25524,7 +25509,7 @@ MonoBehaviour:
   destination: {x: -5, y: -15, z: 0}
   audioClip: {fileID: 8300000, guid: 0f14480105ba651448eaebb8d8cc38bf, type: 3}
   animator: {fileID: 0}
-  isOn: 1
+  IsOn: 1
 --- !u!61 &1089921164
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26041,8 +26026,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &1126251822
 GameObject:
@@ -26330,8 +26315,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &1141711644
 GameObject:
@@ -26658,8 +26643,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &1155635536
 GameObject:
@@ -26753,12 +26738,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 6
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 6
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &1155635540
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26823,8 +26808,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &1156911571
 GameObject:
@@ -27251,7 +27236,7 @@ MonoBehaviour:
   destination: {x: -4, y: 4, z: 0}
   audioClip: {fileID: 8300000, guid: 0f14480105ba651448eaebb8d8cc38bf, type: 3}
   animator: {fileID: 1175976817}
-  isOn: 1
+  IsOn: 1
 --- !u!95 &1175976817
 Animator:
   serializedVersion: 5
@@ -27416,8 +27401,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &1193179765
 GameObject:
@@ -27515,12 +27500,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 5
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 5
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &1204534859
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27630,8 +27615,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &1205716826
 GameObject:
@@ -27680,8 +27665,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!114 &1205716830
 MonoBehaviour:
@@ -27695,12 +27680,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &1205716831
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28537,10 +28522,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\uD070\uD770\uC120\uBC18"
       objectReference: {fileID: 0}
-    - target: {fileID: 7799206388798146333, guid: e07c68444722ec845a968388d114bff8, type: 3}
-      propertyPath: code
-      value: 7
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28598,8 +28579,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &1330459070
 BoxCollider2D:
@@ -28658,12 +28639,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &1330459072
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28813,8 +28794,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &1348722740
 GameObject:
@@ -29001,8 +28982,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &1356953516
 GameObject:
@@ -29265,8 +29246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!212 &1374020856
 SpriteRenderer:
@@ -29778,8 +29759,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &1400924762
 GameObject:
@@ -29966,8 +29947,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1001 &1402296494
 PrefabInstance:
@@ -30153,8 +30134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!212 &1417162444
 SpriteRenderer:
@@ -30387,9 +30368,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0704e007ec28cd74ab345bec2bde1034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectTr: {fileID: 1941377444}
-  tempMonster_prefab: {fileID: 6569218267864533389, guid: c16dbfa001551734e898a16d6a4b3013, type: 3}
-  monsterAttack_prefab: {fileID: 248052880951760824, guid: ecab6f8f70b36e44e9e22f507aa402a7, type: 3}
+  ObjectTr: {fileID: 1941377444}
+  TempMonster_prefab: {fileID: 6569218267864533389, guid: c16dbfa001551734e898a16d6a4b3013, type: 3}
+  MonsterAttack_prefab: {fileID: 248052880951760824, guid: ecab6f8f70b36e44e9e22f507aa402a7, type: 3}
 --- !u!1001 &1460818606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30723,19 +30704,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9776672d6c4d5a147a7cabacb189ec1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleport: {fileID: 0}
-  movingObject: {fileID: 0}
+  CurrentTeleport: {fileID: 0}
+  CurrentCanMoveOb: {fileID: 0}
   playerMode: 0
   playerState: 0
-  isCanInteract: 0
-  isCanMove: 0
-  isCanAttack: 0
-  isCanEvasion: 0
-  isCanCapture: 0
-  isCameraOn: 0
-  isCanInven: 0
-  isMoving: 0
-  max_HP: 0
+  IsCanInteract: 0
+  IsCanMove: 0
+  IsCanAttack: 0
+  IsCanEvasion: 0
+  IsCanCapture: 0
+  IsCameraOn: 0
+  IsCanInven: 0
+  IsMoving: 0
+  Max_HP: 0
 --- !u!50 &1479713885
 Rigidbody2D:
   serializedVersion: 4
@@ -30831,8 +30812,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!4 &1484043932 stripped
 Transform:
@@ -31358,8 +31339,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!114 &1526882911
 MonoBehaviour:
@@ -31373,12 +31354,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &1526882912
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -31739,8 +31720,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1001 &1543105605
 PrefabInstance:
@@ -31924,7 +31905,7 @@ MonoBehaviour:
   destination: {x: 11, y: 4, z: 0}
   audioClip: {fileID: 8300000, guid: 0f14480105ba651448eaebb8d8cc38bf, type: 3}
   animator: {fileID: 1567543955}
-  isOn: 1
+  IsOn: 1
 --- !u!95 &1567543955
 Animator:
   serializedVersion: 5
@@ -32281,7 +32262,7 @@ MonoBehaviour:
   destination: {x: -4, y: 5, z: 0}
   audioClip: {fileID: 8300000, guid: 0f14480105ba651448eaebb8d8cc38bf, type: 3}
   animator: {fileID: 0}
-  isOn: 1
+  IsOn: 1
 --- !u!61 &1578184150
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -32374,8 +32355,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &1582926575
 BoxCollider2D:
@@ -32434,12 +32415,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &1582926577
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32722,7 +32703,7 @@ MonoBehaviour:
   destination: {x: -7, y: -13, z: 0}
   audioClip: {fileID: 8300000, guid: 0f14480105ba651448eaebb8d8cc38bf, type: 3}
   animator: {fileID: 0}
-  isOn: 1
+  IsOn: 1
 --- !u!61 &1585125304
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -33023,8 +33004,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &1602432893
 GameObject:
@@ -33172,8 +33153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &1611302647
 GameObject:
@@ -33227,7 +33208,7 @@ MonoBehaviour:
   destination: {x: 11, y: 16, z: 0}
   audioClip: {fileID: 8300000, guid: 0f14480105ba651448eaebb8d8cc38bf, type: 3}
   animator: {fileID: 1611302650}
-  isOn: 1
+  IsOn: 1
 --- !u!95 &1611302650
 Animator:
   serializedVersion: 5
@@ -33345,9 +33326,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74a103c6f8abb0e41a2490d5c8a57900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canNotMove_layerMask:
+  CanNotMove_layerMask:
     serializedVersion: 2
-    m_Bits: 960
+    m_Bits: 0
   tileMapTr: {fileID: 267868480}
   spritesList: []
 --- !u!114 &1621921782
@@ -33411,8 +33392,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!114 &1627052203
 MonoBehaviour:
@@ -34006,14 +33987,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
---- !u!1 &1653810491 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7653028122097278594, guid: afd33f9fac849cf46b24de00960cb0ad, type: 3}
-  m_PrefabInstance: {fileID: 8531155548165898036}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1659822528
 GameObject:
   m_ObjectHideFlags: 0
@@ -34190,10 +34166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06c007686000ea40870556b1c58c2c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsDialogDone: 0
   cameraW: {fileID: 1499660807}
   cameraM: {fileID: 137078864}
   events: []
-  isDialogDone: 0
 --- !u!4 &1682769453
 Transform:
   m_ObjectHideFlags: 0
@@ -42280,8 +42256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &1737253562
 GameObject:
@@ -42972,7 +42948,7 @@ MonoBehaviour:
   destination: {x: 11, y: 32, z: 0}
   audioClip: {fileID: 8300000, guid: 0f14480105ba651448eaebb8d8cc38bf, type: 3}
   animator: {fileID: 1790339333}
-  isOn: 1
+  IsOn: 1
 --- !u!95 &1790339333
 Animator:
   serializedVersion: 5
@@ -43084,8 +43060,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!212 &1790629837
 SpriteRenderer:
@@ -43726,8 +43702,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &1799544568
 GameObject:
@@ -44149,8 +44125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &1810828381
 GameObject:
@@ -44199,8 +44175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &1810828384
 BoxCollider2D:
@@ -44259,12 +44235,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &1810828386
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -44364,8 +44340,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &1816335126
 BoxCollider2D:
@@ -44424,12 +44400,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &1816335128
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -44635,8 +44611,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!114 &1849828560
 MonoBehaviour:
@@ -44650,12 +44626,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &1849828561
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -44756,8 +44732,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!114 &1858905324
 MonoBehaviour:
@@ -44988,12 +44964,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 6
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 6
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &1860476783
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -45058,8 +45034,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &1870292434
 GameObject:
@@ -45279,8 +45255,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &1893477352
 BoxCollider2D:
@@ -45339,12 +45315,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &1893477354
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -45703,8 +45679,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!212 &1956433852
 SpriteRenderer:
@@ -45808,8 +45784,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!66 &1962226556
 CompositeCollider2D:
@@ -46630,12 +46606,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 0
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &1969221011
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -46700,8 +46676,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &1976230505
 GameObject:
@@ -46967,19 +46943,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9776672d6c4d5a147a7cabacb189ec1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleport: {fileID: 0}
-  movingObject: {fileID: 0}
+  CurrentTeleport: {fileID: 0}
+  CurrentCanMoveOb: {fileID: 0}
   playerMode: 0
   playerState: 0
-  isCanInteract: 0
-  isCanMove: 0
-  isCanAttack: 0
-  isCanEvasion: 0
-  isCanCapture: 0
-  isCameraOn: 0
-  isCanInven: 0
-  isMoving: 0
-  max_HP: 0
+  IsCanInteract: 0
+  IsCanMove: 0
+  IsCanAttack: 0
+  IsCanEvasion: 0
+  IsCanCapture: 0
+  IsCameraOn: 0
+  IsCanInven: 0
+  IsMoving: 0
+  Max_HP: 0
 --- !u!212 &2013731444
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -47097,8 +47073,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &2040253788
 GameObject:
@@ -47311,8 +47287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!114 &2042470428
 MonoBehaviour:
@@ -47498,8 +47474,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &2055040796
 BoxCollider2D:
@@ -47558,12 +47534,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &2055040798
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -47663,8 +47639,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!61 &2063438823
 BoxCollider2D:
@@ -47723,12 +47699,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &2063438825
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -47966,8 +47942,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &2071733879
 GameObject:
@@ -48756,8 +48732,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &2089808452
 GameObject:
@@ -48888,12 +48864,12 @@ MonoBehaviour:
   interaction_panel: {fileID: 467432511}
   interaction_infoText: {fileID: 1164978898}
   interaction_next_object: {fileID: 1628810816}
+  IsDialog: 0
   player_panel: {fileID: 1193179765}
   player_leftImage: {fileID: 892754006}
   player_rightImage: {fileID: 897000126}
   player_infoText: {fileID: 729065282}
   player_next_object: {fileID: 1749713179}
-  isDialog: 0
 --- !u!82 &2094210273
 AudioSource:
   m_ObjectHideFlags: 0
@@ -50579,8 +50555,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!1 &2105198503
 GameObject:
@@ -50629,8 +50605,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
   isChild: 0
 --- !u!114 &2105198507
 MonoBehaviour:
@@ -50644,12 +50620,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  code: 3
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
+  Code: 0
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
 --- !u!212 &2105198508
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -51435,24 +51411,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1653656449447805002, guid: afd33f9fac849cf46b24de00960cb0ad, type: 3}
   m_PrefabInstance: {fileID: 8531155548165898036}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5139236692023348339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1653810491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  code: 9
-  hasItem: 0
-  hasRecord: 0
-  itemCode: 0
-  recordCode: 0
-  isDestroy: 0
 --- !u!224 &5205666843941668431
 RectTransform:
   m_ObjectHideFlags: 0
@@ -51815,18 +51773,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1375830231}
     m_Modifications:
-    - target: {fileID: 275291068580314266, guid: afd33f9fac849cf46b24de00960cb0ad, type: 3}
-      propertyPath: Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 275291068580314266, guid: afd33f9fac849cf46b24de00960cb0ad, type: 3}
-      propertyPath: InteractionOb
-      value: 
-      objectReference: {fileID: 5139236692023348339}
-    - target: {fileID: 275291068580314266, guid: afd33f9fac849cf46b24de00960cb0ad, type: 3}
-      propertyPath: interactionOb
-      value: 
-      objectReference: {fileID: 5139236692023348339}
     - target: {fileID: 1653656449447805002, guid: afd33f9fac849cf46b24de00960cb0ad, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.758
@@ -51871,17 +51817,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\uC0AC\uBB3C\uD568(\uC5F4\uB9BC)"
       objectReference: {fileID: 0}
-    - target: {fileID: 7653028122097278594, guid: afd33f9fac849cf46b24de00960cb0ad, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7653028122097278594, guid: afd33f9fac849cf46b24de00960cb0ad, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5139236692023348339}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afd33f9fac849cf46b24de00960cb0ad, type: 3}
 --- !u!1001 &8802162941091049993
 PrefabInstance:

@@ -30,7 +30,7 @@ public class SoundManager : MonoBehaviour
     /// <param name="fadeTime">Fade 전환 시간</param>
     public void PlayBGM(string BGM_name, float fadeTime)
     {
-        AudioClip BGM_clip = GameManager._data.Load<AudioClip>($"Audios/BGM/{BGM_name}");
+        AudioClip BGM_clip = GameManager.Data.Load<AudioClip>($"Audios/BGM/{BGM_name}");
         PlayBGM(BGM_clip, fadeTime);
     }
 
@@ -59,7 +59,7 @@ public class SoundManager : MonoBehaviour
     /// <param name="SE_name">출력할 SE 이름</param>
     public void PlaySE(string SE_name)
     {
-        AudioClip SE_clip = GameManager._data.Load<AudioClip>($"Audios/SE/{SE_name}");
+        AudioClip SE_clip = GameManager.Data.Load<AudioClip>($"Audios/SE/{SE_name}");
         PlaySE(SE_clip);
     }
 

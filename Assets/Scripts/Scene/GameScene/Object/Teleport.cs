@@ -30,7 +30,7 @@ public class Teleport : MonoBehaviour
 
 
     /// <summary> 현재 사용 가능한 포탈인지에 대한 여부 </summary>
-    public bool isOn;
+    public bool IsOn;
 
 
     private void Start()
@@ -56,43 +56,43 @@ public class Teleport : MonoBehaviour
     /// </summary>
     public void GoToDestination()
     {
-        if (!isOn)
+        if (!IsOn)
             return; // 만약 닫힌 상태라면 취소
 
         Open();
 
         // Fade 애니메이션과 함께 목적지로 이동
-        PlayerTag.instance.isCanTag = false;
-        GameManager._sound.PlaySE(audioClip);
+        PlayerTag.Instance.IsCanTag = false;
+        GameManager.Sound.PlaySE(audioClip);
 
         // 막힌 공간이라면 플레이어가 바라보는 방향으로 1칸 더 던진
-        while (!MapCtrl.instance.CheckValidArea(destination))
-            destination += (Vector3Int)PlayerCtrl.instance.GetDirection();
+        while (!MapCtrl.Instance.CheckValidArea(destination))
+            destination += (Vector3Int)PlayerCtrl.Instance.GetDirection();
 
-        StartCoroutine(GameManager._change.switchPos(destination));
+        StartCoroutine(GameManager.Change.switchPos(destination));
     }
 
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         // 충돌 범위 안으로 들어온 오브젝트가 플레이어라면
-        if (col.tag.Equals("Player_M") && PlayerTag.playerType.Equals(PlayerType.MEN) ||
-            col.tag.Equals("Player_W") && PlayerTag.playerType.Equals(PlayerType.WOMEN))
+        if (col.tag.Equals("Player_M") && PlayerTag.PlayerType.Equals(PlayerType.MEN) ||
+            col.tag.Equals("Player_W") && PlayerTag.PlayerType.Equals(PlayerType.WOMEN))
         {
             switch (this.gameObject.name)
             {
                 case "R2-1_To_R2 (No_Door)":
                     if (EventCtrl.Instance.CurrentEvent <= 0)
                     {
-                        UIManager._interactUI.StartDialog(GameManager._data.specialDialogDatas[0].dialogs.ToArray());
-                        PlayerCtrl.instance.SetMove(Vector2Int.right, 1, PlayerCtrl.WALK_SPEED);
+                        UIManager.InteractUI.StartDialog(GameManager.Data.specialDialogDatas[0].dialogs.ToArray());
+                        PlayerCtrl.Instance.SetMove(Vector2Int.right, 1, PlayerCtrl.WALK_SPEED);
                     }
                     break;
                 case "H_To_R2 (Door)":
                     if (EventCtrl.Instance.CurrentEvent <= 2)
                     {
-                        UIManager._interactUI.StartDialog(GameManager._data.specialDialogDatas[1].dialogs.ToArray());
-                        PlayerCtrl.instance.SetMove(Vector2Int.down, 1, PlayerCtrl.WALK_SPEED);
+                        UIManager.InteractUI.StartDialog(GameManager.Data.specialDialogDatas[1].dialogs.ToArray());
+                        PlayerCtrl.Instance.SetMove(Vector2Int.down, 1, PlayerCtrl.WALK_SPEED);
                     }
                     break;
             }
@@ -103,10 +103,10 @@ public class Teleport : MonoBehaviour
     private void OnTriggerStay2D(Collider2D col)
     {
         // 충돌 범위 안으로 들어온 오브젝트가 플레이어라면
-        if (col.tag.Equals("Player_M") && PlayerTag.playerType.Equals(PlayerType.MEN) || 
-            col.tag.Equals("Player_W") && PlayerTag.playerType.Equals(PlayerType.WOMEN))
+        if (col.tag.Equals("Player_M") && PlayerTag.PlayerType.Equals(PlayerType.MEN) || 
+            col.tag.Equals("Player_W") && PlayerTag.PlayerType.Equals(PlayerType.WOMEN))
         {
-            PlayerCtrl.instance.teleport = this;
+            PlayerCtrl.Instance.CurrentTeleport = this;
         }
     }
 
@@ -114,10 +114,10 @@ public class Teleport : MonoBehaviour
     private void OnTriggerExit2D(Collider2D col)
     {
         // 충돌 범위 밖으로 나간 오브젝트가 플레이어라면
-        if (col.tag.Equals("Player_M") && PlayerTag.playerType.Equals(PlayerType.MEN) ||
-            col.tag.Equals("Player_W") && PlayerTag.playerType.Equals(PlayerType.WOMEN))
+        if (col.tag.Equals("Player_M") && PlayerTag.PlayerType.Equals(PlayerType.MEN) ||
+            col.tag.Equals("Player_W") && PlayerTag.PlayerType.Equals(PlayerType.WOMEN))
         {
-            PlayerCtrl.instance.teleport = null;
+            PlayerCtrl.Instance.CurrentTeleport = null;
         }
     }
 }

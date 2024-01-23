@@ -26,7 +26,7 @@ public class InvenUICtrl : MonoBehaviour
     [SerializeField]
     private GameObject[] contents;
 
-    public bool isOnInven;
+    public bool IsOnInven;
 
     [SerializeField]
     private int contentIndex;
@@ -104,7 +104,7 @@ public class InvenUICtrl : MonoBehaviour
 
     public void Init()
     {
-        isOnInven = false;
+        IsOnInven = false;
         contentIndex = 0;
         galleryPage = 0;
         InvenObject.SetActive(false);
@@ -114,16 +114,16 @@ public class InvenUICtrl : MonoBehaviour
 
     public void OnOffInven()
     {
-        isOnInven = !isOnInven;
+        IsOnInven = !IsOnInven;
         contentIndex = 0;
         galleryPage = 0;
-        InvenObject.SetActive(isOnInven);
+        InvenObject.SetActive(IsOnInven);
         SetMenus(contentIndex);
         SetContents(contentIndex);
 
-        GameManager._sound.PlaySE("가방여닫기");
+        GameManager.Sound.PlaySE("가방여닫기");
 
-        if (!isOnInven)
+        if (!IsOnInven)
             EventCtrl.Instance.CheckEvent(EventType.Inventory);
     }
 
@@ -165,7 +165,7 @@ public class InvenUICtrl : MonoBehaviour
         contentIndex = uiBox.index;
         SetMenus(contentIndex);
         SetContents(contentIndex);
-        GameManager._sound.PlaySE("UI클릭");
+        GameManager.Sound.PlaySE("UI클릭");
     }
 
     private void SetItemContent()
@@ -174,11 +174,11 @@ public class InvenUICtrl : MonoBehaviour
         foreach (var ob in pre_objects)
             Destroy(ob.gameObject);
 
-        List<int> items = GameManager._data.player.hasItems;
+        List<int> items = GameManager.Data.player.hasItems;
         foreach (var itemCode in items)
         {
             UIBox uIBox = Instantiate(itemSlot, itemContentTr).GetComponent<UIBox>();
-            Sprite itemSprite = GameManager._data.itemDatas[itemCode].item_sprite;
+            Sprite itemSprite = GameManager.Data.itemDatas[itemCode].item_sprite;
 
             uIBox.images[0].enabled = false;
             uIBox.images[1].GetComponent<RectTransform>().sizeDelta = 
@@ -192,7 +192,7 @@ public class InvenUICtrl : MonoBehaviour
     private void SetGalleryContent()
     {
         UIBox[] captureSlots = captureContentTr.GetComponentsInChildren<UIBox>();
-        List<int> captures = GameManager._data.player.hasCaptures;
+        List<int> captures = GameManager.Data.player.hasCaptures;
         galleryPage = 0;
         SetGalleryPageButton();
 
@@ -204,7 +204,7 @@ public class InvenUICtrl : MonoBehaviour
             {
                 int idx = captures[i + galleryPage * 6];
                 
-                Sprite itemSprite = GameManager._data.captureDatas[idx].capture_sprite;
+                Sprite itemSprite = GameManager.Data.captureDatas[idx].capture_sprite;
 
                 uIBox.images[0].sprite = itemSprite;
                 uIBox.images[0].color = Color.white;
@@ -235,14 +235,14 @@ public class InvenUICtrl : MonoBehaviour
         foreach (var ob in pre_objects)
             Destroy(ob.gameObject);
 
-        List<int> records = GameManager._data.player.hasRecords;
+        List<int> records = GameManager.Data.player.hasRecords;
         foreach (var recordCode in records)
         {
             UIBox uIBox = Instantiate(recordSlot, recordContentTr).GetComponent<UIBox>();
 
             uIBox.images[0].sprite = recordNotSelected;
             uIBox.tmp_texts[0].color = Color.white;
-            uIBox.tmp_texts[0].SetText(GameManager._data.recordDatas[recordCode].record_name);
+            uIBox.tmp_texts[0].SetText(GameManager.Data.recordDatas[recordCode].record_name);
             uIBox.button.onClick.AddListener(OnRecordSlot);
             uIBox.index = recordCode;
         }
@@ -258,10 +258,10 @@ public class InvenUICtrl : MonoBehaviour
         var pre_objects = itemContentTr.GetComponentsInChildren<UIBox>();
         foreach (var ob in pre_objects)
             ob.images[0].enabled = false;
-        GameManager._sound.PlaySE("UI클릭");
+        GameManager.Sound.PlaySE("UI클릭");
 
         int itemCode = uiBox.index;
-        ItemSO itemData = GameManager._data.itemDatas[itemCode];
+        ItemSO itemData = GameManager.Data.itemDatas[itemCode];
         Sprite itemSprite = itemData.item_sprite;
 
         uiBox.images[0].enabled = true;
@@ -277,7 +277,7 @@ public class InvenUICtrl : MonoBehaviour
         if (uiBox == null)
             return;
 
-        GameManager._sound.PlaySE("UI클릭");
+        GameManager.Sound.PlaySE("UI클릭");
 
         isCanTouchCard = false;
         galleryAnim.gameObject.SetActive(true);
@@ -286,7 +286,7 @@ public class InvenUICtrl : MonoBehaviour
         Invoke("EndGalleryAnimIn", galleryAnimTime);
 
         int captureCode = uiBox.index;
-        CaptureSO captureData = GameManager._data.captureDatas[captureCode];
+        CaptureSO captureData = GameManager.Data.captureDatas[captureCode];
         Sprite itemSprite = captureData.capture_sprite;
 
         captureCardImage.sprite = itemSprite;
@@ -306,25 +306,25 @@ public class InvenUICtrl : MonoBehaviour
             ob.images[0].sprite = recordNotSelected;
             ob.tmp_texts[0].color = Color.white;
         }
-        GameManager._sound.PlaySE("UI클릭");
+        GameManager.Sound.PlaySE("UI클릭");
 
         int recordCode = uiBox.index;
         uiBox.images[0].sprite = recordSelected;
         uiBox.tmp_texts[0].color = Color.black;
-        RecordSO recordData = GameManager._data.recordDatas[recordCode];
+        RecordSO recordData = GameManager.Data.recordDatas[recordCode];
 
         recordInfoText.SetText($"{recordData.record_name}\n\n <size=70%>{recordData.record_info}");
     }
 
     public void SetGalleryPageButton()
     {
-        int maxPage = (GameManager._data.player.hasCaptures.Count - 1) / 6;
+        int maxPage = (GameManager.Data.player.hasCaptures.Count - 1) / 6;
 
         capturePrePageButton.SetActive(true);
         captureNextPageButton.SetActive(true);
         if (galleryPage == 0)
             capturePrePageButton.SetActive(false);
-        if (GameManager._data.player.hasCaptures.Count == 0 || galleryPage == maxPage)
+        if (GameManager.Data.player.hasCaptures.Count == 0 || galleryPage == maxPage)
             captureNextPageButton.SetActive(false);
 
         capturePageText.SetText($"( {galleryPage + 1} / { maxPage + 1 } )");
@@ -334,14 +334,14 @@ public class InvenUICtrl : MonoBehaviour
     {
         galleryPage--;
         SetGalleryContent();
-        GameManager._sound.PlaySE("UI클릭");
+        GameManager.Sound.PlaySE("UI클릭");
     }
 
     public void OnGalleryNextButton()
     {
         galleryPage++;
         SetGalleryContent();
-        GameManager._sound.PlaySE("UI클릭");
+        GameManager.Sound.PlaySE("UI클릭");
     }
 
     public void OnCaptureCard()
@@ -349,7 +349,7 @@ public class InvenUICtrl : MonoBehaviour
         if (!isCanTouchCard) return;
         isCanTouchCard = false;
         galleryAnim.Play(galleryAnimName_Out);
-        GameManager._sound.PlaySE("UI클릭");
+        GameManager.Sound.PlaySE("UI클릭");
     }
 
     public void EndGalleryAnimIn()

@@ -6,9 +6,6 @@ public class CaptureUICtrl : MonoBehaviour
 {
     private const float CAPTURE_CAMERA_IN_TIME = 0.5f;
 
-    /// <summary> 조사 상호작용 오브젝트 생성 위치 조정 벡터 </summary>
-    private static Vector3 capture_upVec = Vector3.up * 1.6f;
-
 
     /// <summary> 현재 조사 오브젝트와 충돌한 오브젝트 </summary>
     private CaptureObject selected_captureObject;
@@ -39,24 +36,24 @@ public class CaptureUICtrl : MonoBehaviour
         yield return new WaitForSeconds(CAPTURE_CAMERA_IN_TIME);
         // 'CAPTURE_CAMERA_IN_TIME' 시간이 지나면
 
-        if (selected_captureObject != null && !GameManager._data.player.CheckHasCapture(selected_captureObject.code))
+        if (selected_captureObject != null && !GameManager.Data.player.CheckHasCapture(selected_captureObject.Code))
         {
             // 애니메이션 시작 (여주인공의 사진 촬영 애니메이션이 끝나고 카메라 UI 애니메이션 등장)
             captureCameraAnim.Play("Camera_In");
 
             // 인벤토리에 등록
-            GameManager._data.player.AddCapture(selected_captureObject.code);
+            GameManager.Data.player.AddCapture(selected_captureObject.Code);
 
-            PlayerCtrl.instance.isCameraOn = true;
+            PlayerCtrl.Instance.IsCameraOn = true;
         }
 
         // 이동 및 조사 조작 가능
-        PlayerCtrl.instance.isCanMove = true;
-        PlayerCtrl.instance.isCanInteract = true;
-        PlayerCtrl.instance.isCanCapture = true;
-        PlayerCtrl.instance.isCanInven = true;
+        PlayerCtrl.Instance.IsCanMove = true;
+        PlayerCtrl.Instance.IsCanInteract = true;
+        PlayerCtrl.Instance.IsCanCapture = true;
+        PlayerCtrl.Instance.IsCanInven = true;
 
-        PlayerCtrl.instance.state = PlayerState.IDLE;
+        PlayerCtrl.Instance.State = PlayerState.IDLE;
     }
 
 
@@ -72,12 +69,12 @@ public class CaptureUICtrl : MonoBehaviour
         // 'CAPTURE_CAMERA_IN_TIME' 시간이 지나면
 
         // 이동 및 조사 조작 가능
-        PlayerCtrl.instance.isCanMove = true;
-        PlayerCtrl.instance.isCanInteract = true;
-        PlayerCtrl.instance.isCanCapture = true;
-        PlayerCtrl.instance.isCanInven = true;
+        PlayerCtrl.Instance.IsCanMove = true;
+        PlayerCtrl.Instance.IsCanInteract = true;
+        PlayerCtrl.Instance.IsCanCapture = true;
+        PlayerCtrl.Instance.IsCanInven = true;
 
-        PlayerCtrl.instance.state = PlayerState.IDLE;
+        PlayerCtrl.Instance.State = PlayerState.IDLE;
 
         EventCtrl.Instance.CheckEvent(EventType.Capture);
     }

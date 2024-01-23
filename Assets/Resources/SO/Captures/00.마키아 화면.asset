@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e76e39a2a11d2094d8e5c016bdb89844, type: 3}
-  m_Name: "00.\uC190\uC804\uB4F1"
+  m_Name: "00.\uB9C8\uD0A4\uC544 \uD654\uBA74"
   m_EditorClassIdentifier: 
-  capture_name: "\uC190\uC804\uB4F1"
-  capture_info: "\uC6C3\uACE0 \uC788\uB294 \uC190\uC804\uB4F1\uC774\uB2E4."
-  capture_sprite: {fileID: 21300000, guid: 5271f4173ec77324b92814d15123c8db, type: 3}
+  capture_name: "\uB9C8\uD0A4\uC544 \uB85C\uACE0"
+  capture_info: "\uAE30\uACC4 \uB208\uC774 \uC0C1\uC9D5\uC778 \uB9C8\uD0A4\uC544
+    \uB85C\uACE0\uC774\uB2E4."
+  capture_sprite: {fileID: 21300000, guid: afc1bd5fa72901545b6527ee5463a1f5, type: 3}
   captureCode: 0
-  unLockEventCode: 1

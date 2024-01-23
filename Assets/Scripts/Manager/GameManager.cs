@@ -22,16 +22,16 @@ public class GameManager : MonoBehaviour
     }
 
     [SerializeField] private ChangeManager changeManager;
-    public static ChangeManager _change => instance.changeManager;
+    public static ChangeManager Change => instance.changeManager;
 
     [SerializeField] private DataManager dataManager;
-    public static DataManager _data => instance.dataManager;
+    public static DataManager Data => instance.dataManager;
 
     [SerializeField] private SoundManager soundManager;
-    public static SoundManager _sound => instance.soundManager;
+    public static SoundManager Sound => instance.soundManager;
 
     [SerializeField] private ObjectManager objectManager;
-    public static ObjectManager _object => instance.objectManager;
+    public static ObjectManager Object => instance.objectManager;
 
 
     private void Awake()
@@ -41,10 +41,10 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
             Instance = this;
 
-            _change.Init();
-            _data.Init();
-            _sound.Init();
-            _object.Init();
+            Change.Init();
+            Data.Init();
+            Sound.Init();
+            Object.Init();
         }
         else
         {
@@ -73,9 +73,9 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(go);
         instance = go.GetComponent<GameManager>();
 
-        _sound.Init();
-        _change.Init();
-        _data.Init();
-        _object.Init();
+        Sound.Init();
+        Change.Init();
+        Data.Init();
+        Object.Init();
     }
 }

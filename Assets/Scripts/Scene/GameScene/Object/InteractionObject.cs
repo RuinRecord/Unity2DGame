@@ -9,40 +9,40 @@ public class InteractionObject : MonoBehaviour
     /// <summary> 상호작용 플레이어 대사 </summary>
     private List<DialogSet> dialogs;
 
-    public List<DialogSet> GetDialogs() => dialogs;
+    public List<DialogSet> Dialogs => dialogs;
 
     /// <summary> 상호작용 식별 코드 </summary>
-    public int code;
+    public int Code;
 
     /// <summary> 이 상호작용이 아이템 획득을 가능케 하는가? </summary>
     [HideInInspector]
-    public bool hasItem;
+    public bool HasItem;
 
     /// <summary> 이 상호작용이 조사일지 획득을 가능케 하는가? </summary>
     [HideInInspector]
-    public bool hasRecord;
+    public bool HasRecord;
 
     /// <summary> 보유한 아이템 식별 번호 (아이템 없다면 이 값은 -1) </summary>
     [HideInInspector]
-    public int itemCode;
+    public int ItemCode;
 
     /// <summary> 보유한 식별 번호 (조사일지가 없다면 이 값은 -1) </summary>
     [HideInInspector]
-    public int recordCode;
+    public int RecordCode;
 
     /// <summary> 획득 시 맵 오브젝트가 사라지는지에 대한 여부 </summary>
-    public bool isDestroy;
+    public bool IsDestroy;
 
 
     private void Start()
     {
-        var dialogData = GameManager._data.interactionDialogDatas[code];
+        var dialogData = GameManager.Data.interactionDialogDatas[Code];
 
         dialogs = dialogData.dialogs;
-        hasItem = dialogData.itemSO != null;
-        hasRecord = dialogData.recordSO != null;
-        itemCode = hasItem ? dialogData.itemSO.itemCode : -1;
-        recordCode = hasRecord ? dialogData.recordSO.recordCode : -1;
+        HasItem = dialogData.itemSO != null;
+        HasRecord = dialogData.recordSO != null;
+        ItemCode = HasItem ? dialogData.itemSO.itemCode : -1;
+        RecordCode = HasRecord ? dialogData.recordSO.recordCode : -1;
     }
 
     /// <summary>
@@ -50,16 +50,16 @@ public class InteractionObject : MonoBehaviour
     /// </summary>
     public void DropItem()
     {
-        if (!hasItem)
+        if (!HasItem)
             return; // 이 상호작용은 아이템을 보유하지 않음
 
         // 아이템 획득
-        GameManager._data.player.AddItem(itemCode);
+        GameManager.Data.player.AddItem(ItemCode);
 
         // 맵 오브젝트 제거
-        if (isDestroy)
+        if (IsDestroy)
         {
-            MapCtrl.instance.DestroyObject(this.gameObject);
+            MapCtrl.Instance.DestroyObject(this.gameObject);
         }
     }
 
@@ -68,16 +68,16 @@ public class InteractionObject : MonoBehaviour
     /// </summary>
     public void DropRecord()
     {
-        if (!hasRecord)
+        if (!HasRecord)
             return; // 이 상호작용은 아이템을 보유하지 않음
 
         // 아이템 획득
-        GameManager._data.player.AddRecord(recordCode);
+        GameManager.Data.player.AddRecord(RecordCode);
 
         // 맵 오브젝트 제거
-        if (isDestroy)
+        if (IsDestroy)
         {
-            MapCtrl.instance.DestroyObject(this.gameObject);
+            MapCtrl.Instance.DestroyObject(this.gameObject);
         }
     }
 }

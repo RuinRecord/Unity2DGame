@@ -29,30 +29,25 @@ public class TilemapFadeCtrl : MonoBehaviour
         tilemap.color = Color.white;
     }
 
-    /// <summary>
-    /// (_alpha) 투명도로 서서히 Fade 시키는 함수이다.
-    /// </summary>
-    /// <param name="_alpha">목표 페이드 투명도</param>
-    /// <returns></returns>
     IEnumerator Fade(float _alpha)
     {
-        Color current_color = tilemap.color;
-        float current_alpha = current_color.a;
+        Color _currentColor = tilemap.color;
+        float _currentAlpha = _currentColor.a;
 
         // 타일맵의 투명도가 목표치와 1% 이상 차이날 경우
-        while (Mathf.Abs(_alpha - current_alpha) > 0.01f)
+        while (Mathf.Abs(_alpha - _currentAlpha) > 0.01f)
         {
             // 매 프레임마다 투명도를 설정
-            current_color.a += (_alpha - current_alpha) * FADE_SPEED * Time.deltaTime;
-            current_alpha = current_color.a;
-            tilemap.color = current_color;
+            _currentColor.a += (_alpha - _currentAlpha) * FADE_SPEED * Time.deltaTime;
+            _currentAlpha = _currentColor.a;
+            tilemap.color = _currentColor;
 
             yield return null;
         }
 
         // 목표 투명도로 설정
-        current_color.a = _alpha;
-        tilemap.color = current_color;
+        _currentColor.a = _alpha;
+        tilemap.color = _currentColor;
     }
 
     private void OnTriggerEnter2D(Collider2D col)

@@ -9,19 +9,19 @@ using UnityEngine.Tilemaps;
 public class MapCtrl : MonoBehaviour
 {
     /// <summary> MapCtrl 싱글톤 </summary>
-    private static MapCtrl Instance;
-    public static MapCtrl instance
+    private static MapCtrl instance;
+    public static MapCtrl Instance
     {
         set
         {
-            if (Instance == null)
-                Instance = value;
+            if (instance == null)
+                instance = value;
         }
-        get { return Instance; }
+        get { return instance; }
     }
 
     /// <summary> 이동 불가능한 오브젝트 레이어 마스트 </summary>
-    public LayerMask canNotMove_layerMask;
+    public LayerMask CanNotMove_layerMask;
 
 
     /// <summary> 모든 타일맵 렌더러를 탐색하기 위한 부모 오브젝트 </summary>
@@ -36,7 +36,7 @@ public class MapCtrl : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
 
 
@@ -57,16 +57,10 @@ public class MapCtrl : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// '_destination' 월드 위치가 막혀있는지 체크하고 반환합니다.
-    /// </summary>
-    /// <param name="_destination">도착 위치 벡터</param>
-    public bool CheckValidArea(Vector2 _destination) => !Physics2D.OverlapBox(_destination, Vector2.one * 0.75f, 0f, canNotMove_layerMask);
+    public bool CheckValidArea(Vector2 _destination) 
+        => !Physics2D.OverlapBox(_destination, Vector2.one * 0.75f, 0f, CanNotMove_layerMask);
 
 
-    /// <summary>
-    /// 맵에 존재하는 모든 오브젝트에 대해 Z Depth에 따른 우선 순위를 설정하는 함수
-    /// </summary>
     private void SetDepthAllofMapObjects()
     {
         // Y축 정렬
@@ -79,23 +73,19 @@ public class MapCtrl : MonoBehaviour
         });
 
         // 렌더러 우선순위 지정
-        int sortIndex = 0;
-        float currentY = spritesList[0].transform.position.y;
+        int _sortIndex = 0;
+        float _currentY = spritesList[0].transform.position.y;
 
-        foreach (var render in spritesList)
+        foreach (var _render in spritesList)
         {
-            if (!IsEqualFloat(currentY, render.transform.position.y))
-                sortIndex++;
-            render.SetSortingOrder(sortIndex, out sortIndex);
-            currentY = render.transform.position.y;
+            if (!IsEqualFloat(_currentY, _render.transform.position.y))
+                _sortIndex++;
+            _render.SetSortingOrder(_sortIndex, out _sortIndex);
+            _currentY = _render.transform.position.y;
         }
     }
 
-    /// <summary>
-    /// 'transform'을 가진 Render를 spritesList에서 찾아 반환하는 함수이다.
-    /// </summary>
-    /// <param name="_transform"></param>
-    /// <returns></returns>
+
     public SortRenderer FindRender(Transform _transform)
     {
         foreach (var render in spritesList)
@@ -107,10 +97,6 @@ public class MapCtrl : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// 'transform'을 가진 오브젝트를 spritesList에 저장하는 함수이다.
-    /// </summary>
-    /// <param name="_transform">저장할 오브젝트 Transform</param>
     public void AddSortRenderer(GameObject _ob)
     {
         SortRenderer render = _ob.GetComponent<SortRenderer>();
@@ -124,10 +110,6 @@ public class MapCtrl : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// '_transform'을 가진 오브젝트를 spritesList에 삭제하는 함수이다.
-    /// </summary>
-    /// <param name="_transform">삭제할 오브젝트 Transform</param>
     public void RemoveSprite(Transform _transform)
     {
         if (!spritesList.Remove(FindRender(_transform)))

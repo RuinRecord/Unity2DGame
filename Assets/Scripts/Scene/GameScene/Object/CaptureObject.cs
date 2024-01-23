@@ -20,7 +20,7 @@ public class CaptureObject : MonoBehaviour
     private Material[] materials;
 
     /// <summary> 조사 이벤트 식별 번호 </summary>
-    public int code;
+    public int Code;
 
 
     // Start is called before the first frame update
@@ -44,7 +44,7 @@ public class CaptureObject : MonoBehaviour
             this.transform.localScale += Vector3.one * SCALE_ZOOM_POWER;
 
             // 조사 UI 이미지 켜기
-            UIManager._captureUI.CaptureInfoOn(this);
+            UIManager.CaptureUI.CaptureInfoOn(this);
         }
     }
 
@@ -59,7 +59,7 @@ public class CaptureObject : MonoBehaviour
             this.transform.localScale -= Vector3.one * SCALE_ZOOM_POWER;
 
             // 조사 UI 이미지 끄기
-            UIManager._captureUI.CaptureInfoOff();
+            UIManager.CaptureUI.CaptureInfoOff();
         }
     }
 }

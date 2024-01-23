@@ -6,18 +6,20 @@ using UnityEngine;
 public class CutSceneCtrl : MonoBehaviour
 {
     /// <summary> CutSceneCtrl 싱글톤 </summary>
-    private static CutSceneCtrl Instance;
-    public static CutSceneCtrl instance
+    private static CutSceneCtrl instance;
+    public static CutSceneCtrl Instance
     {
         set
         {
-            if (Instance == null)
-                Instance = value;
+            if (instance == null)
+                instance = value;
         }
-        get { return Instance; }
+        get { return instance; }
     }
 
-    public static bool isCutSceneOn;
+    public static bool IsCutSceneOn;
+
+    public bool IsDialogDone;
 
     [SerializeField]
     private Camera cameraW, cameraM;
@@ -31,15 +33,13 @@ public class CutSceneCtrl : MonoBehaviour
 
     private int currentActionIdx;
 
-    public bool isDialogDone;
-
     private bool isActionDone;
 
 
     private void Awake()
     {
-        instance = this;
-        isCutSceneOn = false;
+        Instance = this;
+        IsCutSceneOn = false;
     }
 
     private void Start()
@@ -47,7 +47,7 @@ public class CutSceneCtrl : MonoBehaviour
         cutSceneCode = -1;
         currentActionIdx = -1;
         isActionDone = false;
-        isDialogDone = true;
+        IsDialogDone = true;
         events.AddRange(GetComponentsInChildren<CutSceneFunction>());
 
         // 프롤로그 시작
@@ -56,13 +56,13 @@ public class CutSceneCtrl : MonoBehaviour
 
     private void StartPrologue()
     {
-        SetCutScene(GameManager._data.cutSceneDatas[0]);
+        SetCutScene(GameManager.Data.cutSceneDatas[0]);
     }
 
 
     private Camera GetCamera()
     {
-        if (PlayerTag.playerType.Equals(PlayerType.WOMEN))
+        if (PlayerTag.PlayerType.Equals(PlayerType.WOMEN))
             return cameraW;
         else
             return cameraM;
@@ -71,7 +71,7 @@ public class CutSceneCtrl : MonoBehaviour
 
     public void SetCutScene(CutSceneSO cutSceneSO)
     {
-        isCutSceneOn = true;
+        IsCutSceneOn = true;
         cutSceneCode = cutSceneSO.cutSceneCode;
         currentActionIdx = 0;
 
@@ -104,8 +104,8 @@ public class CutSceneCtrl : MonoBehaviour
 
         if (action.isDialogOn)
         {
-            isDialogDone = false;
-            UIManager._interactUI.StartDialog(new DialogSet[] { action.dialogs });
+            IsDialogDone = false;
+            UIManager.InteractUI.StartDialog(new DialogSet[] { action.dialogs });
         }
 
         if (action.isCameraMoveOn)
@@ -116,7 +116,7 @@ public class CutSceneCtrl : MonoBehaviour
         events[cutSceneCode].Play(currentActionIdx);
 
         // 대화가 끝날 때까지 대기
-        while (!isDialogDone)
+        while (!IsDialogDone)
             yield return null;
 
         yield return new WaitForSeconds(action.playTime);
@@ -126,21 +126,21 @@ public class CutSceneCtrl : MonoBehaviour
 
     IEnumerator MoveCamera(Camera camera, Vector2 destination, float moveSpeed, bool isSmooth)
     {
-        Vector2 gap = destination - (Vector2)camera.transform.localPosition;
-        Vector2 dir = gap.normalized;
+        Vector2 _gap = destination - (Vector2)camera.transform.localPosition;
+        Vector2 _dir = _gap.normalized;
 
-        while (gap.normalized == dir)
+        while (_gap.normalized == _dir)
         {
             // 카메라 이동
             if (isSmooth)
-                camera.transform.localPosition += new Vector3(gap.x, gap.y, 0) * moveSpeed * Time.deltaTime;
+                camera.transform.localPosition += new Vector3(_gap.x, _gap.y, 0) * moveSpeed * Time.deltaTime;
             else
-                camera.transform.localPosition += new Vector3(gap.x, gap.y, 0).normalized * moveSpeed * Time.deltaTime;
-            gap = destination - (Vector2)camera.transform.localPosition;
+                camera.transform.localPosition += new Vector3(_gap.x, _gap.y, 0).normalized * moveSpeed * Time.deltaTime;
+            _gap = destination - (Vector2)camera.transform.localPosition;
 
             // 최소 크기 유지
-            if (gap.sqrMagnitude * moveSpeed < 1f)
-                gap = Vector2.ClampMagnitude(gap, 1f);
+            if (_gap.sqrMagnitude * moveSpeed < 1f)
+                _gap = Vector2.ClampMagnitude(_gap, 1f);
             yield return null;
         }
 
@@ -149,16 +149,16 @@ public class CutSceneCtrl : MonoBehaviour
 
     IEnumerator ZoomCamera(Camera camera, float size, float moveSpeed, bool isSmooth)
     {
-        float gap = size - camera.orthographicSize;
-        float sign = Mathf.Sign(gap);
+        float _gap = size - camera.orthographicSize;
+        float _sign = Mathf.Sign(_gap);
 
-        while (Mathf.Abs(gap) > 0.01f || sign != Mathf.Sign(gap))
+        while (Mathf.Abs(_gap) > 0.01f || _sign != Mathf.Sign(_gap))
         {
             if (isSmooth)
-                camera.orthographicSize += gap * moveSpeed * Time.deltaTime;
+                camera.orthographicSize += _gap * moveSpeed * Time.deltaTime;
             else
-                camera.orthographicSize += sign * moveSpeed * Time.deltaTime;
-            gap = size - camera.orthographicSize;
+                camera.orthographicSize += _sign * moveSpeed * Time.deltaTime;
+            _gap = size - camera.orthographicSize;
             yield return null;
         }
 
@@ -167,6 +167,6 @@ public class CutSceneCtrl : MonoBehaviour
 
     private void EndCutScene()
     {
-        isCutSceneOn = false;
+        IsCutSceneOn = false;
     }
 }

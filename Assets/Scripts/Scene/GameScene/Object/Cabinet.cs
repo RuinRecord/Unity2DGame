@@ -37,7 +37,7 @@ public class Cabinet : MonoBehaviour
     {
         isOpen = !isOpen;
         anim.SetBool("isOpen", isOpen);
-        GameManager._sound.PlaySE("남주공격");
+        GameManager.Sound.PlaySE("남주공격");
     }
 
     public void SetAnimOfGetItem()
@@ -48,6 +48,6 @@ public class Cabinet : MonoBehaviour
 
     public void StartDialog()
     {
-        UIManager._interactUI.StartDialog(this);
+        UIManager.InteractUI.StartDialog(this);
     }
 }

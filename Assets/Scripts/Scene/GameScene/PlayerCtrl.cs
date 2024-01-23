@@ -4,28 +4,29 @@ using UnityEngine;
 
 public class PlayerCtrl : MonoBehaviour
 {
-    private const float EVASION_COOLTIME = 1f;
-
-    private const int EVASION_FORCE = 3;
-
+    #region 상수 변수
     public const float WALK_SPEED = 4f;
 
     public const float RUN_SPEED = 6f;
+
+    private const float EVASION_COOLTIME = 1f;
+
+    private const int EVASION_FORCE = 3;
 
     private const float EVASION_SPEED = 6f;
 
     private const float MOVE_OBJECT_DETECT_DISTANCE = 0.275f;
 
     private const float INTERACTION_OBJECT_DETECT_DISTANCE = 1f;
-
+    #endregion
 
     /// <summary> PlayerCtrl 싱글톤 패턴 </summary>
     private static PlayerCtrl player_M, player_W;
-    public static PlayerCtrl instance
+    public static PlayerCtrl Instance
     {
         get 
         { 
-            switch (PlayerTag.playerType)
+            switch (PlayerTag.PlayerType)
             {
                 case PlayerType.MEN: return player_M;
                 case PlayerType.WOMEN: return player_W;
@@ -34,25 +35,32 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
-    private Coroutine moveCo;
+
+    /// <summary> 현재 플레이어와 접촉한 포탈 (없으면 NULL) </summary>
+    public Teleport CurrentTeleport;
+
+
+    /// <summary> 현재 플레이어와 클릭한 옮기기 가능 오브젝트 (없으면 NULL) </summary>
+    public CanMoveObject CurrentCanMoveOb;
+
+
+    private Coroutine currentMoveCo;
+
 
     private PlayerType playerType;
 
-    /// <summary> 현재 플레이어와 접촉한 포탈 (없으면 NULL) </summary>
-    public Teleport teleport;
-
-    /// <summary> 현재 플레이어와 클릭한 옮기기 가능 오브젝트 (없으면 NULL) </summary>
-    public MovingObject movingObject;
 
     private Animator animator;
 
-    private Rigidbody2D rigidbody;
+
+    private new Rigidbody2D rigidbody;
+
 
     [Obsolete]
     [SerializeField]
     private PlayerMode playerMode;
 
-    public PlayerMode mode
+    public PlayerMode Mode
     {
         set
         {
@@ -67,7 +75,7 @@ public class PlayerCtrl : MonoBehaviour
     [SerializeField]
     private PlayerState playerState;
     
-    public PlayerState state
+    public PlayerState State
     {
         set 
         {
@@ -77,16 +85,14 @@ public class PlayerCtrl : MonoBehaviour
         get { return playerState; }
     }
 
+
     /// <summary> 플레이어가 해당 기능을 사용할 수 있는 상태인가? </summary>
-    public bool isCanInteract, isCanMove, isCanAttack, isCanEvasion;
-    public bool isCanCapture, isCameraOn, isCanInven;
+    public bool IsCanInteract, IsCanMove, IsCanAttack, IsCanEvasion;
+    public bool IsCanCapture, IsCameraOn, IsCanInven;
+
 
     /// <summary> 플레이어가 현재 움직이는 중인가? </summary>
-    public bool isMoving;
-
-
-    /// <summary> 플레이어 MAX HP </summary>
-    public float max_HP;
+    public bool IsMoving;
 
 
     /// <summary> 플레이어 현재 속도 </summary>
@@ -104,8 +110,8 @@ public class PlayerCtrl : MonoBehaviour
     }
 
 
-    /// <summary> 최근 플레이어의 위치 </summary>
-    private Vector2Int currentPos;
+    /// <summary> 플레이어 MAX HP </summary>
+    public float Max_HP;
 
 
     /// <summary> 플레이어 현재 HP </summary>
@@ -115,11 +121,12 @@ public class PlayerCtrl : MonoBehaviour
         set 
         { 
             CUR_HP = value;
-            UIManager._playerUI.SetPlayerHP();
+            UIManager.PlayerUI.SetPlayerHP();
         }
         get { return CUR_HP; }
     }
 
+    #region Unity 콜백 함수
 
     private void Awake()
     {
@@ -142,63 +149,48 @@ public class PlayerCtrl : MonoBehaviour
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
 
-        state = PlayerState.IDLE;
-        teleport = null;
+        State = PlayerState.IDLE;
+        CurrentTeleport = null;
 
-        isCanInteract = isCanMove = isCanAttack = isCanEvasion = isCanCapture = isCanInven = true;
-        isCameraOn = isMoving = false;
-        max_HP = cur_HP = 100f;
+        IsCanInteract = IsCanMove = IsCanAttack = IsCanEvasion = IsCanCapture = IsCanInven = true;
+        IsCameraOn = IsMoving = false;
+        Max_HP = cur_HP = 100f;
         MoveSpeed = WALK_SPEED;
-
-        SetCurrentPos();
-        //this.transform.position = new Vector3(currentPos.x, currentPos.y, 0);
     }
 
 
     private void FixedUpdate()
     {
-        #region 항상 수행되는 구간
-
-        // 최근 위치에서 크기 1만큼 변경될 경우 currentPos 재갱신
-        if (currentPos.x != Mathf.RoundToInt(this.transform.position.x) || currentPos.y != Mathf.RoundToInt(this.transform.position.y))
-            SetCurrentPos();
-
         // 이동 모드 + 이동 중 아님 -> state를 Idle로 초기화
-        if (state.Equals(PlayerState.WALK) && !isMoving && isCanInteract)
-            state = PlayerState.IDLE;
-
-        #endregion
+        if (State.Equals(PlayerState.WALK) && !IsMoving && IsCanInteract)
+            State = PlayerState.IDLE;
 
         if (!CheckCanUpdate())
             return; // 아래 기능을 수행하지 못하는 상태
 
-        // 이동
-        if (isCanMove)
+        if (IsCanMove)
         {
-            Vector2Int dir = Vector2Int.zero;
-            if (Input.GetKey(KeyCode.UpArrow)) dir = Vector2Int.up;
-            else if (Input.GetKey(KeyCode.DownArrow)) dir = Vector2Int.down;
-            else if (Input.GetKey(KeyCode.RightArrow)) dir = Vector2Int.right;
-            else if (Input.GetKey(KeyCode.LeftArrow)) dir = Vector2Int.left;
-
-            if (dir != Vector2Int.zero)
+            Vector2Int _dir = GetInputDir();
+ 
+            if (_dir != Vector2Int.zero) 
             {
-                // 이동 방향키 눌림
-                Move(dir);
+                // 이동 방향키가 눌린 경우 플레이어 이동
+                Move(_dir);
 
-                // 위치에 움직일 수 있는 물체 감지
-                movingObject = CheckMovingObject(dir);
-                if (movingObject != null)
+                // dir 방향에 움직일 수 있는 물체 감지
+                CurrentCanMoveOb = CheckMovingObject(_dir, MOVE_OBJECT_DETECT_DISTANCE);
+
+                if (CurrentCanMoveOb != null)
                 {
-                    mode = PlayerMode.PUSH;
-                    movingObject.SetDirection(GetDirection());
+                    Mode = PlayerMode.PUSH;
+                    CurrentCanMoveOb.SetForceDirection(this.GetDirection());
                 }
                 else
                 {
                     // 움직이는 물체 외 클릭
                     // => 밀기 모드였다면 해제
-                    if (mode.Equals(PlayerMode.PUSH))
-                        mode = PlayerMode.DEFAULT;
+                    if (Mode.Equals(PlayerMode.PUSH))
+                        Mode = PlayerMode.DEFAULT;
                 }
             }
         }
@@ -211,165 +203,177 @@ public class PlayerCtrl : MonoBehaviour
         if (!CheckCanUpdate())
             return; // 아래 기능을 수행하지 못하는 상태
 
-        // 달리기 기능
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
-            MoveSpeed = RUN_SPEED;
-        else if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
-            MoveSpeed = WALK_SPEED;
-
-        // 상호작용 및 포탈 사용
-        if (isCanInteract && Input.GetKeyDown(KeyCode.Space))
-        {
-            // 카메라 끄기
-            if (isCameraOn)
-            {
-                EndCapture();
-            }
-            else
-            {
-                if (mode.Equals(PlayerMode.DEFAULT))
-                {
-                    if (teleport != null)
-                    {
-                        // 포탈 사용
-                        teleport.GoToDestination();
-                    }
-                    else
-                    {
-                        // 상호작용
-                        Vector2Int dir = GetDirection();
-                        //Debug.DrawRay(this.transform.position, new Vector3(dir.x, dir.y, 0f), Color.green, 3f);
-
-                        // 상호작용 오브젝트 탐색
-                        RaycastHit2D hit = Physics2D.Raycast(this.transform.position, dir, INTERACTION_OBJECT_DETECT_DISTANCE, 256);
-                        if (hit)
-                        {
-                            Cabinet cabinet = hit.transform.GetComponent<Cabinet>();
-                            if (cabinet != null)
-                            {
-                                if (cabinet.IsOpen && cabinet.Type == 2)
-                                {
-                                    // 특수 캐비넷의 경우
-                                    cabinet.StartDialog();
-                                }
-                                else
-                                {
-                                    cabinet.Open();
-                                }
-                            }
-
-                            if (cabinet == null)
-                            {
-                                // 있으면 상호작용 대화 시스템 시작
-                                InteractionObject interaction = hit.transform.GetComponent<InteractionObject>();
-                                if (interaction != null)
-                                    UIManager._interactUI.StartDialog(interaction);
-                            }
-                        }
-                    }
-                }
-                else if (mode.Equals(PlayerMode.PUSH))
-                {
-                    if (playerType.Equals(PlayerType.MEN))
-                    {
-                        // 물건 밀기
-                        if (movingObject == null)
-                        {
-                            // 움직이는 오브젝트가 Null이면 오류 반환
-                            Debug.LogError("Error!! MovingObject is null?!");
-                            return;
-                        }
-
-                        // 물체 이동
-                        movingObject.Push();
-                    }
-                    else if (playerType.Equals(PlayerType.WOMEN))
-                    {
-                        // 상호작용 대사
-                        DialogSet[] dialogs = movingObject.player_m_dialogs.ToArray();
-                        UIManager._interactUI.StartDialog(dialogs);
-                    }
-                }
-            }
-        }
-
-        // 남주인공 기능
-        if (playerType.Equals(PlayerType.MEN))
-        {
-            if (mode.Equals(PlayerMode.DEFAULT))
-            {
-                // 공격
-                if (isCanAttack && Input.GetKey(KeyCode.Q))
-                {
-                    StartAttack();
-                }
-
-                // 회피
-                if (isCanEvasion && Input.GetKeyDown(KeyCode.W))
-                {
-                    StartEvasion();
-                }
-            }
-        }
-        // 여자 주인공 기능
-        else if (playerType.Equals(PlayerType.WOMEN))
-        {
-            // 조사
-            if (isCanCapture && Input.GetKeyDown(KeyCode.Q))
-            {
-                // 조사 시작
-                if (!isCameraOn)
-                    StartCapture();
-                // 카메라 끄기 (Q로)
-                else
-                    EndCapture();
-            }
-
-            // 인벤토리 ON & OFF
-            if (isCanInven && Input.GetKeyDown(KeyCode.E))
-            {
-                UIManager._invenUI.OnOffInven();
-                isCanMove = isCanInteract = !UIManager._invenUI.isOnInven;
-            }
-        }
+        // 입력에 대한 처리
+        InputProcess();
     }
+
+    #endregion
 
 
     private bool CheckCanUpdate()
     {
-        if (state.Equals(PlayerState.DEAD))
+        if (State.Equals(PlayerState.DEAD))
             return false; // 죽은 상태의 경우 & 움직이는 경우 기능 동작 불가
 
-        if (GameManager._change.isChanging)
+        if (GameManager.Change.IsChanging)
             return false; // 현재 씬 및 위치 전환 중이면 동작 불가
 
-        if (CutSceneCtrl.isCutSceneOn)
+        if (CutSceneCtrl.IsCutSceneOn)
             return false; // 컷씬이 진행중이면 동작 불가
 
-        if (PlayerTag.isTagOn || playerType != PlayerTag.playerType)
+        if (PlayerTag.IsTagOn || playerType != PlayerTag.PlayerType)
             return false; // 현재 태그 선택 중이거나, 현재 태그된 플레이어가 아니면 동작 불가
 
-        if (UIManager._interactUI.isDialog)
+        if (UIManager.InteractUI.IsDialog)
             return false; // 현재 상호작용 대화 시스템이 작동 중이면 동작 불가
 
         return true;
     }
 
 
-    public void SetCurrentPos() 
-        => SetCurrentPos(this.transform.position);
-
-
-    public void SetCurrentPos(Vector3 _pos)
+    private Vector2Int GetInputDir()
     {
-        currentPos.x = Mathf.RoundToInt(_pos.x); 
-        currentPos.y = Mathf.RoundToInt(_pos.y);
+        Vector2Int _dir = Vector2Int.zero;
+        if (Input.GetKey(KeyCode.UpArrow)) _dir = Vector2Int.up;
+        else if (Input.GetKey(KeyCode.DownArrow)) _dir = Vector2Int.down;
+        else if (Input.GetKey(KeyCode.RightArrow)) _dir = Vector2Int.right;
+        else if (Input.GetKey(KeyCode.LeftArrow)) _dir = Vector2Int.left;
+
+        return _dir;
+    }
+
+
+    private void InputProcess()
+    {
+        // 달리기
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+            MoveSpeed = RUN_SPEED;
+        else if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+            MoveSpeed = WALK_SPEED;
+
+
+        // 상호작용
+        if (IsCanInteract && Input.GetKeyDown(KeyCode.Space))
+            Interaction();
+
+
+        // 남주인공 전용 입력 처리
+        if (playerType.Equals(PlayerType.MEN))
+        {
+            if (Mode.Equals(PlayerMode.DEFAULT))
+            {
+                if (IsCanAttack && Input.GetKey(KeyCode.Q))
+                {
+                    // 공격
+                    StartAttack();
+                }
+
+                if (IsCanEvasion && Input.GetKeyDown(KeyCode.W))
+                {
+                    // 회피
+                    StartEvasion();
+                }
+            }
+        }
+        // 여주인공 전용 입력 처리
+        else if (playerType.Equals(PlayerType.WOMEN))
+        {
+            if (IsCanCapture && Input.GetKeyDown(KeyCode.Q))
+            {
+                if (!IsCameraOn)
+                    StartCapture(); // 촬영
+                else
+                    EndCapture(); // 카메라 끄기 (Q 버튼)
+            }
+
+            if (IsCanInven && Input.GetKeyDown(KeyCode.E))
+            {
+                // 인벤토리 ON & OFF
+                UIManager.InvenUI.OnOffInven();
+                IsCanMove = IsCanInteract = !UIManager.InvenUI.IsOnInven;
+            }
+        }
+    }
+
+
+    private void Interaction()
+    {
+        if (IsCameraOn)
+        {
+            // 카메라 끄기
+            EndCapture();
+        }
+        else
+        {
+            if (Mode.Equals(PlayerMode.DEFAULT))
+            {
+                if (CurrentTeleport != null)
+                {
+                    // 포탈 사용
+                    CurrentTeleport.GoToDestination();
+                }
+                else
+                {
+                    // 상호작용
+                    Vector2Int _dir = GetDirection();
+
+                    // 상호작용 오브젝트 탐색
+                    RaycastHit2D _hit = Physics2D.Raycast(this.transform.position, _dir, INTERACTION_OBJECT_DETECT_DISTANCE, 256);
+                    if (_hit)
+                    {
+                        Cabinet cabinet = _hit.transform.GetComponent<Cabinet>();
+                        if (cabinet != null)
+                        {
+                            if (cabinet.IsOpen && cabinet.Type == 2)
+                            {
+                                // 특수 캐비넷의 경우
+                                cabinet.StartDialog();
+                            }
+                            else
+                            {
+                                cabinet.Open();
+                            }
+                        }
+
+                        if (cabinet == null)
+                        {
+                            // 있으면 상호작용 대화 시스템 시작
+                            InteractionObject interaction = _hit.transform.GetComponent<InteractionObject>();
+                            if (interaction != null)
+                                UIManager.InteractUI.StartDialog(interaction);
+                        }
+                    }
+                }
+            }
+            else if (Mode.Equals(PlayerMode.PUSH))
+            {
+                if (playerType.Equals(PlayerType.MEN))
+                {
+                    // 물건 밀기
+                    if (CurrentCanMoveOb == null)
+                    {
+                        // 움직이는 오브젝트가 Null이면 오류 반환
+                        Debug.LogError("Error!! MovingObject is null?!");
+                        return;
+                    }
+
+                    // 물체 이동
+                    CurrentCanMoveOb.Push();
+                }
+                else if (playerType.Equals(PlayerType.WOMEN))
+                {
+                    // 상호작용 대사
+                    DialogSet[] _dialogs = CurrentCanMoveOb.Player_m_dialogs.ToArray();
+                    UIManager.InteractUI.StartDialog(_dialogs);
+                }
+            }
+        }
     }
 
 
     public void Move(Vector2 _dir)
     {
-        state = PlayerState.WALK;
+        State = PlayerState.WALK;
 
         Vector2 movePos = (Vector2)this.transform.position + _dir * Time.deltaTime * MoveSpeed;
         rigidbody.MovePosition(movePos);
@@ -377,39 +381,39 @@ public class PlayerCtrl : MonoBehaviour
     }
 
 
-    public void SetMove(Vector2 _dir, float _dis, float _moveSpeed)
+    public void SetMove(Vector2 dir, float dis, float moveSpeed)
     { 
-        state = PlayerState.WALK;
-        MoveSpeed = _moveSpeed;
-        SetAnimationDir(_dir);
+        State = PlayerState.WALK;
+        MoveSpeed = moveSpeed;
+        SetAnimationDir(dir);
 
-        if (moveCo != null)
-            StopCoroutine(moveCo);
-        moveCo = StartCoroutine(StartMove(_dir, _dis));
+        if (currentMoveCo != null)
+            StopCoroutine(currentMoveCo);
+        currentMoveCo = StartCoroutine(StartMove(dir, dis));
     }
 
 
-    IEnumerator StartMove(Vector2 _dir, float _dis)
+    IEnumerator StartMove(Vector2 dir, float dis)
     {
-        Vector2 cur_dir = _dir * _dis;
-        SetAnimationDir(_dir);
-        isMoving = true;
-        isCanInteract = isCanMove = isCanAttack = false;
+        Vector2 _curDir = dir * dis;
+        SetAnimationDir(dir);
+        IsMoving = true;
+        IsCanInteract = IsCanMove = IsCanAttack = false;
 
-        while (cur_dir.normalized == _dir)
+        while (_curDir.normalized == dir)
         {
             // 플레이어 이동
-            Vector2 moveVec = _dir * MoveSpeed * Time.deltaTime;
-            this.transform.position = (Vector2)this.transform.position + moveVec;
-            cur_dir -= moveVec;
+            Vector2 _moveVec = dir * MoveSpeed * Time.deltaTime;
+            this.transform.position = (Vector2)this.transform.position + _moveVec;
+            _curDir -= _moveVec;
             yield return null;
         }
 
-        isMoving = false;
+        IsMoving = false;
 
         // 특별한 수행이 없을 때 기능 활성화
-        if (!UIManager._invenUI.isOnInven)
-            isCanInteract = isCanMove = isCanAttack = true;
+        if (!UIManager.InvenUI.IsOnInven)
+            IsCanInteract = IsCanMove = IsCanAttack = true;
     }
 
 
@@ -431,34 +435,27 @@ public class PlayerCtrl : MonoBehaviour
     }
 
 
-    public void Teleport(Vector3 _destination)
-    {
-        teleport.Close();
-        this.transform.position = _destination;
-        SetCurrentPos(_destination);
-        state = PlayerState.IDLE;
-    }
-
-
     public void SetAnimationDir(Vector2 dir)
     {
         animator.SetFloat("DirX", dir.normalized.x);
         animator.SetFloat("DirY", dir.normalized.y);
     }
 
+
     private void SetAnimationSpeed(float speed)
         => animator.speed = speed;
+
 
     private float MoveSpeedToAnimSpeed(float moveSpeed)
         => moveSpeed / 4f;
 
 
-    private MovingObject CheckMovingObject(Vector2 _dir)
+    private CanMoveObject CheckMovingObject(Vector2 dir, float dis)
     {
-        RaycastHit2D hit;
+        RaycastHit2D _hit;
 
-        if (hit = Physics2D.Raycast(this.transform.position, _dir, MOVE_OBJECT_DETECT_DISTANCE, 512))
-            return hit.transform.gameObject.GetComponent<MovingObject>();
+        if (_hit = Physics2D.Raycast(this.transform.position, dir, dis, 512))
+            return _hit.transform.gameObject.GetComponent<CanMoveObject>();
         else
             return null;
     }
@@ -466,13 +463,13 @@ public class PlayerCtrl : MonoBehaviour
 
     private void SetAnimation()
     {
-        if (mode.Equals(PlayerMode.DEFAULT))
+        if (Mode.Equals(PlayerMode.DEFAULT))
         {
             animator.SetBool("isPush", false);
             animator.SetBool("isWalk", false);
             animator.SetBool("isEvasion", false);
             animator.SetBool("isCapture", false);
-            switch (state)
+            switch (State)
             {
                 case PlayerState.IDLE:
                     break;
@@ -494,7 +491,7 @@ public class PlayerCtrl : MonoBehaviour
         {
             animator.SetBool("isPush", true);
             animator.SetBool("isWalk", false);
-            switch (state)
+            switch (State)
             {
                 case PlayerState.IDLE:
                     break;
@@ -508,12 +505,12 @@ public class PlayerCtrl : MonoBehaviour
 
     IEnumerator EvasionCoolTime()
     {
-        isCanMove = isCanAttack = isCanEvasion = false;
+        IsCanMove = IsCanAttack = IsCanEvasion = false;
 
         yield return new WaitForSeconds(EVASION_COOLTIME);
         // 'EVASION_COOLTIME' 초가 흐른 뒤 아래 구문이 수행됩니다.
 
-        isCanMove = isCanAttack = isCanEvasion = true;
+        IsCanMove = IsCanAttack = IsCanEvasion = true;
     }
 
 
@@ -523,7 +520,7 @@ public class PlayerCtrl : MonoBehaviour
         Vector2Int dir = GetDirection();
 
         // 회피 방향으로 장애물이 있는지 체크
-        RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position + (Vector2)dir * MOVE_OBJECT_DETECT_DISTANCE, dir, EVASION_FORCE, MapCtrl.instance.canNotMove_layerMask);
+        RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position + (Vector2)dir * MOVE_OBJECT_DETECT_DISTANCE, dir, EVASION_FORCE, MapCtrl.Instance.CanNotMove_layerMask);
 
         // 장애물이 있다면 거리를 조절
         if (hit)
@@ -533,30 +530,30 @@ public class PlayerCtrl : MonoBehaviour
 
         // 회피 쿨타임 및 기능 수행
         StartCoroutine("EvasionCoolTime");
-        state = PlayerState.EVASION;
+        State = PlayerState.EVASION;
     }
 
 
     public void EndEvasion()
-        => state = PlayerState.IDLE;
+        => State = PlayerState.IDLE;
 
 
     private void StartAttack()
     {
         // 공격 수행
-        isCanMove = isCanAttack = isCanEvasion = false;
-        state = PlayerState.ATTACK;
+        IsCanMove = IsCanAttack = IsCanEvasion = false;
+        State = PlayerState.ATTACK;
         animator.SetBool("isAttack", true);
 
         // 공격 소리 출력
-        GameManager._sound.PlaySE("남주공격");
+        GameManager.Sound.PlaySE("남주공격");
     }
 
 
     public void EndAttack()
     {
-        isCanMove = isCanAttack = isCanEvasion = true;
-        state = PlayerState.IDLE;
+        IsCanMove = IsCanAttack = IsCanEvasion = true;
+        State = PlayerState.IDLE;
         animator.SetBool("isAttack", false);
     }
 
@@ -564,27 +561,35 @@ public class PlayerCtrl : MonoBehaviour
     private void StartCapture()
     {
         // 제자리에 서도록 만듬
-        state = PlayerState.CAPTURE;
+        State = PlayerState.CAPTURE;
 
         // 사진기 소리 출력
-        GameManager._sound.PlaySE("여주조사");
+        GameManager.Sound.PlaySE("여주조사");
 
-        isCanMove = isCanInteract = isCanCapture = isCanInven = false;
-        PlayerTag.instance.isCanTag = false;
+        IsCanMove = IsCanInteract = IsCanCapture = IsCanInven = false;
+        PlayerTag.Instance.IsCanTag = false;
 
         // 카메라 UI 켜지도록 코루틴 함수 실행
-        StartCoroutine(UIManager._captureUI.CaptureCameraIn());
+        StartCoroutine(UIManager.CaptureUI.CaptureCameraIn());
     }
 
 
     public void EndCapture()
     {
-        state = PlayerState.IDLE;
-        isCanMove = isCanInteract = isCanCapture = isCanInven = false;
-        isCameraOn = false;
-        PlayerTag.instance.isCanTag = true;
+        State = PlayerState.IDLE;
+        IsCanMove = IsCanInteract = IsCanCapture = IsCanInven = false;
+        IsCameraOn = false;
+        PlayerTag.Instance.IsCanTag = true;
 
         // 카메라 UI 꺼지도록 코루틴 함수 실행
-        StartCoroutine(UIManager._captureUI.CaptureCameraOut());
+        StartCoroutine(UIManager.CaptureUI.CaptureCameraOut());
+    }
+
+
+    public void MovePosition(Vector3 _destination)
+    {
+        CurrentTeleport.Close();
+        this.transform.position = _destination;
+        State = PlayerState.IDLE;
     }
 }
