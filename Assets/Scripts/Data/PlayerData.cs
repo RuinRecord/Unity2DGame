@@ -53,6 +53,9 @@ public class PlayerData
         hasItems.Add(item_code);
     }
 
+    public bool CheckHasItem(int item_code)
+        => hasItems.IndexOf(item_code) != -1;
+
     /// <summary> 'capture_code'에 해당하는 사진을 저장하는 함수이다. </summary>
     /// <param name="capture_code">조사 이벤트 식별 번호</param>
     public void AddCapture(int capture_code)

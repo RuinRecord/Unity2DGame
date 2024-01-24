@@ -265,9 +265,6 @@ public class InteractUICtrl : MonoBehaviour
             if (CheckDropItem())
             {
                 currentObject.DropItem();
-
-                // 획득 사운드 출력
-                GameManager.Sound.PlaySE("아이템획득");
             }
 
             // 아이템 체크 및 획득
@@ -277,9 +274,6 @@ public class InteractUICtrl : MonoBehaviour
                 currentCabinet.SetAnimOfGetItem();
 
                 EventCtrl.Instance.CheckEvent(EventType.Interact);
-
-                // 획득 사운드 출력
-                GameManager.Sound.PlaySE("아이템획득");
             }
         }
 

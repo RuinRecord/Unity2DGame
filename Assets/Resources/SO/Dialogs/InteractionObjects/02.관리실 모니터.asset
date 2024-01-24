@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "02.\uAD00\uB9AC\uC2E4 \uBAA8\uB2C8\uD130"
   m_EditorClassIdentifier: 
   itemSO: {fileID: 0}
+  recordSO: {fileID: 0}
   dialogs:
   - Player_M_dialog:
       type: 0
@@ -39,7 +40,7 @@ MonoBehaviour:
     Player_W_dialog:
       type: 1
       audioClip: {fileID: 0}
-      leftSprite: {fileID: 0}
-      rightSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
+      leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
+      rightSprite: {fileID: 0}
       words: "\uC5EC\uAE30\uC5D4 CCTV\uAC00 \uB9CE\uAD6C\uB098... \uC870\uC2EC\uD574\uC57C\uACA0\uC5B4."
       print_time: 0

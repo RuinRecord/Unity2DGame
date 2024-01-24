@@ -39,8 +39,8 @@ MonoBehaviour:
     Player_W_dialog:
       type: 1
       audioClip: {fileID: 0}
-      leftSprite: {fileID: 0}
-      rightSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
+      leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
+      rightSprite: {fileID: 0}
       words: "\uC74C? \uC660 \uC2E0\uBB38\uC774\uC9C0?"
       print_time: 0
   - Player_M_dialog:
@@ -52,7 +52,7 @@ MonoBehaviour:
       print_time: 0
     Player_W_dialog:
       type: 0
-      audioClip: {fileID: 0}
+      audioClip: {fileID: 8300000, guid: 67f9111cf28d1f447aa109edb130d3c2, type: 3}
       leftSprite: {fileID: 0}
       rightSprite: {fileID: 0}
       words: "\uC624\uB798\uB41C \uC2E0\uBB38\uC744 \uC5BB\uC5C8\uB2E4."

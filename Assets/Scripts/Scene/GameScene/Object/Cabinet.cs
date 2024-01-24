@@ -12,6 +12,9 @@ public class Cabinet : MonoBehaviour
     [SerializeField]
     private bool isOpen;
 
+    [SerializeField]
+    private bool isLock;
+
     public bool IsOpen => isOpen;
 
     public int Type;
@@ -35,9 +38,26 @@ public class Cabinet : MonoBehaviour
 
     public void Open()
     {
+        if (isLock)
+        {
+            if (GameManager.Data.player.CheckHasItem(0))
+            {
+                UIManager.InteractUI.StartDialog(GameManager.Data.specialDialogDatas[3].dialogs.ToArray());
+                GameManager.Sound.PlaySE("사물함풀림");
+                isLock = false;
+            }
+            else
+            {
+                UIManager.InteractUI.StartDialog(GameManager.Data.specialDialogDatas[2].dialogs.ToArray());
+                GameManager.Sound.PlaySE("사물함잠김");
+            }
+
+            return;
+        }
+
         isOpen = !isOpen;
         anim.SetBool("isOpen", isOpen);
-        GameManager.Sound.PlaySE("남주공격");
+        GameManager.Sound.PlaySE("사물함열림");
     }
 
     public void SetAnimOfGetItem()

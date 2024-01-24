@@ -36,6 +36,11 @@ public class InteractionObject : MonoBehaviour
 
     private void Start()
     {
+        SetVariables();
+    }
+
+    private void SetVariables()
+    {
         var dialogData = GameManager.Data.interactionDialogDatas[Code];
 
         dialogs = dialogData.dialogs;
@@ -55,6 +60,14 @@ public class InteractionObject : MonoBehaviour
 
         // 아이템 획득
         GameManager.Data.player.AddItem(ItemCode);
+
+        // 아이템에 따라 오브젝트 변경
+        switch (Code)
+        {
+            case 5: Code = 12; break; // (아)화분 -> 화분 변경
+        }
+
+        SetVariables();
 
         // 맵 오브젝트 제거
         if (IsDestroy)

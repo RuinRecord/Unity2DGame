@@ -35,6 +35,7 @@ public class EventCtrl : MonoBehaviour
                 {
                     CurrentEvent = 1;
                     TutorialManager.Instance.ShowTooltip("갤러리 저장 완료. 추가로 더 조사하세요.");
+                    CutSceneCtrl.Instance.StartCutScene(1);
                 }
                 break;
             case EventType.Interact:

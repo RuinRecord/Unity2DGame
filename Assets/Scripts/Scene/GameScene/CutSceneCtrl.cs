@@ -51,12 +51,12 @@ public class CutSceneCtrl : MonoBehaviour
         events.AddRange(GetComponentsInChildren<CutSceneFunction>());
 
         // 프롤로그 시작
-        StartPrologue();
+        StartCutScene(0);
     }
 
-    private void StartPrologue()
+    public void StartCutScene(int cutSceneCode)
     {
-        SetCutScene(GameManager.Data.cutSceneDatas[0]);
+        SetCutScene(GameManager.Data.cutSceneDatas[cutSceneCode]);
     }
 
 
@@ -69,7 +69,7 @@ public class CutSceneCtrl : MonoBehaviour
     }
 
 
-    public void SetCutScene(CutSceneSO cutSceneSO)
+    private void SetCutScene(CutSceneSO cutSceneSO)
     {
         IsCutSceneOn = true;
         cutSceneCode = cutSceneSO.cutSceneCode;
