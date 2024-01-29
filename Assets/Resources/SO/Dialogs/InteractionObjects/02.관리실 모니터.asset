@@ -35,12 +35,12 @@ MonoBehaviour:
       leftSprite: {fileID: 1126201346, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
       rightSprite: {fileID: 0}
       words: "\uD3D0\uAE30\uBB3C \uCC98\uB9AC \uC2DC\uC124 \uB0B4\uBD80\uC5D0 \uBB38\uC81C\uB294
-        \uC5C6\uAD70."
+        \uC5C6\uAD70"
       print_time: 0
     Player_W_dialog:
       type: 1
       audioClip: {fileID: 0}
       leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
       rightSprite: {fileID: 0}
-      words: "\uC5EC\uAE30\uC5D4 CCTV\uAC00 \uB9CE\uAD6C\uB098... \uC870\uC2EC\uD574\uC57C\uACA0\uC5B4."
+      words: "\uC5EC\uAE30\uC5D4 CCTV\uAC00 \uB9CE\uAD6C\uB098... \uC870\uC2EC\uD574\uC57C\uACA0\uC5B4"
       print_time: 0

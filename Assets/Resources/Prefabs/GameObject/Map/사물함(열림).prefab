@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.758, y: -19.156, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -185,6 +185,7 @@ MonoBehaviour:
   InteractionOb: {fileID: 630899969753458849}
   anim: {fileID: 7780255072020447259}
   isOpen: 0
+  isLock: 1
   Type: 2
 --- !u!114 &630899969753458849
 MonoBehaviour:

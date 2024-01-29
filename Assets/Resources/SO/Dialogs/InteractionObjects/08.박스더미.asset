@@ -13,18 +13,19 @@ MonoBehaviour:
   m_Name: "08.\uBC15\uC2A4\uB354\uBBF8"
   m_EditorClassIdentifier: 
   itemSO: {fileID: 0}
+  recordSO: {fileID: 0}
   dialogs:
   - Player_M_dialog:
       type: 0
       audioClip: {fileID: 0}
       leftSprite: {fileID: 0}
       rightSprite: {fileID: 0}
-      words: "\uB0A1\uC740 \uBC15\uC2A4\uAC00 \uC313\uC5EC \uC788\uB2E4."
+      words: "\uBC15\uC2A4\uAC00 \uC313\uC5EC \uC788\uB2E4."
       print_time: 0
     Player_W_dialog:
       type: 0
       audioClip: {fileID: 0}
       leftSprite: {fileID: 0}
       rightSprite: {fileID: 0}
-      words: "\uB0A1\uC740 \uBC15\uC2A4\uAC00 \uC313\uC5EC \uC788\uB2E4."
+      words: "\uBC15\uC2A4\uAC00 \uC313\uC5EC \uC788\uB2E4."
       print_time: 0

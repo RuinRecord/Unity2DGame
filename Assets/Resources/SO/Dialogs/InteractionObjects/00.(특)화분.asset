@@ -44,5 +44,5 @@ MonoBehaviour:
       leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
       rightSprite: {fileID: 0}
       words: "\uC560\uD50C \uBBFC\uD2B8 \uD5C8\uBE0C\uC796\uC544! \uC5B4\uCA50\uC9C0
-        \uD5A5\uC774 \uC88B\uB354\uB77C."
+        \uD5A5\uC774 \uC88B\uB354\uB77C"
       print_time: 0
