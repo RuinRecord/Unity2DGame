@@ -61,3 +61,10 @@ public enum EventType
     Interact,
     Inventory,
 }
+
+public enum BlockType
+{
+    PlayerMRoom,
+    R1ToHoll,
+    Hall,
+}
