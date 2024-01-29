@@ -39,25 +39,29 @@ public class PlayerData
         //player_w_pos = Vector2.zero;
     }
 
+    public bool CheckHasItem(int item_code) => hasItems.IndexOf(item_code) != -1;
 
-    /// <summary> 'item_code'에 해당하는 아이템을 저장하는 함수이다. </summary>
-    /// <param name="item_code">아이템 식별 번호</param>
     public void AddItem(int item_code)
     {
         if (item_code < 0 || item_code >= DataManager.itemNum)
         {
-            Debug.LogError("아이템 획득 Error!! : 올바르지 못한 아이템 코드");
+            Debug.LogError("아이템 획득 Error 발생");
             return;
         }
 
         hasItems.Add(item_code);
     }
 
-    public bool CheckHasItem(int item_code)
-        => hasItems.IndexOf(item_code) != -1;
+    public void RemoveItem(int item_code)
+    {
+        if(!hasItems.Remove(item_code))
+        {
+            Debug.LogError("아이템 삭제 Error 발생");
+        }
+    }
 
-    /// <summary> 'capture_code'에 해당하는 사진을 저장하는 함수이다. </summary>
-    /// <param name="capture_code">조사 이벤트 식별 번호</param>
+    public bool CheckHasCapture(int capture_code) => hasCaptures.IndexOf(capture_code) != -1;
+
     public void AddCapture(int capture_code)
     {
         if (capture_code < 0 || capture_code >= DataManager.captureNum)
@@ -75,11 +79,6 @@ public class PlayerData
         hasCaptures.Add(capture_code);
     }
 
-    public bool CheckHasCapture(int capture_code)
-        => hasCaptures.IndexOf(capture_code) != -1;
-
-    /// <summary> 'record_code'에 해당하는 조사일지를 저장하는 함수이다. </summary>
-    /// <param name="record_code">조사일지 식별 번호</param>
     public void AddRecord(int record_code)
     {
         if (record_code < 0 || record_code >= DataManager.recordNum)

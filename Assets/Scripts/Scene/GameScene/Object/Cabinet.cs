@@ -42,6 +42,7 @@ public class Cabinet : MonoBehaviour
         {
             if (GameManager.Data.player.CheckHasItem(0))
             {
+                GameManager.Data.player.RemoveItem(0);
                 UIManager.InteractUI.StartDialog(GameManager.Data.specialDialogDatas[3].dialogs.ToArray());
                 GameManager.Sound.PlaySE("사물함풀림");
                 isLock = false;
