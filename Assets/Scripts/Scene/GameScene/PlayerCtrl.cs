@@ -590,6 +590,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         CurrentTeleport.Close();
         this.transform.position = destination;
+        MoveSpeed = WALK_SPEED;
         State = PlayerState.IDLE;
     }
 }
