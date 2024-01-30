@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3324724574146616050}
   - component: {fileID: 7263407980793725320}
-  - component: {fileID: 8911292822674242644}
   - component: {fileID: 1136571352192548869}
   - component: {fileID: 7064960010528885229}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: "\uD070\uCCA0\uC81C\uC0C1\uC790_\uC5F4\uB9BC"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,9 +27,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4410250570345541634}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.082, y: 18.06, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 2.1, y: 2.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -87,22 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8911292822674242644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4410250570345541634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  code: 0
-  hasItem: 0
-  itemCode: 0
-  isDestroy: 0
 --- !u!61 &1136571352192548869
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -160,6 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e9d88999b8da64eb140c14b823b2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tr: {fileID: 0}
-  spriteRenderer: {fileID: 0}
-  tilemapRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  TilemapRenderer: {fileID: 0}
+  isChild: 0

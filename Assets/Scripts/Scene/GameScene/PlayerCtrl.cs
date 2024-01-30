@@ -470,22 +470,15 @@ public class PlayerCtrl : MonoBehaviour
             animator.SetBool("isWalk", false);
             animator.SetBool("isEvasion", false);
             animator.SetBool("isCapture", false);
+            animator.SetBool("isJump", false);
             switch (State)
             {
-                case PlayerState.IDLE:
-                    break;
-                case PlayerState.WALK:
-                    animator.SetBool("isWalk", true);
-                    break;
-                case PlayerState.EVASION:
-                    animator.SetBool("isEvasion", true);
-                    break;
-                case PlayerState.ATTACK:
-                    animator.SetBool("isAttack", true);
-                    break;
-                case PlayerState.CAPTURE:
-                    animator.SetBool("isCapture", true);
-                    break;
+                case PlayerState.IDLE: break;
+                case PlayerState.WALK: animator.SetBool("isWalk", true); break;
+                case PlayerState.JUMP: animator.SetBool("isJump", true); break;
+                case PlayerState.EVASION: animator.SetBool("isEvasion", true); break;
+                case PlayerState.ATTACK: animator.SetBool("isAttack", true); break;
+                case PlayerState.CAPTURE: animator.SetBool("isCapture", true); break;
             }
         }
         else
@@ -494,11 +487,8 @@ public class PlayerCtrl : MonoBehaviour
             animator.SetBool("isWalk", false);
             switch (State)
             {
-                case PlayerState.IDLE:
-                    break;
-                case PlayerState.WALK:
-                    animator.SetBool("isWalk", true);
-                    break;
+                case PlayerState.IDLE: break;
+                case PlayerState.WALK: animator.SetBool("isWalk", true); break;
             }
         }
     }
@@ -585,10 +575,13 @@ public class PlayerCtrl : MonoBehaviour
         StartCoroutine(UIManager.CaptureUI.CaptureCameraOut());
     }
 
+    public void StartJump() => State = PlayerState.JUMP;
+
+    public void EndJump() => State = PlayerState.IDLE;
+
 
     public void MovePosition(Vector3 destination)
     {
-        CurrentTeleport.Close();
         this.transform.position = destination;
         MoveSpeed = WALK_SPEED;
         State = PlayerState.IDLE;

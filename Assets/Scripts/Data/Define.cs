@@ -24,6 +24,7 @@ public enum PlayerState
 {
     IDLE,       // 정지
     WALK,       // 이동
+    JUMP,       // 점프
     EVASION,    // 회피
     ATTACK,     // 공격
     CAPTURE,    // 조사
@@ -58,7 +59,8 @@ public enum LightColor
 public enum EventType
 {
     Capture,
-    Interact,
+    GetItem,
+    GetRecord,
     Inventory,
 }
 

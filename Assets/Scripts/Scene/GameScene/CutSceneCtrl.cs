@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class CutSceneCtrl : MonoBehaviour
 {
+    private const string FADE_IN_ANIM = "Cutscene_FadeIn";
+    private const string FADE_OUT_ANIM = "Cutscene_FadeOut";
+
     /// <summary> CutSceneCtrl 싱글톤 </summary>
     private static CutSceneCtrl instance;
     public static CutSceneCtrl Instance
@@ -20,6 +23,8 @@ public class CutSceneCtrl : MonoBehaviour
     public static bool IsCutSceneOn;
 
     public bool IsDialogDone;
+
+    [SerializeField] private Animation anim;
 
     [SerializeField] private Camera cameraW, cameraM;
 
@@ -55,6 +60,18 @@ public class CutSceneCtrl : MonoBehaviour
     public void StartCutScene(int cutSceneCode) => SetCutScene(GameManager.Data.cutSceneDatas[cutSceneCode]);
 
 
+    public void FadeIn(float fadeTime)
+    {
+        anim[FADE_IN_ANIM].speed = 1f / fadeTime;
+        anim.Play(FADE_IN_ANIM);
+    }
+
+    public void FadeOut(float fadeTime)
+    {
+        anim[FADE_OUT_ANIM].speed = 1f / fadeTime;
+        anim.Play(FADE_OUT_ANIM);
+    }
+
     private Camera GetCamera()
     {
         if (PlayerTag.PlayerType.Equals(PlayerType.WOMEN))
@@ -77,7 +94,7 @@ public class CutSceneCtrl : MonoBehaviour
     {
         while (currentActionIdx < cutSceneSO.actions.Count)
         {
-            StartCoroutine(StartAction(cutSceneSO.actions[currentActionIdx++]));
+            StartCoroutine(StartAction(cutSceneSO.actions[currentActionIdx]));
             isActionDone = false;
 
             // 액션이 종료할 때까지 대기
@@ -116,6 +133,7 @@ public class CutSceneCtrl : MonoBehaviour
 
         yield return new WaitForSeconds(action.playTime);
 
+        currentActionIdx++;
         isActionDone = true;
     }
 

@@ -21,11 +21,6 @@ public class EventCtrl : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
-    {
-        CurrentEvent = 0;
-    }
-
     public void CheckEvent(EventType eventType)
     {
         switch (eventType)
@@ -33,25 +28,34 @@ public class EventCtrl : MonoBehaviour
             case EventType.Capture:
                 if (CurrentEvent == 0)
                 {
-                    CurrentEvent = 1;
-                    TutorialManager.Instance.ShowTooltip("갤러리 저장 완료. 추가로 더 조사하세요.");
+                    ShowTooptipAsEvent("갤러리 저장 완료. 추가로 더 조사하세요.");
                     CutSceneCtrl.Instance.StartCutScene(1);
                 }
                 break;
-            case EventType.Interact:
-                if (CurrentEvent == 1)
+
+            case EventType.GetItem:
+                if (CurrentEvent == 3)
                 {
-                    CurrentEvent = 2;
-                    TutorialManager.Instance.ShowTooltip("[E] 버튼을 눌러 인벤토리를 확인하세요.");
-                }
+                    TutorialManager.Instance.CloseTutorial();
+                    CutSceneCtrl.Instance.StartCutScene(2);
+                }    
                 break;
+
+            case EventType.GetRecord:
+                if (CurrentEvent == 1)
+                    ShowTooptipAsEvent("[E] 버튼을 눌러 인벤토리를 확인하세요.");
+                break;
+
             case EventType.Inventory:
                 if (CurrentEvent == 2)
-                {
-                    CurrentEvent = 3;
-                    TutorialManager.Instance.ShowTooltip("인벤토리 확인 완료. 이제 시설을 조사하세요");
-                }
+                    ShowTooptipAsEvent("인벤토리 확인 완료. 이제 시설을 조사하세요");
                 break;
         }
+    }
+
+    private void ShowTooptipAsEvent(string tooltipText)
+    {
+        CurrentEvent++;
+        TutorialManager.Instance.ShowTooltip(tooltipText);
     }
 }

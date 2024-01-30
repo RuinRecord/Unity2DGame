@@ -85,6 +85,7 @@ public class ChangeManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name.Equals("Sample_Jun") || SceneManager.GetActiveScene().name.Equals("SampleScene"))
         {
             PlayerCtrl.Instance.MovePosition(destination);
+            PlayerCtrl.Instance.CurrentTeleport.Close();
         }
 
         yield return new WaitForSeconds(fadeTime);
@@ -114,6 +115,7 @@ public class ChangeManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name.Equals("Sample_Jun") || SceneManager.GetActiveScene().name.Equals("SampleScene"))
         {
             PlayerCtrl.Instance.MovePosition(destination);
+            PlayerCtrl.Instance.CurrentTeleport.Close();
         }
 
         yield return new WaitForSeconds(fadeOutTime);

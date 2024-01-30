@@ -16,7 +16,7 @@ public class CF_01 : CutSceneFunction
     {
         switch (actionIdx)
         {
-            case 2: MoveDown(); break;
+            case 1: MoveDown(); break;
         }
     }
 

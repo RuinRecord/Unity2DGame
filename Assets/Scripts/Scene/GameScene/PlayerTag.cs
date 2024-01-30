@@ -6,47 +6,21 @@ using UnityEngine.EventSystems;
 
 public class PlayerTag : MonoBehaviour
 {
-    /// <summary> 페이드 애니메이션 진행 시간 </summary>
     private const float FADE_TIME = 0.5f;
-
-
-    /// <summary> 페이드 아웃 애니메이션 이름 </summary>
     private const string FADE_OUT_ANIM_NAME = "PlayerTag_FadeOut";
-
-
-    /// <summary> 페이드 인 애니메이션 이름 </summary>
     private const string FADE_IN_ANIM_NAME = "PlayerTag_FadeIn";
 
-
-    /// <summary> 현재 태그 중인 플레이어 타입 </summary>
     public static PlayerType PlayerType;
-
-
-    /// <summary> 현재 태그 기능이 동작 중인가? </summary>
     public static bool IsTagOn;
 
-
-    /// <summary> 현재 태그 가능 상태인지에 대한 여부 </summary>
     public bool IsCanTag;
-
-
-    /// <summary> 현재 태그 패널이 동작 중인가? </summary>
     private bool isPanelOn;
 
+    [SerializeField] private Camera cameraM, cameraW;
 
-    /// <summary> 남주인공 및 여주인공의 카메라 </summary>
-    [SerializeField]
-    private Camera cameraM, cameraW;
+    [SerializeField] private Animation tagAnim;
 
-
-    /// <summary> 태그 연출을 위한 애니메이션 </summary>
-    [SerializeField]
-    private Animation tagAnim;
-
-
-    /// <summary> 태그 프레임 UI 오브젝트 </summary>
-    [SerializeField]
-    private GameObject tag_frame;
+    [SerializeField] private GameObject tag_frame;
 
 
     /// <summary> PlayerTag 싱글톤 </summary>
@@ -96,9 +70,6 @@ public class PlayerTag : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// 현재 플레이어 태그가 가능한 지 체크하는 함수이다.
-    /// </summary>
     private bool CheckCanTag()
     {
         if (GameManager.Change.IsChanging)
@@ -116,16 +87,17 @@ public class PlayerTag : MonoBehaviour
         return true;
     }
 
-
-
-    /// <summary>
-    /// 게임 카메라를 설정하는 함수이다.
-    /// </summary>
-    /// <param name="_playerType">플레이어 타입</param>
-    /// <param name="_isPanelOn">태그 상태</param>
-    private void SetCameraRect(PlayerType _playerType, bool _isPanelOn)
+    public void SetPlayerTypeImmediately(PlayerType playerType, bool isChangeUI)
     {
-        if (_isPanelOn)
+        PlayerType = playerType;
+        SetCameraRect(playerType, false);
+        if (isChangeUI)
+            UIManager.PlayerUI.SetPlayerUIAll(playerType);
+    }
+
+    private void SetCameraRect(PlayerType playerType, bool isPanelOn)
+    {
+        if (isPanelOn)
         {
             // Tag Panel 선택 UI에 맞춰 카메라 설정
             cameraM.gameObject.SetActive(true);
@@ -136,7 +108,7 @@ public class PlayerTag : MonoBehaviour
         else
         {
             // Tag 선택 완료 => 플레이어 타입에 맞춰 카메라 설정
-            switch (_playerType)
+            switch (playerType)
             {
                 case PlayerType.MEN:
                     cameraM.gameObject.SetActive(true);
@@ -152,10 +124,6 @@ public class PlayerTag : MonoBehaviour
         }
     }
 
-
-    /// <summary>
-    /// 태그 패널 UI를 출력하는 함수이다.
-    /// </summary>
     private void ShowTagPanel()
     {
         IsTagOn = true;
@@ -168,10 +136,6 @@ public class PlayerTag : MonoBehaviour
         StartCoroutine(Fade(0));
     }
 
-
-    /// <summary>
-    /// (버튼 이벤트 함수) 플레이어 태그 패널을 클릭했을 때, 해당 플레이어로 설정하는 함수이다.
-    /// </summary>
     public void OnClickTagPanel()
     {
         if (!isPanelOn)
@@ -196,13 +160,7 @@ public class PlayerTag : MonoBehaviour
         StartCoroutine(Fade(1));
     }
 
-
-    /// <summary>
-    /// 페이드 애니메이션을 수행하는 코루틴 함수이다.
-    /// </summary>
-    /// <param name="_type">페이드 이벤트 타입(0 = 패널 열기 / 1 = 패널 닫기)</param>
-    /// <returns></returns>
-    IEnumerator Fade(int _type)
+    IEnumerator Fade(int type)
     {
         // 페이드 인 애니메이션 시작
         tagAnim.Play(FADE_OUT_ANIM_NAME);
@@ -216,7 +174,7 @@ public class PlayerTag : MonoBehaviour
         tagAnim[FADE_IN_ANIM_NAME].speed = 1f / FADE_TIME;
 
         // 페이드 아웃 시작 시 기능 처리
-        switch (_type)
+        switch (type)
         {
             case 0:
                 tag_frame.SetActive(true);
@@ -236,7 +194,7 @@ public class PlayerTag : MonoBehaviour
 
         // 페이드 완전 종료 시 기능 처리
 
-        switch (_type)
+        switch (type)
         {
             case 1:
                 // 태그 패널 닫기

@@ -16,9 +16,9 @@ public class CF_00 : CutSceneFunction
     {
         switch (actionIdx)
         {
-            case 1: MoveRight(); break;
-            case 2: MoveUp(); break;
-            case 3: StartCoroutine(LookArround()); break;
+            case 0: MoveRight(); break;
+            case 1: MoveUp(); break;
+            case 2: StartCoroutine(LookArround()); break;
         }
     }
 

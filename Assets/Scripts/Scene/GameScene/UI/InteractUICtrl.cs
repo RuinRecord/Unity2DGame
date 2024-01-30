@@ -79,6 +79,9 @@ public class InteractUICtrl : MonoBehaviour
     /// <summary> 대화 시스템에 등록된 대화 리스트를 모두 출력한 상태인지에 대한 여부 </summary>
     private bool isDoneAll;
 
+    private bool isItemEventCheckOn;
+    private bool isRecordEventCheckOn;
+
 
     public void Init()
     {
@@ -87,6 +90,8 @@ public class InteractUICtrl : MonoBehaviour
         IsDialog = false;
         isDoneOne = false;
         isDoneAll = false;
+        isItemEventCheckOn = false;
+        isRecordEventCheckOn = false;
 
         interaction_panel.SetActive(false);
         player_panel.SetActive(false);
@@ -151,6 +156,19 @@ public class InteractUICtrl : MonoBehaviour
 
                 // 태그 기능 해제
                 PlayerTag.Instance.IsCanTag = true;
+
+                if (isItemEventCheckOn)
+                {
+                    isItemEventCheckOn = false;
+                    EventCtrl.Instance.CheckEvent(EventType.GetItem);
+                }
+
+                // 이벤트 체크
+                if (isRecordEventCheckOn)
+                {
+                    isRecordEventCheckOn = false;
+                    EventCtrl.Instance.CheckEvent(EventType.GetRecord);
+                }
 
                 // 만약 연출용 대화였다면
                 if (CutSceneCtrl.IsCutSceneOn)
@@ -242,6 +260,9 @@ public class InteractUICtrl : MonoBehaviour
             if (CheckDropItem())
             {
                 currentObject.DropItem();
+
+                // 이벤트 여부 체크
+                isItemEventCheckOn = true;
             }
 
             // 아이템 체크 및 획득
@@ -250,7 +271,8 @@ public class InteractUICtrl : MonoBehaviour
                 currentObject.DropRecord();
                 ((Cabinet)currentObject)?.SetAnimOfGetItem();
 
-                EventCtrl.Instance.CheckEvent(EventType.Interact);
+                // 이벤트 여부 체크
+                isRecordEventCheckOn = true;
             }
         }
 
