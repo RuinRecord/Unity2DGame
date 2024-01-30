@@ -56,10 +56,6 @@ public class InteractUICtrl : MonoBehaviour
     private GameObject player_next_object;
 
 
-    /// <summary> 최근 대화 시스템에서 다루던 캐비넷 오브젝트 </summary>
-    private Cabinet currentCabinet;
-
-
     /// <summary> 최근 대화 시스템에서 다루던 상호작용 오브젝트 </summary>
     private InteractionObject currentObject;
 
@@ -147,7 +143,6 @@ public class InteractUICtrl : MonoBehaviour
             {
                 // 모든 대화가 끝났다면 => 창 닫기
                 isDoneOne = isDoneAll = false;
-                currentCabinet = null;
                 currentObject = null;
                 StartCoroutine(DelayedSetInteractOn(false));
 
@@ -171,7 +166,6 @@ public class InteractUICtrl : MonoBehaviour
         PlayerTag.Instance.IsCanTag = false;
 
         // 최근 상호작용 메세지 및 변수 설정
-        currentCabinet = null;
         currentObject = interactionObject;
         currentDialogs = currentObject.Dialogs.ToArray();
         currentIdx = 0;
@@ -182,22 +176,6 @@ public class InteractUICtrl : MonoBehaviour
     }
 
 
-    public void StartDialog(Cabinet cabinet)
-    {
-        // 태그 기능 잠금
-        PlayerTag.Instance.IsCanTag = false;
-
-        // 최근 상호작용 메세지 및 변수 설정
-        currentCabinet = cabinet;
-        currentObject = currentCabinet.InteractionOb;
-        currentDialogs = currentObject.Dialogs.ToArray();
-        currentIdx = 0;
-
-        // 출력 시작
-        currentInfoCo = StartCoroutine(ShowInfoText(currentDialogs[currentIdx]));
-        StartCoroutine(DelayedSetInteractOn(true));
-    }
-
 
     public void StartDialog(DialogSet[] dialogs)
     {
@@ -205,7 +183,6 @@ public class InteractUICtrl : MonoBehaviour
         PlayerTag.Instance.IsCanTag = false;
 
         // 최근 상호작용 메세지 및 변수 설정
-        currentCabinet = null;
         currentObject = null;
         currentDialogs = dialogs;
         currentIdx = 0;
@@ -271,7 +248,7 @@ public class InteractUICtrl : MonoBehaviour
             if (CheckDropRecord())
             {
                 currentObject.DropRecord();
-                currentCabinet.SetAnimOfGetItem();
+                ((Cabinet)currentObject)?.SetAnimOfGetItem();
 
                 EventCtrl.Instance.CheckEvent(EventType.Interact);
             }
@@ -296,23 +273,15 @@ public class InteractUICtrl : MonoBehaviour
             isDoneAll = true;
     }
 
-
-    /// <summary> 대사가 아직 존재하는지에 대한 여부를 반환하는 함수이다. </summary>
-    private bool CheckLeftDialog()
-        => currentIdx < currentDialogs.Length && !string.IsNullOrEmpty(currentDialogs[currentIdx].GetWords());
+    private bool CheckLeftDialog() => currentIdx < currentDialogs.Length && !string.IsNullOrEmpty(currentDialogs[currentIdx].GetWords());
 
 
-    /// <summary> 아이템 획득이 가능한지 체크하는 함수이다. </summary>
-    private bool CheckDropItem() 
-        => currentIdx == currentDialogs.Length - 1 && currentObject != null && currentObject.HasItem;
+    private bool CheckDropItem()  => currentIdx == currentDialogs.Length - 1 && currentObject != null && currentObject.HasItem;
 
 
-    /// <summary> 조사일지 획득이 가능한지 체크하는 함수이다. </summary>
-    private bool CheckDropRecord()
-        => currentIdx == currentDialogs.Length - 1 && currentObject != null && currentObject.HasRecord;
+    private bool CheckDropRecord() => currentIdx == currentDialogs.Length - 1 && currentObject != null && currentObject.HasRecord;
 
 
-    /// <summary> 페널 타입에 따른 페널 설정 함수이다. </summary>
     private void SetDialogPanel(DialogType dialogType)
     {
         interaction_panel.SetActive(dialogType.Equals(DialogType.Interaction));
@@ -322,7 +291,6 @@ public class InteractUICtrl : MonoBehaviour
     }
 
 
-    /// <summary> 페널 타입에 따른 다음 알림 버튼을 끄거나 키는 함수이다. </summary>
     private void SetNextActive(DialogType dialogType, bool isActive)
     {
         if (dialogType.Equals(DialogType.Interaction))
@@ -332,7 +300,6 @@ public class InteractUICtrl : MonoBehaviour
     }
 
 
-    /// <summary> 페널 타입에 따른 텍스트 설정 함수이다. </summary>
     private void SetInfoText(DialogType dialogType, string text)
     {
         if (dialogType.Equals(DialogType.Interaction))
@@ -342,7 +309,6 @@ public class InteractUICtrl : MonoBehaviour
     }
 
 
-    /// <summary> 페널 타입에 따른 텍스트 추가 함수이다. </summary>
     private void AddInfoText(DialogType dialogType, string text)
     {
         if (dialogType.Equals(DialogType.Interaction))

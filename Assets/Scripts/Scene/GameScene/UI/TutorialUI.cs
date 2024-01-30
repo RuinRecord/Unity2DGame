@@ -44,6 +44,7 @@ public class TutorialUI : MonoBehaviour
 
     public void OnOffTooltip()
     {
+        GameManager.Sound.PlaySE("UI클릭");
         if (tooltip.activeSelf)
             CloseTooltip();
         else

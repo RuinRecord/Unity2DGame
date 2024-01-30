@@ -2,26 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cabinet : MonoBehaviour
+public class Cabinet : InteractionObject
 {
-    public InteractionObject InteractionOb;
-
-    [SerializeField]
     private Animator anim;
 
-    [SerializeField]
-    private bool isOpen;
-
-    [SerializeField]
-    private bool isLock;
-
+    [SerializeField] private bool isOpen;
     public bool IsOpen => isOpen;
+
+    [SerializeField] private bool isLock;
 
     public int Type;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
+
         anim = this.GetComponent<Animator>();
         if (anim == null)
         {
@@ -33,7 +29,7 @@ public class Cabinet : MonoBehaviour
         if (isOpen)
         {
             anim.SetBool("isOpen", true);
-        }    
+        }
     }
 
     public void Open()
@@ -65,10 +61,5 @@ public class Cabinet : MonoBehaviour
     {
         Type = 1;
         anim.SetInteger("type", Type);
-    }
-
-    public void StartDialog()
-    {
-        UIManager.InteractUI.StartDialog(this);
     }
 }

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7780255072020447259}
   - component: {fileID: 9018166941025087312}
   - component: {fileID: 275291068580314266}
-  - component: {fileID: 630899969753458849}
   m_Layer: 8
   m_Name: "\uC0AC\uBB3C\uD568(\uC5F4\uB9BC)"
   m_TagString: Untagged
@@ -182,26 +181,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9aeb63d446b2544595b887592221e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractionOb: {fileID: 630899969753458849}
-  anim: {fileID: 7780255072020447259}
-  isOpen: 0
-  isLock: 1
-  Type: 2
---- !u!114 &630899969753458849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7653028122097278594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   Code: 9
   HasItem: 0
   HasRecord: 0
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  anim: {fileID: 7780255072020447259}
+  isOpen: 0
+  isLock: 1
+  Type: 2

@@ -21,11 +21,9 @@ public class CutSceneCtrl : MonoBehaviour
 
     public bool IsDialogDone;
 
-    [SerializeField]
-    private Camera cameraW, cameraM;
+    [SerializeField] private Camera cameraW, cameraM;
 
-    [SerializeField]
-    private List<CutSceneFunction> events;
+    [SerializeField] private List<CutSceneFunction> events;
 
     private Coroutine cameraMoveCo, cameraZoomCo;
 
@@ -54,10 +52,7 @@ public class CutSceneCtrl : MonoBehaviour
         StartCutScene(0);
     }
 
-    public void StartCutScene(int cutSceneCode)
-    {
-        SetCutScene(GameManager.Data.cutSceneDatas[cutSceneCode]);
-    }
+    public void StartCutScene(int cutSceneCode) => SetCutScene(GameManager.Data.cutSceneDatas[cutSceneCode]);
 
 
     private Camera GetCamera()
@@ -165,8 +160,5 @@ public class CutSceneCtrl : MonoBehaviour
         camera.orthographicSize = size;
     }
 
-    private void EndCutScene()
-    {
-        IsCutSceneOn = false;
-    }
+    private void EndCutScene() => IsCutSceneOn = false;
 }

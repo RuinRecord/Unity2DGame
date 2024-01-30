@@ -15,26 +15,22 @@ public class InteractionObject : MonoBehaviour
     public int Code;
 
     /// <summary> 이 상호작용이 아이템 획득을 가능케 하는가? </summary>
-    [HideInInspector]
-    public bool HasItem;
+    [HideInInspector] public bool HasItem;
 
     /// <summary> 이 상호작용이 조사일지 획득을 가능케 하는가? </summary>
-    [HideInInspector]
-    public bool HasRecord;
+    [HideInInspector] public bool HasRecord;
 
     /// <summary> 보유한 아이템 식별 번호 (아이템 없다면 이 값은 -1) </summary>
-    [HideInInspector]
-    public int ItemCode;
+    [HideInInspector] public int ItemCode;
 
     /// <summary> 보유한 식별 번호 (조사일지가 없다면 이 값은 -1) </summary>
-    [HideInInspector]
-    public int RecordCode;
+    [HideInInspector] public int RecordCode;
 
     /// <summary> 획득 시 맵 오브젝트가 사라지는지에 대한 여부 </summary>
     public bool IsDestroy;
 
 
-    private void Start()
+    protected virtual void Start()
     {
         SetVariables();
     }
@@ -50,10 +46,7 @@ public class InteractionObject : MonoBehaviour
         RecordCode = HasRecord ? dialogData.recordSO.recordCode : -1;
     }
 
-    /// <summary>
-    /// 아이템을 획득하는 함수이다.
-    /// </summary>
-    public void DropItem()
+    public virtual void DropItem()
     {
         if (!HasItem)
             return; // 이 상호작용은 아이템을 보유하지 않음
@@ -76,10 +69,7 @@ public class InteractionObject : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// 조사일지를 획득하는 함수이다.
-    /// </summary>
-    public void DropRecord()
+    public virtual void DropRecord()
     {
         if (!HasRecord)
             return; // 이 상호작용은 아이템을 보유하지 않음

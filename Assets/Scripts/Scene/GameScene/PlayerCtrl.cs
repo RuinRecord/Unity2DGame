@@ -321,24 +321,25 @@ public class PlayerCtrl : MonoBehaviour
                     RaycastHit2D _hit = Physics2D.Raycast(this.transform.position, _dir, INTERACTION_OBJECT_DETECT_DISTANCE, 256);
                     if (_hit)
                     {
-                        Cabinet cabinet = _hit.transform.GetComponent<Cabinet>();
-                        if (cabinet != null)
+                        // 있으면 상호작용 대화 시스템 시작
+                        InteractionObject interaction = _hit.transform.GetComponent<InteractionObject>();
+
+                        if (interaction is Cabinet)
                         {
+                            Cabinet cabinet = interaction as Cabinet;
                             if (cabinet.IsOpen && cabinet.Type == 2)
                             {
                                 // 특수 캐비넷의 경우
-                                cabinet.StartDialog();
+                                UIManager.InteractUI.StartDialog(cabinet);
                             }
                             else
                             {
                                 cabinet.Open();
                             }
                         }
-
-                        if (cabinet == null)
+                        else
                         {
-                            // 있으면 상호작용 대화 시스템 시작
-                            InteractionObject interaction = _hit.transform.GetComponent<InteractionObject>();
+                            // 일반 상호작용
                             if (interaction != null)
                                 UIManager.InteractUI.StartDialog(interaction);
                         }
@@ -534,8 +535,7 @@ public class PlayerCtrl : MonoBehaviour
     }
 
 
-    public void EndEvasion()
-        => State = PlayerState.IDLE;
+    public void EndEvasion() => State = PlayerState.IDLE;
 
 
     private void StartAttack()
@@ -586,10 +586,10 @@ public class PlayerCtrl : MonoBehaviour
     }
 
 
-    public void MovePosition(Vector3 _destination)
+    public void MovePosition(Vector3 destination)
     {
         CurrentTeleport.Close();
-        this.transform.position = _destination;
+        this.transform.position = destination;
         State = PlayerState.IDLE;
     }
 }

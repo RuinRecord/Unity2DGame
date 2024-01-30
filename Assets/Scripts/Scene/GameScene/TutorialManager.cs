@@ -18,9 +18,7 @@ public class TutorialManager : MonoBehaviour
 
     public static bool IsTutorialOn = false;
 
-    [SerializeField]
-    private TutorialUI UI;
-
+    [SerializeField] private TutorialUI UI;
 
 
     private void Awake()
