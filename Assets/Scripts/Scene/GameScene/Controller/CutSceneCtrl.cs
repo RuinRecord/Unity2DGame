@@ -26,8 +26,6 @@ public class CutSceneCtrl : MonoBehaviour
 
     [SerializeField] private Animation anim;
 
-    [SerializeField] private Camera cameraW, cameraM;
-
     [SerializeField] private List<CutSceneFunction> events;
 
     private Coroutine cameraMoveCo, cameraZoomCo;
@@ -72,15 +70,6 @@ public class CutSceneCtrl : MonoBehaviour
         anim.Play(FADE_OUT_ANIM);
     }
 
-    private Camera GetCamera()
-    {
-        if (PlayerTag.PlayerType.Equals(PlayerType.WOMEN))
-            return cameraW;
-        else
-            return cameraM;
-    }
-
-
     private void SetCutScene(CutSceneSO cutSceneSO)
     {
         IsCutSceneOn = true;
@@ -121,9 +110,9 @@ public class CutSceneCtrl : MonoBehaviour
         }
 
         if (action.isCameraMoveOn)
-            cameraMoveCo = StartCoroutine(MoveCamera(GetCamera(), action.camera_destination, action.camera_moveSpeed, action.camera_isMoveSmooth));
+            cameraMoveCo = StartCoroutine(CameraCtrl.Instance.MoveCamera(action.camera_destination, action.camera_moveSpeed, action.camera_isMoveSmooth));
         if (action.isCameraZoomOn)
-            cameraZoomCo = StartCoroutine(ZoomCamera(GetCamera(), action.camera_zoomSize, action.camera_zoomSpeed, action.camera_isZoomSmooth));
+            cameraZoomCo = StartCoroutine(CameraCtrl.Instance.ZoomCamera(action.camera_zoomSize, action.camera_zoomSpeed, action.camera_isZoomSmooth));
 
         events[cutSceneCode].Play(currentActionIdx);
 
@@ -135,47 +124,6 @@ public class CutSceneCtrl : MonoBehaviour
 
         currentActionIdx++;
         isActionDone = true;
-    }
-
-    IEnumerator MoveCamera(Camera camera, Vector2 destination, float moveSpeed, bool isSmooth)
-    {
-        Vector2 _gap = destination - (Vector2)camera.transform.localPosition;
-        Vector2 _dir = _gap.normalized;
-
-        while (_gap.normalized == _dir)
-        {
-            // 카메라 이동
-            if (isSmooth)
-                camera.transform.localPosition += new Vector3(_gap.x, _gap.y, 0) * moveSpeed * Time.deltaTime;
-            else
-                camera.transform.localPosition += new Vector3(_gap.x, _gap.y, 0).normalized * moveSpeed * Time.deltaTime;
-            _gap = destination - (Vector2)camera.transform.localPosition;
-
-            // 최소 크기 유지
-            if (_gap.sqrMagnitude * moveSpeed < 1f)
-                _gap = Vector2.ClampMagnitude(_gap, 1f);
-            yield return null;
-        }
-
-        camera.transform.localPosition = new Vector3(destination.x, destination.y, -10);
-    }
-
-    IEnumerator ZoomCamera(Camera camera, float size, float moveSpeed, bool isSmooth)
-    {
-        float _gap = size - camera.orthographicSize;
-        float _sign = Mathf.Sign(_gap);
-
-        while (Mathf.Abs(_gap) > 0.01f || _sign != Mathf.Sign(_gap))
-        {
-            if (isSmooth)
-                camera.orthographicSize += _gap * moveSpeed * Time.deltaTime;
-            else
-                camera.orthographicSize += _sign * moveSpeed * Time.deltaTime;
-            _gap = size - camera.orthographicSize;
-            yield return null;
-        }
-
-        camera.orthographicSize = size;
     }
 
     private void EndCutScene() => IsCutSceneOn = false;

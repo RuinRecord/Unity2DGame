@@ -41,5 +41,6 @@ public class UIManager : MonoBehaviour
     public void SetActiveUI(bool isActive)
     {
         PlayerUI.SetActivePlayerUI(isActive);
+        TutorialManager.Instance.SetActiveUI(isActive);
     }
 }

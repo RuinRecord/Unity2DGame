@@ -70,3 +70,10 @@ public enum BlockType
     R1ToHoll,
     Hall,
 }
+
+public enum CameraMode
+{
+    PlayerW,
+    PlayerM,
+    Free
+}

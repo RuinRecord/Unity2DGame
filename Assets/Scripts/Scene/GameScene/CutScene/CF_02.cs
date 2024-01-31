@@ -96,7 +96,7 @@ public class CF_02 : CutSceneFunction
     private void PlayerMAppear()
     {
         CutSceneCtrl.Instance.FadeIn(0.5f);
-        PlayerTag.Instance.SetPlayerTypeImmediately(PlayerType.MEN, false);
+        //PlayerTag.Instance.SetPlayerTypeImmediately(PlayerType.MEN, false);
         player_M.MovePosition(new Vector3(-6.5f, 16.5f, 0f));
         player_W.MovePosition(new Vector3(-6.5f, 100f, 0f));
         playerBox.SetActive(true);
