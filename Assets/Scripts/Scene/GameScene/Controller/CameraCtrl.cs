@@ -20,6 +20,8 @@ public class CameraCtrl : MonoBehaviour
     [SerializeField] private CameraMode mode;
     public CameraMode Mode => mode;
 
+    [SerializeField] private GameObject glitchVolume;
+
     [SerializeField] private PlayerCtrl playerW, playerM;
 
     private Vector3 cameraPos;
@@ -30,11 +32,18 @@ public class CameraCtrl : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        SetActiveGlitch(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
         CameraProcess();
     }
+
+    public void SetActiveGlitch(bool isActive) => glitchVolume.SetActive(isActive);
 
     public void SetCameraMode(CameraMode cameraMode) => mode = cameraMode;
 
@@ -66,12 +75,14 @@ public class CameraCtrl : MonoBehaviour
         if (isPanelOn)
         {
             // Tag 패널 ON인 상태 => 좌측 상단에 작게 배치
-            Camera.main.rect = new Rect(0.025f, 0.2f, 0.7f, 0.7f);
+            Camera.main.rect = new Rect(0.05f, 0.05f, 0.9f, 0.9f);
+            SetActiveGlitch(true);
         }
         else
         {
             // Tag 선택 OFF인 상태 => 전체 화면
             SetDefaultResolution();
+            SetActiveGlitch(false);
         }
     }
 
