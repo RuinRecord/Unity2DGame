@@ -37,11 +37,11 @@ MonoBehaviour:
       words: ...
       print_time: 0
     Player_W_dialog:
-      type: 1
+      type: 2
       audioClip: {fileID: 0}
       leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
       rightSprite: {fileID: 0}
-      words: "\uC74C? \uC660 \uC2E0\uBB38\uC774\uC9C0?"
+      words: "[ \uB9B0 ]\n\n\uC74C? \uC660 \uC2E0\uBB38\uC774\uC9C0?"
       print_time: 0
   - Player_M_dialog:
       type: 0

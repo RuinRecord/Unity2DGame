@@ -11,17 +11,10 @@ public class InteractUICtrl : MonoBehaviour
     [Header("[ 상호작용 대화창 전용 변수 ]")]
 
     [SerializeField]
-    private GameObject interaction_panel;
+    private GameObject interactionPanel;
 
-
-    /// <summary> 상화작용: 대화를 보여주는 텍스트 </summary>
-    [SerializeField]
-    private TMP_Text interaction_infoText;
-
-
-    /// <summary> 상화작용: 모든 대화가 끝나면 다음을 넘길 수 있음을 보여주는 텍스트 </summary>
-    [SerializeField]
-    private GameObject interaction_next_object;
+    [SerializeField] private TMP_Text interactionInfoText;
+    [SerializeField] private GameObject interactionNextObject;
 
 
 
@@ -31,50 +24,32 @@ public class InteractUICtrl : MonoBehaviour
     /// <summary> 현재 대화 시스템을 진행할 수 있는 상황인지에 대한 여부</summary>
     public bool IsDialog;
 
-
-    [SerializeField]
-    private GameObject player_panel;
-
-
-    /// <summary> 플레이어: 왼쪽 프로필 이미지 </summary>
-    [SerializeField]
-    private Image player_leftImage;
-
-
-    /// <summary> 플레이어: 오른쪽 프로필 이미지 </summary>
-    [SerializeField]
-    private Image player_rightImage;
-
-
-    /// <summary> 플레이어: 대화를 보여주는 텍스트 </summary>
-    [SerializeField]
-    private TMP_Text player_infoText;
-
-
-    /// <summary> 플레이어: 모든 대화가 끝나면 다음을 넘길 수 있음을 보여주는 텍스트 </summary>
-    [SerializeField]
-    private GameObject player_next_object;
+    [SerializeField] private GameObject playerPanel;
+    [SerializeField] private Image playerLeftImage;
+    [SerializeField] private Image playerRightImage;
+    [SerializeField] private Sprite playerMDefaultProfile;
+    [SerializeField] private Sprite playerWDefaultProfile;
+    [SerializeField] private TMP_Text playerInfoText;
+    [SerializeField] GameObject playerNextObject;
 
 
     /// <summary> 최근 대화 시스템에서 다루던 상호작용 오브젝트 </summary>
     private InteractionObject currentObject;
 
-
     /// <summary> 최근 대화 시스템에서 다루던 대화 리스트 </summary>
     private DialogSet[] currentDialogs;
-
 
     /// <summary> 최근 대화 시스템에서 다루던 대화 리스트의 위치 </summary>
     private int currentIdx;
 
+    /// <summary> 최근 대화의 플레이어 타입 </summary>
+    private PlayerType currentPlayerType;
 
     /// <summary> 최근 대화 출력 중인 코루틴 </summary>
     private Coroutine currentInfoCo;
 
-
     /// <summary> 하나의 대화(현재)를 모두 출력한 상태인지에 대한 여부 </summary>
     private bool isDoneOne;
-
 
     /// <summary> 대화 시스템에 등록된 대화 리스트를 모두 출력한 상태인지에 대한 여부 </summary>
     private bool isDoneAll;
@@ -93,8 +68,8 @@ public class InteractUICtrl : MonoBehaviour
         isItemEventCheckOn = false;
         isRecordEventCheckOn = false;
 
-        interaction_panel.SetActive(false);
-        player_panel.SetActive(false);
+        interactionPanel.SetActive(false);
+        playerPanel.SetActive(false);
     }
 
 
@@ -119,10 +94,10 @@ public class InteractUICtrl : MonoBehaviour
                     StopCoroutine(currentInfoCo);
 
                     // 현재 대화 바로 출력
-                    SetInfoText(currentDialogs[currentIdx].GetDialogType(), currentDialogs[currentIdx].GetWords());
+                    SetInfoText(currentDialogs[currentIdx].GetDialogType(currentPlayerType), currentDialogs[currentIdx].GetWords(currentPlayerType));
 
                     // 넘기기 아이콘 출력
-                    SetNextActive(currentDialogs[currentIdx].GetDialogType(), false);
+                    SetNextActive(currentDialogs[currentIdx].GetDialogType(currentPlayerType), false);
 
                     currentIdx++;
                     if (CheckLeftDialog())
@@ -151,8 +126,8 @@ public class InteractUICtrl : MonoBehaviour
                 currentObject = null;
                 StartCoroutine(DelayedSetInteractOn(false));
 
-                interaction_panel.SetActive(false);
-                player_panel.SetActive(false);
+                interactionPanel.SetActive(false);
+                playerPanel.SetActive(false);
 
                 // 태그 기능 해제
                 PlayerTag.Instance.IsCanTag = true;
@@ -213,43 +188,42 @@ public class InteractUICtrl : MonoBehaviour
 
     IEnumerator ShowInfoText(DialogSet dialog)
     {
-        DialogType _dialogType = dialog.GetDialogType();
-        string _words = dialog.GetWords();
-        float _printTime = dialog.GetPrintTime();
+        PlayerType playerType = GetPlayerType(dialog);
+        DialogType _dialogType = dialog.GetDialogType(playerType);
+        string _words = dialog.GetWords(playerType);
+        float _printTime = dialog.GetPrintTime(playerType);
 
         if (_printTime == 0f)
             _printTime = DEFAULT_PRINT_TIME;
 
         isDoneOne = false;
+        currentPlayerType = playerType;
         SetDialogPanel(_dialogType);
-        if (_dialogType.Equals(DialogType.Player))
+
+        if (_dialogType.Equals(DialogType.PlayerM) || _dialogType.Equals(DialogType.PlayerW))
         {
-            player_leftImage.sprite = dialog.GetLeftSprite();
-            player_rightImage.sprite = dialog.GetRightSprite();
+            Sprite leftSprite = dialog.GetLeftSprite(playerType);
+            Sprite rightSprite = dialog.GetRightSprite(playerType);
 
-            if (player_leftImage.sprite != null)
+            SetPlayerImageSprite(playerLeftImage, null);
+            SetPlayerImageSprite(playerRightImage, null);
+
+            if (leftSprite == null && rightSprite == null)
             {
-                player_leftImage.GetComponent<RectTransform>().sizeDelta = dialog.GetLeftSprite().rect.size;
-                player_leftImage.color = Color.white;
+                if (_dialogType.Equals(DialogType.PlayerM))
+                    SetPlayerImageSprite(playerLeftImage, playerMDefaultProfile);
+                else if (_dialogType.Equals(DialogType.PlayerW))
+                    SetPlayerImageSprite(playerLeftImage, playerWDefaultProfile);
             }
             else
             {
-                player_leftImage.color = new Color(1f, 1f, 1f, 0f);
-            }
-
-            if (player_rightImage.sprite != null)
-            {
-                player_rightImage.GetComponent<RectTransform>().sizeDelta = dialog.GetRightSprite().rect.size;
-                player_rightImage.color = Color.white;
-            }
-            else
-            {
-                player_rightImage.color = new Color(1f, 1f, 1f, 0f);
+                SetPlayerImageSprite(playerLeftImage, leftSprite);
+                SetPlayerImageSprite(playerRightImage, rightSprite);
             }
         }
 
         // 만약 오디오 클립이 있다면 출력
-        AudioClip _audioClip = dialog.GetAudioClip();
+        AudioClip _audioClip = dialog.GetAudioClip(playerType);
         if (_audioClip != null)
             GameManager.Sound.PlaySE(_audioClip);
 
@@ -295,51 +269,73 @@ public class InteractUICtrl : MonoBehaviour
             isDoneAll = true;
     }
 
-    private bool CheckLeftDialog() => currentIdx < currentDialogs.Length && !string.IsNullOrEmpty(currentDialogs[currentIdx].GetWords());
-
+    private bool CheckLeftDialog() => currentIdx < currentDialogs.Length && !string.IsNullOrEmpty(currentDialogs[currentIdx].GetWords(currentPlayerType));
 
     private bool CheckDropItem()  => currentIdx == currentDialogs.Length - 1 && currentObject != null && currentObject.HasItem;
 
-
     private bool CheckDropRecord() => currentIdx == currentDialogs.Length - 1 && currentObject != null && currentObject.HasRecord;
 
+    private PlayerType GetPlayerType(DialogSet dialog)
+    {
+        PlayerType playerType = PlayerTag.PlayerType;
+        if (playerType == PlayerType.NONE)
+        {
+            if (!string.IsNullOrEmpty(dialog.GetWords(PlayerType.MEN)))
+                playerType = PlayerType.MEN;
+            else if (!string.IsNullOrEmpty(dialog.GetWords(PlayerType.WOMEN)))
+                playerType = PlayerType.WOMEN;
+        }
+        return playerType;
+    }
 
     private void SetDialogPanel(DialogType dialogType)
     {
-        interaction_panel.SetActive(dialogType.Equals(DialogType.Interaction));
-        player_panel.SetActive(dialogType.Equals(DialogType.Player));
+        interactionPanel.SetActive(dialogType.Equals(DialogType.Interaction));
+        playerPanel.SetActive(dialogType.Equals(DialogType.PlayerM) || dialogType.Equals(DialogType.PlayerW));
         SetInfoText(dialogType, "");
         SetNextActive(dialogType, false);
     }
 
-
     private void SetNextActive(DialogType dialogType, bool isActive)
     {
         if (dialogType.Equals(DialogType.Interaction))
-            interaction_next_object.SetActive(isActive);
-        else if (dialogType.Equals(DialogType.Player))
-            player_next_object.SetActive(isActive);
+            interactionNextObject.SetActive(isActive);
+        else if (dialogType.Equals(DialogType.PlayerM) || dialogType.Equals(DialogType.PlayerW))
+            playerNextObject.SetActive(isActive);
     }
 
+    private void SetPlayerImageSprite(Image playerImage, Sprite playerSprite)
+    {
+        playerImage.sprite = playerSprite;
+
+        if (playerImage.sprite != null)
+        {
+            playerImage.GetComponent<RectTransform>().sizeDelta = playerSprite.rect.size;
+            playerImage.color = Color.white;
+        }
+        else
+        {
+            playerImage.color = new Color(1f, 1f, 1f, 0f);
+        }
+    }
 
     private void SetInfoText(DialogType dialogType, string text)
     {
         if (dialogType.Equals(DialogType.Interaction))
-            interaction_infoText.SetText(text);
-        else if (dialogType.Equals(DialogType.Player))
-            player_infoText.SetText(text);
+            interactionInfoText.SetText(text);
+        else if (dialogType.Equals(DialogType.PlayerM) || dialogType.Equals(DialogType.PlayerW))
+            playerInfoText.SetText(text);
     }
-
 
     private void AddInfoText(DialogType dialogType, string text)
     {
         if (dialogType.Equals(DialogType.Interaction))
-            interaction_infoText.text += text;
-        else if (dialogType.Equals(DialogType.Player))
-            player_infoText.text += text;
+            interactionInfoText.text += text;
+        else if (dialogType.Equals(DialogType.PlayerM) || dialogType.Equals(DialogType.PlayerW))
+            playerInfoText.text += text;
     }
 
-    
+  
     IEnumerator DelayedSetInteractOn(bool isOn)
     {
         yield return new WaitForEndOfFrame();

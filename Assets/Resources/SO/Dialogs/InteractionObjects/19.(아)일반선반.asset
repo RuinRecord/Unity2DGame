@@ -39,12 +39,12 @@ MonoBehaviour:
       words: 
       print_time: 0
     Player_W_dialog:
-      type: 1
+      type: 2
       audioClip: {fileID: 0}
       leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
       rightSprite: {fileID: 0}
-      words: "\uACF5\uAD6C \uC0C1\uC790\uC5D0 \uBB54\uAC00 \uC4F8\uB9CC\uD55C \uBB3C\uAC74\uC774
-        \uC788\uC744\uAC70\uC57C"
+      words: "[ \uB9B0 ]\n\n\uACF5\uAD6C \uC0C1\uC790\uC5D0 \uBB54\uAC00 \uC4F8\uB9CC\uD55C
+        \uBB3C\uAC74\uC774 \uC788\uC744\uAC70\uC57C"
       print_time: 0
   - Player_M_dialog:
       type: 0
@@ -68,11 +68,11 @@ MonoBehaviour:
       words: 
       print_time: 0
     Player_W_dialog:
-      type: 1
+      type: 2
       audioClip: {fileID: 0}
       leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
       rightSprite: {fileID: 0}
-      words: "\uC624! \uC774\uAC74 \uC4F8\uB9CC\uD558\uACA0\uB294\uB370?"
+      words: "[ \uB9B0 ]\n\n\uC624! \uC774\uAC74 \uC4F8\uB9CC\uD558\uACA0\uB294\uB370?"
       print_time: 0
   - Player_M_dialog:
       type: 0

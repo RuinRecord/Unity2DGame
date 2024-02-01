@@ -28,8 +28,8 @@ MonoBehaviour:
       audioClip: {fileID: 0}
       leftSprite: {fileID: 0}
       rightSprite: {fileID: 0}
-      words: "\uBB34\uAC70\uC6B4 \uC0C1\uC790\uB4E4\uC774 \uBE7C\uACE1\uD788 \uC313\uC5EC
-        \uC788\uB2E4."
+      words: "\uC0C1\uC790\uB97C \uB4E4\uC5EC\uB2E4\uBCF4\uB2C8 \uB2E8\uB2E8\uD55C
+        \uBB3C\uAC74\uB4E4\uC774 \uC788\uB2E4."
       print_time: 0
   - Player_M_dialog:
       type: 1
@@ -39,9 +39,9 @@ MonoBehaviour:
       words: 
       print_time: 0
     Player_W_dialog:
-      type: 1
+      type: 2
       audioClip: {fileID: 0}
       leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
       rightSprite: {fileID: 0}
-      words: "\uAE08\uC18D \uC7AC\uC9C8... \uAD70\uC6A9 \uBB3C\uAC74\uC778\uAC00?"
+      words: "[ \uB9B0 ]\n\n\uAE08\uC18D \uC7AC\uC9C8... \uAD70\uC6A9 \uBB3C\uAC74\uC778\uAC00?"
       print_time: 0

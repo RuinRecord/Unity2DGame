@@ -25,11 +25,11 @@ MonoBehaviour:
         words: 
         print_time: 0
       Player_W_dialog:
-        type: 1
+        type: 2
         audioClip: {fileID: 0}
         leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
         rightSprite: {fileID: 0}
-        words: "\uC88B\uC544! \uC81C\uB300\uB85C \uC791\uB3D9\uD558\uB124."
+        words: "[ \uB9B0 ]\n\n\uC88B\uC544! \uC81C\uB300\uB85C \uC791\uB3D9\uD558\uB124."
         print_time: 0
     isCameraMoveOn: 0
     camera_destination: {x: 0, y: 0}
@@ -50,11 +50,11 @@ MonoBehaviour:
         words: 
         print_time: 0
       Player_W_dialog:
-        type: 1
+        type: 2
         audioClip: {fileID: 0}
         leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
         rightSprite: {fileID: 0}
-        words: "\uADF8\uB7FC \uB354 \uC870\uC0AC\uD574\uBCFC\uAE4C?"
+        words: "[ \uB9B0 ]\n\n\uADF8\uB7FC \uB354 \uC870\uC0AC\uD574\uBCFC\uAE4C?"
         print_time: 0
     isCameraMoveOn: 0
     camera_destination: {x: 0, y: 0}

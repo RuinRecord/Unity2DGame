@@ -8,46 +8,44 @@ using UnityEngine.Events;
 public struct DialogSet
 {
     /// <summary> 남주 대사 </summary>
-    [SerializeField]
-    private Dialog Player_M_dialog;
+    [SerializeField] private Dialog Player_M_dialog;
 
     /// <summary> 여주 대사 </summary>
-    [SerializeField]
-    private Dialog Player_W_dialog;
+    [SerializeField] private Dialog Player_W_dialog;
 
-    public DialogType GetDialogType()
+    public DialogType GetDialogType(PlayerType playerType)
     {
-        if (PlayerTag.PlayerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetDialogType();
+        if (playerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetDialogType();
         else return Player_W_dialog.GetDialogType();
     }
 
-    public AudioClip GetAudioClip()
+    public AudioClip GetAudioClip(PlayerType playerType)
     {
-        if (PlayerTag.PlayerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetAudioClip();
+        if (playerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetAudioClip();
         else return Player_W_dialog.GetAudioClip();
     }
 
-    public Sprite GetLeftSprite()
+    public Sprite GetLeftSprite(PlayerType playerType)
     {
-        if (PlayerTag.PlayerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetLeftSprite();
+        if (playerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetLeftSprite();
         else return Player_W_dialog.GetLeftSprite();
     }
 
-    public Sprite GetRightSprite()
+    public Sprite GetRightSprite(PlayerType playerType)
     {
-        if (PlayerTag.PlayerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetRightSprite();
+        if (playerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetRightSprite();
         else return Player_W_dialog.GetRightSprite();
     }
 
-    public string GetWords()
+    public string GetWords(PlayerType playerType)
     {
-        if (PlayerTag.PlayerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetWord();
+        if (playerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetWord();
         else return Player_W_dialog.GetWord();
     }
 
-    public float GetPrintTime()
+    public float GetPrintTime(PlayerType playerType)
     {
-        if (PlayerTag.PlayerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetPrintTime();
+        if (playerType.Equals(PlayerType.MEN)) return Player_M_dialog.GetPrintTime();
         else return Player_W_dialog.GetPrintTime();
     }
 }
@@ -55,36 +53,31 @@ public struct DialogSet
 public enum DialogType
 {
     Interaction,
-    Player
+    PlayerM,
+    PlayerW
 }
 
 
 [Serializable]
 public struct Dialog
 {
-    /// <summary> 대화 타입 (0 = 상호작용, 1 = 플레이어) </summary>
-    [SerializeField]
-    private DialogType type;
+    /// <summary> 대화 타입 (0 = 상호작용, 1 = 남주, 2 = 여주) </summary>
+    [SerializeField] private DialogType type;
 
     /// <summary> 대사 출력 시 등장하는 오디오 (NULL = 오디오 없음) </summary>
-    [SerializeField]
-    private AudioClip audioClip;
+    [SerializeField] private AudioClip audioClip;
 
     /// <summary> 대사 출력 시 왼쪽 이미지 (NULL = 이미지 없음) </summary>
-    [SerializeField]
-    private Sprite leftSprite;
+    [SerializeField] private Sprite leftSprite;
 
     /// <summary> 대사 출력 시 오른쪽 이미지 (NULL = 이미지 없음) </summary>
-    [SerializeField]
-    private Sprite rightSprite;
+    [SerializeField] private Sprite rightSprite;
 
     /// <summary> 상호작용 문장 </summary>
-    [SerializeField]
-    private string words;
+    [SerializeField] [TextArea] private string words;
 
     /// <summary> 대사 출력 속도 </summary>
-    [SerializeField]
-    private float print_time;
+    [SerializeField] private float print_time;
 
     public DialogType GetDialogType() => type;
 

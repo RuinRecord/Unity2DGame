@@ -36,15 +36,15 @@ MonoBehaviour:
       audioClip: {fileID: 0}
       leftSprite: {fileID: 1126201346, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
       rightSprite: {fileID: 0}
-      words: "\uC9C0\uAE0B\uC9C0\uAE0B\uD55C \uB188\uB4E4..."
+      words: "[ \uC720\uC9C4 ]\n\n\uC9C0\uAE0B\uC9C0\uAE0B\uD55C \uB188\uB4E4..."
       print_time: 0
     Player_W_dialog:
-      type: 1
+      type: 2
       audioClip: {fileID: 0}
       leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
       rightSprite: {fileID: 0}
-      words: "\uC5EC\uAE30\uC5D0 \uB110\uB9B0 \uC885\uC774\uB4E4\uC740 \uB300\uBD80\uBD84
-        \uAE30\uBC00 \uBB38\uC11C\uC778\uB370..."
+      words: "[ \uB9B0 ]\n\n\uC5EC\uAE30\uC5D0 \uB110\uB9B0 \uC885\uC774\uB4E4\uC740
+        \uB300\uBD80\uBD84 \uAE30\uBC00 \uBB38\uC11C\uC778\uB370..."
       print_time: 0
   - Player_M_dialog:
       type: 1
@@ -54,11 +54,11 @@ MonoBehaviour:
       words: 
       print_time: 0
     Player_W_dialog:
-      type: 1
+      type: 2
       audioClip: {fileID: 0}
       leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
       rightSprite: {fileID: 0}
-      words: ...
+      words: "[ \uB9B0 ]\n\n..."
       print_time: 0.5
   - Player_M_dialog:
       type: 1
@@ -68,10 +68,10 @@ MonoBehaviour:
       words: 
       print_time: 0
     Player_W_dialog:
-      type: 1
+      type: 2
       audioClip: {fileID: 0}
       leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
       rightSprite: {fileID: 0}
-      words: "\uC774\uB7F0 \uBCC0\uBC29\uC758 \uD3D0\uAE30\uBB3C \uC9C0\uD558 \uC2DC\uC124\uC5D0
-        \uC65C?"
+      words: "[ \uB9B0 ]\n\n\uC774\uB7F0 \uBCC0\uBC29\uC758 \uD3D0\uAE30\uBB3C \uC9C0\uD558
+        \uC2DC\uC124\uC5D0 \uC65C?"
       print_time: 0

@@ -178,7 +178,7 @@ public class InvenUICtrl : MonoBehaviour
         foreach (var itemCode in items)
         {
             UIBox uIBox = Instantiate(itemSlot, itemContentTr).GetComponent<UIBox>();
-            Sprite itemSprite = GameManager.Data.itemDatas[itemCode].item_sprite;
+            Sprite itemSprite = GameManager.Data.itemDatas[itemCode].itemSprite;
 
             uIBox.images[0].enabled = false;
             uIBox.images[1].GetComponent<RectTransform>().sizeDelta = 
@@ -204,7 +204,7 @@ public class InvenUICtrl : MonoBehaviour
             {
                 int idx = captures[i + galleryPage * 6];
                 
-                Sprite itemSprite = GameManager.Data.captureDatas[idx].capture_sprite;
+                Sprite itemSprite = GameManager.Data.captureDatas[idx].captureSprite;
 
                 uIBox.images[0].sprite = itemSprite;
                 uIBox.images[0].color = Color.white;
@@ -262,13 +262,13 @@ public class InvenUICtrl : MonoBehaviour
 
         int itemCode = uiBox.index;
         ItemSO itemData = GameManager.Data.itemDatas[itemCode];
-        Sprite itemSprite = itemData.item_sprite;
+        Sprite itemSprite = itemData.itemSprite;
 
         uiBox.images[0].enabled = true;
         itemInfoImage.sprite = itemSprite;
         itemInfoImage.GetComponent<RectTransform>().sizeDelta 
             = new Vector2(itemSprite.rect.width, itemSprite.rect.height).normalized * itemInfoImageSize;
-        itemInfoText.SetText($"{itemData.item_name}\n\n <size=70%>{itemData.item_info}");
+        itemInfoText.SetText($"{itemData.itemName}\n\n <size=70%>{itemData.itemInfo}");
     }
 
     private void OnCaptureSlot()
@@ -287,10 +287,10 @@ public class InvenUICtrl : MonoBehaviour
 
         int captureCode = uiBox.index;
         CaptureSO captureData = GameManager.Data.captureDatas[captureCode];
-        Sprite itemSprite = captureData.capture_sprite;
+        Sprite itemSprite = captureData.captureSprite;
 
         captureCardImage.sprite = itemSprite;
-        captureCardText.SetText($"{captureData.capture_info}");
+        captureCardText.SetText($"{captureData.captureInfo}");
     }
 
     public void OnRecordSlot()

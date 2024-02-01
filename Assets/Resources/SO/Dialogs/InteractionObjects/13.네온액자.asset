@@ -36,12 +36,12 @@ MonoBehaviour:
       audioClip: {fileID: 0}
       leftSprite: {fileID: 1126201346, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
       rightSprite: {fileID: 0}
-      words: "... \uB108\uBB34 \uBC1D\uC544"
+      words: "[ \uC720\uC9C4 ]\n\n... \uB108\uBB34 \uBC1D\uC544"
       print_time: 0
     Player_W_dialog:
-      type: 1
+      type: 2
       audioClip: {fileID: 0}
       leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
       rightSprite: {fileID: 0}
-      words: "\uC624... \uBABD\uD658\uC801\uC778 \uBD84\uC704\uAE30..."
+      words: "[ \uB9B0 ]\n\n\uC624... \uBABD\uD658\uC801\uC778 \uBD84\uC704\uAE30..."
       print_time: 0

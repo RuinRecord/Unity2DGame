@@ -37,12 +37,7 @@ public class MapCtrl : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-    }
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
         spritesList = new List<SortRenderer>();
         spritesList.AddRange(GetComponentsInChildren<SortRenderer>());
     }

@@ -80,7 +80,7 @@ public class PlayerTag : MonoBehaviour
         if (UIManager.InteractUI.IsDialog)
             return false; // 현재 상호작용 대화 시스템이 작동 중이면 동작 불가
 
-        if (PlayerCtrl.Instance.IsMoving)
+        if (PlayerCtrl.Instance != null && PlayerCtrl.Instance.IsMoving)
             return false; // 플레이어가 이동 중이면 동작 불가
 
         return true;
@@ -96,6 +96,13 @@ public class PlayerTag : MonoBehaviour
 
         // 페이드 애니메이션 시작
         StartCoroutine(Tag());
+    }
+
+    public void SwitchTagImmedately(PlayerType playerType)
+    {
+        PlayerType = playerType;
+        UIManager.Instance.SetActiveUI(true);
+        UIManager.PlayerUI.SetPlayerUIAll(PlayerType);
     }
 
     public void OnSwitchMode()

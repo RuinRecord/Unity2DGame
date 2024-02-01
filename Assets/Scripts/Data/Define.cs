@@ -13,6 +13,7 @@ public class Define : MonoBehaviour
 /// </summary>
 public enum PlayerType
 {
+    NONE,
     MEN,    // 남주인공
     WOMEN   // 여주인공
 }

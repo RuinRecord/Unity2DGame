@@ -24,9 +24,6 @@ public class CameraCtrl : MonoBehaviour
 
     [SerializeField] private PlayerCtrl playerW, playerM;
 
-    private Vector3 cameraPos;
-
-
     private void Awake()
     {
         Instance = this;
@@ -46,6 +43,19 @@ public class CameraCtrl : MonoBehaviour
     public void SetActiveGlitch(bool isActive) => glitchVolume.SetActive(isActive);
 
     public void SetCameraMode(CameraMode cameraMode) => mode = cameraMode;
+
+    public void SetCameraPos(Vector2 pos)
+    {
+        Vector3 cameraPos = pos;
+        cameraPos.z = -10;
+        this.transform.position = cameraPos;
+    }
+
+    public void SetCamera(CameraMode cameraMode, Vector2 pos)
+    {
+        SetCameraMode(cameraMode);
+        SetCameraPos(pos);
+    }
 
     /* 해상도 설정하는 함수 */
     public void SetDefaultResolution()
@@ -90,43 +100,38 @@ public class CameraCtrl : MonoBehaviour
     {
         switch (mode)
         {
-            case CameraMode.PlayerW: cameraPos = playerW.transform.position; break;
-            case CameraMode.PlayerM: cameraPos = playerM.transform.position; break;
+            case CameraMode.PlayerW: SetCameraPos(playerW.transform.position); break;
+            case CameraMode.PlayerM: SetCameraPos(playerM.transform.position); break;
         }
-
-        cameraPos.z = -10;
-        this.transform.position = cameraPos;
     }
 
     public IEnumerator MoveCamera(Vector2 destination, float moveSpeed, bool isSmooth)
     {
-        Vector2 _gap = destination - (Vector2)Camera.main.transform.localPosition;
+        Vector2 _gap = destination - (Vector2)this.transform.position;
         Vector2 _dir = _gap.normalized;
-        mode = CameraMode.Free;
 
-        while (_gap.normalized == _dir)
+        while (Vector2.Distance(destination, (Vector2)this.transform.position) > 0.01f)
         {
             // 카메라 이동
             if (isSmooth)
-                Camera.main.transform.localPosition += new Vector3(_gap.x, _gap.y, 0) * moveSpeed * Time.deltaTime;
+                SetCameraPos(this.transform.position + new Vector3(_gap.x, _gap.y, 0) * moveSpeed * Time.deltaTime);
             else
-                Camera.main.transform.localPosition += new Vector3(_gap.x, _gap.y, 0).normalized * moveSpeed * Time.deltaTime;
-            _gap = destination - (Vector2)Camera.main.transform.localPosition;
+                SetCameraPos(this.transform.position + new Vector3(_gap.x, _gap.y, 0).normalized * moveSpeed * Time.deltaTime);
+            _gap = destination - (Vector2)this.transform.position;
 
             // 최소 크기 유지
             if (_gap.sqrMagnitude * moveSpeed < 1f)
-                _gap = Vector2.ClampMagnitude(_gap, 1f);
+                _gap = _gap.normalized;
             yield return null;
         }
 
-        Camera.main.transform.localPosition = new Vector3(destination.x, destination.y, -10);
+        SetCameraPos(destination);
     }
 
     public IEnumerator ZoomCamera(float size, float moveSpeed, bool isSmooth)
     {
         float _gap = size - Camera.main.orthographicSize;
         float _sign = Mathf.Sign(_gap);
-        mode = CameraMode.Free;
 
         while (Mathf.Abs(_gap) > 0.01f || _sign != Mathf.Sign(_gap))
         {

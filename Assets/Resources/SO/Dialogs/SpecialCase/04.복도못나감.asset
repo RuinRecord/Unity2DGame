@@ -23,9 +23,10 @@ MonoBehaviour:
       words: 
       print_time: 0
     Player_W_dialog:
-      type: 1
+      type: 2
       audioClip: {fileID: 0}
       leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
       rightSprite: {fileID: 0}
-      words: "\uC9C0\uAE08\uC740 \uC870\uC2EC\uD560 \uD544\uC694\uAC00 \uC788\uC5B4..."
+      words: "[ \uB9B0 ]\n\n\uC9C0\uAE08\uC740 \uC870\uC2EC\uD560 \uD544\uC694\uAC00
+        \uC788\uC5B4..."
       print_time: 0

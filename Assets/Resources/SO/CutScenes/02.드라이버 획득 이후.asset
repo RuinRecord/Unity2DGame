@@ -25,11 +25,11 @@ MonoBehaviour:
         words: 
         print_time: 0
       Player_W_dialog:
-        type: 1
+        type: 2
         audioClip: {fileID: 0}
         leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
         rightSprite: {fileID: 0}
-        words: "\uC88B\uC544! \uC81C\uB300\uB85C \uC791\uB3D9\uD558\uB124."
+        words: 
         print_time: 0
     isCameraMoveOn: 0
     camera_destination: {x: 0, y: 0}
@@ -75,11 +75,11 @@ MonoBehaviour:
         words: 
         print_time: 0
       Player_W_dialog:
-        type: 1
+        type: 2
         audioClip: {fileID: 0}
         leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
         rightSprite: {fileID: 0}
-        words: "\uB204\uAD70\uAC00 \uC774\uCABD\uC73C\uB85C \uC624\uACE0\uC788\uC5B4!"
+        words: "[ \uB9B0 ]\n\n\uB204\uAD70\uAC00 \uC774\uCABD\uC73C\uB85C \uC624\uACE0\uC788\uC5B4!"
         print_time: 0
     isCameraMoveOn: 0
     camera_destination: {x: 0, y: 0}
@@ -125,11 +125,12 @@ MonoBehaviour:
         words: 
         print_time: 0
       Player_W_dialog:
-        type: 1
+        type: 2
         audioClip: {fileID: 0}
         leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
         rightSprite: {fileID: 0}
-        words: "\uC77C\uB2E8 \uC5B4\uB514\uB4E0 \uC228\uC5B4\uC57C \uD574..!"
+        words: "[ \uB9B0 ]\n\n\uC77C\uB2E8 \uC5B4\uB514\uB4E0 \uC228\uC5B4\uC57C
+          \uD574..!"
         print_time: 0
     isCameraMoveOn: 0
     camera_destination: {x: 0, y: 0}
@@ -239,22 +240,299 @@ MonoBehaviour:
     camera_zoomSize: 0
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
-  - playTime: 1
-    isDialogOn: 1
+  - playTime: 5
+    isDialogOn: 0
     dialogs:
       Player_M_dialog:
         type: 1
         audioClip: {fileID: 0}
         leftSprite: {fileID: 1126201346, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
         rightSprite: {fileID: 0}
-        words: "\uD6C4... \uC5EC\uAE30\uB3C4 \uCC98\uB9AC\uD574\uBCFC\uAE4C?"
+        words: 
         print_time: 0
       Player_W_dialog:
         type: 1
         audioClip: {fileID: 0}
         leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
         rightSprite: {fileID: 0}
-        words: "\uC77C\uB2E8 \uC5B4\uB514\uB4E0 \uC228\uC5B4\uC57C \uD574..!"
+        words: 
+        print_time: 0
+    isCameraMoveOn: 1
+    camera_destination: {x: -6.5, y: 18.5}
+    camera_moveSpeed: 0.5
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 1
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: "[ ??? ]\n\n\uD6C4... \uC5EC\uAE30\uB3C4 \uCC98\uB9AC\uD574\uC57C\uACA0\uAD70"
+        print_time: 0
+      Player_W_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 1
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 2
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: "[ \uB9B0 ]\n\n(\uCC98\uB9AC..? \uBC8C\uC368 \uB4E4\uCF30\uB098?!)"
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 1.5
+    isDialogOn: 0
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 2
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 0
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 2
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 2
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 2
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: "[ \uB9B0 ]\n\n(\uD5C9..! \uB098\uD55C\uD14C \uC624\uB294 \uC904 \uC54C\uACE0
+          \uB180\uB77C\uC11C \uC18C\uB9AC\uB97C..!)"
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: -5, y: 20}
+    camera_moveSpeed: 5
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 7
+    camera_zoomSpeed: 5
+    camera_isZoomSmooth: 0
+  - playTime: 1.5
+    isDialogOn: 0
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 2
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: "(\uD5C9..! \uB098\uD55C\uD14C \uC624\uB294 \uC904 \uC54C\uACE0 \uB180\uB77C\uC11C
+          \uC18C\uB9AC\uB97C..!)"
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0.5
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: "[ ??? ]\n\n\uC950\uC18C\uB9AC\uC600\uB098..."
+        print_time: 0
+      Player_W_dialog:
+        type: 2
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 1.5
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 2
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: "[ \uB9B0 ]\n\n(\uB098\uC774\uC2A4 \uC950..!)"
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0.5
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: "[ ??? ]\n\n\uC9C0\uAE0B\uC9C0\uAE0B\uD558\uAD70...\n"
+        print_time: 0
+      Player_W_dialog:
+        type: 2
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 2
+    isDialogOn: 0
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 2
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 1
+    camera_destination: {x: -7.5, y: 19.5}
+    camera_moveSpeed: 1
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 1
+    isDialogOn: 0
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 2
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
         print_time: 0
     isCameraMoveOn: 0
     camera_destination: {x: 0, y: 0}
