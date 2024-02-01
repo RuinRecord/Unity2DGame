@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
             Time.timeScale = 1f;
         else if (Input.GetKeyDown(KeyCode.Alpha2))
-            Time.timeScale = 3f;
+            Time.timeScale = 10f;
     }
 
     static private void CreateGameManager()

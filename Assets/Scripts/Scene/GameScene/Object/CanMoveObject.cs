@@ -9,17 +9,17 @@ public class CanMoveObject : MonoBehaviour
     private const float MOVE_SPEED = 3f;
     private const int CANNOT_MOVE_LAYERMASK = 64 + 128 + 256 + 512 + 1024;
 
-    [SerializeField]
-    private Vector2 up_gap;
+    public int eventCode;
 
-    [SerializeField]
-    private Vector2 down_gap;
+    public bool isDone;
 
-    [SerializeField]
-    private Vector2 right_gap;
+    [SerializeField] private Vector2 up_gap;
 
-    [SerializeField]
-    private Vector2 left_gap;
+    [SerializeField] private Vector2 down_gap;
+
+    [SerializeField] private Vector2 right_gap;
+
+    [SerializeField] private Vector2 left_gap;
 
     /// <summary> 현재 물건이 밀릴 방향 벡터 </summary>
     private Vector2 direction;

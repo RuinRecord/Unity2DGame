@@ -81,6 +81,8 @@ public class CutSceneCtrl : MonoBehaviour
 
     IEnumerator StartCutScene(CutSceneSO cutSceneSO)
     {
+        events[cutSceneCode].OnFuntionEnter();
+
         while (currentActionIdx < cutSceneSO.actions.Count)
         {
             StartCoroutine(StartAction(cutSceneSO.actions[currentActionIdx]));

@@ -63,6 +63,7 @@ public enum EventType
     GetItem,
     GetRecord,
     Inventory,
+    MoveObject,
 }
 
 public enum BlockType

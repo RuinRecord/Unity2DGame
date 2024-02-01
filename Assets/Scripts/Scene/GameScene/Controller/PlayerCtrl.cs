@@ -180,7 +180,7 @@ public class PlayerCtrl : MonoBehaviour
                 // dir 방향에 움직일 수 있는 물체 감지
                 CurrentCanMoveOb = CheckMovingObject(_dir, MOVE_OBJECT_DETECT_DISTANCE);
 
-                if (CurrentCanMoveOb != null)
+                if (CurrentCanMoveOb != null && !CurrentCanMoveOb.isDone)
                 {
                     Mode = PlayerMode.PUSH;
                     CurrentCanMoveOb.SetForceDirection(this.GetDirection());

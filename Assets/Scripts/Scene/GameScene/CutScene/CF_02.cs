@@ -8,12 +8,14 @@ public class CF_02 : CutSceneFunction
     [SerializeField] private PlayerCtrl player_M;
 
     [SerializeField] private Animator playerBox;
+    [SerializeField] private GameObject eventArea;
 
     private Coroutine soundCo;
 
     private void Start()
     {
         playerBox.gameObject.SetActive(false);
+        eventArea.SetActive(false);
     }
 
     public override void OnFuntionEnter()
@@ -105,7 +107,7 @@ public class CF_02 : CutSceneFunction
         CutSceneCtrl.Instance.FadeIn(0.5f);
 
         PlayerTag.PlayerType = PlayerType.NONE;
-        CameraCtrl.Instance.SetCamera(CameraMode.Free, new Vector3(-6.5f, 16.5f, 0f));
+        CameraCtrl.Instance.SetCamera(CameraMode.Free, new Vector2(-6.5f, 16.5f));
 
         player_M.MovePosition(new Vector3(-6.5f, 16.5f, 0f));
         player_W.MovePosition(new Vector3(-6.5f, 100f, 0f));
@@ -141,5 +143,6 @@ public class CF_02 : CutSceneFunction
         CutSceneCtrl.Instance.FadeIn(1f);
         PlayerTag.Instance.SwitchTagImmedately(PlayerType.MEN);
         CameraCtrl.Instance.SetCameraMode(CameraMode.PlayerM);
+        eventArea.SetActive(true);
     }
 }

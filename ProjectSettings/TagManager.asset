@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Player_M
   - Player_W
+  - MovingObject
   layers:
   - Default
   - TransparentFX
