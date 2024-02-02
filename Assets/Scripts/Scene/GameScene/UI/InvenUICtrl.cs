@@ -8,99 +8,43 @@ using TMPro;
 public class InvenUICtrl : MonoBehaviour
 {
     private readonly float itemSlotImageSize = 150;
-
     private readonly float itemInfoImageSize = 400;
-
     private readonly float galleryAnimTime = 0.75f;
-
     private readonly string galleryAnimName_In = "CaptureCard_In";
-
     private readonly string galleryAnimName_Out = "CaptureCard_Out";
 
-    [SerializeField]
-    private GameObject InvenObject;
-
-    [SerializeField]
-    private UIBox[] menus;
-
-    [SerializeField]
-    private GameObject[] contents;
-
+    [SerializeField] private GameObject InvenObject;
+    [SerializeField] private UIBox[] menus;
+    [SerializeField] private GameObject[] contents;
+    [SerializeField] private int contentIndex;
+    [SerializeField] private Sprite[] menuOnSprites;
+    [SerializeField] private Sprite[] menuOffSprites;
     public bool IsOnInven;
 
-    [SerializeField]
-    private int contentIndex;
-
-    [SerializeField]
-    private Sprite[] menuOnSprites;
-
-    [SerializeField]
-    private Sprite[] menuOffSprites;
-
-
     [Header("[ Item Fields ]")]
-    [SerializeField]
-    private GameObject itemSlot;
-
-    [SerializeField]
-    private Transform itemContentTr;
-
-    [SerializeField]
-    private GameObject itemInfoOb;
-
-    [SerializeField]
-    private Image itemInfoImage;
-
-    [SerializeField]
-    private TMP_Text itemInfoText;
-
-
+    [SerializeField] private GameObject itemSlot;
+    [SerializeField] private Transform itemContentTr;
+    [SerializeField] private GameObject itemInfoOb;
+    [SerializeField] private Image itemInfoImage;
+    [SerializeField] private TMP_Text itemInfoText;
 
     [Header("[ Gallery Fields ]")]
-    [SerializeField]
-    private Transform captureContentTr;
-
-    [SerializeField]
-    private GameObject captureNextPageButton;
-
-    [SerializeField]
-    private GameObject capturePrePageButton;
-
-    [SerializeField]
-    private TMP_Text capturePageText;
-
-    [SerializeField]
-    private Animation galleryAnim;
-
-    [SerializeField]
-    private Image captureCardImage;
-
-    [SerializeField]
-    private TMP_Text captureCardText;
-
+    [SerializeField] private Transform captureContentTr;
+    [SerializeField] private GameObject captureNextPageButton;
+    [SerializeField] private GameObject capturePrePageButton;
+    [SerializeField] private TMP_Text capturePageText;
+    [SerializeField] private Animation galleryAnim;
+    [SerializeField] private Image captureCardImage;
+    [SerializeField] private TMP_Text captureCardText;
     private bool isCanTouchCard;
-
     private int galleryPage;
 
-
-
     [Header("[ Record Fields ]")]
-    [SerializeField]
-    private GameObject recordSlot;
-
-    [SerializeField]
-    private Transform recordContentTr;
-
-    [SerializeField]
-    private Sprite recordSelected, recordNotSelected;
-
-    [SerializeField]
-    private GameObject recordInfoOb;
-
-    [SerializeField]
-    private TMP_Text recordInfoText;
-
-
+    [SerializeField] private GameObject recordSlot;
+    [SerializeField] private Transform recordContentTr;
+    [SerializeField] private Sprite recordSelected, recordNotSelected;
+    [SerializeField] private GameObject recordInfoOb;
+    [SerializeField] private TMP_Text recordInfoText;
 
     public void Init()
     {
