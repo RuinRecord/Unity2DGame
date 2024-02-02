@@ -13,12 +13,11 @@ public class CanMoveObject : MonoBehaviour
 
     public bool isDone;
 
+    [SerializeField] private Vector3 startPos;
+
     [SerializeField] private Vector2 up_gap;
-
     [SerializeField] private Vector2 down_gap;
-
     [SerializeField] private Vector2 right_gap;
-
     [SerializeField] private Vector2 left_gap;
 
     /// <summary> 현재 물건이 밀릴 방향 벡터 </summary>
@@ -28,14 +27,10 @@ public class CanMoveObject : MonoBehaviour
     /// 이 대사는 SO 파일이 없습니다. 직접 오브젝트 인스펙터에서 설정해야 합니다.
     public List<DialogSet> Player_m_dialogs;
 
-    public void SetForceDirection(Vector2 _vec) 
-        => direction = _vec;
+    public void SetForceDirection(Vector2 _vec) => direction = _vec;
 
 
-    /// <summary>
-    /// 물체가 움직일 수 있는지 체크하고 물체를 움직이게 하는 함수이다.
-    /// </summary>
-    /// <returns>이동 수행 여부</returns>
+    /// <summary> 물체가 움직일 수 있는지 체크하고 물체를 움직이게 하는 함수이다. </summary>
     public bool Push()
     {
         bool _isSuccess;
@@ -53,9 +48,17 @@ public class CanMoveObject : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// 물체를 움직이는 코루틴 함수이다.
-    /// </summary>
+    /// <summary> 물체가 움직일 수 있는지 체크하고 물체를 움직이게 하는 함수이다. </summary>
+    public void ReSetPosition()
+    {
+        if (isDone)
+            return;
+
+        this.transform.localPosition = startPos;
+    }
+
+
+    /// <summary> 물체를 움직이는 코루틴 함수이다. </summary>
     IEnumerator StartMove()
     {
         Vector3 _savedPos = this.transform.position;
@@ -76,6 +79,7 @@ public class CanMoveObject : MonoBehaviour
         PlayerCtrl.Instance.IsCanInteract = PlayerCtrl.Instance.IsCanMove = true;
         this.transform.position = _savedPos + (Vector3)direction;
     }
+
 
     private void OnTriggerStay2D(Collider2D col)
     {

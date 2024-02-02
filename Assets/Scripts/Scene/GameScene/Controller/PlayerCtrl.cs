@@ -18,6 +18,8 @@ public class PlayerCtrl : MonoBehaviour
     private const float MOVE_OBJECT_DETECT_DISTANCE = 0.275f;
 
     private const float INTERACTION_OBJECT_DETECT_DISTANCE = 1f;
+
+    private const float RESET_MOVEOBJECT_FADE_TIME = 0.5f;
     #endregion
 
     /// <summary> PlayerCtrl 싱글톤 패턴 </summary>
@@ -87,7 +89,7 @@ public class PlayerCtrl : MonoBehaviour
 
 
     /// <summary> 플레이어가 해당 기능을 사용할 수 있는 상태인가? </summary>
-    public bool IsCanInteract, IsCanMove, IsCanAttack, IsCanEvasion;
+    public bool IsCanReset, IsCanInteract, IsCanMove, IsCanAttack, IsCanEvasion;
     public bool IsCanCapture, IsCameraOn, IsCanInven;
 
 
@@ -152,7 +154,7 @@ public class PlayerCtrl : MonoBehaviour
         State = PlayerState.IDLE;
         CurrentTeleport = null;
 
-        IsCanInteract = IsCanMove = IsCanAttack = IsCanEvasion = IsCanCapture = IsCanInven = true;
+        IsCanReset = IsCanInteract = IsCanMove = IsCanAttack = IsCanEvasion = IsCanCapture = IsCanInven = true;
         IsCameraOn = IsMoving = false;
         Max_HP = cur_HP = 100f;
         MoveSpeed = WALK_SPEED;
@@ -251,6 +253,10 @@ public class PlayerCtrl : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
             MoveSpeed = WALK_SPEED;
 
+        // 맵 초기화
+        if (IsCanReset && Input.GetKeyDown(KeyCode.R))
+            StartCoroutine(ResetMoveObject());
+
 
         // 상호작용
         if (IsCanInteract && Input.GetKeyDown(KeyCode.Space))
@@ -290,9 +296,24 @@ public class PlayerCtrl : MonoBehaviour
             {
                 // 인벤토리 ON & OFF
                 UIManager.InvenUI.OnOffInven();
-                IsCanMove = IsCanInteract = !UIManager.InvenUI.IsOnInven;
+                IsCanReset = IsCanMove = IsCanInteract = !UIManager.InvenUI.IsOnInven;
             }
         }
+    }
+
+
+    IEnumerator ResetMoveObject()
+    {
+        CutSceneCtrl.Instance.FadeOut(RESET_MOVEOBJECT_FADE_TIME);
+        IsCanReset = false;
+
+        yield return new WaitForSeconds(RESET_MOVEOBJECT_FADE_TIME);
+
+        foreach (var item in MapCtrl.Instance.MoveObjectsList)
+            item.ReSetPosition();
+
+        CutSceneCtrl.Instance.FadeIn(RESET_MOVEOBJECT_FADE_TIME);
+        IsCanReset = true;
     }
 
 
@@ -556,7 +577,7 @@ public class PlayerCtrl : MonoBehaviour
         // 사진기 소리 출력
         GameManager.Sound.PlaySE("여주조사");
 
-        IsCanMove = IsCanInteract = IsCanCapture = IsCanInven = false;
+        IsCanReset = IsCanMove = IsCanInteract = IsCanCapture = IsCanInven = false;
         PlayerTag.Instance.IsCanTag = false;
 
         // 카메라 UI 켜지도록 코루틴 함수 실행
@@ -567,7 +588,7 @@ public class PlayerCtrl : MonoBehaviour
     public void EndCapture()
     {
         State = PlayerState.IDLE;
-        IsCanMove = IsCanInteract = IsCanCapture = IsCanInven = false;
+        IsCanReset = IsCanMove = IsCanInteract = IsCanCapture = IsCanInven = false;
         IsCameraOn = false;
         PlayerTag.Instance.IsCanTag = true;
 

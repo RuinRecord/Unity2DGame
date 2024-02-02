@@ -22245,6 +22245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventCode: 0
   isDone: 0
+  startPos: {x: -9, y: 18, z: 0}
   up_gap: {x: 0, y: 0.35}
   down_gap: {x: 0, y: -0.5}
   right_gap: {x: 0.75, y: 0}
@@ -33441,6 +33442,7 @@ MonoBehaviour:
   CurrentCanMoveOb: {fileID: 0}
   playerMode: 0
   playerState: 0
+  IsCanReset: 0
   IsCanInteract: 0
   IsCanMove: 0
   IsCanAttack: 0
@@ -36593,6 +36595,7 @@ MonoBehaviour:
     m_Bits: 0
   tileMapTr: {fileID: 267868480}
   spritesList: []
+  moveObjectsList: []
 --- !u!1 &1627052200
 GameObject:
   m_ObjectHideFlags: 0
@@ -52713,6 +52716,7 @@ MonoBehaviour:
   CurrentCanMoveOb: {fileID: 0}
   playerMode: 0
   playerState: 0
+  IsCanReset: 0
   IsCanInteract: 0
   IsCanMove: 0
   IsCanAttack: 0

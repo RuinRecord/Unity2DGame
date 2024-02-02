@@ -25,13 +25,16 @@ public class MapCtrl : MonoBehaviour
 
 
     /// <summary> 모든 타일맵 렌더러를 탐색하기 위한 부모 오브젝트 </summary>
-    [SerializeField]
-    private GameObject tileMapTr;
+    [SerializeField] private GameObject tileMapTr;
 
 
     /// <summary> 렌더러를 포함한 모든 오브젝트를 저장한 리스트 </summary>
-    [SerializeField]
-    private List<SortRenderer> spritesList;
+    [SerializeField] private List<SortRenderer> spritesList;
+
+
+    /// <summary> 렌더러를 포함한 모든 오브젝트를 저장한 리스트 </summary>
+    [SerializeField] private List<CanMoveObject> moveObjectsList;
+    public List<CanMoveObject> MoveObjectsList => moveObjectsList;
 
 
     private void Awake()
@@ -40,6 +43,9 @@ public class MapCtrl : MonoBehaviour
 
         spritesList = new List<SortRenderer>();
         spritesList.AddRange(GetComponentsInChildren<SortRenderer>());
+
+        moveObjectsList = new List<CanMoveObject>();
+        moveObjectsList.AddRange(GetComponentsInChildren<CanMoveObject>());
     }
 
 
