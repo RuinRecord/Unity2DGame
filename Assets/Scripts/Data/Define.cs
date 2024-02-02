@@ -71,6 +71,7 @@ public enum BlockType
     PlayerMRoom,
     R1ToHoll,
     Hall,
+    R2ToHoll,
 }
 
 public enum CameraMode

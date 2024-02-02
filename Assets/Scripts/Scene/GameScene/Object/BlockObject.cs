@@ -37,6 +37,10 @@ public class BlockObject : MonoBehaviour
                     if (EventCtrl.Instance.CurrentEvent <= 3)
                         Interaction(4, Vector2Int.left);
                     break;
+                case BlockType.R2ToHoll:
+                    if (EventCtrl.Instance.CurrentEvent == 4)
+                        Interaction(5, Vector2Int.up);
+                    break;
             }
         }
     }
