@@ -109,8 +109,8 @@ public class CF_02 : CutSceneFunction
         PlayerTag.PlayerType = PlayerType.NONE;
         CameraCtrl.Instance.SetCamera(CameraMode.Free, new Vector2(-6.5f, 16.5f));
 
-        player_M.MovePosition(new Vector3(-6.5f, 16.5f, 0f));
-        player_W.MovePosition(new Vector3(-6.5f, 100f, 0f));
+        player_M.MovePosition(new Vector3(-7f, 16f, 0f));
+        player_W.MovePosition(new Vector3(-7f, 100f, 0f));
         playerBox.gameObject.SetActive(true);
     }
 

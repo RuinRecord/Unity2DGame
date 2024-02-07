@@ -91,11 +91,12 @@ public class CutSceneCtrl : MonoBehaviour
             // 액션이 종료할 때까지 대기
             while (!isActionDone)
                 yield return null;
+            Debug.Log(currentActionIdx);
         }
 
-        events[cutSceneCode].OnFunctionExit();
-
         EndCutScene();
+
+        events[cutSceneCode].OnFunctionExit();
     }
 
     IEnumerator StartAction(CutSceneAction action)

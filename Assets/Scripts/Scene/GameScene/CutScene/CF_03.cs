@@ -5,6 +5,7 @@ using UnityEngine;
 public class CF_03 : CutSceneFunction
 {
     [SerializeField] private PlayerCtrl player_M;
+    [SerializeField] private PlayerCtrl player_W;
 
     [SerializeField] private Animator playerBox;
     [SerializeField] private GameObject eventArea;
@@ -27,7 +28,6 @@ public class CF_03 : CutSceneFunction
             case 5: PlayerWShake(); break;
             case 7: PlayerMUpMove(); break;
             case 8: EndFadeOut(); break;
-            case 9: EndFadeIn(); break;
         }
     }
 
@@ -35,7 +35,7 @@ public class CF_03 : CutSceneFunction
     {
         base.OnFunctionExit();
 
-        player_M.MoveSpeed = PlayerCtrl.WALK_SPEED;
+        CutSceneCtrl.Instance.StartCutScene(4);
         playerBox.gameObject.SetActive(false);
     }
 
@@ -46,7 +46,7 @@ public class CF_03 : CutSceneFunction
         CameraCtrl.Instance.SetCamera(CameraMode.Free, new Vector2(-5.5f, 19.5f));
 
         player_M.Mode = PlayerMode.DEFAULT;
-        player_M.MovePosition(new Vector3(-5.5f, 19.5f, 0f));
+        player_M.MovePosition(new Vector3(-6f, 19f, 0f));
     }
 
     private void PlayerMLeftMove() => player_M.SetMove(Vector2.left, 1f, PlayerCtrl.WALK_SPEED * 0.5f);
@@ -85,13 +85,6 @@ public class CF_03 : CutSceneFunction
     private void EndFadeOut()
     {
         playerBox.SetBool("isDown", true);
-        CutSceneCtrl.Instance.FadeOut(1f);
-    }
-
-    private void EndFadeIn()
-    {
-        CutSceneCtrl.Instance.FadeIn(1f);
-        PlayerTag.Instance.SwitchTagImmedately(PlayerType.MEN);
-        CameraCtrl.Instance.SetCameraMode(CameraMode.PlayerM);
+        CutSceneCtrl.Instance.FadeOut(1.5f);
     }
 }

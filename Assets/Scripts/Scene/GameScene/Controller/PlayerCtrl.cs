@@ -603,7 +603,7 @@ public class PlayerCtrl : MonoBehaviour
 
     public void MovePosition(Vector3 destination)
     {
-        this.transform.position = destination;
+        this.transform.localPosition = destination;
         MoveSpeed = WALK_SPEED;
         State = PlayerState.IDLE;
     }

@@ -15,7 +15,6 @@ public class EventArea : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D col)
     {
-        Debug.Log(col.tag);
         if (col.tag == "MovingObject")
         {
             CanMoveObject moveGo = col.GetComponent<CanMoveObject>();
