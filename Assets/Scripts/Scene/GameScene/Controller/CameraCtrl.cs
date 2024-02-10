@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using URPGlitch.Runtime.AnalogGlitch;
 
 public class CameraCtrl : MonoBehaviour
 {
@@ -15,14 +17,14 @@ public class CameraCtrl : MonoBehaviour
         }
     }
 
-
-
     [SerializeField] private CameraMode mode;
     public CameraMode Mode => mode;
 
-    [SerializeField] private GameObject glitchVolume;
+    [SerializeField] private Volume glitchVolume;
 
     [SerializeField] private PlayerCtrl playerW, playerM;
+
+    private VolumeProfile volumeProfile;
 
     private void Awake()
     {
@@ -31,7 +33,9 @@ public class CameraCtrl : MonoBehaviour
 
     private void Start()
     {
+        volumeProfile = glitchVolume.profile;
         SetActiveGlitch(false);
+        SetDefaultGlitch();
     }
 
     // Update is called once per frame
@@ -40,7 +44,41 @@ public class CameraCtrl : MonoBehaviour
         CameraProcess();
     }
 
-    public void SetActiveGlitch(bool isActive) => glitchVolume.SetActive(isActive);
+    public void SetActiveGlitch(bool isActive) => glitchVolume.gameObject.SetActive(isActive);
+
+    public void SetDefaultGlitch()
+    {
+        volumeProfile.TryGet(out AnalogGlitchVolume glitch);
+        glitch.scanLineJitter.value = 0;
+        glitch.verticalJump.value = 0.01f;
+        glitch.horizontalShake.value = 0.01f;
+        glitch.colorDrift.value = 0.05f;
+    }
+
+    public void GlitchEffect(float fadeTime) => StartCoroutine(GlitchEffectCoroutine(fadeTime));
+
+    IEnumerator GlitchEffectCoroutine(float fadeTime)
+    {
+        volumeProfile.TryGet(out AnalogGlitchVolume glitch);
+        glitchVolume.gameObject.SetActive(true);
+
+        while (glitch.scanLineJitter.value < 1f)
+        {
+            glitch.scanLineJitter.value += Time.deltaTime / fadeTime;
+            glitch.horizontalShake.value += Time.deltaTime / fadeTime;
+            yield return null;
+        }
+
+        while (glitch.scanLineJitter.value > 0f)
+        {
+            glitch.scanLineJitter.value -= Time.deltaTime / fadeTime;
+            glitch.horizontalShake.value -= Time.deltaTime / fadeTime;
+            yield return null;
+        }
+
+        glitchVolume.gameObject.SetActive(false);
+        SetDefaultGlitch();
+    }
 
     public void SetCameraMode(CameraMode cameraMode) => mode = cameraMode;
 
@@ -87,10 +125,12 @@ public class CameraCtrl : MonoBehaviour
             // Tag 패널 ON인 상태 => 좌측 상단에 작게 배치
             Camera.main.rect = new Rect(0.05f, 0.05f, 0.9f, 0.9f);
             SetActiveGlitch(true);
+            SetDefaultGlitch();
         }
         else
         {
             // Tag 선택 OFF인 상태 => 전체 화면
+            Camera.main.rect = new Rect(0f, 0f, 1f, 1f);
             SetDefaultResolution();
             SetActiveGlitch(false);
         }
@@ -107,42 +147,44 @@ public class CameraCtrl : MonoBehaviour
 
     public IEnumerator MoveCamera(Vector2 destination, float moveSpeed, bool isSmooth)
     {
-        Vector2 _gap = destination - (Vector2)this.transform.position;
+        Vector2 _gap = destination;
         Vector2 _dir = _gap.normalized;
+        Vector3 _cur;
 
-        while (Vector2.Distance(destination, (Vector2)this.transform.position) > 0.01f)
+        while (_gap.magnitude > 0.01f && _gap.normalized == _dir)
         {
             // 카메라 이동
             if (isSmooth)
-                SetCameraPos(this.transform.position + new Vector3(_gap.x, _gap.y, 0) * moveSpeed * Time.deltaTime);
+                _cur = new Vector3(_gap.x, _gap.y, 0) * moveSpeed;
             else
-                SetCameraPos(this.transform.position + new Vector3(_gap.x, _gap.y, 0).normalized * moveSpeed * Time.deltaTime);
-            _gap = destination - (Vector2)this.transform.position;
+                _cur = new Vector3(_gap.x, _gap.y, 0).normalized * moveSpeed;
 
             // 최소 크기 유지
-            if (_gap.sqrMagnitude * moveSpeed < 1f)
-                _gap = _gap.normalized;
+            if (_cur.magnitude * moveSpeed < 1f)
+                _cur = _cur.normalized;
+
+            SetCameraPos(this.transform.position + _cur * Time.deltaTime);
+            _gap -= (Vector2)_cur * Time.deltaTime;
             yield return null;
         }
-
-        SetCameraPos(destination);
     }
 
     public IEnumerator ZoomCamera(float size, float moveSpeed, bool isSmooth)
     {
-        float _gap = size - Camera.main.orthographicSize;
+        float _gap = size;
         float _sign = Mathf.Sign(_gap);
+        float _cur;
 
-        while (Mathf.Abs(_gap) > 0.01f || _sign != Mathf.Sign(_gap))
+        while (Mathf.Abs(_gap) > 0.01f && _sign == Mathf.Sign(_gap))
         {
             if (isSmooth)
-                Camera.main.orthographicSize += _gap * moveSpeed * Time.deltaTime;
+                _cur = _gap * moveSpeed;
             else
-                Camera.main.orthographicSize += _sign * moveSpeed * Time.deltaTime;
-            _gap = size - Camera.main.orthographicSize;
+                _cur = _sign * moveSpeed;
+
+            Camera.main.orthographicSize += _cur * Time.deltaTime;
+            _gap -= _cur * Time.deltaTime;
             yield return null;
         }
-
-        Camera.main.orthographicSize = size;
     }
 }

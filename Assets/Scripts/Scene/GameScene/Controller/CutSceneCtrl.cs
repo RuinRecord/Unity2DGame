@@ -50,9 +50,11 @@ public class CutSceneCtrl : MonoBehaviour
         isActionDone = false;
         IsDialogDone = true;
         events.AddRange(GetComponentsInChildren<CutSceneFunction>());
+        foreach (var function in events)
+            function.gameObject.SetActive(false);
 
         // 프롤로그 시작
-        StartCutScene(0);
+        // StartCutScene(0);
     }
 
     public void StartCutScene(int cutSceneCode) => SetCutScene(GameManager.Data.cutSceneDatas[cutSceneCode]);
@@ -73,6 +75,7 @@ public class CutSceneCtrl : MonoBehaviour
     private void SetCutScene(CutSceneSO cutSceneSO)
     {
         IsCutSceneOn = true;
+        events[cutSceneSO.cutSceneCode].gameObject.SetActive(true);
         cutSceneCode = cutSceneSO.cutSceneCode;
         currentActionIdx = 0;
 

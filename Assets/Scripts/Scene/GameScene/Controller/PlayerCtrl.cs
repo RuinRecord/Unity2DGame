@@ -158,6 +158,8 @@ public class PlayerCtrl : MonoBehaviour
         IsCameraOn = IsMoving = false;
         Max_HP = cur_HP = 100f;
         MoveSpeed = WALK_SPEED;
+
+        CutSceneCtrl.Instance.StartCutScene(4);
     }
 
 

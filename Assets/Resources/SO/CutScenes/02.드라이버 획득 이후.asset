@@ -258,7 +258,7 @@ MonoBehaviour:
         words: 
         print_time: 0
     isCameraMoveOn: 1
-    camera_destination: {x: -6.5, y: 18.5}
+    camera_destination: {x: 0, y: 2}
     camera_moveSpeed: 0.5
     camera_isMoveSmooth: 0
     isCameraZoomOn: 0
@@ -510,7 +510,7 @@ MonoBehaviour:
         words: 
         print_time: 0
     isCameraMoveOn: 1
-    camera_destination: {x: -7.5, y: 19.5}
+    camera_destination: {x: -1, y: 1}
     camera_moveSpeed: 1
     camera_isMoveSmooth: 0
     isCameraZoomOn: 0

@@ -13,14 +13,22 @@ public class CF_04 : CutSceneFunction
     private Coroutine walkCo;
     private Vector3 startPos;
     private float currentDistance;
+    private bool isTrackingCamera;
+
+    public void Update()
+    {
+        if (isTrackingCamera)
+            CameraCtrl.Instance.SetCameraPos(player_M.transform.position);
+    }
 
     public override void OnFuntionEnter()
     {
         base.OnFuntionEnter();
 
         CutSceneCtrl.Instance.FadeIn(1.5f);
-        CameraCtrl.Instance.SetCameraMode(CameraMode.PlayerM);
+        CameraCtrl.Instance.SetCameraMode(CameraMode.Free);
         PlayerTag.Instance.SwitchTagImmedately(PlayerType.NONE);
+        isTrackingCamera = true;
 
         startPos = new Vector3(-74f, 4.5f, 0f);
 
@@ -36,7 +44,9 @@ public class CF_04 : CutSceneFunction
         switch (actionIdx)
         {
             case 10: PlayerStop(); break;
-            case 16: PlayerReWalk(); break;
+            case 14: PlayerMLookRight(); break;
+            case 20: PlayerWStop(); break;
+            case 22: ChangeScene(); break;
         }
     }
 
@@ -44,8 +54,7 @@ public class CF_04 : CutSceneFunction
     {
         base.OnFunctionExit();
 
-        //player_M.MoveSpeed = PlayerCtrl.WALK_SPEED;
-        //player_W.MoveSpeed = PlayerCtrl.WALK_SPEED;
+        CutSceneCtrl.Instance.StartCutScene(5);
     }
 
    IEnumerator WalkForward(float currentDistance)
@@ -64,14 +73,43 @@ public class CF_04 : CutSceneFunction
 
     private void PlayerStop()
     {
-        currentDistance = player_M.transform.position.x - startPos.x;
+        isTrackingCamera = false;
+        currentDistance = player_M.transform.localPosition.x - startPos.x;
         StopCoroutine(walkCo);
-        player_M.SetMove(Vector2.left, 0f, 0f);
+        player_M.SetMove(Vector2.right, 0f, 0f);
         player_W.SetMove(Vector2.right, 0f, 0f);
+    }
+
+    private void PlayerMLookRight()
+    {
+        player_M.SetAnimationDir(Vector2.right);
+        Invoke("PlayerReWalk", 1f);
     }
 
     private void PlayerReWalk()
     {
+        isTrackingCamera = true;
         walkCo = StartCoroutine(WalkForward(currentDistance));
+    }
+
+    private void PlayerWStop()
+    {
+        isTrackingCamera = false;
+        currentDistance = player_M.transform.localPosition.x - startPos.x;
+        StopCoroutine(walkCo);
+        player_W.SetMove(Vector2.right, 0f, 0f);
+        player_M.SetMove(Vector2.right, 1f, WALK_SPEED);
+    }
+
+    private void ChangeScene()
+    {
+        CameraCtrl.Instance.GlitchEffect(0.1f);
+        Invoke("SwitchCutScene", 0.1f);
+    }
+
+    private void SwitchCutScene()
+    {
+        CameraCtrl.Instance.SetCameraPos(Camera.main.transform.position + Vector3.up * 100);
+        player_M.MovePosition(player_M.transform.position + Vector3.up * 100);
     }
 }
