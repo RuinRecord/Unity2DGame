@@ -263,7 +263,7 @@ MonoBehaviour:
         leftSprite: {fileID: 0}
         rightSprite: {fileID: 0}
         words: "[ \uB9B0 ]\n\n\uADF8\uAC74 \uADF8\uB807\uACE0 \uC544\uC800\uC528,
-          \uB9C8\uD0A4\uC544\uAC00 \uC0DD\uCCB4 \uC2E4\uD5D8 \uD55C\uB2E4\uB294 \uC0AC..."
+          \uB9C8\uD0A4\uC544\uAC00 \uC0DD\uCCB4 \uC2E4\uD5D8 \uD55C\uB2E4\uB294 \uAC83..."
         print_time: 0
     isCameraMoveOn: 0
     camera_destination: {x: 0, y: 0}
@@ -572,8 +572,33 @@ MonoBehaviour:
         audioClip: {fileID: 0}
         leftSprite: {fileID: 0}
         rightSprite: {fileID: 0}
-        words: "[ \uB9B0 ]\n\n\uC804... \uC9C4\uC2E4\uC744 \uC54C\uAE30 \uC804\uAE4C\uC9C0
+        words: "[ \uB9B0 ]\n\n\uC804... '\uC9C4\uC2E4'\uC744 \uC54C\uAE30 \uC804\uAE4C\uC9C0
           \uBABB\uB3CC\uC544\uAC00\uC694"
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0.5
+    isDialogOn: 0
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
         print_time: 0
     isCameraMoveOn: 0
     camera_destination: {x: 0, y: 0}

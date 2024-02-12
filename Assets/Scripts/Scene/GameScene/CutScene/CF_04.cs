@@ -103,13 +103,15 @@ public class CF_04 : CutSceneFunction
 
     private void ChangeScene()
     {
+        GameManager.Sound.PlaySE("노이즈");
         CameraCtrl.Instance.GlitchEffect(0.1f);
         Invoke("SwitchCutScene", 0.1f);
     }
 
     private void SwitchCutScene()
     {
-        CameraCtrl.Instance.SetCameraPos(Camera.main.transform.position + Vector3.up * 100);
+        CameraCtrl.Instance.SetCameraPos(Camera.main.transform.position + new Vector3(1.5f, 101f, 0f));
         player_M.MovePosition(player_M.transform.position + Vector3.up * 100);
+        player_W.MovePosition(player_W.transform.position + Vector3.up * 100);
     }
 }
