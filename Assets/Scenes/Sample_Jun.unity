@@ -17085,6 +17085,8 @@ Transform:
   - {fileID: 1326929928}
   - {fileID: 1026586570}
   - {fileID: 110019624}
+  - {fileID: 968678340}
+  - {fileID: 1626113514}
   m_Father: {fileID: 1682769453}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &485082441
@@ -26039,6 +26041,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 462994493669386713, guid: 44b3b6dd50bbba647b5449c894d544a7, type: 3}
   m_PrefabInstance: {fileID: 2720211291097971055}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &968678339
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 968678340}
+  - component: {fileID: 968678341}
+  m_Layer: 0
+  m_Name: "06.\uD68C\uC0C1\uB05D"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &968678340
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968678339}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 483054785}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &968678341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968678339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48398956b26f74f40a97386dee6d6156, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_M: {fileID: 2013731442}
+  player_W: {fileID: 1479713881}
 --- !u!1 &972372583
 GameObject:
   m_ObjectHideFlags: 0
@@ -35430,7 +35478,7 @@ Transform:
   m_GameObject: {fileID: 1479713877}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.51, y: 19.55, z: 0}
+  m_LocalPosition: {x: -26.29, y: -19.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -38551,6 +38599,52 @@ MonoBehaviour:
   tileMapTr: {fileID: 267868480}
   spritesList: []
   moveObjectsList: []
+--- !u!1 &1626113513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1626113514}
+  - component: {fileID: 1626113515}
+  m_Layer: 0
+  m_Name: "07.\uBC293"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1626113514
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626113513}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 483054785}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1626113515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626113513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e0b3b96a280774ea7595ce1a8aba58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_M: {fileID: 2013731442}
+  player_W: {fileID: 1479713881}
 --- !u!1 &1627052200
 GameObject:
   m_ObjectHideFlags: 0
@@ -39408,7 +39502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0215b8fe77ce17440b3017f7de6db0a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentEvent: 3
+  CurrentEvent: 0
 --- !u!111 &1682769455
 Animation:
   m_ObjectHideFlags: 0
@@ -55479,7 +55573,7 @@ Transform:
   m_GameObject: {fileID: 2013731438}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.68, y: 4.28, z: 0}
+  m_LocalPosition: {x: 27.01, y: 5.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

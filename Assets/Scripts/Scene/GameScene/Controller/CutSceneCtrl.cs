@@ -54,7 +54,7 @@ public class CutSceneCtrl : MonoBehaviour
             function.gameObject.SetActive(false);
 
         // 프롤로그 시작
-        // StartCutScene(0);
+        StartCutScene(0);
     }
 
     public void StartCutScene(int cutSceneCode) => SetCutScene(GameManager.Data.cutSceneDatas[cutSceneCode]);

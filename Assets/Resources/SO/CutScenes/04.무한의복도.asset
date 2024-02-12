@@ -39,7 +39,7 @@ MonoBehaviour:
     camera_zoomSize: 0
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
-  - playTime: 1
+  - playTime: 0
     isDialogOn: 1
     dialogs:
       Player_M_dialog:
@@ -66,7 +66,7 @@ MonoBehaviour:
     camera_zoomSize: 0
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
-  - playTime: 1
+  - playTime: 0
     isDialogOn: 1
     dialogs:
       Player_M_dialog:
@@ -93,7 +93,7 @@ MonoBehaviour:
     camera_zoomSize: 0
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
-  - playTime: 1
+  - playTime: 0
     isDialogOn: 1
     dialogs:
       Player_M_dialog:
@@ -119,7 +119,7 @@ MonoBehaviour:
     camera_zoomSize: 0
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
-  - playTime: 1
+  - playTime: 0
     isDialogOn: 1
     dialogs:
       Player_M_dialog:
@@ -144,7 +144,7 @@ MonoBehaviour:
     camera_zoomSize: 0
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
-  - playTime: 1
+  - playTime: 0
     isDialogOn: 1
     dialogs:
       Player_M_dialog:
@@ -170,7 +170,7 @@ MonoBehaviour:
     camera_zoomSize: 0
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
-  - playTime: 1
+  - playTime: 0
     isDialogOn: 1
     dialogs:
       Player_M_dialog:
@@ -197,7 +197,7 @@ MonoBehaviour:
     camera_zoomSize: 0
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
-  - playTime: 1
+  - playTime: 0
     isDialogOn: 1
     dialogs:
       Player_M_dialog:
@@ -222,7 +222,7 @@ MonoBehaviour:
     camera_zoomSize: 0
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
-  - playTime: 3
+  - playTime: 2
     isDialogOn: 1
     dialogs:
       Player_M_dialog:
@@ -247,7 +247,7 @@ MonoBehaviour:
     camera_zoomSize: 0
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
-  - playTime: 0.25
+  - playTime: 0
     isDialogOn: 1
     dialogs:
       Player_M_dialog:
@@ -273,7 +273,7 @@ MonoBehaviour:
     camera_zoomSize: 0
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
-  - playTime: 1
+  - playTime: 0
     isDialogOn: 1
     dialogs:
       Player_M_dialog:
@@ -301,7 +301,7 @@ MonoBehaviour:
     camera_zoomSize: -1
     camera_zoomSpeed: 8
     camera_isZoomSmooth: 1
-  - playTime: 1
+  - playTime: 0
     isDialogOn: 1
     dialogs:
       Player_M_dialog:
@@ -326,7 +326,7 @@ MonoBehaviour:
     camera_zoomSize: 0
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
-  - playTime: 1
+  - playTime: 0
     isDialogOn: 1
     dialogs:
       Player_M_dialog:
@@ -354,7 +354,7 @@ MonoBehaviour:
     camera_zoomSize: 0
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
-  - playTime: 2
+  - playTime: 1
     isDialogOn: 1
     dialogs:
       Player_M_dialog:
@@ -380,7 +380,7 @@ MonoBehaviour:
     camera_zoomSize: 0
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
-  - playTime: 1
+  - playTime: 0
     isDialogOn: 1
     dialogs:
       Player_M_dialog:
@@ -405,7 +405,7 @@ MonoBehaviour:
     camera_zoomSize: 1
     camera_zoomSpeed: 2
     camera_isZoomSmooth: 1
-  - playTime: 1
+  - playTime: 0
     isDialogOn: 1
     dialogs:
       Player_M_dialog:
@@ -430,7 +430,7 @@ MonoBehaviour:
     camera_zoomSize: 0
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
-  - playTime: 1
+  - playTime: 0
     isDialogOn: 1
     dialogs:
       Player_M_dialog:
@@ -455,7 +455,7 @@ MonoBehaviour:
     camera_zoomSize: 0
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
-  - playTime: 1
+  - playTime: 0
     isDialogOn: 1
     dialogs:
       Player_M_dialog:
@@ -481,7 +481,7 @@ MonoBehaviour:
     camera_zoomSize: 0
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
-  - playTime: 1
+  - playTime: 0
     isDialogOn: 1
     dialogs:
       Player_M_dialog:
@@ -506,7 +506,7 @@ MonoBehaviour:
     camera_zoomSize: 0
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
-  - playTime: 1
+  - playTime: 0
     isDialogOn: 1
     dialogs:
       Player_M_dialog:
@@ -557,7 +557,7 @@ MonoBehaviour:
     camera_zoomSize: -1
     camera_zoomSpeed: 5
     camera_isZoomSmooth: 1
-  - playTime: 1
+  - playTime: 0
     isDialogOn: 1
     dialogs:
       Player_M_dialog:

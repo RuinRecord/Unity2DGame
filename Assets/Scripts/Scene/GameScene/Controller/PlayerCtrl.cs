@@ -158,8 +158,6 @@ public class PlayerCtrl : MonoBehaviour
         IsCameraOn = IsMoving = false;
         Max_HP = cur_HP = 100f;
         MoveSpeed = WALK_SPEED;
-
-        CutSceneCtrl.Instance.StartCutScene(4);
     }
 
 
@@ -395,32 +393,37 @@ public class PlayerCtrl : MonoBehaviour
     }
 
 
-    public void Move(Vector2 _dir)
+    public void Move(Vector2 dir)
     {
         State = PlayerState.WALK;
 
-        Vector2 movePos = (Vector2)this.transform.position + _dir * Time.deltaTime * MoveSpeed;
+        Vector2 movePos = (Vector2)this.transform.position + dir * Time.deltaTime * MoveSpeed;
         rigidbody.MovePosition(movePos);
-        SetAnimationDir(_dir);
+        SetAnimationDir(dir);
     }
 
 
-    public void SetMove(Vector2 dir, float dis, float moveSpeed)
+    public void SetMove(Vector2 dir, float dis, float moveSpeed, bool fixedDir = false)
     { 
         State = PlayerState.WALK;
         MoveSpeed = moveSpeed;
-        SetAnimationDir(dir);
+
+        if (!fixedDir)
+            SetAnimationDir(dir);
 
         if (currentMoveCo != null)
             StopCoroutine(currentMoveCo);
-        currentMoveCo = StartCoroutine(StartMove(dir, dis));
+        currentMoveCo = StartCoroutine(StartMove(dir, dis, fixedDir));
     }
 
 
-    IEnumerator StartMove(Vector2 dir, float dis)
+    IEnumerator StartMove(Vector2 dir, float dis, bool fixedDir = false)
     {
         Vector2 _curDir = dir * dis;
-        SetAnimationDir(dir);
+        
+        if (!fixedDir)
+            SetAnimationDir(dir);
+        
         IsMoving = true;
         IsCanInteract = IsCanMove = IsCanAttack = false;
 
