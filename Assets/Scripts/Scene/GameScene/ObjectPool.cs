@@ -18,32 +18,32 @@ public enum ObjectType
 /// </summary>
 public class ObjectPool : MonoBehaviour
 {
-    private static ObjectPool Instance;
+    private static ObjectPool instance;
 
-    static public ObjectPool instance
+    static public ObjectPool Instance
     {
         set
         {
-            if (Instance == null)
-                Instance = value;
+            if (instance == null)
+                instance = value;
         }
-        get { return Instance; }
+        get { return instance; }
     }
 
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
 
 
     /// <summary> 오브젝트가 생성될 위치 </summary>
-    public Transform objectTr;
+    public Transform ObjectTr;
 
 
     /// <summary> 생성될 오브젝트 Prefab </summary>
-    public GameObject tempMonster_prefab;
-    public GameObject monsterAttack_prefab;
+    public GameObject TempMonster_prefab;
+    public GameObject MonsterAttack_prefab;
 
 
     /// <summary> 오브젝트 관리 Queue </summary>
@@ -51,72 +51,56 @@ public class ObjectPool : MonoBehaviour
     Queue<MonsterAttack> monsterAttack_queue = new Queue<MonsterAttack>();
 
 
-    /// <summary>
-    /// 현재 오브젝트 풀에서 꺼내 쓸 자원이 없을 경우 새로운 오브젝트를 풀에 추가하는 함수
-    /// </summary>
-    /// <param name="type">생성할 오브젝트 종류</param>
-    /// <param name="tr">생성 위치를 위한 부모 Transform</param>
-    /// <param name="pos">생성 위치</param>
     private T CreateNewObject<T>(ObjectType type, Transform tr, Vector3 pos) where T : MonoBehaviour
     {
-        T newObj = null;
+        T _newObj = null;
 
         switch (type)
         {
-            case ObjectType.TempMonster: newObj = Instantiate(tempMonster_prefab, pos, Quaternion.identity, tr).GetComponent<T>(); break;
-            case ObjectType.MonsterAttack: newObj = Instantiate(monsterAttack_prefab, pos, Quaternion.identity, tr).GetComponent<T>(); break;
+            case ObjectType.TempMonster: _newObj = Instantiate(TempMonster_prefab, pos, Quaternion.identity, tr).GetComponent<T>(); break;
+            case ObjectType.MonsterAttack: _newObj = Instantiate(MonsterAttack_prefab, pos, Quaternion.identity, tr).GetComponent<T>(); break;
         }
 
-        newObj.gameObject.SetActive(false);
-        return newObj;
+        _newObj.gameObject.SetActive(false);
+        return _newObj;
     }
 
 
-    /// <summary>
-    /// (tr)을 부모 오브젝트로 삼고 (pos) 월드 포지션으로 (type) 종류에 해당하는 오브젝트를 풀에서 꺼내는 함수
-    /// </summary>
-    /// <param name="type">생성할 오브젝트 종류</param>
-    /// <param name="tr">생성 위치를 위한 부모 Transform</param>
-    /// <param name="pos">생성 위치</param>
     public T CreateObject<T>(ObjectType type, Transform tr, Vector3 pos) where T : MonoBehaviour
     {
-        int count = GetCount(type);
-        if (count > 0)
+        int _count = GetCount(type);
+        if (_count > 0)
         {
-            T obj = null;
+            T _obj = null;
 
             switch (type)
             {
-                case ObjectType.TempMonster: obj = tempMonster_queue.Dequeue().GetComponent<T>(); break;
-                case ObjectType.MonsterAttack: obj = monsterAttack_queue.Dequeue().GetComponent<T>(); break;
+                case ObjectType.TempMonster: _obj = tempMonster_queue.Dequeue().GetComponent<T>(); break;
+                case ObjectType.MonsterAttack: _obj = monsterAttack_queue.Dequeue().GetComponent<T>(); break;
             }
 
-            obj.transform.SetParent(tr);
-            obj.transform.position = pos;
-            obj.gameObject.SetActive(true);
+            _obj.transform.SetParent(tr);
+            _obj.transform.position = pos;
+            _obj.gameObject.SetActive(true);
 
-            MapCtrl.instance.AddSprite(obj.transform);
+            MapCtrl.Instance.AddSortRenderer(_obj.gameObject);
 
-            return obj;
+            return _obj;
         }
         else
         {
-            var newObj = CreateNewObject<T>(type, tr, pos);
-            newObj.transform.SetParent(tr);
-            newObj.transform.position = pos;
-            newObj.gameObject.SetActive(true);
+            var _newObj = CreateNewObject<T>(type, tr, pos);
+            _newObj.transform.SetParent(tr);
+            _newObj.transform.position = pos;
+            _newObj.gameObject.SetActive(true);
 
-            MapCtrl.instance.AddSprite(newObj.transform);
+            MapCtrl.Instance.AddSortRenderer(_newObj.gameObject);
 
-            return newObj;
+            return _newObj;
         }
     }
 
-    /// <summary>
-    /// (type) 종류에 해당하는 (obj) 오브젝트를 풀로 돌려보내는 함수
-    /// </summary>
-    /// <param name="type">돌려보낼 오브젝트 종류</param>
-    /// <param name="obj">오브젝트 풀로 돌려보낼 Instance Object</param>
+
     public void ReturnObject<T>(ObjectType type, T obj) where T : MonoBehaviour
     {
         if (obj == null)
@@ -135,20 +119,17 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// 현재까지 풀에 생성된 (type)에 해당하는 오브젝트 개수를 반환하는 함수
-    /// </summary>
-    /// <param name="type">수를 세릴 오브젝트 종류</param>
+
     private int GetCount(ObjectType type)
     {
-        int count = 0;
+        int _count = 0;
 
         switch (type)
         {
-            case ObjectType.TempMonster: count = tempMonster_queue.Count; break;
-            case ObjectType.MonsterAttack: count = monsterAttack_queue.Count; break;
+            case ObjectType.TempMonster: _count = tempMonster_queue.Count; break;
+            case ObjectType.MonsterAttack: _count = monsterAttack_queue.Count; break;
         }
 
-        return count;
+        return _count;
     }
 }

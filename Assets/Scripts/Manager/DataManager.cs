@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class DataManager : MonoBehaviour
 {
     /// <summary> 게임에 존재하는 아이템 개수 </summary>
@@ -42,12 +41,12 @@ public class DataManager : MonoBehaviour
     public InteractionDialogSO[] interactionDialogDatas;
 
 
-    /// <summary> 게임 BGM 리소스 </summary>
-    private AudioClip[] BGMs;
+    /// <summary> 상호 작용 대사 SO 데이터 </summary>
+    public InteractionDialogSO[] specialDialogDatas;
 
 
-    /// <summary> 게임 SE 리소스 </summary>
-    private AudioClip[] SEs;
+    /// <summary> 컷씬 SO 데이터 </summary>
+    public CutSceneSO[] cutSceneDatas;
 
 
     public void Init()
@@ -56,8 +55,8 @@ public class DataManager : MonoBehaviour
         captureDatas = LoadAll<CaptureSO>("SO/Captures");
         recordDatas = LoadAll<RecordSO>("SO/Records");
         interactionDialogDatas = LoadAll<InteractionDialogSO>("SO/Dialogs/InteractionObjects");
-        BGMs = LoadAll<AudioClip>("Audios/BGM");
-        SEs = LoadAll<AudioClip>("Audios/SE");
+        specialDialogDatas = LoadAll<InteractionDialogSO>("SO/Dialogs/SpecialCase");
+        cutSceneDatas = LoadAll<CutSceneSO>("SO/CutScenes");
     }
 
 
@@ -97,27 +96,5 @@ public class DataManager : MonoBehaviour
         }
 
         return resource;
-    }
-
-
-    /// <summary>
-    /// BGM 오디오 소스를 반환하는 함수
-    /// </summary>
-    /// <param name="_index">원하는 BGM</param>
-    /// <returns>BGM 오디오 소스</returns>
-    public AudioClip GetBGM(int _index)
-    {
-        return BGMs[_index];
-    }
-
-
-    /// <summary>
-    /// SE 오디오 소스를 반환하는 함수
-    /// </summary>
-    /// <param name="_index">원하는 SE</param>
-    /// <returns>SE 오디오 소스</returns>
-    public AudioClip GetSE(int _index)
-    {
-        return SEs[_index];
     }
 }

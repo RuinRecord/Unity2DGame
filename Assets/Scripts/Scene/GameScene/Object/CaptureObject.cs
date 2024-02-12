@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class CaptureObject : MonoBehaviour
 {
+    private const float SCALE_ZOOM_POWER = 0.1f;
+
     private SpriteRenderer spriteRenderer;
 
     /// <summary>
@@ -18,7 +20,7 @@ public class CaptureObject : MonoBehaviour
     private Material[] materials;
 
     /// <summary> 조사 이벤트 식별 번호 </summary>
-    public int code;
+    public int Code;
 
 
     // Start is called before the first frame update
@@ -39,11 +41,10 @@ public class CaptureObject : MonoBehaviour
             // 외곽선 있는 메터리얼로 변경
             spriteRenderer.material = materials[1];
 
-            // 플레이어 조사 기능 활성화
-            PlayerCtrl.instance.isCanCapture = true;
+            this.transform.localScale += Vector3.one * SCALE_ZOOM_POWER;
 
             // 조사 UI 이미지 켜기
-            UIManager._captureUI.CaptureInfoOn(this);
+            UIManager.CaptureUI.CaptureInfoOn(this);
         }
     }
 
@@ -55,11 +56,10 @@ public class CaptureObject : MonoBehaviour
             // 외곽선 없는 메터리얼로 변경
             spriteRenderer.material = materials[0];
 
-            // 플레이어 조사 기능 비활성화
-            PlayerCtrl.instance.isCanCapture = false;
+            this.transform.localScale -= Vector3.one * SCALE_ZOOM_POWER;
 
             // 조사 UI 이미지 끄기
-            UIManager._captureUI.CaptureInfoOff();
+            UIManager.CaptureUI.CaptureInfoOff();
         }
     }
 }

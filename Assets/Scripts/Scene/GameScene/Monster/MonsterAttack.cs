@@ -29,7 +29,7 @@ public class MonsterAttack : MonoBehaviour
         // 파괴 시간(destroyTime)이 지나면 사라짐
 
         // 오브젝트 풀링 삭제 요청 수행
-        ObjectPool.instance.ReturnObject(ObjectType.MonsterAttack, this);
+        ObjectPool.Instance.ReturnObject(ObjectType.MonsterAttack, this);
     }
 
     private void OnTriggerStay2D(Collider2D col)
@@ -38,13 +38,13 @@ public class MonsterAttack : MonoBehaviour
         if (col.transform.tag.Equals("Player"))
         {
             // 피격 판정 => 플레이어 HP 감소
-            PlayerCtrl.instance.cur_HP -= damage;
+            PlayerCtrl.Instance.cur_HP -= damage;
 
             // 실행되던 파괴 코루틴 함수 중지
             StopCoroutine("DestroyAttack");
 
             // 즉시 오브젝트 풀링 삭제 요청
-            ObjectPool.instance.ReturnObject(ObjectType.MonsterAttack, this);
+            ObjectPool.Instance.ReturnObject(ObjectType.MonsterAttack, this);
         }
     }
 }

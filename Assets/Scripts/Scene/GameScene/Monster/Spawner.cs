@@ -14,6 +14,10 @@ public class Spawner : MonoBehaviour
     private const float CREATE_DISTANCE = 2f;
 
 
+    /// <summary> 현재 스포너가 작동 중인지에 대한 여부 </summary>
+    public bool IsOn;
+
+
     /// <summary> 스포너가 생성하는 오브젝트 타입 </summary>
     [SerializeField]
     private ObjectType objectType;
@@ -33,10 +37,6 @@ public class Spawner : MonoBehaviour
     private int currentCreateNum;
 
 
-    /// <summary> 현재 스포너가 작동 중인지에 대한 여부 </summary>
-    public bool isOn;
-
-
     /// <summary> 최근에 생성한 적이 있는 지에 대한 여부 </summary>
     private bool isCreate;
 
@@ -46,14 +46,14 @@ public class Spawner : MonoBehaviour
     {
         objectList = new List<GameObject>();
         currentCreateNum = 0;
-        isOn = true;
+        IsOn = true;
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        if (!isOn)
+        if (!IsOn)
             return; // 활성화 상태가 아니라면 스폰 기능 미작동
 
         if (!isCreate)
@@ -78,21 +78,21 @@ public class Spawner : MonoBehaviour
             Debug.Log("몬스터 생성 실패: 최대 생성 개수 초과");
             yield break; // 최대 생성 개수를 넘기면 생성 취소
         }
-        if (Vector2.Distance(transform.position, PlayerCtrl.instance.transform.position) < CREATE_DISTANCE)
+        if (Vector2.Distance(transform.position, PlayerCtrl.Instance.transform.position) < CREATE_DISTANCE)
         {
             Debug.Log("몬스터 생성 실패: 플레이어 거리 가까움");
             yield break; // 플레이어 거리가 가까우면 생성 취소
         }
 
-        Vector2 create_pos = (Vector2)transform.position + new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+        Vector2 _createPos = (Vector2)transform.position + new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         currentCreateNum++;
         switch (objectType)
         {
             // 몬스터 생성
             case ObjectType.TempMonster:
-                var tempMonster = ObjectPool.instance.CreateObject<TempMonster>(ObjectType.TempMonster, ObjectPool.instance.objectTr, create_pos);
-                tempMonster.spawner = this;
-                objectList.Add(tempMonster.gameObject); 
+                var _tempMonster = ObjectPool.Instance.CreateObject<TempMonster>(ObjectType.TempMonster, ObjectPool.Instance.ObjectTr, _createPos);
+                _tempMonster.Spawner = this;
+                objectList.Add(_tempMonster.gameObject); 
                 break;
         }
 
