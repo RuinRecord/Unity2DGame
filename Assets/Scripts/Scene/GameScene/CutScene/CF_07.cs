@@ -12,6 +12,12 @@ public class CF_07 : CutSceneFunction
     public override void OnFuntionEnter()
     {
         base.OnFuntionEnter();
+
+        PlayerTag.Instance.SwitchTagImmedately(PlayerType.NONE);
+        CameraCtrl.Instance.SetCameraMode(CameraMode.Free);
+        CameraCtrl.Instance.SetCameraPos(new Vector2(12f, 5f));
+        player_W.MovePosition(new Vector3(7f, 4.5f, 0f));
+        player_M.MovePosition(new Vector3(9f, 4.5f, 0f));
     }
 
     public override void Play(int actionIdx)
@@ -20,6 +26,7 @@ public class CF_07 : CutSceneFunction
         {
             case 0: PlayerWalk(); break;
             case 3: PlayerWLookRight(); break;
+            case 9: DropItem(); break;
             case 10: EndFadeOut(); break;
             case 11: EndFadeIn(); break;
         }
@@ -29,6 +36,7 @@ public class CF_07 : CutSceneFunction
     {
         base.OnFunctionExit();
 
+        TutorialManager.Instance.ShowTooltip("'유진'을 설득하였습니다. 이제 시설을 조사하세요.");
         player_M.MoveSpeed = PlayerCtrl.WALK_SPEED;
         player_W.MoveSpeed = PlayerCtrl.WALK_SPEED;
     }
@@ -51,10 +59,12 @@ public class CF_07 : CutSceneFunction
 
     private void PlayerWLookRight() => player_W.SetAnimationDir(Vector2.right);
 
+    private void DropItem() => GameManager.Data.player.AddItem(2); // 무전기 획득
+
     private void EndFadeOut()
     {
         CutSceneCtrl.Instance.FadeOut(1.5f);
-        player_M.SetMove(Vector2.right, 2f, 2f);
+        player_M.SetMove(Vector2.right, 2.9f, 2f);
     }
 
     private void EndFadeIn()
