@@ -159,7 +159,7 @@ public class PlayerCtrl : MonoBehaviour
         Max_HP = cur_HP = 100f;
         MoveSpeed = WALK_SPEED;
 
-        //CutSceneCtrl.Instance.StartCutScene(7);
+        CutSceneCtrl.Instance.StartCutScene(7);
     }
 
 
