@@ -82,6 +82,8 @@ public class CameraCtrl : MonoBehaviour
 
     public void SetCameraMode(CameraMode cameraMode) => mode = cameraMode;
 
+    public void SetCameraSize(float size) => Camera.main.orthographicSize = size;
+
     public void SetCameraPos(Vector2 pos)
     {
         Vector3 cameraPos = pos;
