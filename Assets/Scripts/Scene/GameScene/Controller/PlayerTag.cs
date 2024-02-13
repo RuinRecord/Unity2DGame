@@ -74,6 +74,9 @@ public class PlayerTag : MonoBehaviour
         if (GameManager.Change.IsChanging)
             return false; // 현재 씬 및 위치 전환 중이면 동작 불가
 
+        if (!GameManager.Data.player.CheckHasItem(2))
+            return false;
+
         if (CutSceneCtrl.IsCutSceneOn)
             return false; // 컷씬이 진행중이면 동작 불가
 
