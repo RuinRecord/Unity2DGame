@@ -15,11 +15,6 @@ public class CanMoveObject : MonoBehaviour
 
     [SerializeField] private Vector3 startPos;
 
-    [SerializeField] private Vector2 up_gap;
-    [SerializeField] private Vector2 down_gap;
-    [SerializeField] private Vector2 right_gap;
-    [SerializeField] private Vector2 left_gap;
-
     /// <summary> 현재 물건이 밀릴 방향 벡터 </summary>
     private Vector2 direction;
 

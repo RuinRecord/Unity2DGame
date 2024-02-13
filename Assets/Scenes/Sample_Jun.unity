@@ -23110,10 +23110,6 @@ MonoBehaviour:
   eventCode: 0
   isDone: 0
   startPos: {x: -9, y: 18, z: 0}
-  up_gap: {x: 0, y: 0.35}
-  down_gap: {x: 0, y: -0.5}
-  right_gap: {x: 0.75, y: 0}
-  left_gap: {x: -0.75, y: 0}
   Player_m_dialogs:
   - Player_M_dialog:
       type: 0
@@ -23257,7 +23253,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.05}
+  m_Offset: {x: 0, y: 0.050000012}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.15}
@@ -23268,7 +23264,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 0.5}
+  m_Size: {x: 0.875, y: 0.5}
   m_EdgeRadius: 0
 --- !u!114 &806668343
 MonoBehaviour:
@@ -35678,7 +35674,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.35
 --- !u!4 &1484043932 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6037595602295775476, guid: 60697062b7b2b754bae5018084d566b6, type: 3}
@@ -55443,7 +55439,7 @@ Transform:
   m_GameObject: {fileID: 2013731438}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27.01, y: 5.07, z: 0}
+  m_LocalPosition: {x: 27.01, y: 3.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -55486,7 +55482,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.45
 --- !u!1001 &2036909628
 PrefabInstance:
   m_ObjectHideFlags: 0

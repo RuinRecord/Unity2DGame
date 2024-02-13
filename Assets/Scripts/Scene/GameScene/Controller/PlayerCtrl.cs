@@ -15,9 +15,9 @@ public class PlayerCtrl : MonoBehaviour
 
     private const float EVASION_SPEED = 6f;
 
-    private const float MOVE_OBJECT_DETECT_DISTANCE = 0.275f;
+    private const float MOVE_OBJECT_DETECT_DISTANCE = 0.525f;
 
-    private const float INTERACTION_OBJECT_DETECT_DISTANCE = 1f;
+    private const float INTERACTION_OBJECT_DETECT_DISTANCE = 1.25f;
 
     private const float RESET_MOVEOBJECT_FADE_TIME = 0.5f;
     #endregion
@@ -159,7 +159,7 @@ public class PlayerCtrl : MonoBehaviour
         Max_HP = cur_HP = 100f;
         MoveSpeed = WALK_SPEED;
 
-        CutSceneCtrl.Instance.StartCutScene(7);
+        //CutSceneCtrl.Instance.StartCutScene(7);
     }
 
 
@@ -180,22 +180,6 @@ public class PlayerCtrl : MonoBehaviour
             {
                 // 이동 방향키가 눌린 경우 플레이어 이동
                 Move(_dir);
-
-                // dir 방향에 움직일 수 있는 물체 감지
-                CurrentCanMoveOb = CheckMovingObject(_dir, MOVE_OBJECT_DETECT_DISTANCE);
-
-                if (CurrentCanMoveOb != null && !CurrentCanMoveOb.isDone)
-                {
-                    Mode = PlayerMode.PUSH;
-                    CurrentCanMoveOb.SetForceDirection(this.GetDirection());
-                }
-                else
-                {
-                    // 움직이는 물체 외 클릭
-                    // => 밀기 모드였다면 해제
-                    if (Mode.Equals(PlayerMode.PUSH))
-                        Mode = PlayerMode.DEFAULT;
-                }
             }
         }
     }
@@ -206,6 +190,23 @@ public class PlayerCtrl : MonoBehaviour
     {
         if (!CheckCanUpdate())
             return; // 아래 기능을 수행하지 못하는 상태
+
+        // 실시간으로 움직일 수 있는 물체 감지
+        CurrentCanMoveOb = CheckMovingObject(GetDirection(), MOVE_OBJECT_DETECT_DISTANCE);
+
+        if (CurrentCanMoveOb != null && !CurrentCanMoveOb.isDone)
+        {
+            if (Mode.Equals(PlayerMode.DEFAULT))
+                Mode = PlayerMode.PUSH;
+            CurrentCanMoveOb.SetForceDirection(GetDirection());
+        }
+        else
+        {
+            // 움직이는 물체 외 클릭
+            // => 밀기 모드였다면 해제
+            if (Mode.Equals(PlayerMode.PUSH))
+                Mode = PlayerMode.DEFAULT;
+        }
 
         // 입력에 대한 처리
         InputProcess();
