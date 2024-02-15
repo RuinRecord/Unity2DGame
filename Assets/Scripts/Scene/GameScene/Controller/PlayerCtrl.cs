@@ -46,6 +46,10 @@ public class PlayerCtrl : MonoBehaviour
     public CanMoveObject CurrentCanMoveOb;
 
 
+    /// <summary> 현재 조사 오브젝트와 충돌한 오브젝트 </summary>
+    public CaptureObject CurrentCaptureOb;
+
+
     private Coroutine currentMoveCo;
 
 
@@ -159,7 +163,7 @@ public class PlayerCtrl : MonoBehaviour
         Max_HP = cur_HP = 100f;
         MoveSpeed = WALK_SPEED;
 
-        CutSceneCtrl.Instance.StartCutScene(7);
+        // CutSceneCtrl.Instance.StartCutScene(7);
     }
 
 

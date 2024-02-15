@@ -1,48 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CaptureUICtrl : MonoBehaviour
 {
     private const float CAPTURE_CAMERA_IN_TIME = 0.5f;
 
+    [SerializeField] private Image polaroid;
 
-    /// <summary> 현재 조사 오브젝트와 충돌한 오브젝트 </summary>
-    private CaptureObject selected_captureObject;
-
-
-    /// <summary> 조사 카메라 연출 애니메이션 </summary>
-    [SerializeField]
-    private Animation captureCameraAnim;
+    [SerializeField] private Animation captureCameraAnim;
 
 
     public void Init()
     {
         captureCameraAnim.gameObject.SetActive(true);
-
-        CaptureInfoOff();
+        polaroid.color = new Color(1f, 1f, 1f, 0f);
     }
-
-    public void CaptureInfoOn(CaptureObject _selectedObject)
-        => selected_captureObject = _selectedObject;
-
-
-    public void CaptureInfoOff()
-        => selected_captureObject = null;
-
 
     public IEnumerator CaptureCameraIn()
     {
         yield return new WaitForSeconds(CAPTURE_CAMERA_IN_TIME);
         // 'CAPTURE_CAMERA_IN_TIME' 시간이 지나면
 
-        if (selected_captureObject != null && !GameManager.Data.player.CheckHasCapture(selected_captureObject.Code))
+        var captureOb = PlayerCtrl.Instance.CurrentCaptureOb;
+
+        if (captureOb != null && !GameManager.Data.player.CheckHasCapture(captureOb.Code))
         {
             // 애니메이션 시작 (여주인공의 사진 촬영 애니메이션이 끝나고 카메라 UI 애니메이션 등장)
             captureCameraAnim.Play("Camera_In");
 
+            Sprite sprite = GameManager.Data.captureDatas[captureOb.Code].Polaroid;
+            polaroid.sprite = sprite;
+            polaroid.GetComponent<RectTransform>().sizeDelta  = new Vector2(sprite.rect.width, sprite.rect.height);
+
             // 인벤토리에 등록
-            GameManager.Data.player.AddCapture(selected_captureObject.Code);
+            GameManager.Data.player.AddCapture(captureOb.Code);
 
             PlayerCtrl.Instance.IsCameraOn = true;
         }

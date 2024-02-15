@@ -6,11 +6,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CaptureSO", menuName = "Scriptable Object/CaptureSO")]
 public class CaptureSO : ScriptableObject
 {
-    public string captureName;
-    [TextArea] public string captureInfo;
+    public string CaptureName;
+    [TextArea] public string CaptureInfo;
 
-    public Sprite captureSprite;
+    public Sprite Image;
+
+    public Sprite Polaroid;
 
     /// <summary> 사진 식별 번호 </summary>
-    public int captureCode;
+    public int CaptureCode;
 }

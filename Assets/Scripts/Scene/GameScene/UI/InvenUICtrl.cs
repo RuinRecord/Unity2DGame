@@ -148,7 +148,7 @@ public class InvenUICtrl : MonoBehaviour
             {
                 int idx = captures[i + galleryPage * 6];
                 
-                Sprite itemSprite = GameManager.Data.captureDatas[idx].captureSprite;
+                Sprite itemSprite = GameManager.Data.captureDatas[idx].Image;
 
                 uIBox.images[0].sprite = itemSprite;
                 uIBox.images[0].color = Color.white;
@@ -231,10 +231,11 @@ public class InvenUICtrl : MonoBehaviour
 
         int captureCode = uiBox.index;
         CaptureSO captureData = GameManager.Data.captureDatas[captureCode];
-        Sprite itemSprite = captureData.captureSprite;
+        Sprite PolaroidSprite = captureData.Polaroid;
 
-        captureCardImage.sprite = itemSprite;
-        captureCardText.SetText($"{captureData.captureInfo}");
+        captureCardImage.sprite = PolaroidSprite;
+        captureCardImage.GetComponent<RectTransform>().sizeDelta = new Vector2(PolaroidSprite.rect.width, PolaroidSprite.rect.height);
+        captureCardText.SetText($"{captureData.CaptureInfo}");
     }
 
     public void OnRecordSlot()

@@ -43,8 +43,7 @@ public class CaptureObject : MonoBehaviour
 
             this.transform.localScale += Vector3.one * SCALE_ZOOM_POWER;
 
-            // 조사 UI 이미지 켜기
-            UIManager.CaptureUI.CaptureInfoOn(this);
+            PlayerCtrl.Instance.CurrentCaptureOb = this;
         }
     }
 
@@ -58,8 +57,7 @@ public class CaptureObject : MonoBehaviour
 
             this.transform.localScale -= Vector3.one * SCALE_ZOOM_POWER;
 
-            // 조사 UI 이미지 끄기
-            UIManager.CaptureUI.CaptureInfoOff();
+            PlayerCtrl.Instance.CurrentCaptureOb = null;
         }
     }
 }
