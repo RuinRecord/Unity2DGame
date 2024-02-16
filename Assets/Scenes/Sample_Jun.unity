@@ -236,6 +236,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &354066
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -401,6 +402,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &5523524
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -640,6 +642,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &12207151
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1771,6 +1774,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!61 &27600263
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2081,6 +2085,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &45404224
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2231,6 +2236,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &61617207
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4461,6 +4467,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &136613996
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4626,6 +4633,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &151850988
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4683,6 +4691,103 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6494410800201583043, guid: 2f43f3c236ee7834788df03e1f52186a, type: 3}
   m_PrefabInstance: {fileID: 1596820736}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &156424789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 156424790}
+  - component: {fileID: 156424792}
+  - component: {fileID: 156424791}
+  m_Layer: 8
+  m_Name: "\uB04C\uB9B0 \uC790\uAD6D"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &156424790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156424789}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 15.83, y: 20.637, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 325849697}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &156424791
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156424789}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.11804438, y: 0.8288231}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.15}
+    oldSize: {x: 0.5833333, y: 1}
+    newSize: {x: 0.5, y: 1.1666666}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.322547, y: 1.4430084}
+  m_EdgeRadius: 0
+--- !u!114 &156424792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156424789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c7eb411db2810448c2a7f3138b705b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Code: 28
+  HasItem: 0
+  HasRecord: 0
+  ItemCode: 0
+  RecordCode: 0
+  IsDestroy: 0
+  IsEvent: 1
 --- !u!1 &156824931
 GameObject:
   m_ObjectHideFlags: 0
@@ -4781,6 +4886,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &157701004
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6179,6 +6285,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &247791932
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14517,6 +14624,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!61 &303987044
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14756,6 +14864,7 @@ Transform:
   - {fileID: 1642133531}
   - {fileID: 914692016}
   - {fileID: 1440623768}
+  - {fileID: 156424790}
   - {fileID: 354062}
   - {fileID: 27600260}
   - {fileID: 303987041}
@@ -14936,6 +15045,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!1001 &351552548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15845,6 +15955,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &379377261
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16116,6 +16227,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &391970503
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16669,6 +16781,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &440865040
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16834,6 +16947,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &445867908
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17226,6 +17340,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &460207499
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17391,6 +17506,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &464864529
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17967,6 +18083,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &480029059
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18056,6 +18173,7 @@ Transform:
   - {fileID: 110019624}
   - {fileID: 968678340}
   - {fileID: 1626113514}
+  - {fileID: 1070484191}
   m_Father: {fileID: 1682769453}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &485082441
@@ -18271,6 +18389,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &485165703
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18676,6 +18795,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &525017647
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19022,6 +19142,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &528080228
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19262,6 +19383,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &546057465
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19427,6 +19549,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &563419842
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19810,6 +19933,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &575097817
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20217,6 +20341,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &585502709
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22287,6 +22412,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &725605385
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24671,6 +24797,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &821755374
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24931,6 +25058,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &829510020
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25344,6 +25472,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!1 &875932744
 GameObject:
   m_ObjectHideFlags: 0
@@ -25557,6 +25686,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &879842985
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25676,6 +25806,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &888158880
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26406,6 +26537,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &914692020
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28329,6 +28461,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &1004008427
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29532,6 +29665,51 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &1070484190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1070484191}
+  - component: {fileID: 1070484192}
+  m_Layer: 0
+  m_Name: "08.\uB04C\uB9B0\uC790\uAD6D"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1070484191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070484190}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 483054785}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1070484192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070484190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d5a9ca47392dcc43ab22f70aba91215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_W: {fileID: 1479713881}
 --- !u!1 &1074983903
 GameObject:
   m_ObjectHideFlags: 0
@@ -29706,6 +29884,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &1075103938
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29960,6 +30139,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &1087277994
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30680,6 +30860,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!114 &1110184627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31361,6 +31542,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &1135336169
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32075,6 +32257,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &1155635540
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33032,6 +33215,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &1204534859
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33212,6 +33396,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &1205716831
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -34273,6 +34458,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &1330459072
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35684,6 +35870,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!1 &1400924762
 GameObject:
   m_ObjectHideFlags: 0
@@ -36492,6 +36679,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &1440623772
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36859,6 +37047,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!1 &1456295173
 GameObject:
   m_ObjectHideFlags: 0
@@ -37413,7 +37602,7 @@ Transform:
   m_GameObject: {fileID: 1479713877}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -26.29, y: -19.43, z: 0}
+  m_LocalPosition: {x: 17, y: 20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -37697,7 +37886,7 @@ Transform:
   m_GameObject: {fileID: 1499660805}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.15, y: 19.96, z: -10}
+  m_LocalPosition: {x: 18, y: 20, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -38239,6 +38428,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &1526882912
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -38404,6 +38594,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &1531143154
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -38645,6 +38836,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!1 &1534416729
 GameObject:
   m_ObjectHideFlags: 0
@@ -39504,6 +39696,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &1582926577
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -41113,6 +41306,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &1642133535
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -53009,6 +53203,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &1793260648
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -54366,6 +54561,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &1810828386
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -54531,6 +54727,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &1816335128
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -54948,6 +55145,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &1849828561
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -55574,6 +55772,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &1860476783
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -55925,6 +56124,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &1893477354
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -57316,6 +57516,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &1969221011
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -58406,6 +58607,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &2055040798
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -58571,6 +58773,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &2063438825
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -63188,6 +63391,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!212 &2105198508
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -64532,6 +64736,7 @@ MonoBehaviour:
   ItemCode: 0
   RecordCode: 0
   IsDestroy: 0
+  IsEvent: 0
 --- !u!61 &7799206387800140423
 BoxCollider2D:
   m_ObjectHideFlags: 0

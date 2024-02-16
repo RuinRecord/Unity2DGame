@@ -193,6 +193,17 @@ public class InteractUICtrl : MonoBehaviour
         string _words = dialog.GetWords(playerType);
         float _printTime = dialog.GetPrintTime(playerType);
 
+        // 이벤트 상호작용이면 대사 출력 취소
+        if (PlayerTag.PlayerType.Equals(PlayerType.WOMEN))
+        {
+            if (currentObject.IsEvent)
+            {
+                currentObject.EventOn();
+                isDoneAll = true;
+                yield break;
+            }
+        }
+
         if (_printTime == 0f)
             _printTime = DEFAULT_PRINT_TIME;
 
@@ -239,7 +250,7 @@ public class InteractUICtrl : MonoBehaviour
                 isItemEventCheckOn = true;
             }
 
-            // 아이템 체크 및 획득
+            // 조사일지 체크 및 획득
             if (CheckDropRecord())
             {
                 currentObject.DropRecord();

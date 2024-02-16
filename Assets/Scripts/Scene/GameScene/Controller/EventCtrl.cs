@@ -66,6 +66,6 @@ public class EventCtrl : MonoBehaviour
     private void ShowTooptipAsEvent(string tooltipText)
     {
         CurrentEvent++;
-        TutorialManager.Instance.ShowTooltip(tooltipText);
+        TutorialManager.Instance.ShowTutorial(tooltipText);
     }
 }

@@ -13,11 +13,11 @@ public class CF_07 : CutSceneFunction
     {
         base.OnFuntionEnter();
 
-        //PlayerTag.Instance.SwitchTagImmedately(PlayerType.NONE);
-        //CameraCtrl.Instance.SetCameraMode(CameraMode.Free);
-        //CameraCtrl.Instance.SetCameraPos(new Vector2(12f, 5f));
-        //player_W.MovePosition(new Vector3(7f, 4.5f, 0f));
-        //player_M.MovePosition(new Vector3(9f, 4.5f, 0f));
+        PlayerTag.Instance.SwitchTagImmedately(PlayerType.NONE);
+        CameraCtrl.Instance.SetCameraMode(CameraMode.Free);
+        CameraCtrl.Instance.SetCameraPos(new Vector2(12f, 5f));
+        player_W.MovePosition(new Vector3(7f, 4.5f, 0f));
+        player_M.MovePosition(new Vector3(9f, 4.5f, 0f));
     }
 
     public override void Play(int actionIdx)
@@ -36,7 +36,7 @@ public class CF_07 : CutSceneFunction
     {
         base.OnFunctionExit();
 
-        TutorialManager.Instance.ShowTooltip("'유진'을 설득하였습니다. 이제 시설을 조사하세요.");
+        TutorialManager.Instance.ShowTutorial("'유진'을 설득하였습니다. 이제 시설을 조사하세요.");
         player_M.MoveSpeed = PlayerCtrl.WALK_SPEED;
         player_W.MoveSpeed = PlayerCtrl.WALK_SPEED;
     }
@@ -51,6 +51,7 @@ public class CF_07 : CutSceneFunction
 
     private void PlayerWLookUp()
     {
+        player_W.MoveSpeed = PlayerCtrl.WALK_SPEED;
         player_W.StartJump();
         player_W.SetAnimationDir(Vector2.up);
     }

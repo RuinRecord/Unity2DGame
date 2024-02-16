@@ -34,7 +34,7 @@ public class TutorialManager : MonoBehaviour
 
     public void SetActiveUI(bool isActive) => UI.gameObject.SetActive(isActive);
 
-    public void ShowTooltip(string info)
+    public void ShowTutorial(string info)
     {
         IsTutorialOn = true;
         UI.ShowTooltip(info);

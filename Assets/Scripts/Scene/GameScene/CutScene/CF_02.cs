@@ -47,7 +47,7 @@ public class CF_02 : CutSceneFunction
         base.OnFunctionExit();
 
         player_M.MoveSpeed = PlayerCtrl.WALK_SPEED;
-        TutorialManager.Instance.ShowTooltip("시점이 변경되었습니다. 상자에 붙어 [Space] 키로 가운데 상자를 표시된 위치로 옮기세요.\n[R] 키를 누르면 재시작이 가능합니다.");
+        TutorialManager.Instance.ShowTutorial("시점이 변경되었습니다. 상자에 붙어 [Space] 키로 가운데 상자를 표시된 위치로 옮기세요.\n[R] 키를 누르면 재시작이 가능합니다.");
     }
 
     IEnumerator StartFootStepAudio(string SE)
@@ -75,6 +75,7 @@ public class CF_02 : CutSceneFunction
 
     private void PlayerWJump()
     {
+        player_W.MoveSpeed = PlayerCtrl.WALK_SPEED;
         player_W.StartJump();
         player_W.SetAnimationDir(Vector2.down);
     }

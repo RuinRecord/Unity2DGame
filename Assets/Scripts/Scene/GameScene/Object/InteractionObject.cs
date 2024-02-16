@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 
@@ -28,6 +29,9 @@ public class InteractionObject : MonoBehaviour
 
     /// <summary> 획득 시 맵 오브젝트가 사라지는지에 대한 여부 </summary>
     public bool IsDestroy;
+
+    /// <summary> 획득 시 이벤트 컷씬이 발동하는 지에 대한 여부 </summary>
+    public bool IsEvent;
 
 
     protected virtual void Start()
@@ -81,6 +85,17 @@ public class InteractionObject : MonoBehaviour
         if (IsDestroy)
         {
             MapCtrl.Instance.DestroyObject(this.gameObject);
+        }
+    }
+
+    public void EventOn()
+    {
+        if (!IsEvent)
+            return;
+
+        switch (Code)
+        {
+            case 28: CutSceneCtrl.Instance.StartCutScene(8); break;
         }
     }
 }
