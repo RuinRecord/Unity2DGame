@@ -60,6 +60,11 @@ public class EventCtrl : MonoBehaviour
                     CloseTooptipAsEvent();
                     CutSceneCtrl.Instance.StartCutScene(3);
                 }
+                else if (currentEvent == Event.StartTagTutorial)
+                {
+                    CloseTooptipAsEvent();
+                    CutSceneCtrl.Instance.StartCutScene(9);
+                }
                 break;
 
             case EventTiming.CutScene:

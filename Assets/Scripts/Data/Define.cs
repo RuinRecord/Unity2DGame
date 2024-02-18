@@ -67,7 +67,8 @@ public enum Event
     AfterMeetPlayerM,
     BeforeTagTutorial,
     StartTagTutorial,
-    DoneTagTutorial
+    FindSecretRoom,
+    OpenVent,
 }
 
 public enum EventTiming

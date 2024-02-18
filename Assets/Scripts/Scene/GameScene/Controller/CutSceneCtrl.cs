@@ -54,9 +54,15 @@ public class CutSceneCtrl : MonoBehaviour
 
         // 프롤로그 시작
         // StartCutScene(0);
+        GameManager.Data.player.AddItem(2);
     }
 
-    public void StartCutScene(int cutSceneCode) => SetCutScene(GameManager.Data.cutSceneDatas[cutSceneCode]);
+    public void StartCutScene(int cutSceneCode)
+    {
+        currentActionIdx = 0;
+        this.cutSceneCode = cutSceneCode;
+        SetCutScene(GameManager.Data.cutSceneDatas[cutSceneCode]);
+    }
 
 
     public void FadeIn(float fadeTime)
@@ -74,10 +80,7 @@ public class CutSceneCtrl : MonoBehaviour
     private void SetCutScene(CutSceneSO cutSceneSO)
     {
         IsCutSceneOn = true;
-        currentActionIdx = 0;
-        cutSceneCode = cutSceneSO.cutSceneCode;
-        SetEventOn(cutSceneSO.cutSceneCode);
-
+        SetEventOn(cutSceneCode);
         StartCoroutine(StartCutScene(cutSceneSO));
     }
 

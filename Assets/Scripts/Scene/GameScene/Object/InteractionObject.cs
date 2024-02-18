@@ -95,7 +95,10 @@ public class InteractionObject : MonoBehaviour
 
         switch (Code)
         {
-            case 28: CutSceneCtrl.Instance.StartCutScene(8); break;
+            case 28: 
+                DestroyImmediate(this.gameObject);
+                CutSceneCtrl.Instance.StartCutScene(8); 
+                break;
         }
     }
 }
