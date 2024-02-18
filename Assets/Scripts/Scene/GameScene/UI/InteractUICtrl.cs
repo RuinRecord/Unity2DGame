@@ -135,14 +135,14 @@ public class InteractUICtrl : MonoBehaviour
                 if (isItemEventCheckOn)
                 {
                     isItemEventCheckOn = false;
-                    EventCtrl.Instance.CheckEvent(EventType.GetItem);
+                    EventCtrl.Instance.CheckEvent(EventTiming.GetItem);
                 }
 
                 // 이벤트 체크
                 if (isRecordEventCheckOn)
                 {
                     isRecordEventCheckOn = false;
-                    EventCtrl.Instance.CheckEvent(EventType.GetRecord);
+                    EventCtrl.Instance.CheckEvent(EventTiming.GetRecord);
                 }
 
                 // 만약 연출용 대화였다면
@@ -196,7 +196,7 @@ public class InteractUICtrl : MonoBehaviour
         // 이벤트 상호작용이면 대사 출력 취소
         if (PlayerTag.PlayerType.Equals(PlayerType.WOMEN))
         {
-            if (currentObject.IsEvent)
+            if (currentObject != null && currentObject.IsEvent)
             {
                 currentObject.EventOn();
                 isDoneAll = true;

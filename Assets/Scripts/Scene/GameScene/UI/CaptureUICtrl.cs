@@ -69,6 +69,6 @@ public class CaptureUICtrl : MonoBehaviour
 
         PlayerCtrl.Instance.State = PlayerState.IDLE;
 
-        EventCtrl.Instance.CheckEvent(EventType.Capture);
+        EventCtrl.Instance.CheckEvent(EventTiming.Capture);
     }
 }

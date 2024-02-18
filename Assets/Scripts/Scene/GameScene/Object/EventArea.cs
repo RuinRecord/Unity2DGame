@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EventArea : MonoBehaviour
 {
-    [SerializeField] private int eventCode;
+    [SerializeField] private Event @event;
 
     public bool isDone;
 
@@ -18,9 +18,9 @@ public class EventArea : MonoBehaviour
         if (col.tag == "MovingObject")
         {
             CanMoveObject moveGo = col.GetComponent<CanMoveObject>();
-            if (moveGo.eventCode == this.eventCode)
+            if (moveGo.@event == this.@event)
             {
-                EventCtrl.Instance.CheckEvent(EventType.MoveObject);
+                EventCtrl.Instance.CheckEvent(EventTiming.MoveObject);
                 moveGo.isDone = true;
                 this.isDone = true;
             }

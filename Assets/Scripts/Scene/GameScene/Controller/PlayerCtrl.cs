@@ -198,7 +198,7 @@ public class PlayerCtrl : MonoBehaviour
         // 실시간으로 움직일 수 있는 물체 감지
         CurrentCanMoveOb = CheckMovingObject(GetDirection(), MOVE_OBJECT_DETECT_DISTANCE);
 
-        if (CurrentCanMoveOb != null && !CurrentCanMoveOb.isDone)
+        if (CurrentCanMoveOb != null && CurrentCanMoveOb.CheckCanMove() && !CurrentCanMoveOb.isDone)
         {
             if (Mode.Equals(PlayerMode.DEFAULT))
                 Mode = PlayerMode.PUSH;
@@ -293,10 +293,11 @@ public class PlayerCtrl : MonoBehaviour
         {
             if (IsCanCapture && Input.GetKeyDown(KeyCode.Q))
             {
+                // 카메라 조사
                 if (!IsCameraOn)
-                    StartCapture(); // 촬영
+                    StartCapture();
                 else
-                    EndCapture(); // 카메라 끄기 (Q 버튼)
+                    EndCapture();
             }
 
             if (IsCanInven && Input.GetKeyDown(KeyCode.E))
@@ -344,9 +345,8 @@ public class PlayerCtrl : MonoBehaviour
                 {
                     // 상호작용
                     Vector2Int _dir = GetDirection();
-
-                    // 상호작용 오브젝트 탐색
                     RaycastHit2D _hit = Physics2D.Raycast(this.transform.position, _dir, INTERACTION_OBJECT_DETECT_DISTANCE, 256);
+
                     if (_hit)
                     {
                         // 있으면 상호작용 대화 시스템 시작
@@ -381,12 +381,10 @@ public class PlayerCtrl : MonoBehaviour
                     // 물건 밀기
                     if (CurrentCanMoveOb == null)
                     {
-                        // 움직이는 오브젝트가 Null이면 오류 반환
                         Debug.LogError("Error!! MovingObject is null?!");
                         return;
                     }
 
-                    // 물체 이동
                     CurrentCanMoveOb.Push();
                 }
                 else if (playerType.Equals(PlayerType.WOMEN))

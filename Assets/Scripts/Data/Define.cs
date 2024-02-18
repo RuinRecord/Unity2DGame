@@ -57,13 +57,27 @@ public enum LightColor
     Yellow,
 }
 
-public enum EventType
+public enum Event
+{
+    StartPrologue,
+    DoneCaptureTutorial,
+    DoneRecordTutorial,
+    BeforeMeetPlayerM,
+    PlayerMTutorial,
+    AfterMeetPlayerM,
+    BeforeTagTutorial,
+    StartTagTutorial,
+    DoneTagTutorial
+}
+
+public enum EventTiming
 {
     Capture,
     GetItem,
     GetRecord,
     Inventory,
     MoveObject,
+    CutScene,
 }
 
 public enum BlockType

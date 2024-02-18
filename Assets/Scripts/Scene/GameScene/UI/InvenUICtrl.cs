@@ -68,7 +68,7 @@ public class InvenUICtrl : MonoBehaviour
         GameManager.Sound.PlaySE("가방여닫기");
 
         if (!IsOnInven)
-            EventCtrl.Instance.CheckEvent(EventType.Inventory);
+            EventCtrl.Instance.CheckEvent(EventTiming.Inventory);
     }
 
     public void SetMenus(int index)

@@ -9,7 +9,7 @@ public class CanMoveObject : MonoBehaviour
     private const float MOVE_SPEED = 3f;
     private const int CANNOT_MOVE_LAYERMASK = 64 + 128 + 256 + 512 + 1024;
 
-    public int eventCode;
+    public Event @event;
 
     public bool isDone;
 
@@ -28,6 +28,12 @@ public class CanMoveObject : MonoBehaviour
     /// <summary> 물체가 움직일 수 있는지 체크하고 물체를 움직이게 하는 함수이다. </summary>
     public bool Push()
     {
+        if (!CheckCanMove())
+        {
+            Debug.Log($"Event timing is not current : {@event}");
+            return false;
+        }
+
         bool _isSuccess;
 
         // 바라보는 방향에 장애물 확인
@@ -47,11 +53,15 @@ public class CanMoveObject : MonoBehaviour
     public void ReSetPosition()
     {
         if (isDone)
+        {
+            Debug.Log("This object is already done.");
             return;
+        }
 
         this.transform.localPosition = startPos;
     }
 
+    public bool CheckCanMove() => EventCtrl.Instance.CurrentEvent == @event;
 
     /// <summary> 물체를 움직이는 코루틴 함수이다. </summary>
     IEnumerator StartMove()
@@ -78,8 +88,14 @@ public class CanMoveObject : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D col)
     {
-        if (PlayerCtrl.Instance.CurrentCanMoveOb == this)
+        if (PlayerCtrl.Instance?.CurrentCanMoveOb == this)
         {
+            if (!CheckCanMove())
+            {
+                Debug.Log($"Event timing is not current : {@event}");
+                return;
+            }
+
             // 만약 플레이어가 클릭한 MovingObject에 다다르면
             // 모드 변경
             PlayerCtrl.Instance.Mode = PlayerMode.PUSH;

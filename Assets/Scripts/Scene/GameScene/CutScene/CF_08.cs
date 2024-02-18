@@ -80,7 +80,7 @@ public class CF_08 : CutSceneFunction
     {
         CutSceneCtrl.Instance.FadeIn(1f);
 
-        TutorialManager.Instance.ShowTutorial("[TAG] 버튼을 눌러 유진 시점은 전환하여 선반을 미세요.");
+        EventCtrl.Instance.SetCurrentEvent(Event.BeforeTagTutorial);
         PlayerTag.Instance.SwitchTagImmedately(PlayerType.WOMEN);
         CameraCtrl.Instance.SetCameraMode(CameraMode.PlayerW);
     }
