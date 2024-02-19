@@ -39,6 +39,7 @@ public enum PlayerMode
 {
     DEFAULT,    // 평소
     PUSH,       // 밀기 (남주만 해당)
+    CRAWL,      // 기기 (여주만 해당)
 }
 
 public enum LightAnim
@@ -94,4 +95,17 @@ public enum CameraMode
     PlayerW,
     PlayerM,
     Free
+}
+
+public enum DoorType
+{
+    Ivory_window,
+    Navy_no_window,
+    Ivory_no_window,
+}
+
+public enum Scene
+{
+    MainScene,
+    GameScene
 }

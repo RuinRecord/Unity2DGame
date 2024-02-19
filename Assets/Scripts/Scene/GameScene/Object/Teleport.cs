@@ -2,36 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum DoorType
-{
-    Ivory_window,
-    Navy_no_window,
-    Ivory_no_window,
-}
-
 public class Teleport : MonoBehaviour
 {
-    [SerializeField]
-    private DoorType doorType;
-
+    [SerializeField] private DoorType doorType;
 
     /// <summary> 포탈과 연결된 목적지 </summary>
-    [SerializeField]
-    private Vector3 destination;
+    [SerializeField] private Vector3 destination;
 
+    [SerializeField] private Vector2 direction;
+    public Vector2 Direction => direction;
 
     /// <summary> 포탈 사용 시 출력되는 오디오 </summary>
-    [SerializeField]
-    private AudioClip audioClip;
+    [SerializeField] private AudioClip audioClip;
 
-
-    [SerializeField]
-    private Animator animator;
-
+    [SerializeField] private Animator animator;
 
     /// <summary> 현재 사용 가능한 포탈인지에 대한 여부 </summary>
     public bool IsOn;
 
+    public bool IsGoVent;
 
     private void Start()
     {

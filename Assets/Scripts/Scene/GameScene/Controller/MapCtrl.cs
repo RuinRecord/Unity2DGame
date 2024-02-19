@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.Tilemaps;
 
 /// <summary>
@@ -36,6 +37,8 @@ public class MapCtrl : MonoBehaviour
     [SerializeField] private List<CanMoveObject> moveObjectsList;
     public List<CanMoveObject> MoveObjectsList => moveObjectsList;
 
+    [SerializeField] private Light2D globalLight;
+
 
     private void Awake()
     {
@@ -48,6 +51,11 @@ public class MapCtrl : MonoBehaviour
         moveObjectsList.AddRange(GetComponentsInChildren<CanMoveObject>());
     }
 
+    private void Start()
+    {
+        SetGlobalLight(0.5f);
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -58,8 +66,7 @@ public class MapCtrl : MonoBehaviour
     }
 
 
-    public bool CheckValidArea(Vector2 _destination) 
-        => !Physics2D.OverlapBox(_destination, Vector2.one * 0.75f, 0f, CanNotMove_layerMask);
+    public bool CheckValidArea(Vector2 _destination)  => !Physics2D.OverlapBox(_destination, Vector2.one * 0.75f, 0f, CanNotMove_layerMask);
 
 
     private void SetDepthAllofMapObjects()
@@ -123,6 +130,7 @@ public class MapCtrl : MonoBehaviour
         Destroy(ob);
     }
 
-    public bool IsEqualFloat(float a, float b)
-        => Mathf.Abs(a - b) <= 0.01f;
+    public bool IsEqualFloat(float a, float b) => Mathf.Abs(a - b) <= 0.01f;
+
+    public void SetGlobalLight(float intensity) => globalLight.intensity = intensity;
 }
