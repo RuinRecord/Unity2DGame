@@ -8,6 +8,8 @@ public class CF_09 : CutSceneFunction
 {
     [SerializeField] private PlayerCtrl player_W;
     [SerializeField] private PlayerCtrl player_M;
+    [SerializeField] private InteractionObject vent;
+    [SerializeField] private InteractionObject ladder;
 
     public override void OnFuntionEnter()
     {
@@ -23,8 +25,8 @@ public class CF_09 : CutSceneFunction
             case 9: FadeOut(); break;
             case 10: GoToRoom(); break;
             case 11: FadeIn(); break;
-            case 17: EndFadeIn(); break;
-            case 18: EndFadeOut(); break;
+            case 17: EndFadeOut(); break;
+            case 18: EndFadeIn(); break;
         }
     }
 
@@ -32,6 +34,10 @@ public class CF_09 : CutSceneFunction
     {
         base.OnFunctionExit();
 
+        TutorialManager.Instance.ShowTutorial("비밀스러운 공간을 발견했습니다. 추가로 더 조사하세요.");
+
+        player_M.CurrentTeleport = null;
+        player_W.CurrentTeleport = null;
         player_W.MoveSpeed = PlayerCtrl.WALK_SPEED;
         player_M.MoveSpeed = PlayerCtrl.WALK_SPEED;
     }
@@ -82,5 +88,7 @@ public class CF_09 : CutSceneFunction
 
         player_M.MovePosition(new Vector2(27f, 5f));
         player_M.SetAnimationDir(Vector2.down);
+        vent.Code = 31;
+        ladder.Code = 32;
     }
 }

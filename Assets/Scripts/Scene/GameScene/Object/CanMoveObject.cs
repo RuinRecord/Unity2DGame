@@ -10,6 +10,8 @@ public class CanMoveObject : MonoBehaviour
 
     [SerializeField] private Collider2D col;
 
+    [SerializeField] private AudioClip clip;
+
     [SerializeField] private Vector3 startPos;
 
     [SerializeField] private float moveSpeed;
@@ -48,7 +50,7 @@ public class CanMoveObject : MonoBehaviour
             StartCoroutine(StartMove(moveSpeed));
 
             // 끄는 소리 오디오 실행
-            GameManager.Sound.PlaySE("상자밀기");
+            GameManager.Sound.PlaySE(clip);
         }
         else
         {

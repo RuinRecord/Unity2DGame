@@ -62,14 +62,14 @@ public class EventCtrl : MonoBehaviour
                 }
                 else if (currentEvent == Event.StartTagTutorial)
                 {
-                    CloseTooptipAsEvent();
+                    currentEvent++;
                     CutSceneCtrl.Instance.StartCutScene(9);
                 }
                 break;
 
             case EventTiming.CutScene:
                 if (currentEvent == Event.BeforeTagTutorial)
-                    ShowTooptipAsEvent("[TAG] 버튼을 눌러 유진 시점은 전환하여 선반을 미세요.");
+                    ShowTooptipAsEvent("[TAB] 버튼을 눌러 유진 시점은 전환하여 선반을 미세요.");
                 break;
         }
     }

@@ -163,6 +163,17 @@ public class InteractUICtrl : MonoBehaviour
         currentDialogs = currentObject.Dialogs.ToArray();
         currentIdx = 0;
 
+        // 이벤트 상호작용이면 대사 출력 취소
+        if (PlayerTag.PlayerType.Equals(PlayerType.WOMEN))
+        {
+            if (currentObject.IsEvent)
+            {
+                currentObject.EventOn();
+                isDoneAll = true;
+                return;
+            }
+        }
+
         // 출력 시작
         currentInfoCo = StartCoroutine(ShowInfoText(currentDialogs[currentIdx]));
         StartCoroutine(DelayedSetInteractOn(true));
@@ -192,17 +203,6 @@ public class InteractUICtrl : MonoBehaviour
         DialogType _dialogType = dialog.GetDialogType(playerType);
         string _words = dialog.GetWords(playerType);
         float _printTime = dialog.GetPrintTime(playerType);
-
-        // 이벤트 상호작용이면 대사 출력 취소
-        if (PlayerTag.PlayerType.Equals(PlayerType.WOMEN))
-        {
-            if (currentObject != null && currentObject.IsEvent)
-            {
-                currentObject.EventOn();
-                isDoneAll = true;
-                yield break;
-            }
-        }
 
         if (_printTime == 0f)
             _printTime = DEFAULT_PRINT_TIME;
