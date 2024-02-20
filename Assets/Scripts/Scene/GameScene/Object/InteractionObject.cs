@@ -69,13 +69,14 @@ public class InteractionObject : MonoBehaviour
 
         switch (Code)
         {
-            case 5: Code = 12; break; // (아)화분 -> 화분 변경
+            case 5: Code = 12; break; // (열쇠)화분 -> 화분 변경
             case 32: 
                 TutorialManager.Instance.ShowTutorial("사다리를 활용할 수 있는 장소를 찾아보세요.");
                 InteractionObject interactionObject = GameObject.Find("(Find전용)환풍구").GetComponent<InteractionObject>();
                 interactionObject.Code = 33;
                 interactionObject.IsEvent = true;
                 break;
+            case 34: Code = 6; break; // (손전등)화분 -> 철제선반 변경
         }
 
         // 맵 오브젝트 제거
