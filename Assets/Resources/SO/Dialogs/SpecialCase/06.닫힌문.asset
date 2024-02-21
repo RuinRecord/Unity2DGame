@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9db115f7612f572419263a9404947bdb, type: 3}
+  m_Name: "06.\uB2EB\uD78C\uBB38"
+  m_EditorClassIdentifier: 
+  itemSO: {fileID: 0}
+  recordSO: {fileID: 0}
+  dialogs:
+  - Player_M_dialog:
+      type: 0
+      audioClip: {fileID: 8300000, guid: 2bee39a4bacf2114fb63d878655ba23c, type: 3}
+      leftSprite: {fileID: 0}
+      rightSprite: {fileID: 0}
+      words: "\uBB38\uC774 \uAD73\uAC8C \uB2EB\uD600 \uC5F4\uB9AC\uC9C0 \uC54A\uB294\uB2E4."
+      print_time: 0
+    Player_W_dialog:
+      type: 0
+      audioClip: {fileID: 8300000, guid: 2bee39a4bacf2114fb63d878655ba23c, type: 3}
+      leftSprite: {fileID: 0}
+      rightSprite: {fileID: 0}
+      words: "\uBB38\uC774 \uAD73\uAC8C \uB2EB\uD600 \uC5F4\uB9AC\uC9C0 \uC54A\uB294\uB2E4."
+      print_time: 0
+  - Player_M_dialog:
+      type: 1
+      audioClip: {fileID: 0}
+      leftSprite: {fileID: 0}
+      rightSprite: {fileID: 0}
+      words: "[ \uC720\uC9C4 ]\n\n\uB0B4\uAC00 \uAD00\uB9AC\uC790\uB85C \uC784\uBA85\uB418\uAE30
+        \uC804\uBD80\uD130 \uD3D0\uC1C4\uB410\uC5C8\uC9C0... \uC774\uC720\uB294 \uBAA8\uB974\uACA0\uAD70"
+      print_time: 0
+    Player_W_dialog:
+      type: 0
+      audioClip: {fileID: 0}
+      leftSprite: {fileID: 0}
+      rightSprite: {fileID: 0}
+      words: "\uC790\uC138\uD788\uBCF4\uB2C8 [ \uD3D0\uC1C4 ] \uB77C\uB294 \uC548\uB0B4\uD310\uC774
+        \uAC78\uB824\uC788\uB2E4."
+      print_time: 0

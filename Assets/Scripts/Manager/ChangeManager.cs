@@ -119,7 +119,7 @@ public class ChangeManager : MonoBehaviour
 
             if (playerCtrl.CurrentTeleport.IsGoVent)
             {
-                MapCtrl.Instance.SetGlobalLight(0.025f);
+                MapCtrl.Instance.SetGlobalLight(0.05f);
                 playerCtrl.SetLight(true);
                 playerCtrl.SetShadow(false);
                 playerCtrl.StartCrawl();

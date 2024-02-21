@@ -17,6 +17,8 @@ public class Teleport : MonoBehaviour
 
     [SerializeField] private Animator animator;
 
+    [SerializeField] private InteractionDialogSO blockDialog;
+
     /// <summary> 현재 사용 가능한 포탈인지에 대한 여부 </summary>
     public bool IsOn;
 
@@ -46,7 +48,11 @@ public class Teleport : MonoBehaviour
     public void GoToDestination()
     {
         if (!IsOn)
+        {
+            if (blockDialog != null)
+                UIManager.InteractUI.StartDialog(blockDialog.dialogs.ToArray());
             return; // 만약 닫힌 상태라면 취소
+        }
 
         Open();
 

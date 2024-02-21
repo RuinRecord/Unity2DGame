@@ -6,7 +6,7 @@ using TMPro;
 
 public class InteractUICtrl : MonoBehaviour
 {
-    private const float DEFAULT_PRINT_TIME = 0.05f;
+    private const float DEFAULT_PRINT_TIME = 0.03f;
 
     [Header("[ 상호작용 대화창 전용 변수 ]")]
 

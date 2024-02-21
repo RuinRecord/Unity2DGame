@@ -41,7 +41,8 @@ MonoBehaviour:
       audioClip: {fileID: 0}
       leftSprite: {fileID: 0}
       rightSprite: {fileID: 0}
-      words: "[ \uB9B0 ]\n\n\uC624! \uC774\uAC74 \uC81C\uBC95 \uC4F8\uB9CC\uD574\uBCF4\uC774\uB294\uB370?"
+      words: "[ \uB9B0 ]\n\n\uADF8\uB798! \uC5EC\uAE30\uC5D0 \uC190\uC804\uB4F1\uC774
+        \uC788\uC5C8\uC9C0!"
       print_time: 0
   - Player_M_dialog:
       type: 0

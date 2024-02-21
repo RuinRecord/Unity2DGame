@@ -8,11 +8,13 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class CF_11 : CutSceneFunction
 {
     [SerializeField] private PlayerCtrl playerW;
+    [SerializeField] private InteractionObject flashlight;
 
     public override void OnFuntionEnter()
     {
         base.OnFuntionEnter();
 
+        MapCtrl.Instance.SetGlobalLight(0f);
         playerW.SetLight(false);
     }
 
@@ -28,6 +30,8 @@ public class CF_11 : CutSceneFunction
     public override void OnFunctionExit()
     {
         base.OnFunctionExit();
+
+        flashlight.Code = 34;
     }
 
 
