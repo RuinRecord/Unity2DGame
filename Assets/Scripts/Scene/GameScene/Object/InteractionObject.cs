@@ -71,7 +71,7 @@ public class InteractionObject : MonoBehaviour
         {
             case 5: Code = 12; break; // (열쇠)화분 -> 화분 변경
             case 32: 
-                TutorialManager.Instance.ShowTutorial("사다리를 활용할 수 있는 장소를 찾아보세요.");
+                TutorialManager.Instance.ShowTutorial("시설의 환풍구를 조사하세요.");
                 InteractionObject interactionObject = GameObject.Find("(Find전용)환풍구").GetComponent<InteractionObject>();
                 interactionObject.Code = 33;
                 interactionObject.IsEvent = true;

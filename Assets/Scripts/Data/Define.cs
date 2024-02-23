@@ -70,6 +70,8 @@ public enum Event
     StartTagTutorial,
     FindSecretRoom,
     OpenVent,
+    GetToR4,
+    TurnONR4,
 }
 
 public enum EventTiming

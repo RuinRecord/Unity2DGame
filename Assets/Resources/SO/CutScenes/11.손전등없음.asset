@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "11.\uC190\uC804\uB4F1\uC5C6\uC74C"
   m_EditorClassIdentifier: 
   actions:
-  - playTime: 2
+  - playTime: 1.5
     isDialogOn: 0
     dialogs:
       Player_M_dialog:

@@ -40,6 +40,43 @@ public class Teleport : MonoBehaviour
     {
         if (animator != null)
             animator.SetBool("isOpen", false);
+
+        PlayerCtrl playerCtrl = PlayerCtrl.Instance;
+
+        if (Direction != Vector2.zero)
+            playerCtrl.SetAnimationDir(Direction);
+
+        if (IsGoVent)
+        {
+            MapCtrl.Instance.SetGlobalLight(0.05f);
+            playerCtrl.SetLight(true);
+            playerCtrl.SetShadow(false);
+            playerCtrl.StartCrawl();
+            playerCtrl.MoveSpeed = PlayerCtrl.WALK_SPEED * 0.5f;
+
+            if (!GameManager.Data.player.CheckHasItem(4))
+            {
+                // 손전등이 없을 시
+                CutSceneCtrl.Instance.StartCutScene(11);
+            }
+        }
+        else
+        {
+            MapCtrl.Instance.SetGlobalLight(0.5f);
+            playerCtrl.SetLight(false);
+            playerCtrl.SetShadow(true);
+            playerCtrl.EndCrawl();
+            playerCtrl.MoveSpeed = PlayerCtrl.WALK_SPEED;
+        }
+
+        if (gameObject.name.Equals("VToR4"))
+        {
+            if (EventCtrl.Instance.CurrentEvent < Event.GetToR4)
+            {
+                EventCtrl.Instance.SetCurrentEvent(Event.GetToR4);
+                CutSceneCtrl.Instance.StartCutScene(12);
+            }
+        }
     }
 
     /// <summary>

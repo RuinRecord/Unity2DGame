@@ -79,8 +79,9 @@ public class ChangeManager : MonoBehaviour
         
         if (SceneManager.GetActiveScene().name.Equals("Sample_Jun") || SceneManager.GetActiveScene().name.Equals("SampleScene"))
         {
-            PlayerCtrl.Instance.MovePosition(destination);
-            PlayerCtrl.Instance.CurrentTeleport.Close();
+            PlayerCtrl playerCtrl = PlayerCtrl.Instance;
+            playerCtrl.MovePosition(destination);
+            playerCtrl.CurrentTeleport?.Close();
         }
 
         yield return new WaitForSeconds(fadeTime);
@@ -110,35 +111,8 @@ public class ChangeManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name.Equals("Sample_Jun") || SceneManager.GetActiveScene().name.Equals("SampleScene"))
         {
             PlayerCtrl playerCtrl = PlayerCtrl.Instance;
-
             playerCtrl.MovePosition(destination);
-            playerCtrl.CurrentTeleport.Close();
-
-            if (playerCtrl.CurrentTeleport.Direction != Vector2.zero)
-                playerCtrl.SetAnimationDir(playerCtrl.CurrentTeleport.Direction);
-
-            if (playerCtrl.CurrentTeleport.IsGoVent)
-            {
-                MapCtrl.Instance.SetGlobalLight(0.05f);
-                playerCtrl.SetLight(true);
-                playerCtrl.SetShadow(false);
-                playerCtrl.StartCrawl();
-                playerCtrl.MoveSpeed = PlayerCtrl.WALK_SPEED * 0.5f;
-
-                if (!GameManager.Data.player.CheckHasItem(4))
-                {
-                    // 손전등이 없을 시 나오는 연출
-                    CutSceneCtrl.Instance.StartCutScene(11);
-                }
-            }
-            else
-            {
-                MapCtrl.Instance.SetGlobalLight(0.5f);
-                playerCtrl.SetLight(false);
-                playerCtrl.SetShadow(true);
-                playerCtrl.EndCrawl();
-                playerCtrl.MoveSpeed = PlayerCtrl.WALK_SPEED;
-            }
+            playerCtrl.CurrentTeleport?.Close();
         }
 
         yield return new WaitForSeconds(fadeOutTime);

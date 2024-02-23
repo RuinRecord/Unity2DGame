@@ -21,6 +21,8 @@ public class CF_10 : CutSceneFunction
     public override void OnFuntionEnter()
     {
         base.OnFuntionEnter();
+
+        GameManager.Data.player.RemoveItem(3);
     }
 
     public override void Play(int actionIdx)

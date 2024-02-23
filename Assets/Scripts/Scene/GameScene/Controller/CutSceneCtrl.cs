@@ -55,6 +55,7 @@ public class CutSceneCtrl : MonoBehaviour
         // 프롤로그 시작
         // StartCutScene(0);
         GameManager.Data.player.AddItem(2);
+        GameManager.Data.player.AddItem(4);
     }
 
     public void StartCutScene(int cutSceneCode)
