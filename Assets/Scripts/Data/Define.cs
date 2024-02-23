@@ -111,3 +111,10 @@ public enum Scene
     MainScene,
     GameScene
 }
+
+public enum MonitorType
+{
+    Off,
+    On,
+    Error
+}

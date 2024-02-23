@@ -117,6 +117,12 @@ public class InteractionObject : MonoBehaviour
                 CutSceneCtrl.Instance.StartCutScene(10);
                 this.GetComponent<Collider2D>().enabled = false;
                 break;
+
+            case 39:
+                CutSceneCtrl.Instance.StartCutScene(13);
+                IsEvent = false;
+                Code = 40;
+                break;
         }
     }
 }

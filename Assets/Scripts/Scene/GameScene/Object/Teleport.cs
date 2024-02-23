@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Teleport : MonoBehaviour
 {
+    private const float LIGHT_DEFAULT_INTENSITY = 0.5f;
+
     [SerializeField] private DoorType doorType;
 
     /// <summary> 포탈과 연결된 목적지 </summary>
@@ -20,14 +22,19 @@ public class Teleport : MonoBehaviour
     [SerializeField] private InteractionDialogSO blockDialog;
 
     /// <summary> 현재 사용 가능한 포탈인지에 대한 여부 </summary>
-    public bool IsOn;
+    [SerializeField] private bool IsOn;
 
-    public bool IsGoVent;
+    [SerializeField] private bool IsGoVent;
+
+    [SerializeField] private float lightIntensity;
 
     private void Start()
     {
         if (animator != null)
             animator.SetInteger("DoorType", (int)doorType);
+
+        if (lightIntensity == 0f)
+            lightIntensity = LIGHT_DEFAULT_INTENSITY;
     }
 
     public void Open()
@@ -45,11 +52,12 @@ public class Teleport : MonoBehaviour
 
         if (Direction != Vector2.zero)
             playerCtrl.SetAnimationDir(Direction);
+        
+        MapCtrl.Instance.SetGlobalLight(lightIntensity);
+        playerCtrl.SetLight(lightIntensity < LIGHT_DEFAULT_INTENSITY);
 
         if (IsGoVent)
         {
-            MapCtrl.Instance.SetGlobalLight(0.05f);
-            playerCtrl.SetLight(true);
             playerCtrl.SetShadow(false);
             playerCtrl.StartCrawl();
             playerCtrl.MoveSpeed = PlayerCtrl.WALK_SPEED * 0.5f;
@@ -62,8 +70,6 @@ public class Teleport : MonoBehaviour
         }
         else
         {
-            MapCtrl.Instance.SetGlobalLight(0.5f);
-            playerCtrl.SetLight(false);
             playerCtrl.SetShadow(true);
             playerCtrl.EndCrawl();
             playerCtrl.MoveSpeed = PlayerCtrl.WALK_SPEED;

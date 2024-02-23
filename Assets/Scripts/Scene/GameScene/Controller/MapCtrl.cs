@@ -21,6 +21,8 @@ public class MapCtrl : MonoBehaviour
         get { return instance; }
     }
 
+    private readonly int[] changedMonitorIndices = new int[] { 3, 6, 11, 14, 22 };
+
     /// <summary> 이동 불가능한 오브젝트 레이어 마스트 </summary>
     public LayerMask CanNotMove_layerMask;
 
@@ -37,6 +39,12 @@ public class MapCtrl : MonoBehaviour
     [SerializeField] private List<CanMoveObject> moveObjectsList;
     public List<CanMoveObject> MoveObjectsList => moveObjectsList;
 
+    [SerializeField] private GameObject R4ToFindMonitor;
+
+    private List<Monitor> monitorsList;
+
+    public List<Monitor> MonitorsList => monitorsList;
+
     [SerializeField] private Light2D globalLight;
 
 
@@ -49,6 +57,9 @@ public class MapCtrl : MonoBehaviour
 
         moveObjectsList = new List<CanMoveObject>();
         moveObjectsList.AddRange(GetComponentsInChildren<CanMoveObject>());
+
+        monitorsList = new List<Monitor>();
+        monitorsList.AddRange(R4ToFindMonitor.GetComponentsInChildren<Monitor>());
     }
 
     private void Start()
@@ -133,4 +144,20 @@ public class MapCtrl : MonoBehaviour
     public bool IsEqualFloat(float a, float b) => Mathf.Abs(a - b) <= 0.01f;
 
     public void SetGlobalLight(float intensity) => globalLight.intensity = intensity;
+
+    public void ChangeSomeMonitor(MonitorType _type)
+    {
+        for (int i = 0; i < changedMonitorIndices.Length; i++)
+        {
+            monitorsList[changedMonitorIndices[i]].ChangeType(_type);
+        }
+    }
+
+    public void ChangeAllMonitor(MonitorType _type)
+    {
+        foreach (var monitor in monitorsList)
+        {
+            monitor.ChangeType(_type);
+        }
+    }
 }
