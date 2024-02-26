@@ -32,7 +32,12 @@ public class TutorialManager : MonoBehaviour
         CloseTutorial();
     }
 
-    public void SetActiveUI(bool isActive) => UI.gameObject.SetActive(isActive);
+    public void SetActiveUI(bool isActive)
+    {
+        UI.gameObject.SetActive(isActive);
+        if (isActive)
+            UI.OnTooltip();
+    }
 
     public void ShowTutorial(string info)
     {
