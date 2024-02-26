@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9db115f7612f572419263a9404947bdb, type: 3}
-  m_Name: "40.(\uC77C)\uAD00\uB9AC\uC790PC"
+  m_Name: "41.(Off)\uAC70\uB300TV"
   m_EditorClassIdentifier: 
   itemSO: {fileID: 0}
   recordSO: {fileID: 0}
@@ -20,26 +20,14 @@ MonoBehaviour:
       audioClip: {fileID: 0}
       leftSprite: {fileID: 0}
       rightSprite: {fileID: 0}
-      words: "\uAD00\uB9AC\uC790\uC6A9 PC\uAC00 \uB193\uC5EC \uC788\uB2E4."
+      words: "\uBCBD\uBA74\uC5D0 \uAC70\uB300\uD55C \uBAA8\uB2C8\uAC00 \uB193\uC5EC
+        \uC788\uB2E4."
       print_time: 0
     Player_W_dialog:
       type: 0
       audioClip: {fileID: 0}
       leftSprite: {fileID: 0}
       rightSprite: {fileID: 0}
-      words: "\uAD00\uB9AC\uC790\uC6A9 PC\uAC00 \uB193\uC5EC \uC788\uB2E4."
-      print_time: 0
-  - Player_M_dialog:
-      type: 0
-      audioClip: {fileID: 0}
-      leftSprite: {fileID: 0}
-      rightSprite: {fileID: 0}
-      words: 
-      print_time: 0
-    Player_W_dialog:
-      type: 2
-      audioClip: {fileID: 0}
-      leftSprite: {fileID: 0}
-      rightSprite: {fileID: 0}
-      words: "[ \uB9B0 ]\n\n\uB354 \uC774\uC0C1 \uC791\uB3D9\uD558\uC9C0 \uC54A\uC544"
+      words: "\uBCBD\uBA74\uC5D0 \uAC70\uB300\uD55C \uBAA8\uB2C8\uAC00 \uB193\uC5EC
+        \uC788\uB2E4."
       print_time: 0

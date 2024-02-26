@@ -6,6 +6,7 @@ public class CF_04 : CutSceneFunction
 {
     [SerializeField] private PlayerCtrl player_M;
     [SerializeField] private PlayerCtrl player_W;
+    [SerializeField] private GameObject sister;
 
     private const float WALK_DISTANCE = 16f;
     private const float WALK_SPEED = 2f;
@@ -14,6 +15,11 @@ public class CF_04 : CutSceneFunction
     private Vector3 startPos;
     private float currentDistance;
     private bool isTrackingCamera;
+
+    private void Start()
+    {
+        sister.SetActive(false);
+    }
 
     public void Update()
     {
@@ -112,6 +118,7 @@ public class CF_04 : CutSceneFunction
     {
         CameraCtrl.Instance.SetCameraPos(Camera.main.transform.position + new Vector3(1.5f, 101f, 0f));
         player_M.MovePosition(player_M.transform.position + Vector3.up * 100);
-        player_W.MovePosition(player_W.transform.position + Vector3.up * 100);
+        sister.SetActive(true);
+        sister.transform.position = player_M.transform.position + Vector3.left * 2;
     }
 }

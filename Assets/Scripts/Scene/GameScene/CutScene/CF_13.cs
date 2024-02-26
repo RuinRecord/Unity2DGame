@@ -8,6 +8,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class CF_13 : CutSceneFunction
 {
     [SerializeField] private PlayerCtrl playerW;
+    [SerializeField] private SpecialMonitor specialMonitor;
 
     public override void OnFuntionEnter()
     {
@@ -37,6 +38,7 @@ public class CF_13 : CutSceneFunction
         base.OnFunctionExit();
 
         TutorialManager.Instance.ShowTutorial("시스템을 복구할 방법을 찾으세요.");
+        EventCtrl.Instance.SetCurrentEvent(Event.PuzzleForR4);
     }
 
 
@@ -51,7 +53,7 @@ public class CF_13 : CutSceneFunction
         CameraCtrl.Instance.SetCameraMode(CameraMode.Free);
         CameraCtrl.Instance.SetCameraPos(new Vector3(26f, -14f, 0f));
 
-        playerW.SetAnimationDir(Vector2.right);
+        playerW.SetAnimationDir(Vector2.up);
         playerW.MovePosition(new Vector3(29.25f, -14f, 0f));
     }
 
@@ -60,6 +62,7 @@ public class CF_13 : CutSceneFunction
         GameManager.Sound.PlaySE("시스템온");
         MapCtrl.Instance.ChangeAllMonitor(MonitorType.On);
         MapCtrl.Instance.SetGlobalLight(0.5f);
+        specialMonitor.ChangeType(MonitorType.On);
         Invoke("PlayerWLookDown", 1f);
     }
 
@@ -71,6 +74,7 @@ public class CF_13 : CutSceneFunction
         MapCtrl.Instance.ChangeAllMonitor(MonitorType.Off);
         MapCtrl.Instance.ChangeSomeMonitor(MonitorType.Error);
         MapCtrl.Instance.SetGlobalLight(0.05f);
+        specialMonitor.ChangeType(MonitorType.Error);
     }
 
     private void PlayerWLookDown() => playerW.SetAnimationDir(Vector2.down);

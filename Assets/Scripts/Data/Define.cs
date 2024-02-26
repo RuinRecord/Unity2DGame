@@ -71,6 +71,7 @@ public enum Event
     FindSecretRoom,
     OpenVent,
     GetToR4,
+    PuzzleForR4,
     TurnONR4,
 }
 
