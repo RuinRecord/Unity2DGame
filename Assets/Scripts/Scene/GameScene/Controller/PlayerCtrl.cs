@@ -131,6 +131,8 @@ public class PlayerCtrl : MonoBehaviour
         get { return CUR_HP; }
     }
 
+    public float currentLightIntensity;
+
     #region Unity 콜백 함수
 
     private void Awake()
@@ -155,15 +157,16 @@ public class PlayerCtrl : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         light = GetComponentInChildren<Light2D>();
 
+        light.enabled = false;
         State = PlayerState.IDLE;
         CurrentTeleport = null;
-        SetLight(false);
         SetShadow(true);
 
         IsCanReset = IsCanInteract = IsCanMove = IsCanAttack = IsCanEvasion = IsCanCapture = IsCanInven = true;
         IsCameraOn = IsMoving = false;
         Max_HP = cur_HP = 100f;
         MoveSpeed = WALK_SPEED;
+        currentLightIntensity = 0.5f;
     }
 
 
@@ -622,7 +625,14 @@ public class PlayerCtrl : MonoBehaviour
 
     public void EndJump() => State = PlayerState.IDLE;
 
-    public void SetLight(bool isEnable) => light.enabled = isEnable;
+    public void SetLight(bool isEnable)
+    {
+        // 남주인 경우 & 손전등이 없는 경우
+        if (Instance == player_M || !GameManager.Data.player.CheckHasItem(4))
+            return;
+
+        light.enabled = isEnable;
+    }
 
     public void SetShadow(bool isEnable) => shadow.SetActive(isEnable);
 

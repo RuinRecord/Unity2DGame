@@ -143,7 +143,12 @@ public class MapCtrl : MonoBehaviour
 
     public bool IsEqualFloat(float a, float b) => Mathf.Abs(a - b) <= 0.01f;
 
-    public void SetGlobalLight(float intensity) => globalLight.intensity = intensity;
+    public void SetGlobalLight(float intensity)
+    {
+        globalLight.intensity = intensity;
+        if (PlayerCtrl.Instance != null)
+            PlayerCtrl.Instance.currentLightIntensity = intensity;
+    }
 
     public void ChangeSomeMonitor(MonitorType _type)
     {

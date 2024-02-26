@@ -39107,7 +39107,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000abdf7e396799f60b591250bd
@@ -44009,6 +44009,7 @@ MonoBehaviour:
   IsCanInven: 0
   IsMoving: 0
   Max_HP: 0
+  currentLightIntensity: 0
 --- !u!50 &1479713885
 Rigidbody2D:
   serializedVersion: 4
@@ -44378,7 +44379,7 @@ MonoBehaviour:
   blockDialog: {fileID: 0}
   IsOn: 1
   IsGoVent: 0
-  lightIntensity: 0.05
+  lightIntensity: 0.15
 --- !u!95 &1519727094
 Animator:
   serializedVersion: 5
@@ -65877,7 +65878,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 2
   m_LinearDrag: 1000
   m_AngularDrag: 1000
   m_GravityScale: 0
@@ -65920,6 +65921,7 @@ MonoBehaviour:
   IsCanInven: 0
   IsMoving: 0
   Max_HP: 0
+  currentLightIntensity: 0
 --- !u!4 &2013731445
 Transform:
   m_ObjectHideFlags: 0

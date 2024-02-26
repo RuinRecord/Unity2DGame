@@ -114,11 +114,13 @@ public class PlayerTag : MonoBehaviour
         {
             PlayerType = PlayerType.WOMEN;
             CameraCtrl.Instance.SetCameraMode(CameraMode.PlayerW);
+            MapCtrl.Instance.SetGlobalLight(PlayerCtrl.Instance.currentLightIntensity);
         }
         else if (PlayerType == PlayerType.WOMEN)
         {
             PlayerType = PlayerType.MEN;
             CameraCtrl.Instance.SetCameraMode(CameraMode.PlayerM);
+            MapCtrl.Instance.SetGlobalLight(PlayerCtrl.Instance.currentLightIntensity);
         }
     }
 
