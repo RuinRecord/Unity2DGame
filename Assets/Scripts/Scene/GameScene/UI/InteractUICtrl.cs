@@ -163,6 +163,9 @@ public class InteractUICtrl : MonoBehaviour
         currentDialogs = currentObject.Dialogs.ToArray();
         currentIdx = 0;
 
+        if (currentInfoCo != null)
+            StopCoroutine(currentInfoCo);
+
         // 이벤트 상호작용이면 대사 출력 취소
         if (PlayerTag.PlayerType.Equals(PlayerType.WOMEN))
         {
@@ -190,6 +193,9 @@ public class InteractUICtrl : MonoBehaviour
         currentObject = null;
         currentDialogs = dialogs;
         currentIdx = 0;
+
+        if (currentInfoCo != null)
+            StopCoroutine(currentInfoCo);
 
         // 출력 시작
         currentInfoCo = StartCoroutine(ShowInfoText(currentDialogs[currentIdx]));

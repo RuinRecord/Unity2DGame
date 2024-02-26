@@ -7,6 +7,7 @@ public class CutSceneCtrl : MonoBehaviour
 {
     private const string FADE_IN_ANIM = "Cutscene_FadeIn";
     private const string FADE_OUT_ANIM = "Cutscene_FadeOut";
+    private const float DEFAULT_PLAYTIME = 0.5f;
 
     /// <summary> CutSceneCtrl 싱글톤 </summary>
     private static CutSceneCtrl instance;
@@ -97,7 +98,6 @@ public class CutSceneCtrl : MonoBehaviour
             // 액션이 종료할 때까지 대기
             while (!isActionDone)
                 yield return null;
-            Debug.Log(currentActionIdx);
         }
 
         EndCutScene();
@@ -107,6 +107,10 @@ public class CutSceneCtrl : MonoBehaviour
 
     IEnumerator StartAction(CutSceneAction action)
     {
+        float playTime = action.playTime;
+        if (playTime == 0f)
+            playTime = DEFAULT_PLAYTIME;
+
         if (cameraMoveCo != null)
             StopCoroutine(cameraMoveCo);
         if (cameraZoomCo != null)
@@ -129,7 +133,7 @@ public class CutSceneCtrl : MonoBehaviour
         while (!IsDialogDone)
             yield return null;
 
-        yield return new WaitForSeconds(action.playTime);
+        yield return new WaitForSeconds(playTime);
 
         currentActionIdx++;
         isActionDone = true;
