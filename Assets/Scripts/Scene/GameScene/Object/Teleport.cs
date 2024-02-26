@@ -90,6 +90,9 @@ public class Teleport : MonoBehaviour
     /// </summary>
     public void GoToDestination()
     {
+        if (IsGoVent && PlayerTag.PlayerType.Equals(PlayerType.MEN))
+            return; // 벤트 전용은 남주 동작 불가
+
         if (!IsOn)
         {
             if (blockDialog != null)
