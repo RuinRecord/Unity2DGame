@@ -39,6 +39,7 @@ public enum PlayerMode
 {
     DEFAULT,    // 평소
     PUSH,       // 밀기 (남주만 해당)
+    CRAWL,      // 기기 (여주만 해당)
 }
 
 public enum LightAnim
@@ -57,13 +58,31 @@ public enum LightColor
     Yellow,
 }
 
-public enum EventType
+public enum Event
+{
+    StartPrologue,
+    DoneCaptureTutorial,
+    DoneRecordTutorial,
+    BeforeMeetPlayerM,
+    PlayerMTutorial,
+    AfterMeetPlayerM,
+    BeforeTagTutorial,
+    StartTagTutorial,
+    FindSecretRoom,
+    OpenVent,
+    GetToR4,
+    PuzzleForR4,
+    TurnONR4,
+}
+
+public enum EventTiming
 {
     Capture,
     GetItem,
     GetRecord,
     Inventory,
     MoveObject,
+    CutScene,
 }
 
 public enum BlockType
@@ -79,4 +98,24 @@ public enum CameraMode
     PlayerW,
     PlayerM,
     Free
+}
+
+public enum DoorType
+{
+    Ivory_window,
+    Navy_no_window,
+    Ivory_no_window,
+}
+
+public enum Scene
+{
+    MainScene,
+    GameScene
+}
+
+public enum MonitorType
+{
+    Off,
+    On,
+    Error
 }

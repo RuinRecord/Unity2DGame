@@ -1,14 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
-public enum Scene
-{
-    MainScene,
-    GameScene
-}
 
 public class ChangeManager : MonoBehaviour
 {
@@ -84,8 +79,9 @@ public class ChangeManager : MonoBehaviour
         
         if (SceneManager.GetActiveScene().name.Equals("Sample_Jun") || SceneManager.GetActiveScene().name.Equals("SampleScene"))
         {
-            PlayerCtrl.Instance.MovePosition(destination);
-            PlayerCtrl.Instance.CurrentTeleport.Close();
+            PlayerCtrl playerCtrl = PlayerCtrl.Instance;
+            playerCtrl.MovePosition(destination);
+            playerCtrl.CurrentTeleport?.Close();
         }
 
         yield return new WaitForSeconds(fadeTime);
@@ -98,7 +94,7 @@ public class ChangeManager : MonoBehaviour
     }
 
 
-    public IEnumerator switchPos(Vector3 destination, float fadeInTime, float fadeOutTime)
+    public IEnumerator switchPos(Vector3 destination,  float fadeInTime, float fadeOutTime)
     {
         if (IsChanging)
             yield break; // 현재 작업 중이면 취소
@@ -114,8 +110,9 @@ public class ChangeManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name.Equals("Sample_Jun") || SceneManager.GetActiveScene().name.Equals("SampleScene"))
         {
-            PlayerCtrl.Instance.MovePosition(destination);
-            PlayerCtrl.Instance.CurrentTeleport.Close();
+            PlayerCtrl playerCtrl = PlayerCtrl.Instance;
+            playerCtrl.MovePosition(destination);
+            playerCtrl.CurrentTeleport?.Close();
         }
 
         yield return new WaitForSeconds(fadeOutTime);

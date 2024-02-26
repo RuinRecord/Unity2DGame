@@ -26,19 +26,19 @@ public class BlockObject : MonoBehaviour
             switch (blockType)
             {
                 case BlockType.PlayerMRoom:
-                    if (EventCtrl.Instance.CurrentEvent <= 0)
+                    if (EventCtrl.Instance.CurrentEvent <= Event.StartPrologue)
                         Interaction(0, Vector2Int.right);
                     break;
                 case BlockType.R1ToHoll:
-                    if (EventCtrl.Instance.CurrentEvent <= 2)
+                    if (EventCtrl.Instance.CurrentEvent <= Event.DoneRecordTutorial)
                         Interaction(1, Vector2Int.down);
                     break;
                 case BlockType.Hall:
-                    if (EventCtrl.Instance.CurrentEvent <= 3)
+                    if (EventCtrl.Instance.CurrentEvent <= Event.BeforeMeetPlayerM)
                         Interaction(4, Vector2Int.left);
                     break;
                 case BlockType.R2ToHoll:
-                    if (EventCtrl.Instance.CurrentEvent == 4)
+                    if (EventCtrl.Instance.CurrentEvent == Event.PlayerMTutorial)
                         Interaction(5, Vector2Int.up);
                     break;
             }

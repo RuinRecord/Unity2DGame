@@ -27,7 +27,7 @@ public class CF_00 : CutSceneFunction
         base.OnFunctionExit();
 
         player_W.MoveSpeed = PlayerCtrl.WALK_SPEED;
-        TutorialManager.Instance.ShowTooltip("모니터 앞으로 다가가 [Q] 버튼을 눌러 조사하세요.");
+        TutorialManager.Instance.ShowTutorial("모니터 앞으로 다가가 [Q] 버튼을 눌러 조사하세요.");
     }
 
     private void MoveRight()

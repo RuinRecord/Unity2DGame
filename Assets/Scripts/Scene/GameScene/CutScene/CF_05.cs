@@ -5,7 +5,6 @@ using UnityEngine;
 public class CF_05 : CutSceneFunction
 {
     [SerializeField] private PlayerCtrl player_M;
-    [SerializeField] private PlayerCtrl sister;
 
     public override void OnFuntionEnter()
     {
@@ -32,11 +31,7 @@ public class CF_05 : CutSceneFunction
 
     private void PlayerMLookLeft() => player_M.SetAnimationDir(Vector2.left);
 
-    private void PlayerMGoBack()
-    {
-        player_M.SetMove(Vector2.left, 1f, 3f);
-        sister.SetMove(Vector2.left, 0.5f, 3f, true);
-    }
+    private void PlayerMGoBack() => player_M.SetMove(Vector2.left, 1f, 3f);
 
     private void PlayerMGoFront() => player_M.SetMove(Vector2.right, 1f, 3f);
 
@@ -51,6 +46,5 @@ public class CF_05 : CutSceneFunction
     {
         CameraCtrl.Instance.SetCameraPos(Camera.main.transform.position - new Vector3(0f, 101f, 0f));
         player_M.MovePosition(player_M.transform.position + new Vector3(-1f, -101f, 0f));
-        sister.MovePosition(sister.transform.position + new Vector3(-0.5f, -101f, 0f));
     }
 }

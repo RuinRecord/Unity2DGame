@@ -12,5 +12,9 @@ public abstract class CutSceneFunction : MonoBehaviour
 
     public virtual void OnFuntionUpdate() { }
 
-    public virtual void OnFunctionExit() { isOn = false; }
+    public virtual void OnFunctionExit() 
+    { 
+        isOn = false;
+        EventCtrl.Instance.CheckEvent(EventTiming.CutScene);
+    }
 }

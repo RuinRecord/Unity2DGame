@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 
@@ -12,7 +13,16 @@ public class InteractionObject : MonoBehaviour
     public List<DialogSet> Dialogs => dialogs;
 
     /// <summary> 상호작용 식별 코드 </summary>
-    public int Code;
+    [SerializeField] private int code;
+    public int Code
+    {
+        get { return code; }
+        set
+        {
+            code = value;
+            SetVariables();
+        }
+    }
 
     /// <summary> 이 상호작용이 아이템 획득을 가능케 하는가? </summary>
     [HideInInspector] public bool HasItem;
@@ -28,6 +38,9 @@ public class InteractionObject : MonoBehaviour
 
     /// <summary> 획득 시 맵 오브젝트가 사라지는지에 대한 여부 </summary>
     public bool IsDestroy;
+
+    /// <summary> 획득 시 이벤트 컷씬이 발동하는 지에 대한 여부 </summary>
+    public bool IsEvent;
 
 
     protected virtual void Start()
@@ -54,13 +67,17 @@ public class InteractionObject : MonoBehaviour
         // 아이템 획득
         GameManager.Data.player.AddItem(ItemCode);
 
-        // 아이템에 따라 오브젝트 변경
         switch (Code)
         {
-            case 5: Code = 12; break; // (아)화분 -> 화분 변경
+            case 5: Code = 12; break; // (열쇠)화분 -> 화분 변경
+            case 32: 
+                TutorialManager.Instance.ShowTutorial("시설의 환풍구를 조사하세요.");
+                InteractionObject interactionObject = GameObject.Find("(Find전용)환풍구").GetComponent<InteractionObject>();
+                interactionObject.Code = 33;
+                interactionObject.IsEvent = true;
+                break;
+            case 34: Code = 6; break; // (손전등)화분 -> 철제선반 변경
         }
-
-        SetVariables();
 
         // 맵 오브젝트 제거
         if (IsDestroy)
@@ -81,6 +98,31 @@ public class InteractionObject : MonoBehaviour
         if (IsDestroy)
         {
             MapCtrl.Instance.DestroyObject(this.gameObject);
+        }
+    }
+
+    public void EventOn()
+    {
+        if (!IsEvent)
+            return;
+
+        switch (Code)
+        {
+            case 28:
+                CutSceneCtrl.Instance.StartCutScene(8);
+                this.GetComponent<Collider2D>().enabled = false;
+                break;
+
+            case 33:
+                CutSceneCtrl.Instance.StartCutScene(10);
+                this.GetComponent<Collider2D>().enabled = false;
+                break;
+
+            case 39:
+                CutSceneCtrl.Instance.StartCutScene(13);
+                IsEvent = false;
+                Code = 40;
+                break;
         }
     }
 }

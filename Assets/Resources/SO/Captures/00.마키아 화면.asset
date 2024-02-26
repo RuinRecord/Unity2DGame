@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e76e39a2a11d2094d8e5c016bdb89844, type: 3}
   m_Name: "00.\uB9C8\uD0A4\uC544 \uD654\uBA74"
   m_EditorClassIdentifier: 
-  captureName: "\uB9C8\uD0A4\uC544 \uB85C\uACE0"
-  captureInfo: "\uC5EC\uAE30\uB294 \uD3D0\uAE30\uBB3C \uCC98\uB9AC \uC2DC\uC124\uC758
-    \uC9C0\uD558 \uAD00\uB9AC\uC2E4\uC774\uB2E4. \n\uC5EC\uAE30 \uAD00\uB9AC\uC790\uB294
-    \uD53C\uC790\uB97C \uAF64\uB098 \uC88B\uC544\uD558\uB294 \uAC83 \uAC19\uAD70..."
-  captureSprite: {fileID: 21300000, guid: afc1bd5fa72901545b6527ee5463a1f5, type: 3}
-  captureCode: 0
+  CaptureName: "\uB9C8\uD0A4\uC544 \uBAA8\uB2C8\uD130"
+  CaptureInfo: "\uC774 \uC2DC\uC124\uC758 CCTV \uAD00\uB9AC\uC2E4\uB85C \uBCF4\uC778\uB2E4.
+    \uB9C8\uD0A4\uC544 \uBB38\uC591\uC774 \uC788\uB294\uAC78\uB85C \uBCF4\uC544 \uC81C\uB300\uB85C
+    \uC7A0\uC785\uD588\uAD70."
+  Image: {fileID: 21300000, guid: fa766c15387c33242bfd82e23505fc78, type: 3}
+  Polaroid: {fileID: 21300000, guid: 8a4a08a4179e22640a9f2525a1837dcf, type: 3}
+  CaptureCode: 0

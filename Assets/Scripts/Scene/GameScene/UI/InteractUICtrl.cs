@@ -6,7 +6,7 @@ using TMPro;
 
 public class InteractUICtrl : MonoBehaviour
 {
-    private const float DEFAULT_PRINT_TIME = 0.05f;
+    private const float DEFAULT_PRINT_TIME = 0.03f;
 
     [Header("[ 상호작용 대화창 전용 변수 ]")]
 
@@ -135,14 +135,14 @@ public class InteractUICtrl : MonoBehaviour
                 if (isItemEventCheckOn)
                 {
                     isItemEventCheckOn = false;
-                    EventCtrl.Instance.CheckEvent(EventType.GetItem);
+                    EventCtrl.Instance.CheckEvent(EventTiming.GetItem);
                 }
 
                 // 이벤트 체크
                 if (isRecordEventCheckOn)
                 {
                     isRecordEventCheckOn = false;
-                    EventCtrl.Instance.CheckEvent(EventType.GetRecord);
+                    EventCtrl.Instance.CheckEvent(EventTiming.GetRecord);
                 }
 
                 // 만약 연출용 대화였다면
@@ -163,6 +163,20 @@ public class InteractUICtrl : MonoBehaviour
         currentDialogs = currentObject.Dialogs.ToArray();
         currentIdx = 0;
 
+        if (currentInfoCo != null)
+            StopCoroutine(currentInfoCo);
+
+        // 이벤트 상호작용이면 대사 출력 취소
+        if (PlayerTag.PlayerType.Equals(PlayerType.WOMEN))
+        {
+            if (currentObject.IsEvent)
+            {
+                currentObject.EventOn();
+                isDoneAll = true;
+                return;
+            }
+        }
+
         // 출력 시작
         currentInfoCo = StartCoroutine(ShowInfoText(currentDialogs[currentIdx]));
         StartCoroutine(DelayedSetInteractOn(true));
@@ -179,6 +193,9 @@ public class InteractUICtrl : MonoBehaviour
         currentObject = null;
         currentDialogs = dialogs;
         currentIdx = 0;
+
+        if (currentInfoCo != null)
+            StopCoroutine(currentInfoCo);
 
         // 출력 시작
         currentInfoCo = StartCoroutine(ShowInfoText(currentDialogs[currentIdx]));
@@ -239,7 +256,7 @@ public class InteractUICtrl : MonoBehaviour
                 isItemEventCheckOn = true;
             }
 
-            // 아이템 체크 및 획득
+            // 조사일지 체크 및 획득
             if (CheckDropRecord())
             {
                 currentObject.DropRecord();

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.Tilemaps;
 
 /// <summary>
@@ -20,6 +21,8 @@ public class MapCtrl : MonoBehaviour
         get { return instance; }
     }
 
+    private readonly int[] changedMonitorIndices = new int[] { 3, 6, 11, 14, 22 };
+
     /// <summary> 이동 불가능한 오브젝트 레이어 마스트 </summary>
     public LayerMask CanNotMove_layerMask;
 
@@ -36,6 +39,14 @@ public class MapCtrl : MonoBehaviour
     [SerializeField] private List<CanMoveObject> moveObjectsList;
     public List<CanMoveObject> MoveObjectsList => moveObjectsList;
 
+    [SerializeField] private GameObject R4ToFindMonitor;
+
+    private List<Monitor> monitorsList;
+
+    public List<Monitor> MonitorsList => monitorsList;
+
+    [SerializeField] private Light2D globalLight;
+
 
     private void Awake()
     {
@@ -46,6 +57,14 @@ public class MapCtrl : MonoBehaviour
 
         moveObjectsList = new List<CanMoveObject>();
         moveObjectsList.AddRange(GetComponentsInChildren<CanMoveObject>());
+
+        monitorsList = new List<Monitor>();
+        monitorsList.AddRange(R4ToFindMonitor.GetComponentsInChildren<Monitor>());
+    }
+
+    private void Start()
+    {
+        SetGlobalLight(0.5f);
     }
 
 
@@ -58,8 +77,7 @@ public class MapCtrl : MonoBehaviour
     }
 
 
-    public bool CheckValidArea(Vector2 _destination) 
-        => !Physics2D.OverlapBox(_destination, Vector2.one * 0.75f, 0f, CanNotMove_layerMask);
+    public bool CheckValidArea(Vector2 _destination)  => !Physics2D.OverlapBox(_destination, Vector2.one * 0.75f, 0f, CanNotMove_layerMask);
 
 
     private void SetDepthAllofMapObjects()
@@ -123,6 +141,28 @@ public class MapCtrl : MonoBehaviour
         Destroy(ob);
     }
 
-    public bool IsEqualFloat(float a, float b)
-        => Mathf.Abs(a - b) <= 0.01f;
+    public bool IsEqualFloat(float a, float b) => Mathf.Abs(a - b) <= 0.01f;
+
+    public void SetGlobalLight(float intensity)
+    {
+        globalLight.intensity = intensity;
+        if (PlayerCtrl.Instance != null)
+            PlayerCtrl.Instance.currentLightIntensity = intensity;
+    }
+
+    public void ChangeSomeMonitor(MonitorType _type)
+    {
+        for (int i = 0; i < changedMonitorIndices.Length; i++)
+        {
+            monitorsList[changedMonitorIndices[i]].ChangeType(_type);
+        }
+    }
+
+    public void ChangeAllMonitor(MonitorType _type)
+    {
+        foreach (var monitor in monitorsList)
+        {
+            monitor.ChangeType(_type);
+        }
+    }
 }

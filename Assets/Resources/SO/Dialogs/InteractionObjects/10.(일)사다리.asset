@@ -29,3 +29,18 @@ MonoBehaviour:
       rightSprite: {fileID: 0}
       words: "\uC0AC\uB2E4\uB9AC\uAC00 \uC788\uB2E4."
       print_time: 0
+  - Player_M_dialog:
+      type: 0
+      audioClip: {fileID: 0}
+      leftSprite: {fileID: 0}
+      rightSprite: {fileID: 0}
+      words: 
+      print_time: 0
+    Player_W_dialog:
+      type: 2
+      audioClip: {fileID: 0}
+      leftSprite: {fileID: 0}
+      rightSprite: {fileID: 0}
+      words: "[ \uB9B0 ]\n\n\uD760... \uB192\uC740 \uACF3\uC744 \uC62C\uB77C\uAC08
+        \uB54C \uC720\uC6A9\uD558\uACA0\uB294\uB370?"
+      print_time: 0

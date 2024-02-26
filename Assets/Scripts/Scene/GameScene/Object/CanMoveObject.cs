@@ -6,14 +6,19 @@ using UnityEngine.Rendering;
 
 public class CanMoveObject : MonoBehaviour
 {
-    private const float MOVE_SPEED = 3f;
     private const int CANNOT_MOVE_LAYERMASK = 64 + 128 + 256 + 512 + 1024;
 
-    public int eventCode;
+    [SerializeField] private Collider2D col;
 
-    public bool isDone;
+    [SerializeField] private AudioClip clip;
 
     [SerializeField] private Vector3 startPos;
+
+    [SerializeField] private float moveSpeed;
+
+    public Event @event;
+
+    public bool isDone;
 
     /// <summary> 현재 물건이 밀릴 방향 벡터 </summary>
     private Vector2 direction;
@@ -28,17 +33,30 @@ public class CanMoveObject : MonoBehaviour
     /// <summary> 물체가 움직일 수 있는지 체크하고 물체를 움직이게 하는 함수이다. </summary>
     public bool Push()
     {
+        if (!CheckCanMove())
+        {
+            Debug.Log($"Event timing is not current : {@event}");
+            return false;
+        }
+
         bool _isSuccess;
+        float _distance = col.bounds.size.x * 0.5f;
 
         // 바라보는 방향에 장애물 확인
-        if (_isSuccess = !Physics2D.Raycast((Vector2)this.transform.position + direction * 0.55f, direction, 0.4f, CANNOT_MOVE_LAYERMASK))
+        RaycastHit2D hit = Physics2D.Raycast((Vector2)this.transform.position + direction * (_distance + 0.05f), direction, 0.4f, CANNOT_MOVE_LAYERMASK);
+        if (_isSuccess = !hit)
         {
             // 이동 가능한 상태 => 물체 이동
-            StartCoroutine("StartMove");
+            StartCoroutine(StartMove(moveSpeed));
 
             // 끄는 소리 오디오 실행
-            GameManager.Sound.PlaySE("상자밀기");
+            GameManager.Sound.PlaySE(clip);
         }
+        else
+        {
+            Debug.Log($"Obstacle object is detected : {hit.transform.name}");
+        }
+
         return _isSuccess;
     }
 
@@ -47,14 +65,18 @@ public class CanMoveObject : MonoBehaviour
     public void ReSetPosition()
     {
         if (isDone)
+        {
+            Debug.Log("This object is already done.");
             return;
+        }
 
         this.transform.localPosition = startPos;
     }
 
+    public bool CheckCanMove() => EventCtrl.Instance.CurrentEvent == @event;
 
     /// <summary> 물체를 움직이는 코루틴 함수이다. </summary>
-    IEnumerator StartMove()
+    IEnumerator StartMove(float moveSpeed)
     {
         Vector3 _savedPos = this.transform.position;
         Vector2 _moveVec = direction;
@@ -64,9 +86,9 @@ public class CanMoveObject : MonoBehaviour
         // 방향 벡터와 이동 벡터가 반대가 되는 순간까지 이동 수행
         while (_moveVec.normalized == direction.normalized)
         {
-            PlayerCtrl.Instance.transform.position += (Vector3)direction * MOVE_SPEED * Time.deltaTime;
-            this.transform.position += (Vector3)direction * MOVE_SPEED * Time.deltaTime;
-            _moveVec -= direction * MOVE_SPEED * Time.deltaTime;
+            PlayerCtrl.Instance.transform.position += (Vector3)direction * moveSpeed * Time.deltaTime;
+            this.transform.position += (Vector3)direction * moveSpeed * Time.deltaTime;
+            _moveVec -= direction * moveSpeed * Time.deltaTime;
             yield return null;
         }
 
@@ -78,8 +100,14 @@ public class CanMoveObject : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D col)
     {
-        if (PlayerCtrl.Instance.CurrentCanMoveOb == this)
+        if (PlayerCtrl.Instance?.CurrentCanMoveOb == this)
         {
+            if (!CheckCanMove())
+            {
+                Debug.Log($"Event timing is not current : {@event}");
+                return;
+            }
+
             // 만약 플레이어가 클릭한 MovingObject에 다다르면
             // 모드 변경
             PlayerCtrl.Instance.Mode = PlayerMode.PUSH;

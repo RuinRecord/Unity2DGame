@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.Collections.LowLevel.Unsafe;
 
 public class TutorialUI : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class TutorialUI : MonoBehaviour
 
     [SerializeField] private TMP_Text tooltipText;
 
+    private string currentInfo;
+
     private void Start()
     {
         tooltipButtonImage = tooltipButton.GetComponent<Image>();
@@ -26,12 +29,15 @@ public class TutorialUI : MonoBehaviour
 
     public void ShowTooltip(string info)
     {
+        currentInfo = info;
         OnTooltip();
         StartCoroutine(SetTooltipText(info));
     }
 
     public void OnTooltip()
     {
+        if (!string.IsNullOrEmpty(currentInfo))
+            tooltipText.SetText(currentInfo);
         ActiveTooltip(true);
         ActiveTooptipButton(true);
     }

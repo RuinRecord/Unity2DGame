@@ -34,14 +34,15 @@ MonoBehaviour:
       audioClip: {fileID: 0}
       leftSprite: {fileID: 0}
       rightSprite: {fileID: 0}
-      words: "[ \uC720\uC9C4 ]\n\n\uC5B4\uD56D \uAD00\uB9AC\uD558\uAE30\uB3C4 \uBC85\uCC28\uAD70...\n\uC870\uB9CC\uAC04
-        \uC815\uB9AC\uD574\uC57C\uACA0\uC5B4"
+      words: "[ \uC720\uC9C4 ]\n\n\uC774\uB7F0 \uC9C0\uD558 \uC2DC\uC124\uC5D0 \uAC70\uB300
+        \uC218\uC870\uB77C\uB2C8...\n\uAD00\uB9AC\uC790\uC5D0 \uB300\uD55C \uBC30\uB824\uAC00
+        \uC5C6\uB2E8 \uB9D0\uC774\uC9C0"
       print_time: 0
     Player_W_dialog:
       type: 2
       audioClip: {fileID: 0}
       leftSprite: {fileID: 0}
       rightSprite: {fileID: 0}
-      words: "[ \uB9B0 ]\n\n\uC640! \uBB3C\uACE0\uAE30\uC796\uC544?!\n\uC5D0\uC774\uB3C4\uC2A4
+      words: "[ \uB9B0 ]\n\n\uC640! \uBB3C\uACE0\uAE30\uC796\uC544?!\n\uC5D0\uC5B4\uB3C4\uC2A4
         \uBC14\uAE65 \uB300\uB959\uC5D0\uC120 \uBCF4\uAE30 \uD798\uB4E0\uB370!"
       print_time: 0
