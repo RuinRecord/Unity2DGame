@@ -34,6 +34,7 @@ public class CF_04 : CutSceneFunction
         CutSceneCtrl.Instance.FadeIn(1.5f);
         CameraCtrl.Instance.SetCameraMode(CameraMode.Free);
         PlayerTag.Instance.SwitchTagImmedately(PlayerType.NONE);
+        TutorialManager.Instance.CloseTutorial();
         isTrackingCamera = true;
 
         startPos = new Vector3(-74f, 4.5f, 0f);

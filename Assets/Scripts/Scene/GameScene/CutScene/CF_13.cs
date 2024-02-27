@@ -2,13 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.VirtualTexturing;
-using static UnityEditor.Experimental.GraphView.GraphView;
+using UnityEngine.Rendering.Universal;
 
 public class CF_13 : CutSceneFunction
 {
     [SerializeField] private PlayerCtrl playerW;
     [SerializeField] private SpecialMonitor specialMonitor;
+    [SerializeField] private List<Light2D> objets;
 
     public override void OnFuntionEnter()
     {
@@ -96,5 +96,10 @@ public class CF_13 : CutSceneFunction
         PlayerTag.Instance.SwitchTagImmedately(PlayerType.WOMEN);
         CameraCtrl.Instance.SetCameraMode(CameraMode.PlayerW);
         CameraCtrl.Instance.SetCameraSize(5f);
+
+        foreach (var obj in objets)
+        {
+            obj.intensity = 1.5f;
+        }
     }
 }
