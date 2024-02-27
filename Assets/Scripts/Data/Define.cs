@@ -102,8 +102,8 @@ public enum CameraMode
 
 public enum DoorType
 {
-    Ivory_window,
-    Navy_no_window,
+    Gray_no_window,
+    Gray_with_Lock,
     Ivory_no_window,
 }
 
