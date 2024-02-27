@@ -74,6 +74,13 @@ public class CanMoveObject : MonoBehaviour
             return;
         }
 
+        if (@event.Equals(Event.PuzzleForR4) && MapCtrl.Instance.CheckObjetsComplete())
+        {
+            Debug.Log("Objects are already done.");
+            return;
+        }
+
+        // 그 외의 경우
         this.transform.localPosition = startPos;
     }
 

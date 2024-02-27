@@ -47,6 +47,10 @@ public class MapCtrl : MonoBehaviour
 
     [SerializeField] private Light2D globalLight;
 
+    [SerializeField] private List<EventArea> objetAreas;
+
+    [SerializeField] private List<CanMoveObject> objets;
+
 
     private void Awake()
     {
@@ -163,6 +167,24 @@ public class MapCtrl : MonoBehaviour
         foreach (var monitor in monitorsList)
         {
             monitor.ChangeType(_type);
+        }
+    }
+
+    public bool CheckObjetsComplete()
+    {
+        foreach (var area in objetAreas)
+        {
+            if (!area.isDone)
+                return false;
+        }
+        return true;
+    }
+
+    public void SetObjetsComplete(bool isDone)
+    {
+        foreach (var ob in objets)
+        {
+            ob.isDone = isDone;
         }
     }
 }

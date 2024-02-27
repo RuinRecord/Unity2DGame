@@ -13,16 +13,30 @@ public class EventArea : MonoBehaviour
         isDone = false;
     }
 
-    private void OnTriggerStay2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.tag == "MovingObject")
         {
             CanMoveObject moveGo = col.GetComponent<CanMoveObject>();
-            if (moveGo.@event == this.@event)
+
+            if (@event.Equals(Event.PuzzleForR4))
             {
-                EventCtrl.Instance.CheckEvent(EventTiming.MoveObject);
-                moveGo.isDone = true;
-                this.isDone = true;
+                isDone = true;
+                if (MapCtrl.Instance.CheckObjetsComplete())
+                {
+                    // R4 전용 퍼즐 완료
+                    EventCtrl.Instance.CheckEvent(EventTiming.MoveObject);
+                    MapCtrl.Instance.SetObjetsComplete(true);
+                }
+            }
+            else
+            {
+                if (moveGo.@event == this.@event)
+                {
+                    EventCtrl.Instance.CheckEvent(EventTiming.MoveObject);
+                    moveGo.isDone = true;
+                    this.isDone = true;
+                }
             }
         }
     }
