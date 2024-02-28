@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.VirtualTexturing;
-using static UnityEditor.Experimental.GraphView.GraphView;
+using UnityEngine.Rendering.Universal;
 
 public class CF_13 : CutSceneFunction
 {
     [SerializeField] private PlayerCtrl playerW;
+    [SerializeField] private PlayerCtrl playerM;
     [SerializeField] private SpecialMonitor specialMonitor;
+    [SerializeField] private List<Light2D> objets;
 
     public override void OnFuntionEnter()
     {
@@ -28,8 +29,10 @@ public class CF_13 : CutSceneFunction
             case 6: PlayerWGoDown(); break;
             case 8: SystemError(); break;
             case 9: PlayerWJump(); break;
-            case 12: EndFadeOut(); break;
-            case 13: EndFadeIn(); break;
+            case 12: SwitchFadeOut(); break;
+            case 13: SwitchFadeIn(); break;
+            case 23: EndFadeOut(); break;
+            case 24: EndFadeIn(); break;
         }
     }
 
@@ -85,6 +88,24 @@ public class CF_13 : CutSceneFunction
         playerW.StartJump();
     }
 
+    private void SwitchFadeOut()
+    {
+        CutSceneCtrl.Instance.FadeOut(1.5f);
+    }
+
+    private void SwitchFadeIn()
+    {
+        CutSceneCtrl.Instance.FadeIn(1.5f);
+        MapCtrl.Instance.SetGlobalLight(playerM.CurrentLightIntensity);
+        CameraCtrl.Instance.SetCameraPos(playerM.transform.position);
+        CameraCtrl.Instance.SetCameraSize(5f);
+
+        foreach (var obj in objets)
+        {
+            obj.intensity = 1.5f;
+        }
+    }
+
     private void EndFadeOut()
     {
         CutSceneCtrl.Instance.FadeOut(1.5f);
@@ -93,8 +114,8 @@ public class CF_13 : CutSceneFunction
     private void EndFadeIn()
     {
         CutSceneCtrl.Instance.FadeIn(1.5f);
-        PlayerTag.Instance.SwitchTagImmedately(PlayerType.WOMEN);
-        CameraCtrl.Instance.SetCameraMode(CameraMode.PlayerW);
+        PlayerTag.Instance.SwitchTagImmedately(PlayerType.MEN);
+        CameraCtrl.Instance.SetCameraMode(CameraMode.PlayerM);
         CameraCtrl.Instance.SetCameraSize(5f);
     }
 }

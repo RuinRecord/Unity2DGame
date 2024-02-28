@@ -72,7 +72,7 @@ public enum Event
     OpenVent,
     GetToR4,
     PuzzleForR4,
-    TurnONR4,
+    PuzzleDoneR4,
 }
 
 public enum EventTiming
@@ -102,9 +102,9 @@ public enum CameraMode
 
 public enum DoorType
 {
-    Ivory_window,
-    Navy_no_window,
-    Ivory_no_window,
+    Gray_no_window,
+    Gray_with_Lock,
+    Vent,
 }
 
 public enum Scene

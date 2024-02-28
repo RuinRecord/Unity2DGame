@@ -21,7 +21,7 @@ public class MapCtrl : MonoBehaviour
         get { return instance; }
     }
 
-    private readonly int[] changedMonitorIndices = new int[] { 3, 6, 11, 14, 22 };
+    private readonly int[] changedMonitorIndices = new int[] { 3, 6, 14, 22, 25 };
 
     /// <summary> 이동 불가능한 오브젝트 레이어 마스트 </summary>
     public LayerMask CanNotMove_layerMask;
@@ -46,6 +46,10 @@ public class MapCtrl : MonoBehaviour
     public List<Monitor> MonitorsList => monitorsList;
 
     [SerializeField] private Light2D globalLight;
+
+    [SerializeField] private List<EventArea> objetAreas;
+
+    [SerializeField] private List<CanMoveObject> objets;
 
 
     private void Awake()
@@ -147,7 +151,7 @@ public class MapCtrl : MonoBehaviour
     {
         globalLight.intensity = intensity;
         if (PlayerCtrl.Instance != null)
-            PlayerCtrl.Instance.currentLightIntensity = intensity;
+            PlayerCtrl.Instance.CurrentLightIntensity = intensity;
     }
 
     public void ChangeSomeMonitor(MonitorType _type)
@@ -163,6 +167,24 @@ public class MapCtrl : MonoBehaviour
         foreach (var monitor in monitorsList)
         {
             monitor.ChangeType(_type);
+        }
+    }
+
+    public bool CheckObjetsComplete()
+    {
+        foreach (var area in objetAreas)
+        {
+            if (!area.isDone)
+                return false;
+        }
+        return true;
+    }
+
+    public void SetObjetsComplete(bool isDone)
+    {
+        foreach (var ob in objets)
+        {
+            ob.isDone = isDone;
         }
     }
 }

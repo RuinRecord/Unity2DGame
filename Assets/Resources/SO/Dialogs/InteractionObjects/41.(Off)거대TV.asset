@@ -20,14 +20,12 @@ MonoBehaviour:
       audioClip: {fileID: 0}
       leftSprite: {fileID: 0}
       rightSprite: {fileID: 0}
-      words: "\uBCBD\uBA74\uC5D0 \uAC70\uB300\uD55C \uBAA8\uB2C8\uAC00 \uB193\uC5EC
-        \uC788\uB2E4."
+      words: "\uBCBD\uBA74\uC5D0 \uAC70\uB300\uD55C \uBAA8\uB2C8\uD130\uAC00 \uAC78\uB824\uC788\uB2E4."
       print_time: 0
     Player_W_dialog:
       type: 0
       audioClip: {fileID: 0}
       leftSprite: {fileID: 0}
       rightSprite: {fileID: 0}
-      words: "\uBCBD\uBA74\uC5D0 \uAC70\uB300\uD55C \uBAA8\uB2C8\uAC00 \uB193\uC5EC
-        \uC788\uB2E4."
+      words: "\uBCBD\uBA74\uC5D0 \uAC70\uB300\uD55C \uBAA8\uB2C8\uD130\uAC00 \uAC78\uB824\uC788\uB2E4."
       print_time: 0

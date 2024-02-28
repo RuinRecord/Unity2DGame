@@ -10,6 +10,8 @@ public class CF_00 : CutSceneFunction
     public override void OnFuntionEnter()
     {
         base.OnFuntionEnter();
+
+        player_W.MovePosition(new Vector3(-26f, -19f, 0f));
     }
 
     public override void Play(int actionIdx)

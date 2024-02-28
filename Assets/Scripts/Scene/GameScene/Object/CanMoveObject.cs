@@ -12,9 +12,9 @@ public class CanMoveObject : MonoBehaviour
 
     [SerializeField] private AudioClip clip;
 
-    [SerializeField] private Vector3 startPos;
-
     [SerializeField] private float moveSpeed;
+
+    private Vector3 startPos;
 
     public Event @event;
 
@@ -29,6 +29,10 @@ public class CanMoveObject : MonoBehaviour
 
     public void SetForceDirection(Vector2 _vec) => direction = _vec;
 
+    private void Start()
+    {
+        startPos = this.transform.localPosition;
+    }
 
     /// <summary> 물체가 움직일 수 있는지 체크하고 물체를 움직이게 하는 함수이다. </summary>
     public bool Push()
@@ -70,6 +74,13 @@ public class CanMoveObject : MonoBehaviour
             return;
         }
 
+        if (@event.Equals(Event.PuzzleForR4) && MapCtrl.Instance.CheckObjetsComplete())
+        {
+            Debug.Log("Objects are already done.");
+            return;
+        }
+
+        // 그 외의 경우
         this.transform.localPosition = startPos;
     }
 

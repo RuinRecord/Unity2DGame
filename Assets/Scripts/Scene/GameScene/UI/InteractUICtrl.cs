@@ -48,6 +48,8 @@ public class InteractUICtrl : MonoBehaviour
     /// <summary> 최근 대화 출력 중인 코루틴 </summary>
     private Coroutine currentInfoCo;
 
+    private Coroutine nextInfoCo;
+
     /// <summary> 하나의 대화(현재)를 모두 출력한 상태인지에 대한 여부 </summary>
     private bool isDoneOne;
 
@@ -62,6 +64,7 @@ public class InteractUICtrl : MonoBehaviour
     {
         currentIdx = 0;
         currentInfoCo = null;
+        nextInfoCo = null;
         IsDialog = false;
         isDoneOne = false;
         isDoneAll = false;
@@ -97,7 +100,9 @@ public class InteractUICtrl : MonoBehaviour
                     SetInfoText(currentDialogs[currentIdx].GetDialogType(currentPlayerType), currentDialogs[currentIdx].GetWords(currentPlayerType));
 
                     // 넘기기 아이콘 출력
-                    SetNextActive(currentDialogs[currentIdx].GetDialogType(currentPlayerType), false);
+                    if (nextInfoCo != null)
+                        StopCoroutine(nextInfoCo);
+                    nextInfoCo = StartCoroutine(SetNextActiveWithDelay(currentDialogs[currentIdx].GetDialogType(currentPlayerType), true));
 
                     currentIdx++;
                     if (CheckLeftDialog())
@@ -275,7 +280,9 @@ public class InteractUICtrl : MonoBehaviour
         }
 
         // 넘기기 아이콘 출력
-        SetNextActive(_dialogType, true);
+        if (nextInfoCo != null)
+            StopCoroutine(nextInfoCo);
+        nextInfoCo =StartCoroutine(SetNextActiveWithDelay(_dialogType, true));
         ++currentIdx;
 
         if (CheckLeftDialog())
@@ -358,5 +365,12 @@ public class InteractUICtrl : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         IsDialog = isOn;
+    }
+
+    IEnumerator SetNextActiveWithDelay(DialogType dialogType, bool isActive)
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        SetNextActive(dialogType, isActive);
     }
 }

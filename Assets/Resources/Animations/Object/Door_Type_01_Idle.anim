@@ -21,18 +21,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -1545038298, guid: e478d76b0e59bde47bac603267d896b2, type: 3}
+      value: {fileID: 1695926077, guid: 06491504c9ec4e048a7270f66db8af96, type: 3}
     attribute: m_Sprite
-    path: Door_Up
-    classID: 212
-    script: {fileID: 0}
-    flags: 2
-  - serializedVersion: 2
-    curve:
-    - time: 0
-      value: {fileID: -245161991, guid: e478d76b0e59bde47bac603267d896b2, type: 3}
-    attribute: m_Sprite
-    path: Door_Down
+    path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
@@ -44,16 +35,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 4277602992
-      attribute: 0
-      script: {fileID: 0}
-      typeID: 212
-      customType: 23
-      isPPtrCurve: 1
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
-    - serializedVersion: 2
-      path: 1885527159
+      path: 0
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -62,8 +44,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -1545038298, guid: e478d76b0e59bde47bac603267d896b2, type: 3}
-    - {fileID: -245161991, guid: e478d76b0e59bde47bac603267d896b2, type: 3}
+    - {fileID: 1695926077, guid: 06491504c9ec4e048a7270f66db8af96, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

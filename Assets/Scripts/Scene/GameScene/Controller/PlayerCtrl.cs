@@ -131,7 +131,7 @@ public class PlayerCtrl : MonoBehaviour
         get { return CUR_HP; }
     }
 
-    public float currentLightIntensity;
+    public float CurrentLightIntensity;
 
     #region Unity 콜백 함수
 
@@ -166,7 +166,7 @@ public class PlayerCtrl : MonoBehaviour
         IsCameraOn = IsMoving = false;
         Max_HP = cur_HP = 100f;
         MoveSpeed = WALK_SPEED;
-        currentLightIntensity = 0.5f;
+        CurrentLightIntensity = 0.5f;
     }
 
 
@@ -377,6 +377,12 @@ public class PlayerCtrl : MonoBehaviour
                             UIManager.InteractUI.StartDialog(interaction);
                     }
                 }
+                else if (CurrentCanMoveOb != null && playerType.Equals(PlayerType.WOMEN))
+                {
+                    // 상호작용 대사
+                    DialogSet[] _dialogs = CurrentCanMoveOb.Player_m_dialogs.ToArray();
+                    UIManager.InteractUI.StartDialog(_dialogs);
+                }
             }
             else if (Mode.Equals(PlayerMode.PUSH))
             {
@@ -390,12 +396,6 @@ public class PlayerCtrl : MonoBehaviour
                     }
 
                     CurrentCanMoveOb.Push();
-                }
-                else if (playerType.Equals(PlayerType.WOMEN))
-                {
-                    // 상호작용 대사
-                    DialogSet[] _dialogs = CurrentCanMoveOb.Player_m_dialogs.ToArray();
-                    UIManager.InteractUI.StartDialog(_dialogs);
                 }
             }
         }
