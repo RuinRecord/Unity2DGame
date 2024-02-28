@@ -72,7 +72,7 @@ public enum Event
     OpenVent,
     GetToR4,
     PuzzleForR4,
-    TurnONR4,
+    PuzzleDoneR4,
 }
 
 public enum EventTiming

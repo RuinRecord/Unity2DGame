@@ -21,7 +21,7 @@ public class MapCtrl : MonoBehaviour
         get { return instance; }
     }
 
-    private readonly int[] changedMonitorIndices = new int[] { 3, 6, 11, 14, 22 };
+    private readonly int[] changedMonitorIndices = new int[] { 3, 6, 14, 22, 25 };
 
     /// <summary> 이동 불가능한 오브젝트 레이어 마스트 </summary>
     public LayerMask CanNotMove_layerMask;
@@ -151,7 +151,7 @@ public class MapCtrl : MonoBehaviour
     {
         globalLight.intensity = intensity;
         if (PlayerCtrl.Instance != null)
-            PlayerCtrl.Instance.currentLightIntensity = intensity;
+            PlayerCtrl.Instance.CurrentLightIntensity = intensity;
     }
 
     public void ChangeSomeMonitor(MonitorType _type)

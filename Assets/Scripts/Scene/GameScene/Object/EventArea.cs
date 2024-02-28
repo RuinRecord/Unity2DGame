@@ -27,6 +27,7 @@ public class EventArea : MonoBehaviour
                     // R4 전용 퍼즐 완료
                     EventCtrl.Instance.CheckEvent(EventTiming.MoveObject);
                     MapCtrl.Instance.SetObjetsComplete(true);
+                    CutSceneCtrl.Instance.StartCutScene(14);
                 }
             }
             else

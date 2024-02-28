@@ -96,8 +96,14 @@ public class CF_13 : CutSceneFunction
     private void SwitchFadeIn()
     {
         CutSceneCtrl.Instance.FadeIn(1.5f);
+        MapCtrl.Instance.SetGlobalLight(playerM.CurrentLightIntensity);
         CameraCtrl.Instance.SetCameraPos(playerM.transform.position);
         CameraCtrl.Instance.SetCameraSize(5f);
+
+        foreach (var obj in objets)
+        {
+            obj.intensity = 1.5f;
+        }
     }
 
     private void EndFadeOut()
@@ -108,12 +114,8 @@ public class CF_13 : CutSceneFunction
     private void EndFadeIn()
     {
         CutSceneCtrl.Instance.FadeIn(1.5f);
+        PlayerTag.Instance.SwitchTagImmedately(PlayerType.MEN);
         CameraCtrl.Instance.SetCameraMode(CameraMode.PlayerM);
         CameraCtrl.Instance.SetCameraSize(5f);
-
-        foreach (var obj in objets)
-        {
-            obj.intensity = 1.5f;
-        }
     }
 }

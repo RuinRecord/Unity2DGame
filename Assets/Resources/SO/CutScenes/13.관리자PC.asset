@@ -598,16 +598,16 @@ MonoBehaviour:
     camera_zoomSize: 0
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
-  - playTime: 0
-    isDialogOn: 1
+  - playTime: 1.5
+    isDialogOn: 0
     dialogs:
       Player_M_dialog:
-        type: 1
+        type: 0
         audioClip: {fileID: 0}
         leftSprite: {fileID: 0}
         rightSprite: {fileID: 0}
-        words: "[ \uC720\uC9C4 ]\n\n..."
-        print_time: 0.5
+        words: 0
+        print_time: 0
       Player_W_dialog:
         type: 0
         audioClip: {fileID: 0}
@@ -623,16 +623,16 @@ MonoBehaviour:
     camera_zoomSize: 0
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
-  - playTime: 0
-    isDialogOn: 1
+  - playTime: 1.5
+    isDialogOn: 0
     dialogs:
       Player_M_dialog:
-        type: 1
+        type: 0
         audioClip: {fileID: 0}
         leftSprite: {fileID: 0}
         rightSprite: {fileID: 0}
-        words: "[ \uC720\uC9C4 ]\n\n..."
-        print_time: 0.5
+        words: 
+        print_time: 0
       Player_W_dialog:
         type: 0
         audioClip: {fileID: 0}
