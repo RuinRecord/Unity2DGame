@@ -30592,10 +30592,10 @@ MonoBehaviour:
   doorType: 0
   destination: {x: -57, y: 36.5, z: 0}
   direction: {x: 0, y: 1}
-  audioClip: {fileID: 8300000, guid: aae877aea6771dd4785e54e473cb9062, type: 3}
+  audioClip: {fileID: 0}
   animator: {fileID: 0}
-  blockDialog: {fileID: 0}
-  IsOn: 1
+  blockDialog: {fileID: 11400000, guid: 89a2f87215106ae43bb83f416d00c213, type: 2}
+  IsOn: 0
   IsGoVent: 1
   lightIntensity: 0.05
 --- !u!61 &832993177
@@ -44309,7 +44309,7 @@ Transform:
   m_GameObject: {fileID: 1479713877}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.1, y: 4.4, z: 0}
+  m_LocalPosition: {x: 23.95, y: -13.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -48686,7 +48686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0215b8fe77ce17440b3017f7de6db0a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEvent: 9
+  currentEvent: 10
 --- !u!111 &1682769455
 Animation:
   m_ObjectHideFlags: 0
@@ -65828,7 +65828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e22751daa29ee74fb2a0c0564f8bd51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorType: 0
+  doorType: 2
   destination: {x: 20, y: 4.5, z: 0}
   direction: {x: 0, y: -1}
   audioClip: {fileID: 8300000, guid: aae877aea6771dd4785e54e473cb9062, type: 3}
@@ -65927,6 +65927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerW: {fileID: 1479713881}
+  playerM: {fileID: 2013731442}
   specialMonitor: {fileID: 1334527020}
   objets:
   - {fileID: 681915328}

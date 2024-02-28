@@ -104,7 +104,7 @@ public enum DoorType
 {
     Gray_no_window,
     Gray_with_Lock,
-    Ivory_no_window,
+    Vent,
 }
 
 public enum Scene
