@@ -206,6 +206,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: LockDoorAnim_4
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 0
+        width: 44
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef97f16fc6a972a439680dd5f7aa0231
+      internalID: -1104443742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -221,6 +242,7 @@ TextureImporter:
       LockDoorAnim_1: -1550576430
       LockDoorAnim_2: 1776807608
       LockDoorAnim_3: 737754665
+      LockDoorAnim_4: -1104443742
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

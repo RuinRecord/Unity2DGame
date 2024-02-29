@@ -172,14 +172,11 @@ public class InteractUICtrl : MonoBehaviour
             StopCoroutine(currentInfoCo);
 
         // 이벤트 상호작용이면 대사 출력 취소
-        if (PlayerTag.PlayerType.Equals(PlayerType.WOMEN))
+        if (currentObject.IsEvent)
         {
-            if (currentObject.IsEvent)
-            {
-                currentObject.EventOn();
-                isDoneAll = true;
-                return;
-            }
+            currentObject.EventOn();
+            isDoneAll = true;
+            return;
         }
 
         // 출력 시작

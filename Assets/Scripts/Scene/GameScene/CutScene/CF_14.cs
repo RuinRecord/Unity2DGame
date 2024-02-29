@@ -12,9 +12,13 @@ public class CF_14 : CutSceneFunction
     [SerializeField] private InteractionObject adminPC;
     [SerializeField] private Animator cardPort;
 
+    private InteractionObject cardPortIO;
+
     public override void OnFuntionEnter()
     {
         base.OnFuntionEnter();
+
+        cardPortIO = cardPort.GetComponent<InteractionObject>();
     }
 
     public override void Play(int actionIdx)
@@ -35,7 +39,6 @@ public class CF_14 : CutSceneFunction
         base.OnFunctionExit();
 
         TutorialManager.Instance.ShowTutorial("디스펜서를 조사하세요.");
-        EventCtrl.Instance.SetCurrentEvent(Event.PuzzleDoneR4);
     }
 
 
@@ -49,6 +52,7 @@ public class CF_14 : CutSceneFunction
         PlayerTag.Instance.SwitchTagImmedately(PlayerType.NONE);
         CameraCtrl.Instance.SetCameraMode(CameraMode.Free);
         CameraCtrl.Instance.SetCameraPos(new Vector3(29.5f, 36f, 0f));
+        EventCtrl.Instance.SetCurrentEvent(Event.PuzzleDoneR4);
     }
 
     private void SystemOn()
@@ -80,5 +84,7 @@ public class CF_14 : CutSceneFunction
         playerW.CurrentLightIntensity = 0.5f;
         specialMonitor.ChangeType(MonitorType.On);
         adminPC.Code = 46;
+        cardPortIO.Code = 47;
+        cardPortIO.IsEvent = true;
     }
 }

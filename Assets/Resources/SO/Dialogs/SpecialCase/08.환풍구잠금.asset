@@ -27,5 +27,5 @@ MonoBehaviour:
       audioClip: {fileID: 0}
       leftSprite: {fileID: 0}
       rightSprite: {fileID: 0}
-      words: "[ \uB9B0 ]\n\n\uC544\uC9C1 \uB098\uAC08 \uD544\uC694\uB294 \uC5C6\uC5B4"
+      words: "[ \uB9B0 ]\n\n\uC544\uC9C1 \uB098\uAC08 \uD544\uC694\uB294 \uC5C6\uC5B4!"
       print_time: 0

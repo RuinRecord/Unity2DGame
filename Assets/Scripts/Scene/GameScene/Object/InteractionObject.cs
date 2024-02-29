@@ -123,6 +123,12 @@ public class InteractionObject : MonoBehaviour
                 IsEvent = false;
                 Code = 40;
                 break;
+
+            case 47:
+                CutSceneCtrl.Instance.StartCutScene(15);
+                IsEvent = false;
+                Code = 48;
+                break;
         }
     }
 }
