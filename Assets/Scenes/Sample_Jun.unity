@@ -16578,6 +16578,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerW: {fileID: 1479713881}
   playerM: {fileID: 2013731442}
+  specialMonitor: {fileID: 1334527020}
+  adminPC: {fileID: 1526882911}
   cardPort: {fileID: 1701942532}
 --- !u!1001 &362828894
 PrefabInstance:
@@ -44357,7 +44359,7 @@ Transform:
   m_GameObject: {fileID: 1479713877}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.95, y: -13.82, z: 0}
+  m_LocalPosition: {x: 24.9, y: -13.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -48734,7 +48736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0215b8fe77ce17440b3017f7de6db0a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEvent: 10
+  currentEvent: 11
 --- !u!111 &1682769455
 Animation:
   m_ObjectHideFlags: 0
@@ -73483,8 +73485,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   col: {fileID: 7799206387800140423}
-  clip: {fileID: 8300000, guid: c0b1b572b60250d47a7de02d38ca8aa7, type: 3}
-  moveSpeed: 0.5
+  clip: {fileID: 8300000, guid: 44480d27783ce9b4c80bb2dd399e664f, type: 3}
+  moveSpeed: 0.65
   event: 7
   isDone: 0
   Player_m_dialogs:

@@ -8,6 +8,8 @@ public class CF_14 : CutSceneFunction
 {
     [SerializeField] private PlayerCtrl playerW;
     [SerializeField] private PlayerCtrl playerM;
+    [SerializeField] private SpecialMonitor specialMonitor;
+    [SerializeField] private InteractionObject adminPC;
     [SerializeField] private Animator cardPort;
 
     public override void OnFuntionEnter()
@@ -22,8 +24,9 @@ public class CF_14 : CutSceneFunction
             case 0: StartFadeOut(); break;
             case 1: StartFadeIn(); break;
             case 2: SystemOn(); break;
-            case 3: EndFadeOut(); break;
-            case 4: EndFadeIn(); break;
+            case 4: OpenCardPort(); break;
+            case 5: EndFadeOut(); break;
+            case 6: EndFadeIn(); break;
         }
     }
 
@@ -52,13 +55,11 @@ public class CF_14 : CutSceneFunction
     {
         GameManager.Sound.PlaySE("시스템온");
         MapCtrl.Instance.SetGlobalLight(0.5f);
-
-        Invoke("OpenCardPort", 1f);
     }
 
     private void OpenCardPort()
     {
-        GameManager.Sound.PlaySE("시스템온");
+        GameManager.Sound.PlaySE("디스펜서열림");
         cardPort.SetBool("isOpen", true);
         playerW.SetAnimationDir(Vector2.up);
     }
@@ -74,5 +75,10 @@ public class CF_14 : CutSceneFunction
         PlayerTag.Instance.SwitchTagImmedately(PlayerType.MEN);
         CameraCtrl.Instance.SetCameraMode(CameraMode.PlayerM);
         CameraCtrl.Instance.SetCameraSize(5f);
+        MapCtrl.Instance.ChangeAllMonitor(MonitorType.On);
+
+        playerW.CurrentLightIntensity = 0.5f;
+        specialMonitor.ChangeType(MonitorType.On);
+        adminPC.Code = 46;
     }
 }

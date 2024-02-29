@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: "\uC190\uC804\uB4F1"
   itemInfo: "\uC5B4\uB450\uC6B4 \uACF5\uAC04\uC5D0\uC11C \uC0AC\uC6A9\uD558\uBA74
     \uC720\uC6A9\uD560 \uAC83 \uAC19\uB2E4."
-  itemSprite: {fileID: 21300000, guid: 18876cfb467e811419639c5eb66d68e3, type: 3}
+  itemSprite: {fileID: 21300000, guid: d00ce7072bfa6d44db07f9d3802858c8, type: 3}
   itemCode: 4

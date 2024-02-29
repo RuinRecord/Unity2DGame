@@ -207,8 +207,8 @@ MonoBehaviour:
         words: 
         print_time: 0
     isCameraMoveOn: 1
-    camera_destination: {x: 0, y: -4}
-    camera_moveSpeed: 2
+    camera_destination: {x: 0, y: -3}
+    camera_moveSpeed: 1.5
     camera_isMoveSmooth: 0
     isCameraZoomOn: 0
     camera_zoomSize: 0
@@ -235,10 +235,10 @@ MonoBehaviour:
     camera_destination: {x: 0, y: 0}
     camera_moveSpeed: 0
     camera_isMoveSmooth: 0
-    isCameraZoomOn: 1
-    camera_zoomSize: -0.5
-    camera_zoomSpeed: 4
-    camera_isZoomSmooth: 1
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
   - playTime: 0
     isDialogOn: 1
     dialogs:
@@ -598,7 +598,7 @@ MonoBehaviour:
     camera_zoomSize: 0
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
-  - playTime: 1.5
+  - playTime: 2
     isDialogOn: 0
     dialogs:
       Player_M_dialog:

@@ -88,6 +88,56 @@ MonoBehaviour:
     camera_zoomSize: 0
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
+  - playTime: 2
+    isDialogOn: 0
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 1
+    camera_destination: {x: 0, y: 1.5}
+    camera_moveSpeed: 1
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 1.5
+    isDialogOn: 0
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
   - playTime: 1.5
     isDialogOn: 0
     dialogs:
