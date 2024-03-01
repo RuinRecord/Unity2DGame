@@ -59,7 +59,7 @@ MonoBehaviour:
       leftSprite: {fileID: 1282878473, guid: 2cbb35386f036e64c8b0260c8bf944a6, type: 3}
       rightSprite: {fileID: 0}
       words: "[ \uB9B0 ]\n\n..."
-      print_time: 0.5
+      print_time: 0
   - Player_M_dialog:
       type: 1
       audioClip: {fileID: 0}

@@ -9,6 +9,7 @@ public class CF_15 : CutSceneFunction
     [SerializeField] private PlayerCtrl playerW;
     [SerializeField] private PlayerCtrl playerM;
     [SerializeField] private Animator cardPort;
+    [SerializeField] private CaptureObject tv;
 
     public override void OnFuntionEnter()
     {
@@ -36,11 +37,14 @@ public class CF_15 : CutSceneFunction
     {
         base.OnFunctionExit();
 
-        TutorialManager.Instance.ShowTutorial("시설을 조사하세요.");
+        TutorialManager.Instance.ShowTutorial("연구 자료를 카메라로 기록하세요.");
         EventCtrl.Instance.SetCurrentEvent(Event.SearchR4);
 
         playerM.MoveSpeed = PlayerCtrl.WALK_SPEED;
         playerW.MoveSpeed = PlayerCtrl.WALK_SPEED;
+        tv.enabled = true;
+        tv.GetComponent<Collider2D>().isTrigger = true;
+        tv.gameObject.layer = LayerMask.NameToLayer("CaptureObject");
     }
 
     private void StartFadeOut() => CutSceneCtrl.Instance.FadeOut(1.5f);

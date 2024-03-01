@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class CaptureObject : MonoBehaviour
 {
-    private const float SCALE_ZOOM_POWER = 0.1f;
+    private const float SCALE_ZOOM_POWER = 0.05f;
 
     private SpriteRenderer spriteRenderer;
 

@@ -17,5 +17,5 @@ MonoBehaviour:
     \uB4E4\uC5B4\uAC08 \uC218 \uC788\uB294 \uCE74\uB4DC\uD0A4\uC774\uB2E4. \uC5B4\uB54C\uC11C
     \uADF8\uB7F0 \uC5F0\uAD6C\uB3D9\uC774 \uD3D0\uAE30\uBB3C \uC9C0\uD558 \uCC98\uB9AC
     \uC2DC\uC124\uC5D0 \uC788\uB294 \uC9C0\uB294 \uBAA8\uB974\uACA0\uB2E4."
-  itemSprite: {fileID: 21300000, guid: d00ce7072bfa6d44db07f9d3802858c8, type: 3}
+  itemSprite: {fileID: 21300000, guid: 65de5db88e07b0149aa08809bec871e1, type: 3}
   itemCode: 5
