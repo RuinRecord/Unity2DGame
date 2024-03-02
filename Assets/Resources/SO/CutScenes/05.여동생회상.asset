@@ -102,7 +102,7 @@ MonoBehaviour:
       Player_W_dialog:
         type: 0
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 5317db668470ef846af7fbd8dc0126e3, type: 3}
         rightSprite: {fileID: 0}
         words: 
         print_time: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
       Player_M_dialog:
         type: 1
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: fc55c9a6f20a0d04bacee196f96a5a18, type: 3}
         rightSprite: {fileID: 0}
         words: "[ ??? ]\n\n\uD558\u2026 \uADF8 \uB204\uAD70\uAC00\uB97C \uC65C \uB124\uAC00
           \uC790\uCC98\uD558\uB0D0\uACE0. \uC81C\uBC1C \uC9D1\uC5D0 \uC548\uC804\uD558\uAC8C
@@ -225,7 +225,7 @@ MonoBehaviour:
       Player_M_dialog:
         type: 1
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 5317db668470ef846af7fbd8dc0126e3, type: 3}
         rightSprite: {fileID: 0}
         words: "[ ??? ]\n\n... \uB108 \uB610 \uC0C8\uBCBD\uAE4C\uC9C0 \uC548\uC7A4\uAD6C\uB098?"
         print_time: 0
@@ -276,7 +276,7 @@ MonoBehaviour:
       Player_M_dialog:
         type: 1
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: fc55c9a6f20a0d04bacee196f96a5a18, type: 3}
         rightSprite: {fileID: 0}
         words: "[ ??? ]\n\n\uC808\uB300 \uC548\uB3FC."
         print_time: 0
@@ -327,7 +327,7 @@ MonoBehaviour:
       Player_M_dialog:
         type: 1
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: e4b01e767da16cf4baf08a91346199a9, type: 3}
         rightSprite: {fileID: 0}
         words: "[ ??? ]\n\n\uBBF8\uCCE4\uC5B4? \uC694\uC998 \uD558\uB098 \uB458 \uC2E4\uC885\uB418\uB294
           \uAC70 \uBAB0\uB77C? \uB108\uB3C4 \uADF8 \uAF34 \uB098\uACE0 \uC2F6\uB0D0\uACE0!"
@@ -378,7 +378,7 @@ MonoBehaviour:
       Player_M_dialog:
         type: 1
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: e4b01e767da16cf4baf08a91346199a9, type: 3}
         rightSprite: {fileID: 0}
         words: "[ ??? ]\n\n\uB2E4\uC2E0 \uADF8\uB7F0 \uC598\uAE30\uD558\uAE30\uB9CC
           \uD574\uBD10. \uB0B4\uC77C \uD559\uAD50 \uAC08 \uC900\uBE44\uB098 \uD574."

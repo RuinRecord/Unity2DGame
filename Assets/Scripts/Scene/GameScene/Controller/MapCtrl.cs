@@ -21,7 +21,7 @@ public class MapCtrl : MonoBehaviour
         get { return instance; }
     }
 
-    private readonly int[] changedMonitorIndices = new int[] { 3, 6, 14, 22, 25 };
+    private readonly int[] changedMonitorIndices = new int[] { 5, 6, 14, 22, 25 };
 
     /// <summary> 이동 불가능한 오브젝트 레이어 마스트 </summary>
     public LayerMask CanNotMove_layerMask;

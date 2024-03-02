@@ -70,6 +70,7 @@ public class InteractionObject : MonoBehaviour
         switch (Code)
         {
             case 5: Code = 12; break; // (열쇠)화분 -> 화분 변경
+            case 19: Code = 7; break; // (드라이버)
             case 32: 
                 TutorialManager.Instance.ShowTutorial("시설의 환풍구를 조사하세요.");
                 InteractionObject interactionObject = GameObject.Find("(Find전용)환풍구").GetComponent<InteractionObject>();
@@ -122,6 +123,12 @@ public class InteractionObject : MonoBehaviour
                 CutSceneCtrl.Instance.StartCutScene(13);
                 IsEvent = false;
                 Code = 40;
+                break;
+
+            case 47:
+                CutSceneCtrl.Instance.StartCutScene(15);
+                IsEvent = false;
+                Code = 48;
                 break;
         }
     }

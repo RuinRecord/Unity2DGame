@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e76e39a2a11d2094d8e5c016bdb89844, type: 3}
+  m_Name: "01.\uC2E4\uD5D8\uC2E4"
+  m_EditorClassIdentifier: 
+  CaptureName: "\uD3D0\uC1C4\uB41C \uC5F0\uAD6C\uC2E4\uC758 \uC790\uB8CC"
+  CaptureInfo: "\uC778\uAC04\uC744 \uAC1C\uC870\uD558\uC5EC \uC0C8\uB85C\uC6B4 \uC885\uC73C\uB85C
+    \uAC1C\uB7C9\uD55C \uAC83\uCC98\uB7FC \uBCF4\uC778\uB2E4.  \uD504\uB85C\uC81D\uD2B8
+    \uC774\uB984 \uB780\uC5D0\uB294 '\uC704\uBC84\uB9E8\uC26C'\uB77C\uACE0 \uC801\uD600
+    \uC788\uB2E4."
+  Image: {fileID: 21300000, guid: ada1caffb0d48e444a8c8dfa510a8ac9, type: 3}
+  Polaroid: {fileID: 21300000, guid: d9ebcbbaeecd6fc449a3695122d718ed, type: 3}
+  CaptureCode: 1

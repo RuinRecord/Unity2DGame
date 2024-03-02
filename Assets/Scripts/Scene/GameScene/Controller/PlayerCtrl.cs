@@ -346,7 +346,7 @@ public class PlayerCtrl : MonoBehaviour
                 CurrentTeleport.GoToDestination();
             }
 
-            if (Mode.Equals(PlayerMode.DEFAULT))
+            if (Mode.Equals(PlayerMode.DEFAULT) || Mode.Equals(PlayerMode.CRAWL))
             {
                 // 상호작용
                 Vector2Int _dir = GetDirection();

@@ -51,7 +51,7 @@ MonoBehaviour:
       Player_W_dialog:
         type: 2
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 23783c666ee6aeb4c8d32ef619691455, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uB9B0 ]\n\n\uC5ED\uC2DC! \uC5EC\uAE30\uB85C \uD1B5\uD574\uC788\uC744
           \uC904 \uC54C\uC558\uC5B4. \uB0B4 \uC815\uBCF4\uB294 \uC815\uD655\uD558\uB2E4\uB2C8\uAE50?"
@@ -77,7 +77,7 @@ MonoBehaviour:
       Player_W_dialog:
         type: 2
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: f7d894444faa9a64fbb9b08ee6b2d32e, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uB9B0 ]\n\n\uADF8\uB7F0\uB370 \uD558\uB098\uB3C4 \uC548\uBCF4\uC5EC\u2026
           \uBD88\uC744 \uD0AC \uC218 \uC788\uB294 \uBC29\uBC95\uC740 \uC5C6\uB098?"

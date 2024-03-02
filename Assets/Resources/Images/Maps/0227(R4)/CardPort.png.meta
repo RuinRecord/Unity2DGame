@@ -126,12 +126,12 @@ TextureImporter:
       name: CardPort_0
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 0
-        width: 60
+        width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -147,12 +147,12 @@ TextureImporter:
       name: CardPort_1
       rect:
         serializedVersion: 2
-        x: 66
+        x: 64
         y: 0
-        width: 60
+        width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,12 +168,12 @@ TextureImporter:
       name: CardPort_2
       rect:
         serializedVersion: 2
-        x: 130
+        x: 128
         y: 0
-        width: 60
+        width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,12 +189,12 @@ TextureImporter:
       name: CardPort_3
       rect:
         serializedVersion: 2
-        x: 194
+        x: 192
         y: 0
-        width: 60
+        width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -210,12 +210,12 @@ TextureImporter:
       name: CardPort_4
       rect:
         serializedVersion: 2
-        x: 258
+        x: 256
         y: 0
-        width: 60
+        width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -231,12 +231,12 @@ TextureImporter:
       name: CardPort_5
       rect:
         serializedVersion: 2
-        x: 322
+        x: 320
         y: 0
-        width: 60
+        width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -252,12 +252,12 @@ TextureImporter:
       name: CardPort_6
       rect:
         serializedVersion: 2
-        x: 386
+        x: 384
         y: 0
-        width: 60
+        width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -273,12 +273,12 @@ TextureImporter:
       name: CardPort_7
       rect:
         serializedVersion: 2
-        x: 450
+        x: 448
         y: 0
-        width: 60
+        width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -286,6 +286,27 @@ TextureImporter:
       bones: []
       spriteID: 7e6591911d9aa764cb13439dc705a10e
       internalID: -817382470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CardPort_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9676556909184c04ba791fad809c26a2
+      internalID: -546386262
       vertices: []
       indices: 
       edges: []
@@ -309,6 +330,7 @@ TextureImporter:
       CardPort_5: -795130013
       CardPort_6: 801818339
       CardPort_7: -817382470
+      CardPort_8: -546386262
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

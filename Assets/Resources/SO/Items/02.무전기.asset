@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: "\uBB34\uC804\uAE30"
   itemInfo: "\uC804\uD30C \uBB34\uC804\uAE30\uC774\uB2E4. [ Tab ] \uC744 \uD1B5\uD574
     \uC0AC\uC6A9\uD560 \uC218 \uC788\uB2E4."
-  itemSprite: {fileID: 21300000, guid: 6400b9a819b6558448a0d691eeee319a, type: 3}
+  itemSprite: {fileID: 21300000, guid: 6c46498965099604588a24258549bb68, type: 3}
   itemCode: 2

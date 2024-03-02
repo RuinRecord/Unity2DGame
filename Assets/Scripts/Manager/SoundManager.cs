@@ -48,7 +48,6 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
-        BGM_audio.Play();
         StartCoroutine(BGMFade(BGM_clip, fadeTime));
     }
 
@@ -129,6 +128,7 @@ public class SoundManager : MonoBehaviour
 
         BGM_audio.volume = 0f;
         BGM_audio.clip = BGM_clip;
+        BGM_audio.Play();
 
         while (BGM_audio.volume < 1f)
         {

@@ -76,7 +76,7 @@ MonoBehaviour:
       Player_W_dialog:
         type: 2
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 81e27fd812c1d0d4f97d772e75a989f0, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uB9B0 ]\n\n\uC774 PC\uB9CC \uC804\uC6D0\uC774 \uB4E4\uC5B4\uC624\uACE0
           \uC788\uC5B4...\n\uC5EC\uAE30\uC5D0 \uBB54\uAC00 \uC788\uC9C0 \uC54A\uC744\uAE4C?"
@@ -177,7 +177,7 @@ MonoBehaviour:
       Player_W_dialog:
         type: 2
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 23783c666ee6aeb4c8d32ef619691455, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uB9B0 ]\n\n\uC624..! \uC5ED\uC2DC \uB098\uC57C~"
         print_time: 0
@@ -207,8 +207,8 @@ MonoBehaviour:
         words: 
         print_time: 0
     isCameraMoveOn: 1
-    camera_destination: {x: 0, y: -4}
-    camera_moveSpeed: 2
+    camera_destination: {x: 0, y: -3}
+    camera_moveSpeed: 1.5
     camera_isMoveSmooth: 0
     isCameraZoomOn: 0
     camera_zoomSize: 0
@@ -227,7 +227,7 @@ MonoBehaviour:
       Player_W_dialog:
         type: 2
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 9dc70f39dae0bb9498738a2be8cee608, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uB9B0 ]\n\n..!"
         print_time: 0
@@ -235,10 +235,10 @@ MonoBehaviour:
     camera_destination: {x: 0, y: 0}
     camera_moveSpeed: 0
     camera_isMoveSmooth: 0
-    isCameraZoomOn: 1
-    camera_zoomSize: -0.5
-    camera_zoomSpeed: 4
-    camera_isZoomSmooth: 1
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
   - playTime: 0
     isDialogOn: 1
     dialogs:
@@ -252,7 +252,7 @@ MonoBehaviour:
       Player_W_dialog:
         type: 2
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: ab6d9825f73dc06429ae4ddff55fd4c2, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uB9B0 ]\n\n\uBB50.. \uBB50\uC57C! \uC65C \uAEBC\uC9C0\uB294\uAC74\uB370!"
         print_time: 0
@@ -277,7 +277,7 @@ MonoBehaviour:
       Player_W_dialog:
         type: 2
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: f7d894444faa9a64fbb9b08ee6b2d32e, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uB9B0 ]\n\n\uC73C... \uC804\uC6D0\uC740 \uB4E4\uC5B4\uC624\uB294
           \uAC78\uB85C \uBD10\uC120... \uC2DC\uC2A4\uD15C \uB2E4\uC6B4\uC740 \uC544\uB2CC
@@ -304,7 +304,7 @@ MonoBehaviour:
       Player_W_dialog:
         type: 2
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 9dc70f39dae0bb9498738a2be8cee608, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uB9B0 ]\n\n\uADF8\uB7EC\uBA74 \uC5EC\uAE30 \uBFD0\uB9CC \uC544\uB2C8\uB77C
           \uC678\uBD80\uC5D0\uB3C4 \uBCC0\uD654\uAC00 \uC788\uC744\uAC70\uC57C. \uC544\uC800\uC528\uC5D0\uAC8C
@@ -399,7 +399,7 @@ MonoBehaviour:
       Player_M_dialog:
         type: 1
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 9a0c596db95996e408e39821238ca7e1, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uC720\uC9C4 ]\n\n..?"
         print_time: 0
@@ -431,7 +431,7 @@ MonoBehaviour:
       Player_W_dialog:
         type: 2
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 23783c666ee6aeb4c8d32ef619691455, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uB9B0 ]\n\n\uC544..! \uC544! \uC544\uC800\uC528, \uB4E4\uB824\uC694?!"
         print_time: 0
@@ -449,7 +449,7 @@ MonoBehaviour:
       Player_M_dialog:
         type: 1
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 505512a48306de14daaa2976b103653f, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uC720\uC9C4 ]\n\n\uC798 \uB4E4\uB9AC\uB2C8\uAE4C \uC18C\uB9AC
           \uC880 \uCE58\uC9C0\uB9C8."
@@ -482,7 +482,7 @@ MonoBehaviour:
       Player_W_dialog:
         type: 2
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 410e08b88cbbe604ea41ea564341fd38, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uB9B0 ]\n\n\uD5F7, \uC798 \uB4E4\uB9B0\uB2E4\uB2C8 \uB2E4\uD589\uC774\uB124\uC694!
           \uADF8\uB098\uC800\uB098 \uC544\uC800\uC528 \uB3C4\uC6C0\uC774 \uD544\uC694\uD574\uC694."
@@ -499,7 +499,7 @@ MonoBehaviour:
     isDialogOn: 1
     dialogs:
       Player_M_dialog:
-        type: 1
+        type: 0
         audioClip: {fileID: 0}
         leftSprite: {fileID: 0}
         rightSprite: {fileID: 0}
@@ -508,7 +508,7 @@ MonoBehaviour:
       Player_W_dialog:
         type: 2
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 23783c666ee6aeb4c8d32ef619691455, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uB9B0 ]\n\n\uC81C\uAC00 \uC5B4~\uC5C4\uCCAD \uC218\uC0C1\uD55C
           \uC5F0\uAD6C\uC2E4\uC744 \uBC1C\uACAC\uD588\uAC70\uB4E0\uC694!  \uC2DC\uC2A4\uD15C\uC744
@@ -536,7 +536,7 @@ MonoBehaviour:
       Player_W_dialog:
         type: 2
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 81e27fd812c1d0d4f97d772e75a989f0, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uB9B0 ]\n\n\uADF8\uB7FC \uC774\uB9CC!"
         print_time: 0
@@ -579,7 +579,7 @@ MonoBehaviour:
       Player_M_dialog:
         type: 1
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: e4b01e767da16cf4baf08a91346199a9, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uC720\uC9C4 ]\n\n..."
         print_time: 0
@@ -598,7 +598,7 @@ MonoBehaviour:
     camera_zoomSize: 0
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
-  - playTime: 1.5
+  - playTime: 2
     isDialogOn: 0
     dialogs:
       Player_M_dialog:

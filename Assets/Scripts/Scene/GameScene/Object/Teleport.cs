@@ -19,14 +19,14 @@ public class Teleport : MonoBehaviour
 
     [SerializeField] private Animator animator;
 
-    [SerializeField] private InteractionDialogSO blockDialog;
+    public InteractionDialogSO blockDialog;
 
     /// <summary> 현재 사용 가능한 포탈인지에 대한 여부 </summary>
-    [SerializeField] private bool IsOn;
+    public bool IsOn;
 
     [SerializeField] private bool IsGoVent;
 
-    [SerializeField] private float lightIntensity;
+    public float lightIntensity;
 
     private void Start()
     {
@@ -81,6 +81,13 @@ public class Teleport : MonoBehaviour
             {
                 EventCtrl.Instance.SetCurrentEvent(Event.GetToR4);
                 CutSceneCtrl.Instance.StartCutScene(12);
+            }
+        }
+        else if (gameObject.name.Equals("VToH"))
+        {
+            if (EventCtrl.Instance.CurrentEvent == Event.EscapeR4)
+            {
+                CutSceneCtrl.Instance.StartCutScene(18);
             }
         }
     }

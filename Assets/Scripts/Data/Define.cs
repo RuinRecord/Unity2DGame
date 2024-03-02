@@ -73,6 +73,9 @@ public enum Event
     GetToR4,
     PuzzleForR4,
     PuzzleDoneR4,
+    SearchR4,
+    EscapeR4,
+    End,
 }
 
 public enum EventTiming
@@ -91,6 +94,7 @@ public enum BlockType
     R1ToHoll,
     Hall,
     R2ToHoll,
+    Vent,
 }
 
 public enum CameraMode

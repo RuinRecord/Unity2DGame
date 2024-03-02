@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class CaptureObject : MonoBehaviour
 {
-    private const float SCALE_ZOOM_POWER = 0.1f;
+    private const float SCALE_ZOOM_POWER = 0.05f;
 
     private SpriteRenderer spriteRenderer;
 
@@ -57,7 +57,8 @@ public class CaptureObject : MonoBehaviour
 
             this.transform.localScale -= Vector3.one * SCALE_ZOOM_POWER;
 
-            PlayerCtrl.Instance.CurrentCaptureOb = null;
+            if (PlayerCtrl.Instance != null)
+                PlayerCtrl.Instance.CurrentCaptureOb = null;
         }
     }
 }
