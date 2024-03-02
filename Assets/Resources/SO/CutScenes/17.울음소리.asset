@@ -39,7 +39,7 @@ MonoBehaviour:
     camera_zoomSpeed: 0
     camera_isZoomSmooth: 0
   - playTime: 0
-    isDialogOn: 0
+    isDialogOn: 1
     dialogs:
       Player_M_dialog:
         type: 0

@@ -1,0 +1,879 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87b114766b044714f9f253cc9d1da6ad, type: 3}
+  m_Name: "18.\uC5D4\uB529"
+  m_EditorClassIdentifier: 
+  actions:
+  - playTime: 0
+    isDialogOn: 0
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 0
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 2
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: ab6d9825f73dc06429ae4ddff55fd4c2, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uB9B0 ]\n\n..."
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 2
+    isDialogOn: 0
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 3
+    isDialogOn: 0
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 5317db668470ef846af7fbd8dc0126e3, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uC720\uC9C4 ]\n\n\uBB50\uB0D0 \uADF8 \uBAA8\uC2B5\uC740, \uADC0\uC2E0\uC774\uB77C\uB3C4
+          \uBD24\uC5B4?"
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 2
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 94477dbe1010b6d4ba9599136adcce80, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uB9B0 ]\n\n... \uD658\uD48D\uAD6C\uC5D0 \uC788\uC744 \uB54C \uC9D0\uC2B9\uC758
+          \uC6B8\uC74C\uC18C\uB9AC \uAC19\uC740 \uAC8C \uB4E4\uB838\uC5B4\uC694..."
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: fc55c9a6f20a0d04bacee196f96a5a18, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uC720\uC9C4 ]\n\n\uC6B8\uC74C\uC18C\uB9AC?"
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 2
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 9dc70f39dae0bb9498738a2be8cee608, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uB9B0 ]\n\n\uC544..! \uADF8\uAC8C \uC911\uC694\uD55C\uAC8C \uC544\uB2C8\uC5D0\uC694!
+          '\uC704\uBC84\uB9E8\uC26C' \uD504\uB85C\uC81D\uD2B8! \uC774\uAC8C \uB9C8\uD0A4\uC544\uC758
+          \uACC4\uD68D\uC774\uC5C8\uB358 \uAC70\uC5D0\uC694!"
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 1.5
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 505512a48306de14daaa2976b103653f, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uC720\uC9C4 ]\n\n... \uADF8\uB7F0\uAC00"
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 9ed07004ffb0d9d44ba247deaea1168d, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uC720\uC9C4 ]\n\n\uB300\uCDA9 \uC608\uC0C1\uC740 \uD588\uC5B4"
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 2
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 94477dbe1010b6d4ba9599136adcce80, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uB9B0 ]\n\n\uB124..?"
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 5317db668470ef846af7fbd8dc0126e3, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uC720\uC9C4 ]\n\n\uC77C\uB2E8 \uAC00\uBA74\uC11C \uC774\uC57C\uAE30\uD558\uC9C0."
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 3
+    isDialogOn: 0
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 3
+    isDialogOn: 0
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 1.5
+    isDialogOn: 0
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 9a0c596db95996e408e39821238ca7e1, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uC720\uC9C4 ]\n\n\uC6B0\uB9AC\uB294 \uC5D0\uC5B4\uB3C4\uC2A4 \uC2EC\uCE35\uBD80\uB85C
+          \uD5A5\uD560\uAC70\uB2E4."
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 2
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: ab6d9825f73dc06429ae4ddff55fd4c2, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uB9B0 ]\n\n\uC5D0..? \uAC11\uC790\uAE30..?!"
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 5317db668470ef846af7fbd8dc0126e3, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uC720\uC9C4 ]\n\n\uADF8\uC804\uC5D0 \uC2AC\uB7FC\uC9C0\uAD6C\uC5D0
+          \uC7A0\uAE50 \uB4E4\uB800\uB2E4 \uB9D0\uC774\uC9C0."
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 2
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 9dc70f39dae0bb9498738a2be8cee608, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uB9B0 ]\n\n\uC74C..."
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 2
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 23783c666ee6aeb4c8d32ef619691455, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uB9B0 ]\n\n\uBB50, \uC88B\uC544\uC694! \uC544\uC800\uC528\uAC00
+          \uADF8\uB807\uB2E4\uACE0 \uD558\uC2E0\uB2E4\uBA74 \uC57C."
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 505512a48306de14daaa2976b103653f, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uC720\uC9C4 ]\n\n..."
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 9ed07004ffb0d9d44ba247deaea1168d, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uC720\uC9C4 ]\n\n\uADF8\uB098\uC800\uB098 \uB108\uB294 \uBB34\uC5C7\uC744
+          \uBBFF\uACE0 \uB098\uC640 \uD568\uAED8\uD558\uB294 \uAC70\uC9C0?"
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 2
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 410e08b88cbbe604ea41ea564341fd38, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uB9B0 ]\n\n\uC544! '\uADF8\uBD84'\uC774 \uC544\uC800\uC528\uB77C\uBA74
+          \uB2F9\uC5F0\uD788 \uB3C4\uC640\uC904 \uAC70\uB77C\uACE0 \uD588\uAC70\uB4E0\uC694!"
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: e4b01e767da16cf4baf08a91346199a9, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uC720\uC9C4 ]\n\n'\uADF8\uBD84'..?"
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 2
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 23783c666ee6aeb4c8d32ef619691455, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uB9B0 ]\n\n\uC5B4\uB9B4 \uB54C \uC544\uC800\uC528\uB97C \uD6C8\uB828\uC2DC\uD0A8
+          \uBD84\uC774 \uC81C\uAC00 \uB9D0\uD558\uBA74 \uB3C4\uC640\uC900\uB2E4\uACE0
+          \uD558\uB358\uB370\uC694?"
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 1
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: fc55c9a6f20a0d04bacee196f96a5a18, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uC720\uC9C4 ]\n\n\uBE4C\uC5B4\uBA39\uC744 \uC601\uAC10\uD0F1\uC774\uAC00..."
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 1
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 5317db668470ef846af7fbd8dc0126e3, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uC720\uC9C4 ]\n\n\uB124\uAC00 \uC7A0\uC785\uD55C \uBAA9\uC801\uC774
+          \uC774\uAC70\uC600\uAD70"
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 2
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 81e27fd812c1d0d4f97d772e75a989f0, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uB9B0 ]\n\n\uD5E4\uD5E4, \uB300\uCDA9 \uADF8\uB7F0\uAC70\uC8E0."
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 1
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 505512a48306de14daaa2976b103653f, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uC720\uC9C4 ]\n\n\uD6C4..."
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 1
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: e4b01e767da16cf4baf08a91346199a9, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uC720\uC9C4 ]\n\n\uC9C0\uAE08\uBD80\uD130\uB294 \uC9C4\uC9DC \uC704\uD5D8\uD558\uB2C8
+          \uB9C8\uC74C \uB2E8\uB2E8\uD788 \uBA39\uC5B4\uC57C \uD55C\uB2E4."
+        print_time: 0
+      Player_W_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 0
+    isDialogOn: 1
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 2
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 23783c666ee6aeb4c8d32ef619691455, type: 3}
+        rightSprite: {fileID: 0}
+        words: "[ \uB9B0 ]\n\n\uB2F9\uC5F0\uD558\uC8E0! \uC5B4\uB514 '\uC9C4\uC2E4'\uC774
+          \uBB54\uC9C0 \uC54C\uC544\uBCF4\uC790\uAD6C\uC694!"
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 3
+    isDialogOn: 0
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 2
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0
+  - playTime: 5
+    isDialogOn: 0
+    dialogs:
+      Player_M_dialog:
+        type: 0
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+      Player_W_dialog:
+        type: 2
+        audioClip: {fileID: 0}
+        leftSprite: {fileID: 0}
+        rightSprite: {fileID: 0}
+        words: 
+        print_time: 0
+    isCameraMoveOn: 0
+    camera_destination: {x: 0, y: 0}
+    camera_moveSpeed: 0
+    camera_isMoveSmooth: 0
+    isCameraZoomOn: 0
+    camera_zoomSize: 0
+    camera_zoomSpeed: 0
+    camera_isZoomSmooth: 0

@@ -83,6 +83,13 @@ public class Teleport : MonoBehaviour
                 CutSceneCtrl.Instance.StartCutScene(12);
             }
         }
+        else if (gameObject.name.Equals("VToH"))
+        {
+            if (EventCtrl.Instance.CurrentEvent == Event.EscapeR4)
+            {
+                CutSceneCtrl.Instance.StartCutScene(18);
+            }
+        }
     }
 
     /// <summary>
