@@ -94,6 +94,7 @@ public enum BlockType
     R1ToHoll,
     Hall,
     R2ToHoll,
+    Vent,
 }
 
 public enum CameraMode

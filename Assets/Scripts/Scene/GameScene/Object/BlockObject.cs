@@ -41,6 +41,10 @@ public class BlockObject : MonoBehaviour
                     if (EventCtrl.Instance.CurrentEvent == Event.PlayerMTutorial)
                         Interaction(5, Vector2Int.up);
                     break;
+                case BlockType.Vent:
+                    if (EventCtrl.Instance.CurrentEvent == Event.EscapeR4)
+                        CutSceneCtrl.Instance.StartCutScene(17);
+                    break;
             }
         }
     }

@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87b114766b044714f9f253cc9d1da6ad, type: 3}
   m_Name: "08.\uB04C\uB9B0\uC790\uAD6D"
   m_EditorClassIdentifier: 
-  cutSceneCode: 8
   actions:
   - playTime: 1
     isDialogOn: 0
@@ -77,7 +76,7 @@ MonoBehaviour:
       Player_W_dialog:
         type: 2
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 9dc70f39dae0bb9498738a2be8cee608, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uB9B0 ]\n\n\uBC14\uB2E5\uC5D0 \uB04C\uB9B0 \uC790\uAD6D\uC774..."
         print_time: 0
@@ -102,7 +101,7 @@ MonoBehaviour:
       Player_W_dialog:
         type: 2
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 81e27fd812c1d0d4f97d772e75a989f0, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uB9B0 ]\n\n\uD750\uC74C..."
         print_time: 0
@@ -127,7 +126,7 @@ MonoBehaviour:
       Player_W_dialog:
         type: 2
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 410e08b88cbbe604ea41ea564341fd38, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uB9B0 ]\n\n\uC774 \uC11C\uB78D\uC7A5\uC744 \uB04C\uBA74\uC11C
           \uC0DD\uAE34 \uC790\uAD6D\uC778\uAC74\uAC00?"
@@ -153,7 +152,7 @@ MonoBehaviour:
       Player_W_dialog:
         type: 2
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 94477dbe1010b6d4ba9599136adcce80, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uB9B0 ]\n\n\uC73C... \uB0B4\uAC00 \uBC00\uC9C0\uB294 \uBABB\uD560
           \uAC83 \uAC19\uC544\n\uC548\uB418\uACA0\uC5B4, \uC544\uC800\uC528\uD55C\uD14C

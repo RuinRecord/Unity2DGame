@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87b114766b044714f9f253cc9d1da6ad, type: 3}
   m_Name: "07.\uBC293"
   m_EditorClassIdentifier: 
-  cutSceneCode: 7
   actions:
   - playTime: 2.5
     isDialogOn: 0
@@ -52,7 +51,7 @@ MonoBehaviour:
       Player_W_dialog:
         type: 2
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 410e08b88cbbe604ea41ea564341fd38, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uB9B0 ]\n\n\uC7A0\uC2DC\uB9CC\uC694. \uC81C \uC0AC\uC804\uC870\uC0AC\uC5D0
           \uB530\uB974\uBA74 \uC774 \uBC29\uC740 \uD55C\uBC88 \uB458\uB7EC\uBCFC
@@ -72,7 +71,7 @@ MonoBehaviour:
       Player_M_dialog:
         type: 1
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 5317db668470ef846af7fbd8dc0126e3, type: 3}
         rightSprite: {fileID: 0}
         words: "[ ??? ]\n\n\uC5EC\uAE30? \uBCC4\uAC70 \uC5C6\uB294 \uD3C9\uBC94\uD55C
           \uBC29\uC774\uB2E4\uB9CC"
@@ -105,7 +104,7 @@ MonoBehaviour:
       Player_W_dialog:
         type: 2
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 23783c666ee6aeb4c8d32ef619691455, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uB9B0 ]\n\n\uC81C\uAC00 \uAC14\uB2E4\uC62C\uD14C\uB2C8 \uBB38
           \uBC16\uC5D0\uC11C \uB9DD\uC774\uB098 \uBD10\uC8FC\uC138\uC694"
@@ -131,7 +130,7 @@ MonoBehaviour:
       Player_W_dialog:
         type: 2
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 410e08b88cbbe604ea41ea564341fd38, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uB9B0 ]\n\n\uC544, \uADF8\uB7EC\uACE0 \uBCF4\uB2C8 \uC544\uC9C1
           \uC11C\uB85C \uC774\uB984\uB3C4 \uBAA8\uB974\uB124\uC694. \uC74C\u2026
@@ -158,7 +157,7 @@ MonoBehaviour:
       Player_W_dialog:
         type: 2
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 81e27fd812c1d0d4f97d772e75a989f0, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uB9B0 ]\n\n\uC804 16\uC0B4 \uBBF8\uC18C\uB140 \uB9B0\uC774\uC5D0\uC694\u314E^^"
         print_time: 0
@@ -176,7 +175,7 @@ MonoBehaviour:
       Player_M_dialog:
         type: 1
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 9ed07004ffb0d9d44ba247deaea1168d, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uC720\uC9C4 ]\n\n..?"
         print_time: 0
@@ -201,7 +200,7 @@ MonoBehaviour:
       Player_M_dialog:
         type: 1
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 505512a48306de14daaa2976b103653f, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uC720\uC9C4 ]\n\n\uADF8\uB798, \uB0B4 \uBC29\uC740 \uC774\uBBF8
           \uC870\uC0AC\uAC00 \uB05D\uB0AC\uB098\uBCF4\uAD70\u2026"
@@ -227,7 +226,7 @@ MonoBehaviour:
       Player_M_dialog:
         type: 1
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 0}
+        leftSprite: {fileID: 21300000, guid: 5317db668470ef846af7fbd8dc0126e3, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uC720\uC9C4 ]\n\n\uADF8\uB7FC \uBCF5\uB3C4 \uB05D \uBC29 \uC55E\uC5D0
           \uC11C\uC788\uC744\uD14C\uB2C8 \uB3C4\uC6C0\uC774 \uD544\uC694\uD558\uBA74
