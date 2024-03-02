@@ -19866,6 +19866,7 @@ Transform:
   - {fileID: 2002715458}
   - {fileID: 361205427}
   - {fileID: 1282650666}
+  - {fileID: 1830949763}
   m_Father: {fileID: 1682769453}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &485082441
@@ -30643,10 +30644,10 @@ MonoBehaviour:
   doorType: 0
   destination: {x: -57, y: 36.5, z: 0}
   direction: {x: 0, y: 1}
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: aae877aea6771dd4785e54e473cb9062, type: 3}
   animator: {fileID: 0}
   blockDialog: {fileID: 11400000, guid: 89a2f87215106ae43bb83f416d00c213, type: 2}
-  IsOn: 0
+  IsOn: 1
   IsGoVent: 1
   lightIntensity: 0.05
 --- !u!61 &832993177
@@ -62495,6 +62496,54 @@ Transform:
   - {fileID: 2064869762}
   m_Father: {fileID: 1737253563}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1830949762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1830949763}
+  - component: {fileID: 1830949764}
+  m_Layer: 0
+  m_Name: "16.\uAE30\uB85D\uC644\uB8CC"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1830949763
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830949762}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 483054785}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1830949764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830949762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4bf1dd79cb6734f913005ad062d772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerW: {fileID: 1479713881}
+  tv: {fileID: 1334527023}
+  R4ToV: {fileID: 832993176}
+  VToR4: {fileID: 469178767}
 --- !u!1001 &1837457404
 PrefabInstance:
   m_ObjectHideFlags: 0

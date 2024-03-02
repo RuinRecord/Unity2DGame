@@ -34,6 +34,8 @@ public class EventCtrl : MonoBehaviour
                     ShowTooptipAsEvent("갤러리 저장 완료. [Space] 버튼을 눌러 추가로 조사하세요.");
                     CutSceneCtrl.Instance.StartCutScene(1);
                 }
+                else if (currentEvent == Event.SearchR4)
+                    CutSceneCtrl.Instance.StartCutScene(16);
                 break;
 
             case EventTiming.GetItem:

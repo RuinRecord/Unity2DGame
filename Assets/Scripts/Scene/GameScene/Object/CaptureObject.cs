@@ -57,7 +57,8 @@ public class CaptureObject : MonoBehaviour
 
             this.transform.localScale -= Vector3.one * SCALE_ZOOM_POWER;
 
-            PlayerCtrl.Instance.CurrentCaptureOb = null;
+            if (PlayerCtrl.Instance != null)
+                PlayerCtrl.Instance.CurrentCaptureOb = null;
         }
     }
 }

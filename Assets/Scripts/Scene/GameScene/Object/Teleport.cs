@@ -19,14 +19,14 @@ public class Teleport : MonoBehaviour
 
     [SerializeField] private Animator animator;
 
-    [SerializeField] private InteractionDialogSO blockDialog;
+    public InteractionDialogSO blockDialog;
 
     /// <summary> 현재 사용 가능한 포탈인지에 대한 여부 </summary>
-    [SerializeField] private bool IsOn;
+    public bool IsOn;
 
     [SerializeField] private bool IsGoVent;
 
-    [SerializeField] private float lightIntensity;
+    public float lightIntensity;
 
     private void Start()
     {
