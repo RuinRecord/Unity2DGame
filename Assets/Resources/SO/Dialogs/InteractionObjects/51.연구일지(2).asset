@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9db115f7612f572419263a9404947bdb, type: 3}
+  m_Name: "51.\uC5F0\uAD6C\uC77C\uC9C0(2)"
+  m_EditorClassIdentifier: 
+  itemSO: {fileID: 0}
+  recordSO: {fileID: 11400000, guid: fac5d15d4ea0cd840aa783f5287f3f98, type: 2}
+  dialogs:
+  - Player_M_dialog:
+      type: 0
+      audioClip: {fileID: 8300000, guid: 67f9111cf28d1f447aa109edb130d3c2, type: 3}
+      leftSprite: {fileID: 0}
+      rightSprite: {fileID: 0}
+      words: "'\uC5F0\uAD6C \uC77C\uC9C0(2)'\uC744 \uD68D\uB4DD\uD588\uC2B5\uB2C8\uB2E4."
+      print_time: 0
+    Player_W_dialog:
+      type: 0
+      audioClip: {fileID: 8300000, guid: 67f9111cf28d1f447aa109edb130d3c2, type: 3}
+      leftSprite: {fileID: 0}
+      rightSprite: {fileID: 0}
+      words: "'\uC5F0\uAD6C \uC77C\uC9C0(2)'\uC744 \uD68D\uB4DD\uD588\uC2B5\uB2C8\uB2E4."
+      print_time: 0

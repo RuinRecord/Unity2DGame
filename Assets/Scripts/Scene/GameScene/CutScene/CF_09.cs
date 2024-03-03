@@ -68,8 +68,10 @@ public class CF_09 : CutSceneFunction
         GameManager.Sound.PlaySE("비밀방입장");
         CameraCtrl.Instance.SetCameraPos(new Vector3(30.5f, 34f, 0f));
         MapCtrl.Instance.SetGlobalLight(0.15f);
+
         player_W.MovePosition(new Vector3(30f, 32f, 0f));
         player_M.MovePosition(new Vector3(29f, 32f, 0f));
+        player_W.CurrentLightIntensity = 0.15f;
     }
 
     private void FadeIn() => CutSceneCtrl.Instance.FadeIn(1.5f);
