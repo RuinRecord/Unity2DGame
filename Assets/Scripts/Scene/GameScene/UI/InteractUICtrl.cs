@@ -136,6 +136,7 @@ public class InteractUICtrl : MonoBehaviour
 
                 // 태그 기능 해제
                 PlayerTag.Instance.IsCanTag = true;
+                UIManager.PlayerUI.SetKeyOnHUD(PlayerFunction.Interaction);
 
                 if (isItemEventCheckOn)
                 {

@@ -40,12 +40,14 @@ public class Cabinet : InteractionObject
             {
                 GameManager.Data.player.RemoveItem(0);
                 UIManager.InteractUI.StartDialog(GameManager.Data.specialDialogDatas[3].dialogs.ToArray());
+                UIManager.PlayerUI.SetKeyOffHUD(PlayerFunction.Interaction);
                 GameManager.Sound.PlaySE("사물함풀림");
                 isLock = false;
             }
             else
             {
                 UIManager.InteractUI.StartDialog(GameManager.Data.specialDialogDatas[2].dialogs.ToArray());
+                UIManager.PlayerUI.SetKeyOffHUD(PlayerFunction.Interaction);
                 GameManager.Sound.PlaySE("사물함잠김");
             }
 

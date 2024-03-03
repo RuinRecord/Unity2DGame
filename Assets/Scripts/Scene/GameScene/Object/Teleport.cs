@@ -103,7 +103,10 @@ public class Teleport : MonoBehaviour
         if (!IsOn)
         {
             if (blockDialog != null)
+            {
+                UIManager.PlayerUI.SetKeyOffHUD(PlayerFunction.Interaction);
                 UIManager.InteractUI.StartDialog(blockDialog.dialogs.ToArray());
+            }
             return; // 만약 닫힌 상태라면 취소
         }
 
@@ -111,6 +114,7 @@ public class Teleport : MonoBehaviour
 
         // Fade 애니메이션과 함께 목적지로 이동
         PlayerTag.Instance.IsCanTag = false;
+        UIManager.PlayerUI.SetKeyOffHUD(PlayerFunction.Interaction);
         GameManager.Sound.PlaySE(audioClip);
 
         // 막힌 공간이라면 플레이어가 바라보는 방향으로 1칸 더 던진

@@ -40,6 +40,8 @@ public class CaptureUICtrl : MonoBehaviour
             PlayerCtrl.Instance.IsCameraOn = true;
         }
 
+        UIManager.PlayerUI.SetKeyOnHUD(PlayerFunction.Capture);
+
         // 이동 및 조사 조작 가능
         PlayerCtrl.Instance.IsCanMove = true;
         PlayerCtrl.Instance.IsCanInteract = true;
@@ -60,6 +62,8 @@ public class CaptureUICtrl : MonoBehaviour
 
         yield return new WaitForSeconds(CAPTURE_CAMERA_IN_TIME);
         // 'CAPTURE_CAMERA_IN_TIME' 시간이 지나면
+
+        UIManager.PlayerUI.SetKeyOnHUD(PlayerFunction.Capture);
 
         // 이동 및 조사 조작 가능
         PlayerCtrl.Instance.IsCanMove = true;
