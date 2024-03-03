@@ -234,7 +234,7 @@ MonoBehaviour:
       Player_W_dialog:
         type: 2
         audioClip: {fileID: 0}
-        leftSprite: {fileID: 21300000, guid: 9dc70f39dae0bb9498738a2be8cee608, type: 3}
+        leftSprite: {fileID: 21300000, guid: 1f5013184862a0146b8875125f878ffd, type: 3}
         rightSprite: {fileID: 0}
         words: "[ \uB9B0 ]\n\n\uADF8\uB7FC\uC5D0\uB3C4 \uC0C1\uAD00\uC5C6\uC5B4\uC694!
           \uC804 \uC54C\uACE0 \uC2F6\uC5B4\uC694. \uB300\uCCB4 \uC65C!! \uC6B0\uC218
