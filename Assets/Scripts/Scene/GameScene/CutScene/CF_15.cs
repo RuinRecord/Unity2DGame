@@ -56,6 +56,7 @@ public class CF_15 : CutSceneFunction
         TutorialManager.Instance.CloseTutorial();
         PlayerTag.Instance.SwitchTagImmedately(PlayerType.NONE);
         CameraCtrl.Instance.SetCameraMode(CameraMode.Free);
+        UIManager.Instance.SetActiveUI(false);
     }
 
     private void GetCard()
@@ -89,5 +90,6 @@ public class CF_15 : CutSceneFunction
         PlayerTag.Instance.SwitchTagImmedately(PlayerType.WOMEN);
         CameraCtrl.Instance.SetCameraMode(CameraMode.PlayerW);
         CameraCtrl.Instance.SetCameraSize(5f);
+        UIManager.Instance.SetActiveUI(true);
     }
 }

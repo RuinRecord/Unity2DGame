@@ -64,11 +64,13 @@ public class CF_07 : CutSceneFunction
 
     private void EndFadeIn()
     {
-        player_M.MovePosition(new Vector2(27f, 5f));
-        player_M.SetAnimationDir(Vector2.down);
         CutSceneCtrl.Instance.FadeIn(1.5f);
+        UIManager.Instance.SetActiveUI(true);
         PlayerTag.Instance.SwitchTagImmedately(PlayerType.WOMEN);
         CameraCtrl.Instance.SetCameraMode(CameraMode.PlayerW);
         CameraCtrl.Instance.SetCameraSize(5f);
+
+        player_M.MovePosition(new Vector2(27f, 5f));
+        player_M.SetAnimationDir(Vector2.down);
     }
 }

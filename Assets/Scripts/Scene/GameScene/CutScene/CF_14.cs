@@ -48,11 +48,11 @@ public class CF_14 : CutSceneFunction
     {
         CutSceneCtrl.Instance.FadeIn(1.5f);
 
-        TutorialManager.Instance.CloseTutorial();
         PlayerTag.Instance.SwitchTagImmedately(PlayerType.NONE);
         CameraCtrl.Instance.SetCameraMode(CameraMode.Free);
         CameraCtrl.Instance.SetCameraPos(new Vector3(29.5f, 36f, 0f));
         EventCtrl.Instance.SetCurrentEvent(Event.PuzzleDoneR4);
+        UIManager.Instance.SetActiveUI(false);
     }
 
     private void SystemOn()
@@ -79,6 +79,7 @@ public class CF_14 : CutSceneFunction
         PlayerTag.Instance.SwitchTagImmedately(PlayerType.MEN);
         CameraCtrl.Instance.SetCameraMode(CameraMode.PlayerM);
         CameraCtrl.Instance.SetCameraSize(5f);
+        UIManager.Instance.SetActiveUI(true);
         MapCtrl.Instance.ChangeAllMonitor(MonitorType.On);
 
         playerW.CurrentLightIntensity = 0.5f;

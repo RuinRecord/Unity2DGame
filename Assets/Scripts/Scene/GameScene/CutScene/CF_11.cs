@@ -43,8 +43,8 @@ public class CF_11 : CutSceneFunction
     private void EndFadeIn()
     {
         CutSceneCtrl.Instance.FadeIn(1f);
-
         MapCtrl.Instance.SetGlobalLight(0.5f);
+
         playerW.MovePosition(new Vector3(20f, 4.5f, 0f));
         playerW.SetLight(false);
         playerW.SetShadow(true);

@@ -6,7 +6,10 @@ public abstract class CutSceneFunction : MonoBehaviour
 {
     protected bool isOn;
 
-    public virtual void OnFuntionEnter() { isOn = true; }
+    public virtual void OnFuntionEnter() 
+    { 
+        isOn = true;
+    }
 
     public virtual void Play(int actionIdx) { }
 

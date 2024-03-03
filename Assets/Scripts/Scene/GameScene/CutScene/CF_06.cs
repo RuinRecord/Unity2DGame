@@ -43,6 +43,7 @@ public class CF_06 : CutSceneFunction
     {
         CutSceneCtrl.Instance.FadeIn(1f);
         CameraCtrl.Instance.SetCameraPos(new Vector2(12f, 5f));
+
         player_W.MovePosition(new Vector3(7f, 4.5f, 0f));
         player_M.MovePosition(new Vector3(9f, 4.5f, 0f));
     }

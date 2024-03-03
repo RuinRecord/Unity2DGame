@@ -48,10 +48,10 @@ public class CF_09 : CutSceneFunction
     {
         CutSceneCtrl.Instance.FadeIn(1f);
 
-        TutorialManager.Instance.CloseTutorial();
         PlayerTag.Instance.SwitchTagImmedately(PlayerType.NONE);
         CameraCtrl.Instance.SetCameraMode(CameraMode.Free);
         CameraCtrl.Instance.SetCameraPos(new Vector3(18.5f, 21f, 0f));
+        UIManager.Instance.SetActiveUI(false);
 
         player_M.Mode = PlayerMode.DEFAULT;
         player_M.State = PlayerState.IDLE;
@@ -86,6 +86,7 @@ public class CF_09 : CutSceneFunction
         EventCtrl.Instance.SetCurrentEvent(Event.FindSecretRoom);
         PlayerTag.Instance.SwitchTagImmedately(PlayerType.WOMEN);
         CameraCtrl.Instance.SetCameraMode(CameraMode.PlayerW);
+        UIManager.Instance.SetActiveUI(true);
 
         player_M.MovePosition(new Vector2(27f, 5f));
         player_M.SetAnimationDir(Vector2.down);

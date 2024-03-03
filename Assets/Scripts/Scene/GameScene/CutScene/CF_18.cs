@@ -22,6 +22,7 @@ public class CF_18 : CutSceneFunction
         PlayerTag.Instance.SwitchTagImmedately(PlayerType.NONE);
         CameraCtrl.Instance.SetCameraMode(CameraMode.Free);
         CameraCtrl.Instance.SetCameraPos(new Vector3(20f, 4.5f, 0f));
+        UIManager.Instance.SetActiveUI(false);
 
         playerW.MovePosition(new Vector3(20f, 4.5f, 0f));
     }
