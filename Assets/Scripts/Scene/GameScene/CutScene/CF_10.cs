@@ -2,8 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.VirtualTexturing;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class CF_10 : CutSceneFunction
 {
@@ -52,10 +50,10 @@ public class CF_10 : CutSceneFunction
     {
         CutSceneCtrl.Instance.FadeIn(1f);
 
-        TutorialManager.Instance.CloseTutorial();
         PlayerTag.Instance.SwitchTagImmedately(PlayerType.NONE);
         CameraCtrl.Instance.SetCameraMode(CameraMode.Free);
         CameraCtrl.Instance.SetCameraPos(new Vector3(20f, 7f, 0f));
+        UIManager.Instance.SetActiveUI(false);
 
         playerWCtrl.MovePosition(new Vector3(20f, 100f, 0f));
         ladder.SetActive(true);
@@ -79,6 +77,7 @@ public class CF_10 : CutSceneFunction
         PlayerTag.Instance.SwitchTagImmedately(PlayerType.WOMEN);
         CameraCtrl.Instance.SetCameraMode(CameraMode.PlayerW);
         CameraCtrl.Instance.SetCameraSize(5f);
+        UIManager.Instance.SetActiveUI(true);
 
         playerW.SetActive(false);
         playerWCtrl.MovePosition(new Vector3(20f, 4.5f, 0f));

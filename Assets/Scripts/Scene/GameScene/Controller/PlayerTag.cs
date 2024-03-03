@@ -138,11 +138,14 @@ public class PlayerTag : MonoBehaviour
     IEnumerator Tag()
     {
         // 페이드 아웃 애니메이션 시작
+        UIManager.PlayerUI.SetKeyOffHUD(PlayerFunction.Tag);
         tagAnim.Play(FADE_OUT_ANIM_NAME);
         tagAnim[FADE_OUT_ANIM_NAME].speed = 1f / FADE_TIME;
         
         yield return new WaitForSeconds(FADE_TIME);
         // 페이드 아웃 애니메이션 종료
+
+        UIManager.PlayerUI.SetKeyOnHUD(PlayerFunction.Tag);
 
         // 페이드 인 애니메이션 시작
         tagAnim.Play(FADE_IN_ANIM_NAME);

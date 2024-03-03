@@ -186,7 +186,7 @@ public class InvenUICtrl : MonoBehaviour
 
             uIBox.images[0].sprite = recordNotSelected;
             uIBox.tmp_texts[0].color = Color.white;
-            uIBox.tmp_texts[0].SetText(GameManager.Data.recordDatas[recordCode].record_name);
+            uIBox.tmp_texts[0].SetText(GameManager.Data.recordDatas[recordCode].recordName);
             uIBox.button.onClick.AddListener(OnRecordSlot);
             uIBox.index = recordCode;
         }
@@ -258,7 +258,7 @@ public class InvenUICtrl : MonoBehaviour
         uiBox.tmp_texts[0].color = Color.black;
         RecordSO recordData = GameManager.Data.recordDatas[recordCode];
 
-        recordInfoText.SetText($"{recordData.record_name}\n\n <size=70%>{recordData.record_info}");
+        recordInfoText.SetText($"{recordData.recordName}\n\n <size=70%>{recordData.recordInfo}");
     }
 
     public void SetGalleryPageButton()

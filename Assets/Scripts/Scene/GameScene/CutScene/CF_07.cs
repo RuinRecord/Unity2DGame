@@ -31,6 +31,7 @@ public class CF_07 : CutSceneFunction
         base.OnFunctionExit();
 
         TutorialManager.Instance.ShowTutorial("'유진'을 설득하였습니다. 이제 시설을 조사하세요.");
+        UIManager.PlayerUI.SetPlayerTageKey(true);
         player_M.MoveSpeed = PlayerCtrl.WALK_SPEED;
         player_W.MoveSpeed = PlayerCtrl.WALK_SPEED;
     }
@@ -64,11 +65,13 @@ public class CF_07 : CutSceneFunction
 
     private void EndFadeIn()
     {
-        player_M.MovePosition(new Vector2(27f, 5f));
-        player_M.SetAnimationDir(Vector2.down);
         CutSceneCtrl.Instance.FadeIn(1.5f);
+        UIManager.Instance.SetActiveUI(true);
         PlayerTag.Instance.SwitchTagImmedately(PlayerType.WOMEN);
         CameraCtrl.Instance.SetCameraMode(CameraMode.PlayerW);
         CameraCtrl.Instance.SetCameraSize(5f);
+
+        player_M.MovePosition(new Vector2(27f, 5f));
+        player_M.SetAnimationDir(Vector2.down);
     }
 }

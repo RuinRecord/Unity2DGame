@@ -28,8 +28,6 @@ public class Monitor : InteractionObject
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         light = GetComponent<Light2D>();
-        if (light == null)
-            light = gameObject.AddComponent<Light2D>();
 
         ChangeType(type);
     }

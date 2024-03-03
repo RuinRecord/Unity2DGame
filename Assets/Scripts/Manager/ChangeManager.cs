@@ -79,6 +79,7 @@ public class ChangeManager : MonoBehaviour
         
         if (SceneManager.GetActiveScene().name.Equals("Sample_Jun") || SceneManager.GetActiveScene().name.Equals("SampleScene"))
         {
+            UIManager.PlayerUI.SetKeyOnHUD(PlayerFunction.Interaction);
             PlayerCtrl playerCtrl = PlayerCtrl.Instance;
             playerCtrl.MovePosition(destination);
             playerCtrl.CurrentTeleport?.Close();
@@ -110,6 +111,7 @@ public class ChangeManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name.Equals("Sample_Jun") || SceneManager.GetActiveScene().name.Equals("SampleScene"))
         {
+            UIManager.PlayerUI.SetKeyOnHUD(PlayerFunction.Interaction);
             PlayerCtrl playerCtrl = PlayerCtrl.Instance;
             playerCtrl.MovePosition(destination);
             playerCtrl.CurrentTeleport?.Close();

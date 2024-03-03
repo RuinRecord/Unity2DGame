@@ -44,6 +44,7 @@ public class CF_03 : CutSceneFunction
         CutSceneCtrl.Instance.FadeIn(0.5f);
         PlayerTag.PlayerType = PlayerType.NONE;
         CameraCtrl.Instance.SetCamera(CameraMode.Free, new Vector2(-5.5f, 19.5f));
+        UIManager.Instance.SetActiveUI(false);
 
         player_M.Mode = PlayerMode.DEFAULT;
         player_M.MovePosition(new Vector3(-6f, 19f, 0f));

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "16.\uB9C8\uD0A4\uC544\uD070\uBCBD\uC9C0"
   m_EditorClassIdentifier: 
   itemSO: {fileID: 0}
-  recordSO: {fileID: 0}
+  recordSO: {fileID: 11400000, guid: 826263f4eb476ab49b4be5854035511a, type: 2}
   dialogs:
   - Player_M_dialog:
       type: 0
@@ -32,16 +32,30 @@ MonoBehaviour:
         \uC788\uB2E4."
       print_time: 0
   - Player_M_dialog:
-      type: 1
+      type: 0
       audioClip: {fileID: 0}
-      leftSprite: {fileID: 21300000, guid: fc55c9a6f20a0d04bacee196f96a5a18, type: 3}
+      leftSprite: {fileID: 0}
       rightSprite: {fileID: 0}
-      words: "[ \uC720\uC9C4 ]\n\n..."
+      words: 
       print_time: 0
     Player_W_dialog:
       type: 2
       audioClip: {fileID: 0}
-      leftSprite: {fileID: 21300000, guid: 9dc70f39dae0bb9498738a2be8cee608, type: 3}
+      leftSprite: {fileID: 0}
       rightSprite: {fileID: 0}
-      words: "[ \uB9B0 ]\n\n..."
+      words: "[ \uB9B0 ]\n\n\uC774\uAC74... \uCC3D\uACE0\uC758 \uBC1C\uC8FC \uB9AC\uC2A4\uD2B8\uC778\uAC00?"
+      print_time: 0
+  - Player_M_dialog:
+      type: 0
+      audioClip: {fileID: 0}
+      leftSprite: {fileID: 0}
+      rightSprite: {fileID: 0}
+      words: 
+      print_time: 0
+    Player_W_dialog:
+      type: 0
+      audioClip: {fileID: 8300000, guid: 67f9111cf28d1f447aa109edb130d3c2, type: 3}
+      leftSprite: {fileID: 0}
+      rightSprite: {fileID: 0}
+      words: "'\uBC1C\uC8FC \uB9AC\uC2A4\uD2B8'\uB97C \uD68D\uB4DD\uD558\uC600\uC2B5\uB2C8\uB2E4."
       print_time: 0

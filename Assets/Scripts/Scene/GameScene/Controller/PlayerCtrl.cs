@@ -126,7 +126,6 @@ public class PlayerCtrl : MonoBehaviour
         set 
         { 
             CUR_HP = value;
-            UIManager.PlayerUI.SetPlayerHP();
         }
         get { return CUR_HP; }
     }
@@ -279,20 +278,20 @@ public class PlayerCtrl : MonoBehaviour
         // 남주인공 전용 입력 처리
         if (playerType.Equals(PlayerType.MEN))
         {
-            if (Mode.Equals(PlayerMode.DEFAULT))
-            {
-                if (IsCanAttack && Input.GetKey(KeyCode.Q))
-                {
-                    // 공격
-                    StartAttack();
-                }
+            //if (Mode.Equals(PlayerMode.DEFAULT))
+            //{
+            //    if (IsCanAttack && Input.GetKey(KeyCode.Q))
+            //    {
+            //        // 공격
+            //        StartAttack();
+            //    }
 
-                if (IsCanEvasion && Input.GetKeyDown(KeyCode.W))
-                {
-                    // 회피
-                    StartEvasion();
-                }
-            }
+            //    if (IsCanEvasion && Input.GetKeyDown(KeyCode.W))
+            //    {
+            //        // 회피
+            //        StartEvasion();
+            //    }
+            //}
         }
         // 여주인공 전용 입력 처리
         else if (playerType.Equals(PlayerType.WOMEN))
@@ -319,6 +318,7 @@ public class PlayerCtrl : MonoBehaviour
     IEnumerator ResetMoveObject()
     {
         CutSceneCtrl.Instance.FadeOut(RESET_MOVEOBJECT_FADE_TIME);
+        UIManager.PlayerUI.SetKeyOffHUD(PlayerFunction.Retry);
         IsCanReset = false;
 
         yield return new WaitForSeconds(RESET_MOVEOBJECT_FADE_TIME);
@@ -327,7 +327,12 @@ public class PlayerCtrl : MonoBehaviour
             item.ReSetPosition();
 
         CutSceneCtrl.Instance.FadeIn(RESET_MOVEOBJECT_FADE_TIME);
+        
+        yield return new WaitForSeconds(RESET_MOVEOBJECT_FADE_TIME);
+
+        UIManager.PlayerUI.SetKeyOnHUD(PlayerFunction.Retry);
         IsCanReset = true;
+
     }
 
 
@@ -363,6 +368,7 @@ public class PlayerCtrl : MonoBehaviour
                         if (cabinet.IsOpen && cabinet.Type == 2)
                         {
                             // 특수 캐비넷의 경우
+                            UIManager.PlayerUI.SetKeyOffHUD(PlayerFunction.Interaction);
                             UIManager.InteractUI.StartDialog(cabinet);
                         }
                         else
@@ -374,13 +380,17 @@ public class PlayerCtrl : MonoBehaviour
                     {
                         // 일반 상호작용
                         if (interaction != null)
+                        {
+                            UIManager.PlayerUI.SetKeyOffHUD(PlayerFunction.Interaction);
                             UIManager.InteractUI.StartDialog(interaction);
+                        }
                     }
                 }
                 else if (CurrentCanMoveOb != null && playerType.Equals(PlayerType.WOMEN))
                 {
                     // 상호작용 대사
                     DialogSet[] _dialogs = CurrentCanMoveOb.Player_m_dialogs.ToArray();
+                    UIManager.PlayerUI.SetKeyOffHUD(PlayerFunction.Interaction);
                     UIManager.InteractUI.StartDialog(_dialogs);
                 }
             }
@@ -604,6 +614,7 @@ public class PlayerCtrl : MonoBehaviour
 
         IsCanReset = IsCanMove = IsCanInteract = IsCanCapture = IsCanInven = false;
         PlayerTag.Instance.IsCanTag = false;
+        UIManager.PlayerUI.SetKeyOffHUD(PlayerFunction.Capture);
 
         // 카메라 UI 켜지도록 코루틴 함수 실행
         StartCoroutine(UIManager.CaptureUI.CaptureCameraIn());
@@ -615,6 +626,7 @@ public class PlayerCtrl : MonoBehaviour
         State = PlayerState.IDLE;
         IsCanReset = IsCanMove = IsCanInteract = IsCanCapture = IsCanInven = false;
         IsCameraOn = false;
+
         PlayerTag.Instance.IsCanTag = true;
 
         // 카메라 UI 꺼지도록 코루틴 함수 실행

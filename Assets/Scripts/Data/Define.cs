@@ -123,3 +123,12 @@ public enum MonitorType
     On,
     Error
 }
+
+public enum PlayerFunction
+{
+    Capture,
+    Inventory,
+    Retry,
+    Tag,
+    Interaction,
+}

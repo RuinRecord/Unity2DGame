@@ -49,6 +49,7 @@ public class CF_16 : CutSceneFunction
         TutorialManager.Instance.CloseTutorial();
         PlayerTag.Instance.SwitchTagImmedately(PlayerType.NONE);
         CameraCtrl.Instance.SetCameraMode(CameraMode.Free);
+        UIManager.Instance.SetActiveUI(false);
 
         playerW.MovePosition(new Vector3(26f, -14f, 0f));
         playerW.SetAnimationDir(Vector2.up);
@@ -62,5 +63,6 @@ public class CF_16 : CutSceneFunction
         PlayerTag.Instance.SwitchTagImmedately(PlayerType.WOMEN);
         CameraCtrl.Instance.SetCameraMode(CameraMode.PlayerW);
         CameraCtrl.Instance.SetCameraSize(5f);
+        UIManager.Instance.SetActiveUI(true);
     }
 }

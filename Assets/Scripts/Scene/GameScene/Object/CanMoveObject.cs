@@ -93,6 +93,7 @@ public class CanMoveObject : MonoBehaviour
         Vector2 _moveVec = direction;
         PlayerCtrl.Instance.State = PlayerState.WALK;
         PlayerCtrl.Instance.IsCanInteract = PlayerCtrl.Instance.IsCanMove = false;
+        UIManager.PlayerUI.SetKeyOffHUD(PlayerFunction.Interaction);
 
         // 방향 벡터와 이동 벡터가 반대가 되는 순간까지 이동 수행
         while (_moveVec.normalized == direction.normalized)
@@ -105,6 +106,7 @@ public class CanMoveObject : MonoBehaviour
 
         PlayerCtrl.Instance.State = PlayerState.IDLE;
         PlayerCtrl.Instance.IsCanInteract = PlayerCtrl.Instance.IsCanMove = true;
+        UIManager.PlayerUI.SetKeyOnHUD(PlayerFunction.Interaction);
         this.transform.position = _savedPos + (Vector3)direction;
     }
 

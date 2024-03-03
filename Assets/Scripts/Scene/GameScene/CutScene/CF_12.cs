@@ -2,8 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.VirtualTexturing;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class CF_12 : CutSceneFunction
 {
@@ -15,6 +13,13 @@ public class CF_12 : CutSceneFunction
 
         MapCtrl.Instance.SetGlobalLight(0.05f);
         playerW.SetLight(true);
+
+        Debug.Log("R4 입장");
+    }
+
+    public override void Play(int actionIdx)
+    {
+        
     }
 
     public override void OnFunctionExit()

@@ -136,6 +136,7 @@ public class InteractUICtrl : MonoBehaviour
 
                 // 태그 기능 해제
                 PlayerTag.Instance.IsCanTag = true;
+                UIManager.PlayerUI.SetKeyOnHUD(PlayerFunction.Interaction);
 
                 if (isItemEventCheckOn)
                 {
@@ -261,11 +262,9 @@ public class InteractUICtrl : MonoBehaviour
             // 조사일지 체크 및 획득
             if (CheckDropRecord())
             {
-                currentObject.DropRecord();
-                ((Cabinet)currentObject)?.SetAnimOfGetItem();
-
-                // 이벤트 여부 체크
-                isRecordEventCheckOn = true;
+                isRecordEventCheckOn = currentObject.DropRecord();
+                if (currentObject is Cabinet)
+                    ((Cabinet)currentObject).SetAnimOfGetItem();
             }
         }
 

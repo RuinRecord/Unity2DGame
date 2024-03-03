@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Key_0
+      name: KeyUI_0
       rect:
         serializedVersion: 2
-        x: 54
-        y: 313
+        x: 12
+        y: 272
         width: 48
-        height: 50
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0260321fa595284cab68772fe7c208a
-      internalID: -1325378800
+      spriteID: a7f4ee1f94e3979489e0e7ea2d4a367f
+      internalID: -672597335
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Key_1
+      name: KeyUI_1
       rect:
         serializedVersion: 2
-        x: 2
-        y: 261
+        x: 76
+        y: 272
         width: 48
-        height: 50
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a2ff6445d84e8a40881a0ad419f1080
-      internalID: 1252234173
+      spriteID: fc2956d383e701b46974a2e64181c623
+      internalID: -1301430207
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Key_2
+      name: KeyUI_2
       rect:
         serializedVersion: 2
-        x: 54
-        y: 261
+        x: 12
+        y: 221
         width: 48
-        height: 50
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abe7562d56689274596677df73abb583
-      internalID: -910042351
+      spriteID: 4f1873eb5e53f9541bc9ff3424a44943
+      internalID: 1102205902
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Key_3
+      name: KeyUI_3
       rect:
         serializedVersion: 2
-        x: 106
-        y: 261
+        x: 76
+        y: 221
         width: 48
-        height: 50
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f1bd40e821cb3e9459885a40567e8d9c
-      internalID: -1877912995
+      spriteID: 7b2a0da280a1b354896ba3f11bd3fb96
+      internalID: -286827582
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Key_4
+      name: KeyUI_4
       rect:
         serializedVersion: 2
-        x: 54
-        y: 209
-        width: 48
-        height: 50
+        x: 12
+        y: 167
+        width: 112
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c927a33fb74889b4eb384be97f0d8ac5
-      internalID: -1482113562
+      spriteID: e6d72377e14f0894eb0ea0ff9428ed82
+      internalID: -739894249
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Key_5
+      name: KeyUI_5
       rect:
         serializedVersion: 2
-        x: 106
-        y: 209
-        width: 48
-        height: 46
+        x: 13
+        y: 113
+        width: 111
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,20 +242,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6dec7d4d7c75c8f43bd7a4441bd6e917
-      internalID: -1154812337
+      spriteID: f5910576d56b14b44b009c443e975c9b
+      internalID: -126497799
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Key_6
+      name: KeyUI_6
       rect:
         serializedVersion: 2
-        x: 2
-        y: 157
-        width: 48
-        height: 50
+        x: 12
+        y: 58
+        width: 112
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,20 +263,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 503ea3dd16301ad458ffd45283321467
-      internalID: 88565465
+      spriteID: b5a18bd35b6ba1a4b8fb1663d6b17eef
+      internalID: 914021880
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Key_7
+      name: KeyUI_7
       rect:
         serializedVersion: 2
-        x: 54
-        y: 157
-        width: 48
-        height: 50
+        x: 13
+        y: 4
+        width: 111
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,113 +284,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac1a6e9f23c08b643bc8f66d84178574
-      internalID: -451880209
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Key_8
-      rect:
-        serializedVersion: 2
-        x: 106
-        y: 157
-        width: 48
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bc12d04addf28a648afd1a8393a4f8f1
-      internalID: 318216291
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Key_9
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 103
-        width: 71
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 360b7ca3c01bbdd4390aef21c83d5793
-      internalID: -1426670112
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Key_10
-      rect:
-        serializedVersion: 2
-        x: 106
-        y: 105
-        width: 71
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7b87b9f2c5e521d419a551c0bf06e014
-      internalID: -1942661751
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Key_11
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 52
-        width: 93
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 61d494ba63ccbb64984037c71f9b4670
-      internalID: 2107095292
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Key_12
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 1
-        width: 139
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 998a35a291c04f946a922b067540c3b7
-      internalID: -1388681771
+      spriteID: 3ff831ffe0b02d349b6671d7bbc2b9e6
+      internalID: 424863671
       vertices: []
       indices: 
       edges: []
@@ -406,19 +301,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Key_0: -1325378800
-      Key_1: 1252234173
-      Key_10: -1942661751
-      Key_11: 2107095292
-      Key_12: -1388681771
-      Key_2: -910042351
-      Key_3: -1877912995
-      Key_4: -1482113562
-      Key_5: -1154812337
-      Key_6: 88565465
-      Key_7: -451880209
-      Key_8: 318216291
-      Key_9: -1426670112
+      KeyUI_0: -672597335
+      KeyUI_1: -1301430207
+      KeyUI_2: 1102205902
+      KeyUI_3: -286827582
+      KeyUI_4: -739894249
+      KeyUI_5: -126497799
+      KeyUI_6: 914021880
+      KeyUI_7: 424863671
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

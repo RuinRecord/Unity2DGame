@@ -51,10 +51,10 @@ public class CF_13 : CutSceneFunction
     {
         CutSceneCtrl.Instance.FadeIn(1f);
 
-        TutorialManager.Instance.CloseTutorial();
         PlayerTag.Instance.SwitchTagImmedately(PlayerType.NONE);
         CameraCtrl.Instance.SetCameraMode(CameraMode.Free);
         CameraCtrl.Instance.SetCameraPos(new Vector3(26f, -14f, 0f));
+        UIManager.Instance.SetActiveUI(false);
 
         playerW.SetAnimationDir(Vector2.up);
         playerW.MovePosition(new Vector3(29.25f, -14f, 0f));
@@ -117,5 +117,6 @@ public class CF_13 : CutSceneFunction
         PlayerTag.Instance.SwitchTagImmedately(PlayerType.MEN);
         CameraCtrl.Instance.SetCameraMode(CameraMode.PlayerM);
         CameraCtrl.Instance.SetCameraSize(5f);
+        UIManager.Instance.SetActiveUI(true);
     }
 }
