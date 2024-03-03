@@ -13,6 +13,13 @@ public class CF_12 : CutSceneFunction
 
         MapCtrl.Instance.SetGlobalLight(0.05f);
         playerW.SetLight(true);
+
+        Debug.Log("R4 입장");
+    }
+
+    public override void Play(int actionIdx)
+    {
+        
     }
 
     public override void OnFunctionExit()

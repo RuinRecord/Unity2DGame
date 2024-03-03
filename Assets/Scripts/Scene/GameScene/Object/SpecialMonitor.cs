@@ -17,8 +17,6 @@ public class SpecialMonitor : InteractionObject
 
         animator = GetComponent<Animator>();
         light = GetComponent<Light2D>();
-        if (light == null)
-            light = gameObject.AddComponent<Light2D>();
 
         ChangeType(type);
     }
