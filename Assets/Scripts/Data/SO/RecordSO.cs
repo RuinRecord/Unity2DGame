@@ -6,8 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "RecordSO", menuName = "Scriptable Object/RecordSO")]
 public class RecordSO : ScriptableObject
 {
-    public string record_name;
-    public string record_info;
+    public string recordName;
+    [TextArea] public string recordInfo;
 
     /// <summary> 조사일지 식별 번호 </summary>
     public int recordCode;

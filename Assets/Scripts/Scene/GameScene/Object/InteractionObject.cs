@@ -87,10 +87,10 @@ public class InteractionObject : MonoBehaviour
         }
     }
 
-    public virtual void DropRecord()
+    public virtual bool DropRecord()
     {
         if (!HasRecord)
-            return; // 이 상호작용은 아이템을 보유하지 않음
+            return false; // 이 상호작용은 아이템을 보유하지 않음
 
         // 아이템 획득
         GameManager.Data.player.AddRecord(RecordCode);
@@ -100,6 +100,10 @@ public class InteractionObject : MonoBehaviour
         {
             MapCtrl.Instance.DestroyObject(this.gameObject);
         }
+
+        if (gameObject.name.Equals("사물함(튜토)"))
+            return true;
+        return false;
     }
 
     public void EventOn()
