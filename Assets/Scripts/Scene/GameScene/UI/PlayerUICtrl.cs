@@ -21,6 +21,7 @@ public class PlayerUICtrl : MonoBehaviour
 
     [SerializeField] private GameObject playerWCtrlBox;
     [SerializeField] private GameObject playerMCtrlBox;
+    [SerializeField] private GameObject[] playerTagKeyGO;
 
     private Dictionary<PlayerFunction, Image> playerWkeyImageDic = new Dictionary<PlayerFunction, Image>();
     private Dictionary<PlayerFunction, Image> playerMkeyImageDic = new Dictionary<PlayerFunction, Image>();
@@ -31,6 +32,7 @@ public class PlayerUICtrl : MonoBehaviour
     {
         InitKeyImages();
         InitKeySprites();
+        SetPlayerTageKey(false);
     }
 
     public void SetActivePlayerUI(bool isActive)
@@ -92,6 +94,14 @@ public class PlayerUICtrl : MonoBehaviour
         {
             case PlayerType.WOMEN: playerWkeyImageDic[function].sprite = offKeySpriteDic[function]; break;
             case PlayerType.MEN: playerMkeyImageDic[function].sprite = offKeySpriteDic[function]; break;
+        }
+    }
+
+    public void SetPlayerTageKey(bool isActice)
+    {
+        foreach (var item in playerTagKeyGO)
+        {
+            item.SetActive(isActice);
         }
     }
 

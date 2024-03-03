@@ -62546,6 +62546,9 @@ MonoBehaviour:
   playerMProfileSprite: {fileID: 0}
   playerWCtrlBox: {fileID: 1278942494}
   playerMCtrlBox: {fileID: 1851894513}
+  playerTagKeyGO:
+  - {fileID: 425779388}
+  - {fileID: 959697413}
 --- !u!1 &1803530805
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,6 +31,7 @@ public class CF_07 : CutSceneFunction
         base.OnFunctionExit();
 
         TutorialManager.Instance.ShowTutorial("'유진'을 설득하였습니다. 이제 시설을 조사하세요.");
+        UIManager.PlayerUI.SetPlayerTageKey(true);
         player_M.MoveSpeed = PlayerCtrl.WALK_SPEED;
         player_W.MoveSpeed = PlayerCtrl.WALK_SPEED;
     }
