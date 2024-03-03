@@ -279,20 +279,20 @@ public class PlayerCtrl : MonoBehaviour
         // 남주인공 전용 입력 처리
         if (playerType.Equals(PlayerType.MEN))
         {
-            if (Mode.Equals(PlayerMode.DEFAULT))
-            {
-                if (IsCanAttack && Input.GetKey(KeyCode.Q))
-                {
-                    // 공격
-                    StartAttack();
-                }
+            //if (Mode.Equals(PlayerMode.DEFAULT))
+            //{
+            //    if (IsCanAttack && Input.GetKey(KeyCode.Q))
+            //    {
+            //        // 공격
+            //        StartAttack();
+            //    }
 
-                if (IsCanEvasion && Input.GetKeyDown(KeyCode.W))
-                {
-                    // 회피
-                    StartEvasion();
-                }
-            }
+            //    if (IsCanEvasion && Input.GetKeyDown(KeyCode.W))
+            //    {
+            //        // 회피
+            //        StartEvasion();
+            //    }
+            //}
         }
         // 여주인공 전용 입력 처리
         else if (playerType.Equals(PlayerType.WOMEN))
