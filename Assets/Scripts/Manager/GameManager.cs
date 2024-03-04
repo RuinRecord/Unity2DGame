@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ObjectManager objectManager;
     public static ObjectManager Object => instance.objectManager;
 
+    private static bool isGM = true;
+
 
     private void Awake()
     {
@@ -49,6 +51,21 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(this.gameObject);
+        }
+    }
+
+    private void Update()
+    {
+        if (!isGM)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Time.timeScale = 1;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Time.timeScale = 10;
         }
     }
 
