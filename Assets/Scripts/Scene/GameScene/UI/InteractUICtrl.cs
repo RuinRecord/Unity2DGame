@@ -127,24 +127,16 @@ public class InteractUICtrl : MonoBehaviour
             else
             {
                 // 모든 대화가 끝났다면 => 창 닫기
-                isDoneOne = isDoneAll = false;
-                currentObject = null;
-                StartCoroutine(DelayedSetInteractOn(false));
+                SetDatasToEnd();
 
-                interactionPanel.SetActive(false);
-                playerPanel.SetActive(false);
-
-                // 태그 기능 해제
-                PlayerTag.Instance.IsCanTag = true;
-                UIManager.PlayerUI.SetKeyOnHUD(PlayerFunction.Interaction);
-
+                // 아이템 이벤트 체크
                 if (isItemEventCheckOn)
                 {
                     isItemEventCheckOn = false;
                     EventCtrl.Instance.CheckEvent(EventTiming.GetItem);
                 }
 
-                // 이벤트 체크
+                // 조사 일지 이벤트 체크
                 if (isRecordEventCheckOn)
                 {
                     isRecordEventCheckOn = false;
@@ -158,6 +150,19 @@ public class InteractUICtrl : MonoBehaviour
         }
     }
 
+    private void SetDatasToEnd()
+    {
+        isDoneOne = isDoneAll = false;
+        currentObject = null;
+        StartCoroutine(DelayedSetInteractOn(false));
+
+        interactionPanel.SetActive(false);
+        playerPanel.SetActive(false);
+
+        // 태그 기능 해제
+        PlayerTag.Instance.IsCanTag = true;
+        UIManager.PlayerUI.SetKeyOnHUD(PlayerFunction.Interaction);
+    }
 
     public void StartDialog(InteractionObject interactionObject)
     {
@@ -176,7 +181,7 @@ public class InteractUICtrl : MonoBehaviour
         if (currentObject.IsEvent)
         {
             currentObject.EventOn();
-            isDoneAll = true;
+            SetDatasToEnd();
             return;
         }
 

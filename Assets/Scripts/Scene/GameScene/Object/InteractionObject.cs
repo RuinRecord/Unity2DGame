@@ -114,6 +114,9 @@ public class InteractionObject : MonoBehaviour
         switch (Code)
         {
             case 28:
+                if (PlayerTag.PlayerType.Equals(PlayerType.MEN))
+                    return; // 남주는 이 이벤트 발동 불가
+
                 CutSceneCtrl.Instance.StartCutScene(8);
                 this.GetComponent<Collider2D>().enabled = false;
                 break;
