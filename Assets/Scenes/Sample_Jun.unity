@@ -51453,7 +51453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0215b8fe77ce17440b3017f7de6db0a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEvent: 3
+  currentEvent: 0
 --- !u!111 &1682769455
 Animation:
   m_ObjectHideFlags: 0

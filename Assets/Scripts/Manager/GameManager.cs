@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ObjectManager objectManager;
     public static ObjectManager Object => instance.objectManager;
 
-    private static bool isGM = true;
+    private static bool isGM = false;
 
 
     private void Awake()
