@@ -18,7 +18,6 @@ public abstract class CutSceneFunction : MonoBehaviour
     public virtual void OnFunctionExit() 
     { 
         isOn = false;
-        this.gameObject.SetActive(false);
 
         UIManager.PlayerUI.SetKeyOnHUD(PlayerFunction.Interaction);
         EventCtrl.Instance.CheckEvent(EventTiming.CutScene);

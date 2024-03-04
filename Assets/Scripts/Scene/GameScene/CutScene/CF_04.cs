@@ -36,13 +36,15 @@ public class CF_04 : CutSceneFunction
         PlayerTag.Instance.SwitchTagImmedately(PlayerType.NONE);
         UIManager.Instance.SetActiveUI(false);
 
-        walkCo = StartCoroutine(WalkForward(currentDistance));
         startPos = new Vector3(-74f, 4.5f, 0f);
+        currentDistance = 0f;
         isTrackingCamera = true;
 
         player_M.SetAnimationDir(Vector2.right);
         player_M.MovePosition(startPos);
         player_W.MovePosition(startPos + Vector3.left);
+
+        walkCo = StartCoroutine(WalkForward(currentDistance));
     }
 
     public override void Play(int actionIdx)
