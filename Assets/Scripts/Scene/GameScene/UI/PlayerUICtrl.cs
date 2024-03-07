@@ -42,8 +42,8 @@ public class PlayerUICtrl : MonoBehaviour
 
         if (isActive)
         {
-            SetPlayerProfile(PlayerTag.PlayerType);
-            SetPlayerCtrlUI(PlayerTag.PlayerType);
+            SetPlayerProfile(PlayerTag.Instance.CurrentPlayerType);
+            SetPlayerCtrlUI(PlayerTag.Instance.CurrentPlayerType);
         }
     }
 
@@ -76,7 +76,7 @@ public class PlayerUICtrl : MonoBehaviour
 
     public void SetKeyOnHUD(PlayerFunction function)
     {
-        PlayerType playerType = PlayerTag.PlayerType;
+        PlayerType playerType = PlayerTag.Instance.CurrentPlayerType;
 
         switch (playerType)
         {
@@ -87,7 +87,7 @@ public class PlayerUICtrl : MonoBehaviour
 
     public void SetKeyOffHUD(PlayerFunction function)
     {
-        PlayerType playerType = PlayerTag.PlayerType;
+        PlayerType playerType = PlayerTag.Instance.CurrentPlayerType;
 
         switch (playerType)
         {

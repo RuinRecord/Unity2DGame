@@ -248,7 +248,7 @@ public class InteractUICtrl : MonoBehaviour
             GameManager.Sound.PlaySE(_audioClip);
 
         // 현재 여주라면
-        if (PlayerTag.PlayerType.Equals(PlayerType.WOMEN))
+        if (PlayerTag.Instance.CurrentPlayerType.Equals(PlayerType.WOMEN))
         {
             // 아이템 체크 및 획득
             if (CheckDropItem())
@@ -297,7 +297,7 @@ public class InteractUICtrl : MonoBehaviour
 
     private PlayerType GetPlayerType(DialogSet dialog)
     {
-        PlayerType playerType = PlayerTag.PlayerType;
+        PlayerType playerType = PlayerTag.Instance.CurrentPlayerType;
         if (playerType == PlayerType.NONE)
         {
             if (!string.IsNullOrEmpty(dialog.GetWords(PlayerType.MEN)))

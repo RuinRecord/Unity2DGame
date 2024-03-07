@@ -97,7 +97,7 @@ public class Teleport : MonoBehaviour
     /// </summary>
     public void GoToDestination()
     {
-        if (IsGoVent && PlayerTag.PlayerType.Equals(PlayerType.MEN))
+        if (IsGoVent && PlayerTag.Instance.CurrentPlayerType.Equals(PlayerType.MEN))
             return; // 벤트 전용은 남주 동작 불가
 
         if (!IsOn)
@@ -128,8 +128,8 @@ public class Teleport : MonoBehaviour
     private void OnTriggerStay2D(Collider2D col)
     {
         // 충돌 범위 안으로 들어온 오브젝트가 플레이어라면
-        if (col.tag.Equals("Player_M") && PlayerTag.PlayerType.Equals(PlayerType.MEN) || 
-            col.tag.Equals("Player_W") && PlayerTag.PlayerType.Equals(PlayerType.WOMEN))
+        if (col.tag.Equals("Player_M") && PlayerTag.Instance.CurrentPlayerType.Equals(PlayerType.MEN) || 
+            col.tag.Equals("Player_W") && PlayerTag.Instance.CurrentPlayerType.Equals(PlayerType.WOMEN))
         {
             PlayerCtrl.Instance.CurrentTeleport = this;
         }
@@ -139,8 +139,8 @@ public class Teleport : MonoBehaviour
     private void OnTriggerExit2D(Collider2D col)
     {
         // 충돌 범위 밖으로 나간 오브젝트가 플레이어라면
-        if (col.tag.Equals("Player_M") && PlayerTag.PlayerType.Equals(PlayerType.MEN) ||
-            col.tag.Equals("Player_W") && PlayerTag.PlayerType.Equals(PlayerType.WOMEN))
+        if (col.tag.Equals("Player_M") && PlayerTag.Instance.CurrentPlayerType.Equals(PlayerType.MEN) ||
+            col.tag.Equals("Player_W") && PlayerTag.Instance.CurrentPlayerType.Equals(PlayerType.WOMEN))
         {
             PlayerCtrl.Instance.CurrentTeleport = null;
         }

@@ -30,7 +30,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         get 
         { 
-            switch (PlayerTag.PlayerType)
+            switch (PlayerTag.Instance.CurrentPlayerType)
             {
                 case PlayerType.MEN: return player_M;
                 case PlayerType.WOMEN: return player_W;
@@ -232,7 +232,7 @@ public class PlayerCtrl : MonoBehaviour
         if (CutSceneCtrl.IsCutSceneOn)
             return false; // 컷씬이 진행중이면 동작 불가
 
-        if (PlayerTag.IsTagOn || playerType != PlayerTag.PlayerType)
+        if (PlayerTag.IsTagOn || playerType != PlayerTag.Instance.CurrentPlayerType)
             return false; // 현재 태그 선택 중이거나, 현재 태그된 플레이어가 아니면 동작 불가
 
         if (UIManager.InteractUI.IsDialog)

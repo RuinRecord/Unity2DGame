@@ -10,7 +10,7 @@ public class PlayerTag : MonoBehaviour
     private const string FADE_OUT_ANIM_NAME = "PlayerTag_FadeOut";
     private const string FADE_IN_ANIM_NAME = "PlayerTag_FadeIn";
 
-    public static PlayerType PlayerType;
+    public PlayerType CurrentPlayerType;
     public static bool IsTagOn;
 
     public bool IsCanTag;
@@ -43,7 +43,7 @@ public class PlayerTag : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerType = PlayerType.WOMEN;
+        CurrentPlayerType = PlayerType.WOMEN;
         isPanelOn = false;
         IsCanTag = true;
 
@@ -51,7 +51,7 @@ public class PlayerTag : MonoBehaviour
         tagFrame.SetActive(false);
 
         CameraCtrl.Instance.SetCameraRect(isPanelOn);
-        UIManager.PlayerUI.SetPlayerUIAll(PlayerType);
+        UIManager.PlayerUI.SetPlayerUIAll(CurrentPlayerType);
     }
 
 
@@ -103,22 +103,22 @@ public class PlayerTag : MonoBehaviour
 
     public void SwitchTagImmedately(PlayerType playerType)
     {
-        PlayerType = playerType;
+        CurrentPlayerType = playerType;
         UIManager.Instance.SetActiveUI(true);
-        UIManager.PlayerUI.SetPlayerUIAll(PlayerType);
+        UIManager.PlayerUI.SetPlayerUIAll(CurrentPlayerType);
     }
 
     public void OnSwitchMode()
     {
-        if (PlayerType == PlayerType.MEN)
+        if (CurrentPlayerType == PlayerType.MEN)
         {
-            PlayerType = PlayerType.WOMEN;
+            CurrentPlayerType = PlayerType.WOMEN;
             CameraCtrl.Instance.SetCameraMode(CameraMode.PlayerW);
             MapCtrl.Instance.SetGlobalLight(PlayerCtrl.Instance.CurrentLightIntensity);
         }
-        else if (PlayerType == PlayerType.WOMEN)
+        else if (CurrentPlayerType == PlayerType.WOMEN)
         {
-            PlayerType = PlayerType.MEN;
+            CurrentPlayerType = PlayerType.MEN;
             CameraCtrl.Instance.SetCameraMode(CameraMode.PlayerM);
             MapCtrl.Instance.SetGlobalLight(PlayerCtrl.Instance.CurrentLightIntensity);
         }
@@ -161,7 +161,7 @@ public class PlayerTag : MonoBehaviour
         {
             tagFrame.SetActive(false);
             UIManager.Instance.SetActiveUI(true);
-            UIManager.PlayerUI.SetPlayerUIAll(PlayerType);
+            UIManager.PlayerUI.SetPlayerUIAll(CurrentPlayerType);
         }
 
         CameraCtrl.Instance.SetCameraRect(isPanelOn);

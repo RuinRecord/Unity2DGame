@@ -42,7 +42,7 @@ public class CF_03 : CutSceneFunction
     private void FadeOutSetting()
     {
         CutSceneCtrl.Instance.FadeIn(0.5f);
-        PlayerTag.PlayerType = PlayerType.NONE;
+        PlayerTag.Instance.CurrentPlayerType = PlayerType.NONE;
         CameraCtrl.Instance.SetCamera(CameraMode.Free, new Vector2(-5.5f, 19.5f));
         UIManager.Instance.SetActiveUI(false);
 

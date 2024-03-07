@@ -107,7 +107,7 @@ public class CF_02 : CutSceneFunction
     {
         CutSceneCtrl.Instance.FadeIn(0.5f);
 
-        PlayerTag.PlayerType = PlayerType.NONE;
+        PlayerTag.Instance.CurrentPlayerType = PlayerType.NONE;
         CameraCtrl.Instance.SetCamera(CameraMode.Free, new Vector2(-6.5f, 16.5f));
 
         player_M.MovePosition(new Vector3(-7f, 16f, 0f));

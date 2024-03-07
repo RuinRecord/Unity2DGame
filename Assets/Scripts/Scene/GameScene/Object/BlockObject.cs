@@ -20,8 +20,8 @@ public class BlockObject : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         // 충돌 범위 안으로 들어온 오브젝트가 플레이어라면
-        if (col.tag.Equals("Player_M") && PlayerTag.PlayerType.Equals(PlayerType.MEN) ||
-            col.tag.Equals("Player_W") && PlayerTag.PlayerType.Equals(PlayerType.WOMEN))
+        if (col.tag.Equals("Player_M") && PlayerTag.Instance.CurrentPlayerType.Equals(PlayerType.MEN) ||
+            col.tag.Equals("Player_W") && PlayerTag.Instance.CurrentPlayerType.Equals(PlayerType.WOMEN))
         {
             switch (blockType)
             {
